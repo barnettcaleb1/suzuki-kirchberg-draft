@@ -1,0 +1,23 @@
+{
+  "review_type": "independent source-level semantic correspondence audit",
+  "human_review": false,
+  "main_theorem_verified": false,
+  "decision": "ACCEPT_AS_PARTIAL_FORMALIZATION",
+  "source_hashes": {
+    "CStarAmalgam.lean": "b8405f5a5d22cdb85698adc8f13b86bbd6c6d6fad2bd963010a70ba5dc5b5178",
+    "OrthogonalChannels.lean": "974a92bc1c10340fdc2d58130cfb7a13b6df282ff2133e69a75ecb39dfd49035",
+    "PositiveLifting.lean": "40344d97178abb38c67ab9d8aaab53fddc93b4cb609ca4f14e51c67a74f36f0f",
+    "StableFiniteness.lean": "35025770f6a913818746d43215f17e522aed8b4b1e77dd368199fb5295f033a8",
+    "Target.lean": "c0470d75714bc401890e66c851fd0488ce614a0700d525e02a29b382ebdc4c31",
+    "TracialFunctional.lean": "56737574749a3651327c312f48ac91087ceea6adbdbcf9690838caf3df413622"
+  },
+  "correspondence_obligations": [
+    "CPAP versus manuscript nuclearity",
+    "hereditarySet and simple pure-infiniteness conventions",
+    "matrix stable-finiteness convention",
+    "full universal property versus full-product isomorphism and factor injectivity",
+    "fixed-universe categorical convention"
+  ],
+  "compiler_run_by_reviewer": false,
+  "scope_note": "This review covers only the six exact files and hashes listed. Later corner, fullness, trace-simplicity, and colimit modules are outside this review. All submitted modules are checked separately by the component build and transitive axiom audit."
+}

@@ -1,0 +1,8 @@
+Command: python3 scripts/verify_full.py
+Observed exit code: 1 (full proof missing)
+Temporary absolute file paths omitted.
+
+Build completed successfully (3507 jobs).
+NOT VERIFIED: a checked proof of Suzuki.Target.MainClaim is required.
+FullVerification.lean:3:41: error(lean.unknownIdentifier): Unknown identifier `Suzuki.fullTheorem`
+FullVerification.lean:4:14: error(lean.unknownIdentifier): Unknown constant `Suzuki.fullTheorem`

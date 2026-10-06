@@ -1,32 +1,61 @@
 # Formalization scope
 
-**Overall status: PARTIAL. The main theorem in the manuscript has not been formalized or verified in Lean.**
+**Overall status: PARTIAL. The manuscript’s main theorem has not been proved or verified in Lean.**
 
-The source correspondence is to `paper.tex`, Public draft 1 (6 October 2026). Its exact SHA-256 is bound in `source-manifest.json`.
+The source correspondence is to `paper.tex`, Public draft 1 (6 October 2026). Its exact SHA-256 is bound in `source-manifest.json`. The manuscript remains unchanged by this formalization pass.
 
-| Manuscript location | Lean declarations | Scope |
+## Checked components and their boundaries
+
+Names below are under the `Suzuki` namespace. Definitions are not counted as proofs of the propositions they define.
+
+| Manuscript location | Lean module or declaration | Exact coverage and boundary |
 | --- | --- | --- |
-| Section 3, equation (1) | `MatrixDiagrams.diagram` | Exact integer block matrix, with `A = 1 + B`. |
-| Section 3, equation (2), first square | `MatrixDiagrams.first_square` | Arbitrary finite index types and integer matrices; no chain hypothesis needed. |
-| Section 3, equation (2), second square | `MatrixDiagrams.second_square` | Assumes the explicit chain equation `S * B = B' * H`. |
-| Section 3, action on `(-y,y)` | `MatrixDiagrams.kernel_action` | Assumes `B *ᵥ y = 0`. |
-| Section 3, chain-homotopy adjustment | `MatrixDiagrams.adjusted_chain`, `adjusted_kernel` | Algebraic preservation of the chain relation and the kernel action. No positive lifting or cokernel theorem is claimed. |
-| Section 6, fixed-idempotent inverse system | `IdempotentSystems.compatible_iff_constant_fixed` | Every compatible sequence is constant and its value is fixed by the given idempotent. |
-| Section 6, the product formula used for `lim¹` | `IdempotentSystems.correction`, `correction_fixed`, `one_sub_shift_surjective` | An explicit preimage for `1 - shift` over any abelian group and any idempotent additive endomorphism. No countability assumption on the group. |
+| Section 1, proposed main theorem | `Target.MainClaim` | An **open proposition** over actual unital complex C*-algebras. No proof is supplied. Definition-equivalence obligations appear below. |
+| Section 3, block diagrams | `MatrixDiagrams` | The exact integer block matrix with `A = 1 + B`, both commuting-square identities, kernel action, and chain-homotopy adjustment. The second square assumes `S * B = B′ * H`. |
+| Section 3, simultaneous positive lifting lemma | `PositiveLifting.finite_simultaneous_positive_lifting` | Arbitrary homomorphisms of the actual cokernels and kernels of strictly positive square integer matrices, any finite number of channels, and target size at least two. Produces one common nonnegative determinant-one target change and strictly positive `T`, `S`, and `R`, with the prescribed induced maps. **Realization as embeddings of finite-dimensional C*-algebras is still unproved.** |
+| Full-product conventions | `CStarAmalgam.IsFullAmalgam` | The full universal property for actual unital complex star-homomorphisms into every C*-algebra in the fixed universe. Given that property, the module proves norm-dense generation and uniqueness up to an isometric star-algebra equivalence. It does not construct an amalgam for arbitrary input maps. |
+| Sections 3 and 5, orthogonal sums | `OrthogonalChannels.sumHom`, `sumHom_injective` | A finite sum of actual nonunital star-homomorphisms is unital and multiplicative when the channel units are pairwise orthogonal and sum to one. One injective channel makes the sum injective. The particular graph/coefficient channels are not constructed. |
+| Section 6, fixed-idempotent inverse system | `IdempotentSystems` | Compatible sequences are constant fixed-point sequences, and `1 - shift` is surjective for any idempotent additive endomorphism of any abelian group. No countability assumption. **No identification with KK groups or an analytic Milnor sequence is proved.** |
+| Section 7, trace to stable finiteness | `StableFiniteness`, `TracialFunctional`, `SimpleTraces` | An actual normalized positive complex-linear trace on a simple C*-algebra is faithful. Its unnormalized matrix extensions are faithful, so every finite matrix isometry is unitary. The proof constructs the closed two-sided trace-null ideal. **Existence of compatible traces on the proposed inductive limits remains unproved.** |
+| Section 7, full product at the limit | `InductiveAmalgam.isFullAmalgam_of_colimits`, `isFullAmalgam_canonical` | From actual compatible systems with stagewise full universal properties and four supplied C*-algebras satisfying the exact sequential colimit universal properties, proves the full amalgam property of the limit triple. The module also proves closed generation and isometric uniqueness of supplied colimits. **Existence of the norm-completed limits and their analytic properties remain unproved.** |
+| Section 8, concrete corners | `CommonCorner` | The actual projection corner `pAp`, with inherited complete C*-norm, unit `p`, and nonunital ambient inclusion. A finite frame gives an isometric equivalence with the corresponding Gram projection corner in a matrix C*-algebra. |
+| Section 8, fullness supplies a frame | `FrameNormalization`, `FullProjectionFrame` | Fullness means norm-density of the actual algebraic two-sided ideal generated by `p`. A finite factorization of one, C*-module Cauchy–Schwarz, and the continuous functional calculus inverse square root produce a finite frame. Fullness is **not** assumed to mean frame existence. |
+| Section 8, common full corner lemma | `CommonCorner.isFullAmalgam_of_fullProjection` | From the actual full universal property of the original triple and a full projection in its common algebra, proves the full universal property of the concrete corner triple, including existence and uniqueness for arbitrary target C*-algebras in the fixed universe. No corner-amalgam candidate or extension theorem is assumed. |
+| Section 8, nonzero common projection | `SimpleFullness` | A nonzero element of a simple C*-algebra generates a dense two-sided ideal; a nonzero projection therefore has a finite frame. **Construction of the projection with the prescribed K₀ class is still missing.** |
 
-Names in the table are under namespace `Suzuki`. Matrix dimensions are arbitrary finite types; matrix entries are integers. The additive-group declarations take an actual additive homomorphism and an explicit idempotence hypothesis. They do not assume KK-theory in a Lean axiom.
+All integer matrices act on column vectors. Positivity in `PositiveLifting` is strict entrywise positivity over ℤ. Its kernels are actual linear-map kernels and its cokernels are actual quotients by matrix ranges; the target cokernel identification is a proved linear equivalence. These statements quantify over all admissible inputs, rather than checking finite numerical samples.
 
-## Main proof obligations still outside Lean
+The stable-finiteness convention is `vᴴv = 1 → vvᴴ = 1` in every `Matrix (Fin n) (Fin n) A`. Trace arguments do not need a choice of matrix norm; corner arguments use Mathlib’s actual `CStarMatrix` operator norm, not an entrywise or Frobenius norm. All C*-algebras are complex and complete. Universally quantified targets lie in the same fixed Lean universe as the input diagram.
 
-1. A formal statement of the main claim using actual unital C*-algebras, the full universal amalgamated free product, the Kirchberg hypotheses, stable finiteness, and nuclearity.
-2. The graph-algebra/full-amalgam identification, its norm and universal-property arguments, and the relevant simplicity, pure-infiniteness, and nuclearity theorems.
-3. Simultaneous positive lifting of arbitrary prescribed maps on kernels and cokernels, including its group-theoretic existence arguments, and its realization by actual *-homomorphisms.
-4. The nuclear residually finite-dimensional coefficient model, the mapping-cone construction, and its KK-equivalence to the target.
-5. The three coefficient channels, their tensor and full-product identifications, and the injective commuting diagrams.
-6. The KK computations, UCT uses for finite graph stages, the analytic Milnor exact sequence, and the identification of the abstract additive calculations with the relevant Kasparov groups.
-7. Simplicity and pure infiniteness of the limit, faithful traces and stable finiteness of the constituents, and preservation of the full amalgam under the limit.
-8. Realization of the prescribed unit by a common projection, the common-full-corner theorem, and application of unit-preserving Kirchberg classification without UCT.
+## Open statement and correspondence obligations
 
-No existing Suzuki Lean proof was found in this workspace. A search of the pinned Mathlib source found C*-algebra foundations but did not locate a ready-to-use formalization of the named Kirchberg/KK-theory inputs. This is a statement about the inspected local version, not a claim that no relevant formalization exists anywhere.
+`Target.MainClaim` says that every bundled algebra satisfying the stated Kirchberg hypotheses admits three finite constituents and injective unital common maps for which the target algebra itself has the full amalgam universal property. It makes no UCT assumption.
 
-The Lean supplement establishes eight algebraic lemmas. It does not certify the complete manuscript. The draft’s unverified status therefore remains unchanged.
+Its nuclearity predicate uses completely positive contractive approximations through finite complex matrix C*-algebras. Pure infiniteness uses infinite projections in the norm closure of `bAb` for every nonzero positive `b`. Simplicity uses closed two-sided ideals and excludes the zero algebra. The correspondence with the manuscript still requires justification of:
+
+- the equivalence of this approximation property with the manuscript’s nuclearity convention;
+- the identification of the closure of `bAb` with the hereditary subalgebra and the pure-infiniteness criterion;
+- the matrix stable-finiteness convention and its relation to the customary projection formulation;
+- the universal-property formulation’s relation to a constructed full product, including canonical embedding faithfulness;
+- the fixed-universe categorical convention.
+
+The source-level automated review found no substantive mismatch in the initial target and component statements. It is not human verification and is not a proof of these equivalences.
+
+## Main construction still missing
+
+1. Construct the graph C*-algebras and their full finite-dimensional amalgam identification; prove the relevant graph simplicity, pure-infiniteness, nuclearity, and K-group results.
+2. Realize the positive multiplicities by actual finite-dimensional embeddings with literally commuting squares and the stated K-theory generators.
+3. Construct the nuclear residually finite-dimensional coefficient model, mapping cone, and its KK-equivalence; develop the needed spatial/maximal tensor products and their full-product identifications.
+4. Construct the specific three coefficient channels and prove all tensor and injectivity claims.
+5. Develop actual Kasparov groups and products, exact triangles, Bott and Morita equivalences, UCT for the stated graph stages, and the analytic Milnor exact sequence. Connect the algebraic idempotent lemmas to these objects.
+6. Construct the norm-completed inductive limits and prove their simplicity, pure infiniteness, nuclearity, and trace existence, together with all required limit universal properties.
+7. Realize the prescribed unit class by a common projection and prove the relevant KK correspondence.
+8. Prove and apply unit-preserving Kirchberg classification without UCT.
+
+The inspected pinned Mathlib has substantial C*-algebra foundations, but the named graph/KK/classification inputs were not located there. This is a statement about the inspected version, not a claim about every formal library. A paper citation cannot serve as a Lean proof of an imported theorem.
+
+## Verification commands
+
+`python3 scripts/verify.py` checks the exact source manifest, builds every submitted component, inventories every compiled `Suzuki` declaration, and audits all transitive axiom dependencies. Only `propext`, `Classical.choice`, and `Quot.sound` are allowed. Definitions, structure fields, and generated declarations are included in the inventory; their count is not a count of mathematical lemmas.
+
+`python3 scripts/verify_full.py` separately requires a proof named `Suzuki.fullTheorem` of the exact universe-polymorphic type `Suzuki.Target.MainClaim`. It currently exits unsuccessfully because no such proof exists. That failure records an unfinished formalization, not a counterexample to the mathematical claim. Component-check success does not change the draft’s unverified status.

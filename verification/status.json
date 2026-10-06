@@ -1,10 +1,20 @@
 {
   "date": "2026-10-06",
   "overall_status": "PARTIAL",
-  "main_theorem_formalized": false,
+  "main_claim_statement_defined": true,
+  "main_theorem_proved": false,
   "main_theorem_verified": false,
-  "algebraic_theorems_verified": 8,
-  "declarations_audited": 10,
+  "formal_statement_correspondence": "open obligations; see SCOPE.md",
+  "submitted_modules": 14,
+  "compiled_declarations": 523,
+  "declaration_kinds_including_generated": {
+    "theorem": 377,
+    "definition": 125,
+    "constructor": 7,
+    "inductive": 7,
+    "recursor": 7
+  },
+  "declaration_count_is_mathematical_lemma_count": false,
   "axiom_allowlist": [
     "propext",
     "Classical.choice",
@@ -12,13 +22,22 @@
   ],
   "lean_version": "4.33.1",
   "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
-  "local_build": "passed",
-  "axiom_audit": "passed",
+  "local_component_verifier": "passed",
+  "full_verifier": {
+    "command": "python3 scripts/verify_full.py",
+    "exit_code": 1,
+    "result": "NOT VERIFIED",
+    "reason": "Suzuki.fullTheorem is absent",
+    "log": "full-check.txt"
+  },
   "verification_tool_regression_tests": {
-    "passed": 6,
+    "passed": 10,
     "failed": 0
   },
   "independent_human_verification": false,
+  "semantic_review": "semantic-review.json",
   "source_manifest": "source-manifest.json",
-  "scope": "SCOPE.md"
+  "scope": "SCOPE.md",
+  "declarations_audited": 523,
+  "checked_at_utc": "2026-10-06T18:26:47.866815+00:00"
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the declared algebraic supplement, not the manuscript's main theorem."""
+"""Verify all submitted components, not the manuscript's main theorem."""
 from pathlib import Path
 import hashlib
 import json
@@ -32,13 +32,14 @@ def check_sources(root):
     requested = re.findall(r"^#print axioms (\S+)$", (root / "Audit.lean").read_text(), re.MULTILINE)
     if requested != manifest["audited_declarations"] or len(set(requested)) != len(requested):
         raise ValueError("Audit declaration list differs or contains duplicates.")
-    declared = []
-    for name in sorted((root / "Suzuki").glob("*.lean")):
-        namespace = "Suzuki." + name.stem
-        declared += [namespace + "." + n for n in re.findall(
-            r"^(?:def|theorem) (\w+)", name.read_text(), re.MULTILINE)]
-    if set(declared) != set(requested):
-        raise ValueError("The audit does not cover every submitted declaration.")
+    if json.loads((root / "verification/declarations.json").read_text()) != requested:
+        raise ValueError("Declaration inventory differs from the audit list.")
+    expected_imports = {
+        "Suzuki." + p.stem for p in (root / "Suzuki").glob("*.lean")}
+    actual_imports = set(re.findall(
+        r"^import (Suzuki\.\S+)$", (root / "Suzuki.lean").read_text(), re.MULTILINE))
+    if expected_imports != actual_imports:
+        raise ValueError("Every submitted module must be imported by the default build.")
     return requested
 
 
@@ -59,17 +60,37 @@ def check_axioms(output, expected):
     return results
 
 
+def check_inventory(output, expected):
+    rows = [json.loads(line) for line in output.splitlines() if line.strip()]
+    names = []
+    for row in rows:
+        if set(row) != {"name", "kind", "axioms"}:
+            raise ValueError("Malformed compiled declaration inventory.")
+        names.append(row["name"])
+        if set(row["axioms"]) - ALLOWED_AXIOMS:
+            raise ValueError(f"Disallowed axioms in {row['name']}")
+        if row["kind"] == "axiom":
+            raise ValueError(f"Project axiom declaration: {row['name']}")
+    if len(set(names)) != len(names) or set(names) != set(expected):
+        raise ValueError("Compiled inventory differs from the exact declaration audit.")
+    return rows
+
+
 def main():
     try:
         expected = check_sources(ROOT)
-        print("Scope: algebraic lemmas only; main theorem NOT verified in Lean.", flush=True)
+        print("Scope: partial formalization; main theorem NOT verified in Lean.", flush=True)
         subprocess.run(["lake", "build"], cwd=ROOT, check=True)
         result = subprocess.run(
             ["lake", "env", "lean", "-DwarningAsError=true", "Audit.lean"],
             cwd=ROOT, check=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         checked = check_axioms(result.stdout, expected)
+        inventory = subprocess.run(
+            ["lake", "env", "lean", "-DwarningAsError=true", "Inventory.lean"],
+            cwd=ROOT, check=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        check_inventory(inventory.stdout, expected)
         print(result.stdout, end="")
-        print(f"PASS: 8 algebraic theorems; {len(checked)} declarations audited.")
+        print(f"PASS: partial modules built; {len(checked)} declarations audited.")
         print("This is not a Lean verification of the manuscript's main theorem.")
         return 0
     except subprocess.CalledProcessError as error:
