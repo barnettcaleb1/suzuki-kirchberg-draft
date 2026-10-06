@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Please distinguish the unverified manuscript from its partial Lean algebraic checks."
+title: "Kirchberg algebras as full amalgams of stably finite algebras: unverified draft and partial Lean checks"
+type: software
+version: 0.1.0
+date-released: 2026-10-06
+authors:
+  - family-names: Barnett
+    given-names: Caleb

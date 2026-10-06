@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "main_theorem_verified": false,
+  "scope": "Eight algebraic lemmas only; the C*-algebra/KK-theory theorem is not formalized.",
+  "files": {
+    "Suzuki.lean": "c9e26af877e4e3ee2817188ab5e391ba45308170e633f2c1528403ca75dfae20",
+    "Suzuki/MatrixDiagrams.lean": "abb447c2ef423c76ab4fd2157951f772ef925c485b186270579de17059d89613",
+    "Suzuki/IdempotentSystems.lean": "d302a5fe72c4303f6ea6a13a4a3cd772c35eb3d77b1461a249d1717f3ef31bb8",
+    "Audit.lean": "2015f9fabc5539dee4b819f5d585299de69d8a7b60ad65acafc2b7da618a58d9",
+    "lakefile.toml": "b5727bea7a8a050bb21137ff8eb042df12e5fa45fe317713a9d9459063deb821",
+    "lake-manifest.json": "eb7db3a6fcec69afb162691d2f647fa5349a8443f3cacaed5cffafdec6cb621f",
+    "lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "paper.tex": "f61dc0872c2edd4be42c6e0160fc37fd128324fbe7244e7b76f62246f4492537"
+  },
+  "audited_declarations": [
+    "Suzuki.MatrixDiagrams.diagram",
+    "Suzuki.MatrixDiagrams.first_square",
+    "Suzuki.MatrixDiagrams.second_square",
+    "Suzuki.MatrixDiagrams.kernel_action",
+    "Suzuki.MatrixDiagrams.adjusted_chain",
+    "Suzuki.MatrixDiagrams.adjusted_kernel",
+    "Suzuki.IdempotentSystems.compatible_iff_constant_fixed",
+    "Suzuki.IdempotentSystems.correction",
+    "Suzuki.IdempotentSystems.correction_fixed",
+    "Suzuki.IdempotentSystems.one_sub_shift_surjective"
+  ]
+}

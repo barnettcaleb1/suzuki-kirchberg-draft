@@ -1,0 +1,12 @@
+[
+  "Suzuki.MatrixDiagrams.diagram",
+  "Suzuki.MatrixDiagrams.first_square",
+  "Suzuki.MatrixDiagrams.second_square",
+  "Suzuki.MatrixDiagrams.kernel_action",
+  "Suzuki.MatrixDiagrams.adjusted_chain",
+  "Suzuki.MatrixDiagrams.adjusted_kernel",
+  "Suzuki.IdempotentSystems.compatible_iff_constant_fixed",
+  "Suzuki.IdempotentSystems.correction",
+  "Suzuki.IdempotentSystems.correction_fixed",
+  "Suzuki.IdempotentSystems.one_sub_shift_surjective"
+]

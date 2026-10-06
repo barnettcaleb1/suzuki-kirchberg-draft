@@ -1,0 +1,14 @@
+Scope: algebraic lemmas only; main theorem NOT verified in Lean.
+Build completed successfully (1232 jobs).
+'Suzuki.MatrixDiagrams.diagram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Suzuki.MatrixDiagrams.first_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Suzuki.MatrixDiagrams.second_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Suzuki.MatrixDiagrams.kernel_action' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Suzuki.MatrixDiagrams.adjusted_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Suzuki.MatrixDiagrams.adjusted_kernel' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Suzuki.IdempotentSystems.compatible_iff_constant_fixed' does not depend on any axioms
+'Suzuki.IdempotentSystems.correction' depends on axioms: [propext]
+'Suzuki.IdempotentSystems.correction_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Suzuki.IdempotentSystems.one_sub_shift_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS: 8 algebraic theorems; 10 declarations audited.
+This is not a Lean verification of the manuscript's main theorem.

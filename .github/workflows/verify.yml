@@ -1,0 +1,28 @@
+name: Lean algebraic checks (partial)
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  algebraic-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          use-github-cache: false
+      - name: Check verifier failure handling
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+      - name: Verify algebraic lemmas and audit axioms
+        run: python3 scripts/verify.py

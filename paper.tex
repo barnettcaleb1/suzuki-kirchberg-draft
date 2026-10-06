@@ -1,0 +1,686 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[T1]{fontenc}\usepackage{lmodern}\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small DRAFT --- UNVERIFIED}
+\fancyhead[R]{\small 6 October 2026}
+\fancyfoot[C]{\thepage}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,
+  pdftitle={Kirchberg algebras as full amalgams of stably finite algebras -- Unverified draft},
+  pdfauthor={Caleb Barnett},
+  pdfsubject={Proposed proof; public draft 1; not independently verified}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Z}{\mathbb Z}\newcommand{\C}{\mathbb C}
+\newcommand{\T}{\mathbb T}\newcommand{\KK}{\operatorname{KK}}
+\newcommand{\coker}{\operatorname{coker}}\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Her}{\operatorname{Her}}\newcommand{\id}{\mathrm{id}}
+\title{Kirchberg algebras as full amalgams\\
+of stably finite algebras}
+\author{Caleb Barnett}
+\date{6 October 2026 --- Public draft 1}
+\begin{document}\maketitle\thispagestyle{fancy}
+\begin{center}
+\begin{minipage}{0.92\textwidth}
+\small\textbf{Draft --- unverified.} This manuscript presents a proposed
+proof. It has not been independently verified by a human mathematician
+and may contain errors. It is shared for scrutiny and comment.
+\end{minipage}
+\end{center}
+\begin{abstract}
+We present a proposed proof that every separable nuclear unital simple
+purely infinite C*-algebra $B$ admits a decomposition
+$B\cong A_0*_D A_1$, where $D,A_0,A_1$ are separable nuclear simple
+unital stably finite C*-algebras and the common inclusions are unital
+and injective. The product carries the full universal norm. No UCT
+assumption is made on $B$. The construction combines finite-dimensional
+ordinary-graph amalgams with a nuclear residually finite-dimensional
+coefficient algebra KK-equivalent to $B$. Three positive embedding
+channels preserve the reduced coefficient KK-class, cancel its scalar
+summand, and enforce simplicity. A projection in the common algebra
+prescribes the unit, and unit-preserving KK classification supplies the
+final identification. If correct, the argument answers the question in
+Suzuki's Remark~1.5 for all unital Kirchberg algebras.
+\end{abstract}
+\section{Statement and conventions}
+\begin{theorem}[Proposed main theorem]\label{thm:all}
+Every unital Kirchberg algebra $B$ has a unital isomorphism
+\[
+                     B\cong A_0*_D A_1
+\]
+where $D,A_0,A_1$ are separable nuclear simple unital stably finite
+C*-algebras and both inclusions $D\to A_j$ are unital and injective.
+The product is the full unital amalgamated free product.
+\end{theorem}
+A Kirchberg algebra means separable, nuclear, simple and purely infinite;
+no UCT assumption is implicit. All tensor products are minimal except
+where the maximal universal property is explicitly used. Matrix
+multiplicity matrices act on column vectors, with target blocks as rows.
+A minimal matrix projection is the $K_0$ generator. $SX=C_0((0,1))\otimes X$.
+We write Kasparov composition from left to right: $x\otimes_Y y$ first
+applies $x\in\KK(X,Y)$ and then $y\in\KK(Y,Z)$.
+
+The question is posed in \cite[Remark 1.5, p.~2]{Suzuki}; the constituent
+requirements are those of its Corollary 1.4. Nuclearity of the three
+constituents is an additional conclusion here. No expectation onto the
+limit common algebra is required or asserted. The proof uses UCT only
+for explicitly identified finite graph algebras, never for $B$ or the
+coefficient algebra.
+
+\section{An ordinary graph as a full finite-dimensional amalgam}
+Let $A$ be an $r\times r$ nonnegative integer matrix with no zero column,
+and let $k,\ell\in\Z^r$ have strictly positive entries. Define
+\begin{align*}
+ D(A;k,\ell)&=\bigoplus_{v=1}^rM_{k_v}\ \oplus\ \bigoplus_{v=1}^rM_{\ell_v},\\
+ F_0(A;k,\ell)&=\bigoplus_vM_{k_v+\ell_v},\\
+ F_1(A;k,\ell)&=\bigoplus_vM_{k_v+\sum_w A_{vw}\ell_w}.
+\end{align*}
+The common inclusions have multiplicity matrices $[I\ I]$ and $[I\ A]$.
+Write $P(A;k,\ell)=F_0*_{D}F_1$.
+
+Let $E_A$ have $A_{vw}$ edges from $w$ to $v$; its usual source-row
+adjacency matrix is $A^t$. Write its vertex projections $p_v$ and edge
+partial isometries $s_{wvt}$, where $1\le t\le A_{vw}$. Thus
+\[
+ s_{wvt}^*s_{wvt}=p_v,\qquad
+ \sum_{v,t}s_{wvt}s_{wvt}^*=p_w.
+\]
+Distinct edges have orthogonal range projections. With $m=k+\ell$ and
+$M=\sum_vm_v$, put $q=\operatorname{diag}(p_v\text{ repeated }m_v\text{ times})$
+in $M_M(C^*(E_A))$.
+
+\begin{lemma}\label{lem:graph}
+There is a unital isomorphism
+\[
+                  P(A;k,\ell)\cong qM_M(C^*(E_A))q.
+\]
+The projection $q$ is full. The minimal projection of the $v$th
+$F_0$ summand corresponds to $[p_v]$ in $K_0$, and the product unit
+corresponds to the vector $k+\ell$.
+\end{lemma}
+\begin{proof}
+Index the $v$th $F_0$ matrix units $E^v$ by $P_{v,a}$ and $Q_{v,b}$,
+with $a\le k_v$ and $b\le\ell_v$. Index the $v$th $F_1$ units $F^v$
+by $P_{v,a}$ and $Q_{w,t,b}$, with $t\le A_{vw}$, $b\le\ell_w$.
+The common relations are
+\[
+ E^v_{P_{v,a},P_{v,b}}=F^v_{P_{v,a},P_{v,b}},\qquad
+ E^w_{Q_{w,b},Q_{w,c}}=\sum_{v,t}F^v_{Q_{w,t,b},Q_{w,t,c}}.
+\]
+In the proposed corner send $E^v_{ij}$ to $e_{ij}\otimes p_v$.
+Writing $a_v=P_{v,1}$, define
+\[
+ V^v_{P_{v,a}}=e_{P_{v,a},a_v}\otimes p_v,\qquad
+ V^v_{Q_{w,t,b}}=e_{Q_{w,b},a_v}\otimes s_{wvt}.
+\]
+Within each $v$ these have common initial projection
+$e_{a_v,a_v}\otimes p_v$ and orthogonal final projections. Final
+projections for different $v$ are also orthogonal. Their total sum is
+$q$ by the graph relations. Hence $V^v_\alpha(V^v_\beta)^*$ defines
+a unital representation of $F_1$, agreeing with that of $F_0$ on $D$.
+The full universal property gives a homomorphism $\Psi$ to the corner.
+
+Conversely put $p_v^P=E^v_{a_v,a_v}$, $p=\sum_vp_v^P$, and
+\[
+ t_{wvt}=E^w_{P_{w,1},Q_{w,1}}F^v_{Q_{w,t,1},P_{v,1}}\in pPp.
+\]
+Matrix multiplication gives the graph relations, with initial projection
+$p_v^P$, orthogonal ranges for distinct edges, and range sum $p_w^P$
+over edges starting at $w$. The graph universal property
+\cite[Theorem 1.2]{KPR} gives $\theta:C^*(E_A)\to pPp$.
+For a matrix entry $x_{ij}\in p_vC^*(E_A)p_w$ set
+\[
+ \Theta([x_{ij}])=\sum_{i,j}E^v_{i,a_v}\theta(x_{ij})E^w_{a_w,j}.
+\]
+The orthogonal matrix units make this a *-homomorphism from the corner.
+Both composites fix the $E$ units. They also fix the graph edges in the
+chosen vertex corner and the mixed units
+\[
+ F^v_{Q_{w,t,b},P_{v,a}}
+       =E^w_{Q_{w,b},P_{w,1}}t_{wvt}E^v_{P_{v,1},P_{v,a}}.
+\]
+These mixed units, their adjoints and products recover all $F$ units;
+the graph edges and the $E$ units generate the inflated graph corner.
+Thus both composites are identities. Each vertex occurs in $q$, so $q$
+is full. The generator and unit statements follow from these explicit maps.
+\end{proof}
+
+We henceforth set $A=I+B$, where every entry of $B$ is a positive integer.
+The finite graph is strongly connected, has no sinks, and has at least
+two loops at every vertex. It is cofinal and every cycle has an exit.
+Its algebra is simple and purely infinite by \cite[Corollary 3.11]{KPR},
+and nuclear by the ordinary graph nuclearity statement in
+\cite[Remark 3.10]{AG}. The full corner in Lemma \ref{lem:graph} is
+therefore a unital Kirchberg algebra. No separated-graph nonnuclear
+full product is substituted for this ordinary graph algebra.
+
+Finite-dimensional inclusions have unital conditional expectations.
+The sequence from \cite[Theorem 4.1]{FG} gives the integer map
+\[
+ \phi(x,y)=(x+y,-x-Ay),\qquad
+ K_0(P)=\coker B,\quad K_1(P)=\ker B,\quad [1_P]=[k+\ell].
+\]
+We identify $y\in\ker B$ with $(-y,y)\in\ker\phi$. The $K_0$ generators
+are the minimal projections of $F_0$. These conventions will fix all
+bonding maps, rather than merely the abstract groups.
+
+\section{Lifting arbitrary graded maps by positive diagrams}
+Let source and target matrices be $B=A-I$ and $B'=A'-I$, of sizes
+$r$ and $r'$. Suppose integer matrices $S,H$ satisfy $SB=B'H$.
+For any $r'\times r$ integer matrix $Z$, define
+\begin{equation}\label{eq:T}
+ T=\begin{pmatrix}S-Z&S-H-ZA\\Z&H+ZA\end{pmatrix},
+ \qquad R=S+B'Z.
+\end{equation}
+Direct multiplication gives
+\begin{equation}\label{eq:squares}
+ [I\ I]T=S[I\ I],\qquad [I\ A']T=R[I\ A].
+\end{equation}
+When $T,S,R$ are strictly positive, set
+$\binom{k'}{\ell'}=T\binom{k}{\ell}$. These identities give actual
+unital finite-dimensional embeddings of multiplicities $T,S,R$.
+Fix the standard common-algebra embedding. The two representations of
+$D$ in each target factor have equal irreducible multiplicities; match
+equal copies with a permutation unitary and conjugate the whole factor
+embedding. The squares then commute literally. The induced full-product
+homomorphism is injective because its source is simple and it is unital.
+
+The maps on $K$-theory are $[S]$ on the cokernel and $H$ on the kernel.
+Indeed the latter follows directly from
+$T(-y,y)=(-Hy,Hy)$ when $By=0$, and the former from the first-factor
+minimal projections. This also follows from naturality of the cone sequence.
+
+\begin{lemma}[Simultaneous positive lifting]\label{lem:positive}
+Let $B,B_0'$ be strictly positive square integer matrices, with target
+size at least two. For any finite list of prescribed pairs
+\[
+ f_{0,c}:\coker B\to\coker B_0',\qquad
+ f_{1,c}:\ker B\to\ker B_0',
+\]
+one can replace the target presentation by $B'=UB_0'$, with $U$
+nonnegative unimodular, and find strictly positive matrices $T_c,S_c,R_c$
+as in \eqref{eq:T}, realizing each pair under the induced target
+identifications. All channels use the same $B'$.
+\end{lemma}
+\begin{proof}
+First lift $f_{0,c}$ to an integer matrix $S_{0,c}$ on the free presentations.
+The columns of $S_{0,c}B$ lie in $\operatorname{im}B_0'$, so choose
+$H_{0,c}$ with $S_{0,c}B=B_0'H_{0,c}$. The difference
+$f_{1,c}-H_{0,c}|_{\ker B}$ lands in $\ker B_0'$. Since
+$\Z^r/\ker B\cong\operatorname{im}B$ is free, $\ker B$ is a direct
+summand of $\Z^r$. Extend the difference to a map into $\ker B_0'$
+and add it to $H_{0,c}$. This realizes both prescribed maps.
+
+Let $J$ denote an all-ones matrix of the appropriate rectangular size.
+For sufficiently large positive integers $t_c$, the matrices
+\[
+ \overline S_c=S_{0,c}+B_0'(t_cJ),\qquad
+ \overline H_c=H_{0,c}+(t_cJ)B
+\]
+are strictly positive. These additions preserve the chain equation and
+both induced group maps. Set $Z_c=J$ and
+$W_c=\overline H_c+J A$. Choose a common nonnegative unimodular $U$
+whose every row sum exceeds every entry of every $W_c$ and exceeds one.
+Such matrices exist in size $r'\ge2$: add a large multiple of row two
+to row one of the identity, and then a large multiple of the new row one
+to every other row. Each operation has determinant one.
+
+Put $B'=UB_0'$, $S_c=U\overline S_c$, and $H_c=\overline H_c$.
+Every entry of $S_c$ is at least the corresponding row sum of $U$.
+Thus $S_c-J$ and $S_c-W_c$ are strictly positive. The other blocks
+$J,W_c$ and $R_c=S_c+B'J$ are strictly positive as well.
+Left multiplication by $U$ changes neither the kernel nor the cokernel
+up to the stated identification and does not alter either prescribed map.
+\end{proof}
+
+For multiple channels, the dimensions are defined with
+$T_{\mathrm{tot}}=\sum_cT_c$, not with any single $T_c$.
+This gives a useful nonunital version of the construction. In each target
+common summand put the different channel blocks in disjoint coordinate
+subspaces. Their units are orthogonal projections $q_c\in D'$ with
+$\sum_cq_c=1$. The channel factor maps have units $i_j'(q_c)$.
+Their restrictions to $D$ match the chosen channel embedding, by the same
+matrix representation equivalence as above. Hence the universal maps are
+\[
+                    \gamma_c:P\longrightarrow q_cP'q_c.
+\]
+They are nonzero and injective, and their ranges are orthogonal. Each
+$q_c$ is full in $D'$ because every channel multiplicity is positive.
+Their sum is a unital product map. The cone maps and boundary maps are
+natural also for these nonunital homomorphisms, so the individual channel
+maps still induce $S_c,H_c$ as above. No compatibility of conditional
+expectations is required for this naturality: the cone map is the
+pointwise map on its defining continuous functions.
+
+
+\section{A nuclear residually finite-dimensional KK model}
+An algebra is residually finite-dimensional (RFD) if finite-dimensional
+*-representations separate its points. A separable RFD algebra has a
+countable separating family: select representations detecting a countable
+dense subset, with arbitrarily good norm bounds, and take their union.
+RFD passes to subalgebras and to minimal unitization. No UCT hypothesis is assumed or used for the nuclear RFD
+coefficient algebra.
+
+\begin{lemma}\label{lem:rfd}
+For every separable nuclear algebra $B$, there is a separable nuclear
+RFD algebra $F$ and an invertible $\xi\in\KK(F,B)$.
+\end{lemma}
+\begin{proof}
+The construction in \cite[Lemma 2.4 and proof of Theorem 1.2]{Dadarlat}
+gives a separable nuclear RFD extension
+\[
+       0\longrightarrow I=\bigoplus_nM_{r(n)}
+       \xrightarrow{\theta} H\longrightarrow SB\longrightarrow0.
+\]
+For clarity, apply its quasidiagonal pullback construction to
+$\widetilde{SB}$, obtaining an algebra inside $\prod_nM_{r(n)}$,
+and take the inverse image of $SB$. The quotient is nuclear, so the
+extension is semisplit; the ideal and quotient are nuclear, so $H$ is
+nuclear. It is RFD as a subalgebra of the matrix product.
+
+Let
+\[
+ F=C_\theta=\{(f,x)\in C_0([0,1),H)\oplus I:f(0)=\theta(x)\}.
+\]
+The extension $0\to SH\to F\to I\to0$ proves nuclearity.
+The two ambient summands are RFD, so $F$ is RFD. It is separable.
+The mapping-cone triangle of the semisplit extension above identifies
+$C_\theta$ up to KK-equivalence with $S(SB)$. Bott periodicity supplies
+$\xi$. The hypothesis $K_*(B)=0$ used later in Dadarlat's proof is not
+used in this construction or mapping-cone equivalence.
+\end{proof}
+
+Fix $F$ and $\xi$ for the target $B$. Put $E=\widetilde F$, with
+inclusion $\iota:F\to E$, scalar quotient $\varepsilon:E\to\C$,
+and scalar section $\eta:\C\to E$. Use the external unitization if
+necessary, so that $0\to F\to E\to\C\to0$ is always split.
+Split exactness gives a class $r\in\KK(E,F)$ such that
+\begin{equation}\label{eq:split}
+ [\iota]\otimes_Er=1_F,\qquad
+ r\otimes_F[\iota]=e:=1_E-[\varepsilon]\otimes_\C[\eta].
+\end{equation}
+In particular $e^2=e$. Choose unital finite-dimensional representations
+\[
+                 \sigma_h:E\longrightarrow M_{q_h}(\C)
+\]
+whose every tail separates points. For example, repeat each member of
+a countable separating family infinitely often. Their direct sum is
+faithful, so $\{\id_X\otimes\sigma_h\}$ separates $X\otimes E$ for
+every $X$: represent $X$ faithfully and use the block decomposition of
+the faithful spatial representation. No homotopy condition on $\sigma_h$
+is needed.
+
+\section{The three actual coefficient channels}\label{sec:channels}
+We use only graph presentations with $K_0=\Z$ and $K_1=\Z$.
+Start with
+\[
+ B_1=\begin{pmatrix}1&1\\1&1\end{pmatrix},\qquad A_1=I+B_1.
+\]
+The cokernel identification sends $[e_1]$ to $1$ and $[e_2]$ to $-1$;
+the kernel has generator $(1,-1)$. At later steps take a positive
+presentation $B_{h+1}=U_hB_1$ provided by Lemma \ref{lem:positive},
+with the induced cokernel identification and the same kernel convention.
+The source is the previously chosen $B_h$; there is no requirement that
+$U_h$ relate consecutive presentations directly.
+
+Write $D_h,F_{j,h},P_h$ for the corresponding finite graph triple and
+product. At step $h$ apply the simultaneous lifting lemma to the three
+prescribed graded maps
+\begin{equation}\label{eq:threeK}
+ \begin{array}{c|cc}
+ \text{channel}&K_0(P_h)\to K_0(P_{h+1})&K_1(P_h)\to K_1(P_{h+1})\\\hline
+ +&+1&0\\
+ -&-1&0\\
+ 0&0&0.
+ \end{array}
+\end{equation}
+Denote the resulting positive common and factor multiplicities by
+$T_c,S_c,R_c$, for $c\in\{+,-,0\}$. With $q=q_h$, choose target sizes
+by
+\begin{equation}\label{eq:dimensions}
+ \binom{k_{h+1}}{\ell_{h+1}}
+       =(T_++T_-+qT_0)\binom{k_h}{\ell_h}.
+\end{equation}
+For the zero channel, use the source triple
+$M_q(D_h),M_q(F_{0,h}),M_q(F_{1,h})$, whose graph weights are
+$qk_h,q\ell_h$. Its multiplicities are $T_0,S_0,R_0$; hence its
+contribution to the target dimensions is exactly $qT_0$.
+The positive and negative channels use the unamplified source.
+
+Place the three common representations in disjoint coordinate blocks
+inside $D_{h+1}$. Their units are orthogonal constant projections
+$p_+,p_-,p_0$ adding to one. For each factor, representation equivalence
+of the common algebra gives a permutation unitary matching the entire
+channel restriction, including the $M_q(D_h)$ restriction in channel
+zero. Thus there are literal maps of triples with induced product maps
+\[
+ \gamma_+:P_h\to p_+P_{h+1}p_+,\quad
+ \gamma_-:P_h\to p_-P_{h+1}p_-,\quad
+ \widetilde\gamma_0:M_q(P_h)\to p_0P_{h+1}p_0.
+\]
+Here the full product of the amplified triple is $M_q(P_h)$.
+This follows either by the common matrix units or by the same tensor
+universal property below with coefficient $M_q$. All three source
+products are simple, and each map is nonzero, hence injective.
+The graded maps of $\widetilde\gamma_0$ under the usual corner Morita
+identification are zero. They are not multiplied by $q$: the source
+$K_0$ generator is a minimal projection of an amplified factor block.
+
+Now tensor the triples by $E$. For any unital coefficient $E$ which is
+nuclear, the full universal property gives
+\begin{equation}\label{eq:tensor}
+ (F_{0,h}\otimes E)*_{D_h\otimes E}(F_{1,h}\otimes E)
+                  \cong Q_h:=P_h\otimes E.
+\end{equation}
+Indeed the common copy $1\otimes E$ commutes with both graph-factor
+copies $F_{j,h}\otimes1$, hence with their full product. First obtain
+the maximal tensor product and then use nuclearity of $E$. The reverse
+map is defined on factor generators; both composites fix all generators.
+The coefficient copy need not be internally commutative.
+
+On the common and factor algebras, form the orthogonal sum of the
+following maps, with the matching graph component in place of $\gamma$:
+\begin{equation}\label{eq:Phi}
+ \Phi_h(x)=
+    (\gamma_+\otimes\id_E)(x)
+   +(\gamma_-\otimes\eta\varepsilon)(x)
+   +\bigl(\widetilde\gamma_0\circ(\id_{P_h}\otimes\sigma_h)\bigr)(x)
+                                                        \otimes1_E.
+\end{equation}
+In the last term identify $P_h\otimes M_q$ with $M_q(P_h)$.
+All channel units lie in the common algebra and are orthogonal, so the
+sum is a unital *-homomorphism. The two constituent squares commute
+literally, because each channel is a map of triples and its coefficient
+map is the same on all three algebras. Thus \eqref{eq:Phi} is precisely
+the induced map of full products, not a separately chosen map with
+matching K-theory. The positive identity-coefficient channel is
+injective (minimal tensor products preserve embeddings), so every
+common, factor and product connecting map is injective.
+
+\section{Exact KK calculation, including the non-UCT coefficient}
+Each $P_h$ satisfies UCT: the finite-dimensional inclusions have
+conditional expectations; the canonical two-sided cone is KK-equivalent
+to $SP_h$ by \cite[Theorem 4.1]{FG}; its extension has finite-dimensional
+quotient and suspended finite-dimensional ideal and therefore belongs
+to the Rosenberg--Schochet bootstrap category. UCT transfers under
+KK-equivalence and suspension by \cite[Theorem 1.17, Proposition 7.1]{RS}.
+Together with $K_*(P_h)=(\Z,\Z)$, this gives a KK-equivalence
+\[
+                 \kappa_h:P_h\simeq_{KK}\C\oplus S\C
+\]
+respecting our chosen generators. One can construct inverse classes
+using the UCT: its Ext term vanishes for free source K-groups, so the
+prescribed inverse K-maps lift uniquely and their composites are identities.
+The same observation shows that each even graph KK class is determined
+by its two integer K-maps. There are no even off-diagonal entries between
+$\C$ and $S\C$.
+
+Exterior tensoring $\kappa_h$ with $1_E$ identifies $Q_h$ in KK with
+\[
+                            X=E\oplus SE.
+\]
+For the positive channel, the class is $\operatorname{diag}(1_E,0)$.
+For the negative channel, it is
+$\operatorname{diag}(-[\eta\varepsilon],0)$.
+The graph class of $\widetilde\gamma_0$ is zero in KK, since its source
+is Morita equivalent to the UCT algebra $P_h$ with free K-groups and
+its two K-maps vanish. Its composition with any $\id\otimes\sigma_h$
+and scalar inclusion is consequently KK-zero, even though it is an
+injective actual homomorphism. Hence the total map in these coordinates is
+\begin{equation}\label{eq:idempotent}
+                   [\Phi_h]=f:=\operatorname{diag}(e,0),
+                   \qquad e=1_E-[\varepsilon]\otimes[\eta].
+\end{equation}
+This argument uses no UCT or K\"unneth theorem for $E$ or $B$.
+
+Let $L=\varinjlim(Q_h,\Phi_h)$. We justify fully why $L\simeq_{KK}F$.
+In the KK category define $j:F\to X=E\oplus SE$ by $[\iota]$ in the
+first coordinate and zero in the second, and $s:X\to F$ by $r$ in the
+first coordinate. Then
+\[
+                  j\otimes s=1_F,\qquad s\otimes j=f.
+\]
+For each separable $Z$, the inverse system $\KK^i(X,Z)$ has bonding map
+precomposition with the fixed idempotent $f$. It splits as a constant
+identity system on $\operatorname{im}(f^*)$ and a zero-bonding system on
+$\ker(f^*)$. Thus
+\[
+ \varprojlim\KK^i(X,Z)\cong\KK^i(F,Z),\qquad
+ \varprojlim{}^1\KK^i(X,Z)=0.
+\]
+The second equality can also be seen directly from the product formula
+for $\lim^1$: $1-$shift is surjective on the zero system and on the
+constant identity system (solve recursively). No countability of these
+KK groups or compactness of $F$ is being assumed.
+
+All the $Q_h$ are separable nuclear, so the natural Milnor exact
+sequence applies to $\KK^*(-,Z)$
+\cite[Theorems 1.12 and 1.14(b)]{RS}. It gives
+\begin{equation}\label{eq:naturaliso}
+                        \KK^i(L,Z)\cong\KK^i(F,Z).
+\end{equation}
+Here is an explicit representing class for this isomorphism. Transport
+$j$ to $j_h\in\KK(F,Q_h)$ using $\kappa_h\otimes1_E$.
+Equation \eqref{eq:idempotent} implies
+$j_h\otimes[\Phi_h]=j_{h+1}$. If $\lambda_h:Q_h\to L$ is the canonical
+map, then $\beta=j_h\otimes[\lambda_h]\in\KK(F,L)$ is independent of $h$.
+The isomorphism \eqref{eq:naturaliso} is precomposition with $\beta$.
+Surjectivity with $Z=F$ gives $\alpha\in\KK(L,F)$ satisfying
+$\beta\otimes\alpha=1_F$; injectivity with $Z=L$ gives
+$\alpha\otimes\beta=1_L$. Hence $\alpha$ is an invertible class.
+Moreover the restrictions of $\alpha$ to $Q_h$, expressed in the
+$E\oplus SE$ coordinates, are exactly $s$. This follows either from
+Milnor injectivity or from $s\otimes j=f$ and the compatibility equations.
+Thus the retained K-class of an initial element is its reduced $F$
+coordinate in the first $E$ summand. We will use this explicit statement
+to prescribe the unit of a common corner.
+
+\section{Simplicity, pure infiniteness, and stable finiteness}
+Let $D_\infty,A_{0,\infty},A_{1,\infty}$ be the constituent limits.
+They are separable nuclear and unital, and $D_\infty\to A_{j,\infty}$
+is injective. The product limit $L$ is separable nuclear unital.
+All connecting maps are injective, so we regard stages as subalgebras.
+
+We first record two details about the evaluation mechanism. A channel
+path in any iterated map has a support projection in the constant
+finite-dimensional common algebra of the target stage. These supports
+are orthogonal; compression by the selected support isolates that path.
+This follows by induction from the orthogonal common supports at each
+step: coefficient maps send constant projections to constant projections.
+Second, a path of positive identity channels commutes with coefficient
+evaluation by every $\sigma$. Thus, if a finite-dimensional representation
+$\sigma$ detects a given nonzero positive stage element, following any
+number of identity channels and then the zero/noise channel using that
+same $\sigma$ still gives a nonzero element. Injectivity of the evaluated
+graph or finite-dimensional maps proves this assertion.
+
+Let $I$ be a nonzero ideal in any one of the four limits. Choose a
+nonzero $b\in I_+$ and a positive stage approximation $a$, close enough
+that for some $\epsilon>\|a-b\|$ the cut
+$c=(a-\epsilon)_+$ is nonzero. Its image in the quotient by $I$ is zero,
+so $c\in I$. The separating family supplies a $\sigma$ with
+$(\id\otimes\sigma)(c)\ne0$. Select a later occurrence of that
+representation in the tail sequence and follow identity channels until
+then, and the zero/noise channel at that step. Compressing by the
+constant path support gives a nonzero constant positive element $d\in I$.
+
+For a constituent, at least one source matrix block evaluates nontrivially.
+Every entry of $T_0,S_0,R_0$ is strictly positive. Consequently the
+image $d$ is nonzero in every target constant matrix summand. A nonzero
+positive matrix generates its matrix block as an ideal; hence $I$
+contains every target constant block unit and therefore the common unit.
+For the product, $d$ is a nonzero positive element of the simple constant
+graph algebra $P_{h+1}$, so it generates that algebra's unit as an ideal.
+This also forces $I=L$. This proves simplicity of all four limits.
+
+For pure infiniteness of $L$, take any $0\ne b\in L_+$ and choose a
+positive stage approximation $a$ and a nonzero cut
+$c=(a-\epsilon)_+\precsim b$. The preceding evaluation procedure isolates
+a nonzero constant positive $d$ at a later stage. It is an orthogonal
+summand of the image of $c$, so $d\precsim c\precsim b$. The constant
+graph algebra is simple purely infinite, so $\Her(d)$ there contains an
+infinite projection $v$. This remains infinite in $L$, since embeddings
+preserve the proper-isometry witness and its nonzero defect projection.
+For completeness, from $v\precsim b$ choose $x$ so that $vx^*bxv$ is
+invertible in $vLv$. Then
+\[
+         w=b^{1/2}xv(vx^*bxv)^{-1/2}
+\]
+has $w^*w=v$ and $ww^*\in\Her(b)$. Thus $\Her(b)$ contains an infinite
+projection, as required. This proves pure infiniteness, without claiming
+it for the coefficient tensor stages themselves.
+
+Every unital RFD algebra has a tracial state, by composing a nonzero
+unital finite-dimensional representation with normalized matrix trace.
+Thus the unital constituent stages, finite sums of matrix algebras over
+$E$, have nonempty compact trace spaces. For the inverse system of these
+spaces, every finite compatibility requirement can be met by choosing a
+trace at a sufficiently late stage and restricting backwards. Compactness
+and the finite intersection property give compatible traces on each
+limit, without any surjectivity assumption on trace restriction maps.
+Simplicity makes the limit trace faithful. Its matrix traces are faithful,
+so no matrix algebra over the constituent admits a proper isometry.
+All three constituents are stably finite.
+
+Finally, the literal diagrams imply the full universal identity
+\begin{equation}\label{eq:fulllimit}
+             L\cong A_{0,\infty}*_{D_\infty}A_{1,\infty}.
+\end{equation}
+Compatible factor maps give a map from the displayed full product to
+$L$. Conversely, the two stage factors map compatibly into the displayed
+full product, giving compatible maps from $Q_h$ and therefore from $L$.
+The two composites fix every stage-factor generator and are identities.
+All maps preserve the common unit.
+
+\section{Prescribing the unit inside the common algebra}
+The preceding construction identifies $L$ with $B$ up to KK-equivalence,
+but an arbitrary unit must still be obtained by an actual common corner.
+Let $u\in K_0(F)$ be the inverse image of $[1_B]$ under $\xi_*$.
+By the definition of nonunital $K_0$, its image in $K_0(E)$ can be written
+\[
+                  \iota_*(u)=[p_0]-[q_0],\qquad p_0,q_0\in M_t(E)
+\]
+with equal scalar ranks under $\varepsilon$. Stabilize so that the
+matrices have the same size; add the same nonzero scalar projection to
+both if necessary to ensure the resulting common projection below is
+nonzero. Choose the initial weights $k_{1,1},k_{1,2}$ large enough to
+contain these two matrix projections. Choose positive $\ell_{1,1},\ell_{1,2}$
+so that
+\[
+                   k_{1,1}+\ell_{1,1}=k_{1,2}+\ell_{1,2}.
+\]
+Then $[1_{P_1}]=0$ in $\coker B_1=\Z$, though the algebra is unital.
+All later weights are chosen by \eqref{eq:dimensions} as before.
+
+Put the actual projection $p$ in $D_1\otimes E$ by placing $p_0$ in the
+first $k$-block, $q_0$ in the second $k$-block, and zero elsewhere.
+The inclusion into $P_1\otimes E$ sends these two blocks to the positive
+and negative $K_0(P_1)$ generators. Thus, in the first $E$ coordinate
+of the KK identification $Q_1\simeq E\oplus SE$, its class is
+$[p_0]-[q_0]=\iota_*(u)$, and its second coordinate is zero. This follows
+also by external products with the two minimal graph projections; their
+even KK classes are $+1$ and $-1$ in the scalar component and zero in
+the suspension component. The calculation does not assume a K\"unneth
+formula for $E$.
+
+The KK equivalence $\alpha:L\to F$ constructed above consequently sends
+$[p]$ to $u$. Since all maps are injective, $p$ is a nonzero projection
+of the simple $D_\infty$, hence full there. It is also full in the other
+three simple limit algebras.
+
+\begin{lemma}[Common full corner]\label{lem:corner}
+If $P=A_0*_D A_1$ and $p\in D$ is a full projection, then
+\[
+                    pPp\cong(pA_0p)*_{pDp}(pA_1p)
+\]
+as a full unital amalgam with unit $p$.
+\end{lemma}
+\begin{proof}
+Fullness supplies finitely many $x_r\in Dp$ with
+$\sum_rx_rx_r^*=1$: normalize a finite invertible positive sum from the
+ideal generated by $p$. Set $R=(x_r^*x_s)\in M_N(pDp)$, a projection.
+The maps $a\mapsto(x_r^*ax_s)$ identify $A_j$ with
+$RM_N(pA_jp)R$ and agree on $D$. If $T=(pA_0p)*_{pDp}(pA_1p)$,
+the full property gives $\Psi:P\to RM_N(T)R$. The column
+$z=(x_r^*p)_r$ satisfies $z^*z=p$ and $zz^*=\Psi(p)$.
+Thus $a\mapsto z^*\Psi(a)z$ maps $pPp$ to $T$ and fixes its two factor
+corners. It is inverse to the natural map $T\to pPp$. To verify
+generation of $pPp$ by these corners, insert
+$1=\sum_rx_rx_r^*$ between successive letters of each compressed
+alternating word; every resulting compressed factor lies in the
+appropriate $pA_jp$. The dense word algebra proves both composites are
+identities.
+\end{proof}
+
+Apply the lemma to \eqref{eq:fulllimit}. The three corners are separable
+nuclear simple unital stably finite, and $pLp$ is a unital Kirchberg
+algebra. Its full-corner inclusion into $L$ is a KK-equivalence. Compose
+that class with $\alpha$ and $\xi$ to obtain an invertible element of
+$\KK(pLp,B)$ taking its unit $[p]$ to $[1_B]$.
+Phillips \cite[Corollary 4.2.2]{Phillips} gives a unital isomorphism
+$pLp\cong B$. This precise corollary requires no UCT hypothesis.
+The common-full-corner identity now proves Theorem \ref{thm:all}.
+
+\section{Scope and verification status}
+If correct, Theorem~\ref{thm:all} answers Suzuki's question for every
+unital Kirchberg algebra, with nuclear constituents. It imposes no UCT
+hypothesis and no restriction on the target's $K$-groups. The coefficient
+algebra retains the target's full KK information; the argument does not
+establish the UCT for arbitrary nuclear C*-algebras. It also does not
+assert that the three constituents can always be chosen AF or AT.
+
+The proof remains unverified. In particular, the RFD mapping-cone input,
+the actual three-channel diagrams, the KK idempotent calculation, the
+limit analysis, and the common-unit corner require independent scrutiny.
+No claim of novelty or priority is established by this draft. Corrections
+and comments are welcome.
+
+\paragraph{Preparation and source note.}
+This manuscript was developed with substantial AI assistance, including
+drafting and automated review. Those reviews do not constitute independent
+human mathematical verification. The cited statements of Rosenberg--Schochet
+were consulted through text extracted from the original journal scan;
+the complete original PDF was not available for direct inspection.
+The bibliography identifies the source versions used, and theorem and page
+numbers refer to those versions.
+
+\begin{thebibliography}{9}
+\bibitem{Suzuki} Y. Suzuki, \emph{Free groups amenably act on unital simple
+AF-algebras}, \href{https://arxiv.org/abs/2610.01460v1}{arXiv:2610.01460v1},
+1 October 2026. Corollary 1.4 and Remark 1.5.
+\bibitem{KPR} A. Kumjian, D. Pask and I. Raeburn,
+\emph{Cuntz--Krieger algebras of directed graphs}, February 1998 author
+version, \href{https://documents.uow.edu.au/~dpask/index_files/papers/ckaodg.pdf}{author PDF}.
+Theorem 1.2 and Corollary 3.11 (PDF p.~14). Published in Pacific J. Math.
+\textbf{184} (1998), 161--174.
+\bibitem{AG} P. Ara and K. R. Goodearl, \emph{C*-algebras of separated
+graphs}, \href{https://arxiv.org/abs/1102.4296v2}{arXiv:1102.4296v2},
+11 July 2011. Remark 3.10 records nuclearity of ordinary row-finite graph
+algebras; separated-graph nuclearity is not asserted.
+\bibitem{FG} P. Fima and E. Germain, \emph{The KK-theory of amalgamated
+free products}, \href{https://arxiv.org/abs/1510.02418v3}{arXiv:1510.02418v3},
+27 December 2016. Introduction p.~2; Theorem 4.1 p.~20; cone extension p.~25.
+\bibitem{RS} J. Rosenberg and C. Schochet, \emph{The K\"unneth theorem
+and the universal coefficient theorem for Kasparov's generalized K-functor},
+Duke Math. J. \textbf{55} (1987), 431--474.
+\href{https://doi.org/10.1215/S0012-7094-87-05524-4}{DOI}.
+Theorems 1.12, 1.14(b), 1.17; Proposition 7.1. See the source note above.
+\bibitem{Phillips} N. C. Phillips, \emph{A classification theorem for nuclear
+purely infinite simple C*-algebras},
+\href{https://arxiv.org/abs/funct-an/9506010v2}{arXiv:funct-an/9506010v2},
+18 December 1997. Corollary 4.2.2, p.~42 (no UCT hypothesis).
+\bibitem{Dadarlat} M. Dadarlat, \emph{Some remarks on the universal
+coefficient theorem in KK-theory}, January 2002 author version,
+\href{https://www.math.purdue.edu/~mdd/Papers.html}{author publication list}.
+Lemma 2.4, pp.~2--3; construction in the proof of Theorem 1.2, p.~8.
+Published in \emph{Operator Algebras and Mathematical Physics},
+Theta (2003), pp.~65--74.
+\end{thebibliography}
+\end{document}

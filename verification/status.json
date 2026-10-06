@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-06",
+  "overall_status": "PARTIAL",
+  "main_theorem_formalized": false,
+  "main_theorem_verified": false,
+  "algebraic_theorems_verified": 8,
+  "declarations_audited": 10,
+  "axiom_allowlist": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "lean_version": "4.33.1",
+  "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "local_build": "passed",
+  "axiom_audit": "passed",
+  "verification_tool_regression_tests": {
+    "passed": 6,
+    "failed": 0
+  },
+  "independent_human_verification": false,
+  "source_manifest": "source-manifest.json",
+  "scope": "SCOPE.md"
+}

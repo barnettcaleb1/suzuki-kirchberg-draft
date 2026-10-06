@@ -1,0 +1,2 @@
+import Suzuki.MatrixDiagrams
+import Suzuki.IdempotentSystems
