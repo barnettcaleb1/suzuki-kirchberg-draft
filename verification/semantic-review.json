@@ -19,5 +19,67 @@
     "fixed-universe categorical convention"
   ],
   "compiler_run_by_reviewer": false,
-  "scope_note": "This review covers only the six exact files and hashes listed. Later corner, fullness, trace-simplicity, and colimit modules are outside this review. All submitted modules are checked separately by the component build and transitive axiom audit."
+  "scope_note": "The top-level source hashes cover the initial six-file source-only review. Additional exact-source reviews are listed separately, with their own checks and limitations. These are automated agent reviews, not human verification. The component build and exhaustive transitive axiom audit apply separately to all submitted modules. The main theorem remains unproved.",
+  "additional_reviews": [
+    {
+      "task": "SZL3-0001",
+      "human_review": false,
+      "decision": "ACCEPT_AS_PARTIAL_FORMALIZATION",
+      "source_hashes": {
+        "CStarCompletion.lean": "540e83ec6e9430ab88dd58b82e4a504d0d6ab17dd467e576e1bb3cef1df18d39",
+        "DirectedCStarLimit.lean": "00ab00e8207e763abfab918e4270d0eddda78dcb64d87e45aaf6f6217a74988c",
+        "SequentialCStarLimit.lean": "080fc63ef553398fefedd893cef76563569510afc7637e58459613ca0fdb9168",
+        "ResidualRepresentations.lean": "6d928026033121354c47b06b7c2e2e326098e4508dd70b1e48513ddd469cd85a",
+        "LimitFiniteness.lean": "74a3b2daf553d1ab4ea8f493d8abead34dcc70eb4476a0282774bbdaa6e7efda",
+        "MatrixLimits.lean": "7896ea00859516eb01dfdb59b20a53ebe8568932fccdf839d784de0012de1eb7",
+        "InductiveAmalgam.lean": "619fe39e58afb36aabaa34cbe90879e885e5fded5c37b06d5ed27b7c475636b2",
+        "UnitizationRFD.lean": "85d9b9f0cae77616179859f0487acd27b48b5d37f5e5ad6fb09ff72da6096bd1",
+        "RFDAmplification.lean": "80a354ccd8fa76f4b36e3b6faa8ecf30e32c2353ff34619d56b03d54208938aa"
+      },
+      "report": "reviews/SZL3-0001-report.txt",
+      "report_sha256": "20fd5b623ba5a497980a5552de2922d0082c3539b4cc7b44e455ccbe96025e01",
+      "completion": "reviews/SZL3-0001-completion.json",
+      "compiler_run_by_reviewer": true,
+      "independent_clean_build": false,
+      "main_theorem_verified": false
+    },
+    {
+      "task": "SZL3-0004",
+      "human_review": false,
+      "decision": "ACCEPT_AS_PARTIAL_FORMALIZATION",
+      "source_hashes": {
+        "CornerFiniteness.lean": "ac5cfa9dc5f5f1ed4febd13d3fb10812d1d08b0275152eac4db8df0634995c99",
+        "CornerSimplicity.lean": "e9232360780e9ac525e233d4b00ed901f61eca5f91d595aa735bcc9f62476794",
+        "MultiplicityEmbeddings.lean": "6310b45d6e22015b9c04f34d76e8470b90929cb30c50137e1d6bd7676bfed42e",
+        "FiniteCPApproximation.lean": "9a53f93812de3fb81e68d050d2593d443dcade7f5bc676e652c35584f2a516f7",
+        "CornerCPApproximation.lean": "c3f46d1386ef3f05d752d4ddd1e61743303ef92dabdda952987a23a0da688f72",
+        "FiniteCornerAmalgam.lean": "d9d38bb1cefc70d1ab905de3ad1f3703da37fc6559f33ec25a59fd02e7ac7506",
+        "MultiplicityComposition.lean": "e0ca3b94d4c522b88acff4182436409bcb9b4184c1969631b2dac54eb40b37a8"
+      },
+      "report": "reviews/SZL3-0004-report.txt",
+      "report_sha256": "280dbbf75831c29cffaaac9379be2d061b8731ab94df60641bc24a6e8e3790c8",
+      "completion": "reviews/SZL3-0004-completion.json",
+      "compiler_run_by_reviewer": true,
+      "independent_clean_build": false,
+      "main_theorem_verified": false
+    },
+    {
+      "task": "SZL3-0007",
+      "human_review": false,
+      "decision": "ACCEPT_AS_PARTIAL_FORMALIZATION",
+      "source_hashes": {
+        "CornerPureInfiniteness.lean": "b8415cc577aa1b04c93654887250744a913415c898cb20643913bea79d0c0cfc",
+        "LimitCPMaps.lean": "0de11d67fb7d9e28bc28a80dcfee63acae274b6104016259cf72759bd0100eae",
+        "MatrixRetractions.lean": "fd8b25041641c8bfb3dd51476f26f18bff0c93345f2ff3eddb2890d9c7d028f7",
+        "CPApproximationLimits.lean": "2d916af50c8b629e0d5718b495a6161e6cb48b0b86c51a181999d7084b8e32e0",
+        "SuzukiFiniteDiagram.lean": "cfde7fb246f2ed0e0e5620d100693577d6f3b36ab5586036a9dcf8ad9633a866"
+      },
+      "report": "reviews/SZL3-0007-report.txt",
+      "report_sha256": "5841c33db16bf4ea5bb8c2a305f09b22ac0438762f5fa085f02cfa1875393128",
+      "completion": "reviews/SZL3-0007-completion.json",
+      "compiler_run_by_reviewer": true,
+      "independent_clean_build": false,
+      "main_theorem_verified": false
+    }
+  ]
 }

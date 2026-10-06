@@ -1,0 +1,109 @@
+SZL3-0001: independent exact-source semantic audit
+
+Disposition: accept the eight new modules as partial formalization, with one nonblocking topology-instance API caveat. No required mathematical repair was identified in the frozen packet. This does not verify the full manuscript or prove the Lean main theorem. The supporting prior module InductiveAmalgam was also inspected.
+
+Scope and provenance
+
+The reserved bounded task runs from 2026-10-06 19:21:13.376542 UTC to 19:51:13.376542 UTC. The coordinator added UnitizationRFD and RFDAmplification to this same reservation and froze them during the pass. All nine frozen sources were inspected. The root orientation files were read first. Relevant portions of all-kirchberg-v2.tex and the local pinned Mathlib implementation were used; no new papers or web sources were acquired. No subdelegation or proof-source/canonical-state edits occurred.
+
+Frozen directory: state/packaging/SUZUKI-LEAN-CONTINUE-0003/SZL3-0001-frozen
+Release source directory: releases/suzuki-kirchberg-draft/Suzuki
+SHA256 values (each release source and frozen copy matched the reserved value):
+CStarCompletion.lean  540e83ec6e9430ab88dd58b82e4a504d0d6ab17dd467e576e1bb3cef1df18d39
+DirectedCStarLimit.lean  00ab00e8207e763abfab918e4270d0eddda78dcb64d87e45aaf6f6217a74988c
+SequentialCStarLimit.lean  080fc63ef553398fefedd893cef76563569510afc7637e58459613ca0fdb9168
+ResidualRepresentations.lean  6d928026033121354c47b06b7c2e2e326098e4508dd70b1e48513ddd469cd85a
+LimitFiniteness.lean  74a3b2daf553d1ab4ea8f493d8abead34dcc70eb4476a0282774bbdaa6e7efda
+MatrixLimits.lean  7896ea00859516eb01dfdb59b20a53ebe8568932fccdf839d784de0012de1eb7
+InductiveAmalgam.lean  619fe39e58afb36aabaa34cbe90879e885e5fded5c37b06d5ed27b7c475636b2
+UnitizationRFD.lean  85d9b9f0cae77616179859f0487acd27b48b5d37f5e5ad6fb09ff72da6096bd1
+RFDAmplification.lean  80a354ccd8fa76f4b36e3b6faa8ecf30e32c2353ff34619d56b03d54208938aa
+
+Manuscript: research/branches/SUZUKI/pass2/all-kirchberg-v2.tex
+SHA256: f61dc0872c2edd4be42c6e0160fc37fd128324fbe7244e7b76f62246f4492537
+Pinned Mathlib commit: 0df444a360eaa60ab8c11dca51a86af692955474
+Runtime: Lean 4.33.1, arm64-apple-darwin24.6.0, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release.
+The adjacent audit-inventory.json additionally records exact hashes of the imported project .olean artifacts and audit probes/logs. These artifact hashes identify the compiled environment used; they are not an independent source-to-olean rebuild certificate.
+
+1. Completion and the concrete directed limit
+
+CStarCompletion assumes an actual normed complex star algebra satisfying the C*-identity: NormedRing, StarRing, CStarRing, NormedAlgebra C, and (for the CStarAlgebra conclusion) StarModule C. Completeness of the source is not assumed. The ordinary uniform/metric completion is equipped with star by Completion.map; dense induction proves the star-ring identities, scalar compatibility, and C*-identity. The resulting type has an actual complete CStarAlgebra instance. The inclusion is an isometric unital star homomorphism with dense range.
+
+The completion lift requires an explicit contractive bound on a source star homomorphism. This is a sound requirement for the possibly incomplete source; the code does not assume continuity of every algebraic star homomorphism from an incomplete C*-normed algebra. The directed-limit construction supplies this bound from contractivity of the stage maps into the complete target. Uniqueness follows from density and continuity.
+
+DirectedCStarLimit takes a nonempty directed preorder I : Type v, CStarAlgebra stages A i : Type u, a coherent system of actual unital complex star homomorphisms, and injectivity of every transition. It builds the algebraic direct-limit quotient and defines its norm by the norm of a representative. Injectivity of the transition maps implies isometry, making this definition independent of representatives. Common-stage induction establishes a genuine RingNorm, not a seminorm with undischarged separation. The normed-algebra and CStarRing structures are constructed. Its Limit is then the concrete metric completion, in Type (max u v).
+
+The stage maps into this completion are isometric, commute with the transitions, and have dense union. Compatible unital star homomorphisms to an arbitrary complete C*-algebra are extended and are unique. There is no assumed existence of a completed limit, no assumed dense cocone, and no assumed colimit universal property in these construction hypotheses.
+
+The norm/quotient topology issue was checked explicitly. At DirectedCStarLimit.lean:111 a local TopologicalSpace instance takes the topology of the constructed metric. This is used for algebraicSeparable. Successful Lean examples identify the exported algebraicSeparable proposition with that metric topology, and identify limitSeparable with the completion metric topology. Thus the countable-stage separability results actually concern C*-norm topology.
+
+Nonblocking API caveat: outside that local instance, a separate successful #synth probe returns instTopologicalSpaceQuotient for TopologicalSpace (Algebraic A f), while UniformSpace resolves through the metric. The raw type is a quotient, so downstream code that independently infers only a TopologicalSpace can choose the raw quotient topology. The current audited theorems do not confuse these structures. Future generic topological statements on Algebraic should explicitly install the norm topology (or use a wrapper with controlled instances). This is a maintenance hazard, not a demonstrated false conclusion in this version.
+
+2. Sequential limits and full amalgams
+
+SequentialCStarLimit composes adjacent maps along N, proves the directed-system laws and injectivity from injectivity of the adjacent steps, and instantiates the preceding concrete construction. The full printed signature of isSequentialColimit has only a System and the Fact that every step is injective; a colimit-existence premise is absent. The resulting object stays in the stage universe u because the index is N. The generic directed lift can target other universes; the packaged IsSequentialColimit and IsFullAmalgam predicates used here explicitly quantify over C*-algebras in their prescribed universe. This is the stated category-level universe convention, not quantification over one hand-picked target.
+
+Natural transformations induce actual unital star homomorphisms on limits. Pointwise injectivity implies isometry and injectivity of the induced map, using equality of norms on the dense stage union. Countable-stage separability is retained.
+
+The new isFullAmalgam theorem assumes four injective sequential systems, natural maps between them, and the full-amalgam property at each stage. Supporting InductiveAmalgam proves preservation from supplied colimit universal properties; the new theorem supplies those properties using the concrete construction. Thus the formerly conditional colimit input is discharged here. Existence and injectivity of the intended stage diagrams remain inputs: this is not a construction of the graph/amalgam stages, nor a proof that arbitrary candidate diagrams satisfy the stage universal property. The conclusion is a full universal property for the limit cocone; turning it into an identification with a separately constructed named full-product object requires that object's corresponding universal property, not a reduced-product replacement.
+
+3. Actual finite-dimensional representations and tail separation
+
+ResidualRepresentations.Representation A consists of a positive natural matrix dimension and an actual unital complex star homomorphism A -> CStarMatrix (Fin dimension) (Fin dimension) C. IsRFD means every nonzero element is detected by one such representation. SeparatingTails quantifies as: for every N and every nonzero a, there exists n >= N for which rho n detects a. These are concrete finite-dimensional star representations, not arbitrary maps or K-theory data.
+
+For a nontrivial separable unital C*-algebra, open detection sets and hereditary Lindelofness give a countable separating sequence. Nontriviality is explicit: it supplies a representation by detecting 1 and hence a nonempty indexing type. Repetition via Nat.unpair makes every tail separating, with Nat.pair j N witnessing the lower bound. Equality detection is obtained by applying this statement to a-b. No homotopy of the representations is assumed. IsRFD also pulls back along injective unital star homomorphisms.
+
+The RFD definition is element-separating. A separately imported model theorem using a different definition, a product embedding, or arbitrary nonunital representations would still need its interface bridge to this exact definition. The present manuscript asks for the actual unital separating family, so this formulation matches that step. It does not itself prove the manuscript's further spatial-tensor separation by {id_X tensor rho_n} for every X.
+
+4. Stable finiteness without a hidden trace assumption
+
+ResidualRepresentations.isStablyFiniteRing proves the stronger ring statement at every finite matrix size: xy=1 implies yx=1. If an entry of yx-1 were nonzero, an actual finite matrix representation detecting it would contradict finite matrix-ring finiteness. The conversion to the target convention, star(v)*v=1 implies v*star(v)=1 at every matrix size, is then immediate. No faithfulness or existence of a limit trace is assumed.
+
+LimitFiniteness.of_dense_pairs assumes actual complete C*-algebra stages, injective unital stage embeddings into a C*-algebra B, density of simultaneous pairs from a single stage, and ring-theoretic Dedekind finiteness of every stage. For xy=1, simultaneous close approximation provides a,b in one stage with ||1-ab||<1 and ||1-x e(b)||<1. Completeness and the Neumann-series criterion make ab invertible in the stage. Stage Dedekind finiteness makes b a unit. Thus e(b) and x e(b) are units, so x is a unit and yx=1. This is an actual Banach/C*-norm argument. Pair density, rather than just unrelated single-element density, is proved for the constructed sequential limit using a common stage in the algebraic limit.
+
+MatrixLimits implements actual entrywise star-homomorphism amplification, injectivity, and simultaneous density of two matrices over a common stage. A finite family of entries is moved to the maximum of its representative indices. This handles empty finite indexing types without adding a nonempty assumption.
+
+The matrix topology is the genuine operator C*-norm topology. In pinned Mathlib Analysis/CStarAlgebra/CStarMatrix.lean, the norm is ||toCLM M||, and uniformity_eq_aux proves agreement with the finite product uniformity before NormedAddCommGroup.ofCoreReplaceAll installs the normed structure. The matrix-density proof uses this genuine equality with the finite entry topology. Two successful explicit Lean examples show that CStarMatrix's inferred topology equals both its metric topology and Matrix's finite product topology. There is no substitution of an entrywise maximum norm as a C*-norm.
+
+Finiteness is transferred at every matrix size using the actual CStarMatrix algebras, and the ring equivalence with plain Matrix gives IsStablyFiniteRing of the limit. The printed stablyFinite_of_rfd signature assumes exactly an injective sequential system and IsRFD of each stage; its conclusion is StableFiniteness.IsStablyFinite of the constructed limit. The limit is not claimed to be RFD. No simplicity, trace, nuclearity, or tensor-product hypothesis is hidden in this theorem. Using ring-theoretic stage finiteness is stronger than merely restating the target isometry convention, but RFD proves that stronger premise here, so this does not leave a gap for the claimed RFD application.
+
+5. External unitization and RFD amplification supplements
+
+UnitizationRFD starts with an actual NonUnitalCStarAlgebra F and actual nonunital complex star homomorphisms to positive-dimensional complex matrix algebras. The external unitization is Mathlib's Unitization C F. The scalar quotient is an actual unital star homomorphism, and the 1-by-1 scalar representation detects every element whose scalar coordinate is nonzero. For scalar coordinate zero, nonzero unitized elements have a nonzero F coordinate, which is detected by a given F representation and its actual Unitization.starLift extension. The latter is lambda*1+rho(a). This argument remains valid when F was already unital or F is the zero algebra; the external scalar coordinate is preserved.
+
+Separability uses the genuine norm-topological uniform equivalence between Unitization and C x F. Mathlib's normed-unitization uniformity construction and C*-identity were inspected. An explicit Lean example verifies the exported separable theorem at the unitization metric topology. UnitizationRFD.exists_separating_tails therefore supplies exactly the manuscript's unital tail-separating representations of E, conditional on actual separability and IsRFD of F. The construction of F and its nuclearity/KK-equivalence are not assumed to have been proved by this bridge.
+
+RFDAmplification.flatten is an actual complex star-algebra equivalence from matrices of complex matrices to a matrix indexed by the product. The representation has the exact dimension n*dimension(rho), positive when n>0, and combines entrywise amplification, flattening, and finProdFinEquiv reindexing. The matrix_rfd proof detects a nonzero entry and uses injectivity of the equivalence. For n=0 there is no nonzero matrix to detect, which is the correct vacuous RFD case. A compiled auxiliary example confirms flatten is isometric for the actual C*-norms.
+
+The finite_product_rfd theorem composes a coordinate evaluation star homomorphism with a detecting representation of that coordinate. Finite products carry their actual C*-algebra structure. Empty products again have no nonzero element and cause no false nontriviality assertion. For the manuscript's finite sums of matrix algebras over E, these are the needed RFD closure operations; identifying any differently packaged finite-direct-sum or tensor-with-finite-matrix stage with these concrete types remains an interface obligation.
+
+6. Relation to the manuscript and boundaries of the result
+
+The supplied modules correspond to the countable/tail-separating family after external unitization (manuscript near lines 299-318), the concrete injective limits and their separability (near lines 485-490), stable finiteness of the constituent limits, and preservation of the full-amalgam universal identity (near lines 537-562). The stable-finiteness proof is a valid alternative to the manuscript's compatible-trace-plus-simplicity route: it proves more directly that injective limits of actual RFD stages are stably finite.
+
+They do not instantiate the complete Suzuki system or prove the full target. Remaining dependencies include the separable nuclear RFD coefficient model with its KK-equivalence; the intended finite-dimensional/graph/tensor stage constructions and injective channel maps; compatibility with the concrete types and RFD predicates used here; spatial tensor-family separation; the positivity, support, and ideal-evaluation arguments proving simplicity; pure infiniteness; nuclearity; the KK computation/continuity; corners and prescribed unit; and the final classification/identification with the arbitrary target Kirchberg algebra. The full-amalgam conclusion remains conditional on the actual stage full-amalgam hypotheses. None of the audited files contains a proof of Target.MainClaim. This pass neither independently re-audits all manuscript arguments nor certifies them from these Lean lemmas.
+
+7. Executed checks and limitations
+
+Three successful lightweight Lean probe files are preserved: Checks.lean, UnitizationChecks.lean, AmplificationChecks.lean. Their exact argv, cwd, LEAN_PATH, timeouts, exit codes and elapsed times are in the matching *-execution.json files. Each used this executable:
+/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean
+with arguments -DwarningAsError=true and the absolute path of the probe. The cwd was /Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/releases/suzuki-kirchberg-draft. LEAN_PATH selected the release .lake/build/lib/lean and all eight pinned package build/lib/lean directories listed verbatim in the execution records.
+
+Checks.lean: exit 0, 12.846243459032848 seconds; 13 full signatures, 27 selected transitive axiom reports, and four explicit norm-topology examples.
+UnitizationChecks.lean: exit 0, 63.7600292081479 seconds; five signatures, six selected transitive axiom reports, one metric-topology example, and the two algebraic-topology synthesis probes.
+AmplificationChecks.lean final attempt: exit 0, 3.721794707933441 seconds; four signatures, four selected transitive axiom reports, and the flatten-isometry example.
+
+All 37 selected transitive axiom reports were exactly [propext, Classical.choice, Quot.sound]. There was no sorryAx or custom mathematical axiom in these closures. The complete selected declaration lists and outputs are retained in the probe files/logs. This check addresses those declarations and their transitive dependencies, not every unselected declaration in every imported library.
+
+One unsuccessful audit-probe attempt is preserved as AmplificationChecks.attempt1.lean and amplification-checks-attempt1.*. It exited 1 in 6.03567612497136 seconds: the probe omitted the CStarAlgebra/ComplexOrder scopes needed for nested CStarMatrix norm instances and used unsupported StarAlgEquiv.isometry field notation. Adding the scopes and using NonUnitalStarAlgHom.isometry repaired the probe. No reviewed source was changed. The initial four signature and axiom queries had already succeeded before that example failed.
+
+Additional actual commands included:
+- formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean --version
+- git -C releases/suzuki-kirchberg-draft/.lake/packages/mathlib rev-parse HEAD
+- rg -n '\b(sorry|admit|axiom|unsafe|partial|native_decide)\b' state/packaging/SUZUKI-LEAN-CONTINUE-0003/SZL3-0001-frozen/*.lean
+- Python hashlib.sha256 over each reserved source, frozen copy, and imported project .olean, preserved in audit-inventory.json.
+The placeholder scan had only the ordinary English word "admit" in an InductiveAmalgam comment; source inspection found no placeholder proof, custom axiom declaration, unsafe proof implementation, or native_decide use in the frozen packet.
+
+This auditor did not run lake build or re-kernel-check all imported Mathlib, respecting the host-load constraint. The coordinator reported prior warnings-as-errors source compilation and a combined build; that is coordinator-reported evidence, not a build performed by this auditor. The independent executable checks imported the recorded project .olean files and elaborated/kernel-checked the new small examples against them. Source-to-compiled correspondence rests on the exact-source inspection, matching current/frozen hashes, the compiled-artifact inventory, and the coordinator's build provenance; this report does not inflate that into an independent clean rebuild.
+
+Final assessment: no substantive source-semantic defect or hidden colimit-existence premise was identified in this exact frozen packet. The actual C*-norm/topology, matrix representation, unitization, and injective RFD-limit finiteness content is substantial partial formalization. The algebraic raw-quotient topology inference caveat should be retained for future callers. No-issue-found is not full formal verification, and the full Lean main theorem remains open.

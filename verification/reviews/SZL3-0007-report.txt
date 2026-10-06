@@ -1,0 +1,148 @@
+SZL3-0007: independent exact-source audit
+
+Final finding: no required mathematical repair identified in the five exact frozen sources. Accepted as partial formalization after source review, 98 independently inspected transitive axiom closures and 19 successful semantic examples. The packet proves exact pure-infinite/Kirchberg corner inheritance, compatible CPC extension, a concrete matrix CPC retraction, conditional CPAP for split systems, and both literal finite Suzuki squares with explicit multiplicity certificates. This is not full verification of the manuscript or a proof of Target.MainClaim, which remains unproved.
+
+Reservation: state/packaging/SUZUKI-LEAN-CONTINUE-0003/tasks/SZL3-0007.json
+Reserved: 2026-10-06 19:52:12.951226 UTC
+Deadline: 2026-10-06 20:22:12.951226 UTC
+Root instructions and orientation were available and read in this continuing session before packet work. Only the assigned frozen files, relevant imported implementation support, and assigned manuscript sections were used. No subdelegation, new external sources, proof-source edits, or canonical-state edits occurred.
+
+Exact SHA256 values (frozen and current release source matched the reservation):
+CornerPureInfiniteness.lean  b8415cc577aa1b04c93654887250744a913415c898cb20643913bea79d0c0cfc
+LimitCPMaps.lean  0de11d67fb7d9e28bc28a80dcfee63acae274b6104016259cf72759bd0100eae
+MatrixRetractions.lean  fd8b25041641c8bfb3dd51476f26f18bff0c93345f2ff3eddb2890d9c7d028f7
+CPApproximationLimits.lean  2d916af50c8b629e0d5718b495a6161e6cb48b0b86c51a181999d7084b8e32e0
+SuzukiFiniteDiagram.lean  cfde7fb246f2ed0e0e5620d100693577d6f3b36ab5586036a9dcf8ad9633a866
+
+Frozen directory: state/packaging/SUZUKI-LEAN-CONTINUE-0003/SZL3-0007-frozen
+Release sources: releases/suzuki-kirchberg-draft/Suzuki
+Manuscript: research/branches/SUZUKI/pass2/all-kirchberg-v2.tex
+Manuscript SHA256: f61dc0872c2edd4be42c6e0160fc37fd128324fbe7244e7b76f62246f4492537
+Assigned manuscript sections: 3, 5, 7 and 8.
+Mathlib commit: 0df444a360eaa60ab8c11dca51a86af692955474
+Lean runtime: 4.33.1, arm64-apple-darwin24.6.0, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release.
+The adjacent audit-inventory.json records exact hashes of new sources, relevant supporting sources, and imported project .olean artifacts. Supporting modules are not all independently re-audited here.
+
+1. Concrete hereditary closures and support equations
+
+The source algebra is a genuine complete unital complex C*-algebra and p is an actual star projection. Corner hp is the norm-closed subtype pAp from CommonCorner, with its inherited norm and internal unit p; its ambient inclusion is nonunital. No alternate norm, quotient topology, or opaque hereditary predicate is introduced.
+
+right_support_of_square proves v*p=v from (v* v)*p=v* v by showing (v(1-p))*v(1-p)=0 and invoking the C*-identity's zero-square criterion. left_support_of_square applies this to star(v) and takes adjoints. Thus the partial-isometry witness is not merely assumed supported.
+
+For b in pAp, the range of a |-> b*a*b in A is contained in the closed corner. closure_minimal proves the same for the actual ambient norm closure. This containment needs neither positivity of b nor an assumed hereditary-subalgebra theorem. Continuous compression is a |-> p*a*p into the subtype. The identity compress(b*a*b)=b*compress(a)*b uses the two support equations for b, and yields a map from the ambient sandwich range into the internal sandwich range. Continuity passes this map to closures. Conversely, the isometric inclusion maps the internal range and its closure into the ambient range closure. Together with compress(x)=x on the corner, mem_hereditary_iff proves exactly the correspondence of these two norm closures.
+
+These closures match Target.hereditarySet verbatim: closure(range(x |-> b*x*b)). An explicit Lean example instantiates mem_hereditary_iff with the bundled target's hereditarySet. Additional examples identify the corner topology with its metric topology and verify continuous_compress with explicit metric topologies on both source and target. There is no unsupported passage between weak/operator/quotient and norm closures. Identifying this target convention with every other formulation of a generated hereditary C*-subalgebra is not a theorem added by this file; the present inheritance theorem acts directly on the stated target convention.
+
+2. Infinite projections, order instances, and exact Kirchberg inheritance
+
+Target.IsInfiniteProjection requires an actual projection r and an actual element v with v* v=r, q=vv* a projection, q<=r, and q!=r. Starting with r in pAp, projection order implies r<=p. Hence q<=p. The proved support lemmas yield p*v=v=v*p, so v itself belongs to pAp. The original equations and nonzero defect remain valid under the injective subtype inclusion. The inequality q<=r is transferred into the corner using positivity reflection for the injective nonunital corner inclusion, rather than by assuming a subtype order is definitionally the desired C*-order.
+
+The local instance pinning in isInfiniteProjection and isPurelyInfinite is meaningful. A separate synthesis probe outside those local declarations returns Subtype.instLE and the subtype preorder, while PartialOrder and StarOrderedRing are the corner's spectral instances. The two proofs explicitly pin PartialOrder, StarOrderedRing, Preorder and LE to the spectral order used in the bundled target. A successful expanded example verifies that the exported infinite-projection theorem supplies its inequality using (CStarAlgebra.spectralOrder (Corner hp)).toLE. Therefore the existing final statements do concern the target C*-order despite this raw-subtype instance ambiguity. Future generic order statements on the raw corner type should likewise control their order instances; no false theorem or required source repair is identified here.
+
+For each positive nonzero b in the corner, inclusion preserves positivity and nonzeroness. Ambient pure infiniteness provides an infinite projection r in the ambient hereditary norm closure. The preceding containment places r in pAp, the closure equivalence places it in the internal hereditary set, and the witness restriction proves its infiniteness there. No Morita-invariance or abstract pure-infiniteness inheritance premise is assumed.
+
+isPurelyInfinite allows p=0, in which case the quantified nonzero positive input does not exist; this is the intended vacuous zero-corner case. isKirchberg separately requires p!=0. It combines the new pure-infiniteness theorem with the previously proved separability, CP approximation and nontrivial simplicity inheritance. Its conclusion is precisely Target.IsKirchberg of the concrete corner, and a compiled example confirms that signature. It does not prove the starting limit Kirchberg or construct a nonzero projection with a prescribed K-class.
+
+3. LimitCPMaps: hypotheses and the actual norm-continuous extension
+
+The source is the previously constructed sequential C*-limit Limit S. S consists of actual unital C*-algebra stages and actual star-homomorphic connecting maps; injectivity of every step is explicit. The target B is a complete C*-algebra with its star order, potentially in another universe. The input phi supplies an actual completely positive complex linear map from every stage to B. The hypotheses are a norm contraction bound for every stage element and compatibility along every transition n<=m. These are full input hypotheses, not conclusions inferred from stagewise CP approximation.
+
+algebraicMap is the genuine complex linear map on the algebraic direct limit, made well-defined by compatibility. Common-stage representatives prove additivity and scalar linearity. Stage contractivity proves its norm bound, and mkContinuous constructs a continuous linear map with bound 1. Injectivity of the system is needed for the representative C*-norm, and is retained where the norm is used.
+
+The algebraic direct-limit type is a raw quotient, so the file explicitly installs the metric norm topology as a local TopologicalSpace instance. An independent compiled example confirms continuity of algebraicContinuousMap with that exact metric topology, not with the generic quotient topology.
+
+continuousMap uses ContinuousLinearMap.extend along the actual completion inclusion. The pinned Mathlib implementation was inspected: extend has a fallback zero branch if density and uniform-inducing fail. Here continuousMap_coe explicitly supplies Completion.denseRange_coe and Completion.isUniformInducing_coe, so extend_eq proves the desired equality on every algebraic element. The construction is therefore not exploiting the fallback branch. continuousMap_stage gives the required equality with each supplied stage map. The norm bound passes to completion by closedness of the inequality and dense induction. No continuity is inferred merely from an algebraic linear map.
+
+4. Complete positivity at every matrix level
+
+For each k in N, entrywise application of the continuous extension is continuous for CStarMatrix's genuine finite operator-norm topology. The finite matrix topology agrees with the finite product topology used by continuous_pi; no substitute matrix norm is installed. MatrixLimits supplies density of matrices over a common stage in the actual completed matrix algebra.
+
+matrixMap_square_nonneg approximates X in the norm-dense stage matrix family. At a stage, the image of star(a)*a is nonnegative by complete positivity of phi_n; the stage identity identifies it with the extended image. Star, multiplication and entrywise extension are continuous, and the positive cone is closed, so the extended image of star(X)*X is nonnegative.
+
+For a general nonnegative matrix M, the proof uses the exact StarOrderedRing.nonneg_iff theorem from pinned Mathlib: nonnegative elements form AddSubmonoid.closure of the range of x |-> star(x)*x. This is algebraic additive generation (finite sums), not an unproved topological approximation assertion. Induction handles the generators by the square lemma, zero by linearity, and addition by linearity and closure of the positive cone under addition. The spectral C*-order instances already supply that star-ordered-ring structure. No extra square-root choice, factorization hypothesis on M, or positivity-preserving extension axiom is assumed.
+
+cpMap bundles this result as a genuine CompletelyPositiveMap, with positivity at every natural matrix size. cpMap_contractive and cpMap_stage prove the norm bound and equality on all stages. Successful independent examples test stage equality, positivity at an arbitrary matrix size and the norm contraction bound. The source does not claim the extension is multiplicative or unital; arbitrary completely positive contractions need not be either.
+
+5. MatrixRetractions: concrete compression and the actual diagonal left inverse
+
+The coefficient algebra A is a genuine unital complex C*-algebra in an arbitrary universe. The finite coordinate type n is explicitly Type (universe zero), with Fintype and DecidableEq, and the retraction statements take an actual i:n. This is a restricted index universe, not a theorem for all index universes. It includes every Fin q matrix size needed here.
+
+singleHom is the genuine injective nonunital star homomorphism placing a coefficient at coordinate (i,i). Its value at 1 is the actual coordinate projection e. Multiplication of matrix units proves e*M*e=singleHom(M_ii). coordinateEquiv maps A into the corner e M_n(A) e, with its own unit e; injectivity follows from extracting the (i,i) coefficient, and surjectivity follows from that sandwich identity and the corner support equations. Thus this is a proved star-algebra equivalence of the actual corner, not an assumed representation equivalence.
+
+entryCP first compresses into this corner and then applies the inverse equivalence. The earlier CP compression theorem and the CP map of a star homomorphism make this an actual CompletelyPositiveMap. It computes exactly M_ii. Its norm bound follows from norm preservation of the injective inverse equivalence and the compression bound. CStarMatrix carries its operator C*-norm, and no replacement coordinate norm or topology is introduced. Explicit examples check the internal unit, actual isometry, CP positivity at every natural amplification level and the diagonal left-inverse identity.
+
+diagonalHom is the unital star homomorphism repeating a down every diagonal entry. entryCP(diagonalHom(a))=a, so diagonal_has_cpc_retraction supplies an actual contractive completely positive left inverse. The choice i:n is essential and entails nonemptiness. diagonalHom itself exists for an empty index type, but the nonempty retraction theorem does not assert a false left inverse for the zero matrix algebra. Zero coefficient algebras are allowed consistently. This concrete diagonal example does not construct retractions for the manuscript's full coefficient/channel connecting maps.
+
+6. CPApproximationLimits: exactly what is assumed and exactly what is derived
+
+The only additional structure is CPCSplitting S with three fields: an actual CP map retract_n from stage n+1 to stage n; a pointwise norm contraction bound on that map; and the equality retract_n(step_n(a))=a. No compatibility of nonadjacent retractions, assumed completed-limit map, convergence, finite-set approximation, or limit CPAP is a field. The independent #print of the structure and the final theorem's full signature confirm this.
+
+Step injectivity is derived from the left inverse. To retract toward fixed stage k, stageMap k m uses the forward star-homomorphic transition when m<=k and successively composes adjacent CP retractions when m>k. Its contraction bound is proved inductively. stageMap_step follows from the directed-system law below k and the left-inverse equality above k. stageMap_transition derives compatibility for every m<=n by induction. LimitCPMaps then extends this now-proved compatible family to an actual CPC map limitRetraction k on the constructed completion.
+
+The map limitRetraction k is a genuine left inverse on stage k. Inclusion after retraction fixes every stage m<=k. For an arbitrary limit point x and a stage-m approximation a with m<=k, the proof derives
+  norm(stage_k(limitRetraction_k(x)) - x) <= 2 * norm(x - stage_m(a)).
+The estimate uses contractivity and actual stage isometry. For each finite set s and epsilon>0, density gives an epsilon/2 approximation to each element. The maximum of finitely many stage indices supplies N such that the retraction error is strictly less than epsilon for all k>=N and all x in s. Empty s is handled by the empty finite supremum. Pointwise convergence then follows from the singleton case; it is not assumed.
+
+Given exact Target.HasCPApproximation at each stage, the proof chooses a late retraction approximating the finite input set within epsilon/2, applies stage CPAP to its finite image within epsilon/2, and composes the two CP maps with the retraction and stage inclusion. Both composite maps are actual contractions, the intermediate matrix size remains strictly positive, and the norm triangle inequality yields the requested strict epsilon bound. This matches Target.HasCPApproximation's quantifiers over every finite set and every positive real epsilon, with both maps completely positive at all natural matrix sizes.
+
+The final splitLimitAlgebra and splitLimit_hasCPApproximation explicitly omit a separate injectivity Fact and derive it locally from CPCSplitting. The independent explicit example has only S, R:CPCSplitting S and stage CPAP as inputs, and its conclusion is precisely Target.HasCPApproximation R.splitLimitAlgebra. There is no unproved colimit-existence premise. Universe u is arbitrary for the sequence's stage carrier types; this is a sequential, unital construction. Intermediate statements retaining the derived Fact are interfaces to the existing concrete limit construction, not additional logical assumptions in the final formulation.
+
+The theorem is conditional preservation for systems equipped with actual adjacent CPC left inverses. It is not a proof that every injective system has such splittings or a formal proof of general nuclearity permanence under inductive limits. MatrixRetractions provides a genuine special case, but the necessary splittings for all manuscript channels remain unconstructed.
+
+7. SuzukiFiniteDiagram: faithful integer conversion and both actual finite squares
+
+The row/column conventions match manuscript Section 3: multiplicities act on column vectors, with target blocks as rows. B=A-I and B'=A'-I are strictly entrywise positive integer matrices. The source formulas are exactly
+  T = [[S-Z, S-H-Z(1+B)], [Z, H+Z(1+B)]],  R = S+B'Z,
+and the two equations are [I I]T=S[I I] and [I (1+B')]T=R[I (1+B)]. MatrixDiagrams' supporting declarations supply these literal identities, the second under SB=B'H.
+
+natMatrix applies Int.toNat, which would truncate negative entries if used carelessly. Every product conversion here requires explicit nonnegativity of all four factors. natMatrix_cast proves the cast back to integers is exactly the original matrix. natMatrix_product_eq maps products through Nat.castRingHom and uses cast injectivity. Thus neither product equality is obtained by silently discarding signs. The integer theorem supplies strict positivity of S,T,R, and positivity of B and B' ensures nonnegative (indeed positive) I+B and I+B'.
+
+HasMultiplicity is not an opaque predicate for a hoped-for K-theory map. It explicitly supplies a coordinate equivalence from the labelled copy slots to each target Fin(d_w), an actual target unitary, and equality of the given map with the conjugated block-copy representation on every source element. Its dimensions theorem derives the exact unital equation targetSize(k,M)=d by cardinalities of those coordinate equivalences. intoDimensions has this certificate with unitary 1.
+
+exact_square_with_multiplicity constructs the corrected final factor map from compositions_unitarily_conjugate. That supporting theorem explicitly flattens copies, counts labels by natural matrix multiplication and matches equal label fibres; its hypothesis is equality of multiplicity products, not assumed conjugacy or a classification theorem. The correction composes the row representation with a coordinate cast and inverse target unitary conjugation. Injectivity is proved from nonzero columns of the final multiplicity matrix, so the corrected map is a C*-isometry. Its new certificate uses the composite coordinate equivalence and the inverse unitary. Conjugating therefore has not lost the requested multiplicities. exact_square_intoDimensions transports only through proved dimension equalities.
+
+commonMap k l T is fixed as the standard actual unital embedding into common target block sizes obtained by splitting T*(k,l) into targetLeft and targetRight. natural_realization applies the exact-square construction twice with precisely this same T/commonMap. The two independent corrections are on the two factor edges, leaving their common edge shared. Realization contains the actual left/right unital star homomorphisms, explicit T/S/R multiplicity certificates, seven isometries (three vertical maps and four common-to-factor maps), and both literal equalities of star homomorphism compositions. The executable examples extract both equalities in one conjunction, verify actual metric distance preservation of commonMap, derive both factor dimension equations, and check that left sends 1 to 1. No alleged square is only a multiplicity equality.
+
+The general natural realization requires nonzero columns for A,A',T,S,R; arbitrary zero source block sizes remain allowed at that interface. integer_realization obtains these nonzero columns from the positive integer data and an explicit Nonempty target index. The final positive-dimension theorem separately requires a nonempty source and positive k and l. In the Fin form, hr:0<r and hr':2<=r' supply exactly those nondegeneracy hypotheses. Every source common/factor and target common/factor block dimension is proved positive in PositiveDimensions. The latter excludes a vacuous matrix-block reading of the final diagram claim. The channel count q may be zero; that means there are no channel diagrams to realize, not a claim that a zero-channel total sum yields the desired algebra.
+
+simultaneous_realizations starts with arbitrary linear maps on the actual integer cokernel and kernel modules and calls simultaneous_positive_lifting to construct one common nonnegative determinant-one unimodular U for every channel. The supporting definitions were inspected: Cokernel B is the quotient of the actual finite free module by range(B.mulVecLin), Kernel B is its actual kernel, targetCokernelEquiv is the quotient equivalence induced by U, and kernel_left_unimodular proves literal equality of kernel submodules. The final finite_prescribed_diagrams accepts arbitrary additive group homomorphisms, converted canonically to integer-linear maps. Its conclusions retain the explicit quotient equation implementing f0 under targetCokernelEquiv and the explicit H action implementing f1, in addition to an actual Realization and positive dimensions in each channel. No compatible positive lift is assumed at this final entry point.
+
+This now proves the manuscript's finite channelwise two-square realization from positive lifts. It does not yet prove the multiple-channel construction in the last paragraph of manuscript Section 3: each channel's target common dimensions are T_c*(k,l), whereas that paragraph uses sum_c T_c, disjoint coordinate inclusions and orthogonal projections summing to 1. The new theorem explicitly says so. It does not build the full free-product map, prove graph-algebra identification or simplicity of that product, or identify actual induced C*-algebra K0/K1 maps with the integer S/H maps. A copy multiplicity certificate is concrete finite-dimensional data, but the functorial K-theory bridge remains a separate obligation.
+
+8. Exact manuscript boundaries and equivalence obligations
+
+CornerPureInfiniteness establishes inheritance under nonzero common corners assuming the ambient Target.IsKirchberg statement. It does not establish pure infiniteness of the manuscript's product limit, the ideal-evaluation argument, a Cuntz-subequivalence transfer theorem, or a nonzero common projection with a prescribed K-class.
+
+LimitCPMaps alone does not prove CPAP. CPApproximationLimits now supplies a conditional CPAP theorem with the additional actual adjacent CPC splittings. Those splittings must still be constructed for the manuscript system. Stage CPAP itself, coefficient-model nuclearity, tensor identifications and the relevant KK/classification work remain outside this packet.
+
+The target convention uses CP contractive factorizations through one full matrix algebra for nuclearity; the equivalence to other definitions of nuclearity is not formalized here. The target's hereditarySet is literally the norm closure of bAb, and pure infiniteness is the infinite-projection condition in every nonzero positive generated hereditary set. Corner inheritance is proved for that exact convention. Equivalence to the manuscript's Cuntz-comparison characterization, or to all standard Kirchberg definitions, remains a separate formal bridge. The spectral order is the correct order in the checked target statements; the raw subtype order ambiguity noted above must not be silently ignored in future statements. Target.IsSimple uses closed two-sided ring ideals and excludes the zero algebra; any external convention identification is also separate from this packet.
+
+The finite-diagram theorem supplies genuine maps but no C*-K-theory functor. The supplied integer kernel/cokernel maps cannot yet be called the induced C*-K-theory maps of the constructed amalgam without the graph/cone/naturality identifications. Nor does the channelwise construction by itself give the orthogonal aggregate or the three coefficient channels of manuscript Section 5.
+
+Target.MainClaim was inspected: it is still a definition of the proposition forall unital bundled B, IsKirchberg B -> HasFiniteAmalgam B. None of the five audited files proves it. Main theorem incompleteness is preserved; the findings are not a certification of the manuscript's theorem or of the original Q1 research claim.
+
+9. Independent executable checks, failures preserved, and limitations
+
+Every successful probe used the pinned Lean 4.33.1 executable with -DwarningAsError=true and the release's .olean import path. Counts and measured wall times:
+  Checks.lean: 11 signatures/axiom closures, five semantic examples; exit 0, 15.665770582854748 seconds.
+  LimitCPChecks.lean: 14 signatures/axiom closures, four semantic examples; exit 0, 9.199267457937822 seconds.
+  RetractionChecks.lean: 12 signatures/axiom closures, four semantic examples; exit 0, 12.870878791902214 seconds.
+  CPApproximationChecks.lean: 17 signatures/axiom closures, one explicit final-signature example; exit 0, 10.166916584130377 seconds.
+  DiagramChecks.lean: 44 signatures/axiom closures, five semantic examples; exit 0, 13.72615325008519 seconds.
+The total is 98 distinct checked declaration closures and 19 successful semantic examples. All closures use only a subset of [propext, Classical.choice, Quot.sound]. Some elementary finite-diagram declarations need fewer or no axioms; the first four modules' inspected closures list all three. No sorryAx or custom mathematical axiom occurred in these transitive dependencies.
+
+The corner probe also records four raw-corner order syntheses. CPApproximationChecks prints the complete three-field CPCSplitting structure; DiagramChecks prints Realization and PositiveDimensions as well as the full selected signatures. The full output and declaration lists remain beside this report.
+
+Three unsuccessful audit attempts are preserved, none caused by a reviewed mathematical source failure:
+(a) LimitCPChecks initially omitted a noncomputable section before local instances; exit 1 in 3.676071665948257 seconds. The signature and axiom queries printed, but those helper definitions failed code generation. Adding noncomputable section fixed the probe only. Files: LimitCPChecks.attempt1.lean and limit-cp-checks-attempt1.*.
+(b) CPApproximationChecks initially ran while its release .olean was absent; exit 1 in 0.3400188749656081 seconds with an import-object-file error. After the coordinator's build made that object available, the identical probe passed. Files: CPApproximationChecks.attempt1.lean and cp-approximation-checks-attempt1.*.
+(c) DiagramChecks initially lacked open Matrix for the matrix-vector notation in one example; exit 1 in 5.835882666986436 seconds. All 44 signature/axiom queries had printed, but the notation elaboration failed. Adding open Matrix to the audit probe fixed it. Files: DiagramChecks.attempt1.lean and diagram-checks-attempt1.*.
+The coordinator-reported abandoned CFC proof attempt is distinct from these audit attempts; its scratch trace was not independently reviewed and is not evidence used for acceptance.
+
+Exact executable argv, cwd, LEAN_PATH, timeout, exit code and elapsed time are in the five *-execution.json records. The later two probes were launched by the saved run_probe.py with their source filename and log stem; that script reads the same pinned executable and path from checks-execution.json. The executable is:
+/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean
+The cwd is the release directory. LEAN_PATH consists of release .lake/build/lib/lean plus the eight pinned package build directories listed verbatim in the execution records. No source-proof compilation or lake build was launched by this auditor.
+
+Actual static validation recomputed SHA256 with Python hashlib on all five frozen and current release sources and asserted exact equality to the reservation. It also recorded imported project .olean hashes, relevant supporting source hashes, the manuscript hash and pinned Mathlib source hashes in audit-inventory.json. The final rg scan across all five frozen sources used the word-boundary pattern (sorry|admit|axiom|unsafe|partial|native_decide), found no matches and exited 1 as expected; full argv and output are in placeholder-scan-execution.json and placeholder-scan.log. axiom-results.json records every parsed declaration closure.
+
+No whole-Mathlib kernel recheck or independent clean source-to-olean rebuild was performed. Prior warning-as-error compilation with emitted objects and the full release build are coordinator-reported actions; the recorded object hashes identify what these independent probes actually imported. The audit checked exact source semantics, source/version matches, exported elaborated signatures, transitive axiom names and targeted examples. It did not independently reconstruct every imported proof from source, formally prove every manuscript-definition equivalence, or prove the main claim. No issue found is not full verification. No required source repair was identified within this bounded exact-source review.

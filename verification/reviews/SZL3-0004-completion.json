@@ -1,0 +1,88 @@
+{
+  "task_id": "SZL3-0004",
+  "status": "complete",
+  "completed_at": "2026-10-06T19:51:11.594893+00:00",
+  "deadline": "2026-10-06T20:08:55.762802+00:00",
+  "within_deadline": true,
+  "disposition": "accepted_as_partial_formalization",
+  "source_modules_audited": 7,
+  "required_repairs": [],
+  "full_main_theorem_proved": false,
+  "generic_exact_square_proved": true,
+  "manuscript_two_square_assembly_completed_by_packet": false,
+  "selected_transitive_axiom_closures_checked": 92,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "explicit_examples_passed": 13,
+  "failed_probe_attempts": [],
+  "checks": [
+    {
+      "name": "checks",
+      "exit_code": 0,
+      "elapsed_seconds": 4.02658645901829,
+      "axiom_closures_checked": 49,
+      "execution_record": "checks-execution.json"
+    },
+    {
+      "name": "cp-checks",
+      "exit_code": 0,
+      "elapsed_seconds": 3.6469086250290275,
+      "axiom_closures_checked": 33,
+      "execution_record": "cp-checks-execution.json"
+    },
+    {
+      "name": "assembly-checks",
+      "exit_code": 0,
+      "elapsed_seconds": 8.64128716592677,
+      "axiom_closures_checked": 2,
+      "execution_record": "assembly-checks-execution.json"
+    },
+    {
+      "name": "composition-checks",
+      "exit_code": 0,
+      "elapsed_seconds": 4.960959166986868,
+      "axiom_closures_checked": 8,
+      "execution_record": "composition-checks-execution.json"
+    }
+  ],
+  "independent_clean_build": false,
+  "limitations": [
+    "The general exact-square realization is proved; both named manuscript squares with shared positive-lifting data and dimension transports are not yet bundled by this packet.",
+    "FiniteCornerAmalgam is conditional on initial finite constituents and a genuine full-amalgam diagram; it does not choose the prescribed K0 projection or identify a target Kirchberg algebra.",
+    "Finite scalar-block CPAP and corner inheritance do not prove coefficient-tensor or inductive-limit CPAP.",
+    "No lake build or wholesale Mathlib kernel recheck by auditor; lightweight checks import compiled modules reported built by coordinator, with source and artifact hashes retained.",
+    "Target.MainClaim remains unproved. No-issue-found is not full verification."
+  ],
+  "source_hashes": {
+    "releases/suzuki-kirchberg-draft/Suzuki/CornerFiniteness.lean": "ac5cfa9dc5f5f1ed4febd13d3fb10812d1d08b0275152eac4db8df0634995c99",
+    "releases/suzuki-kirchberg-draft/Suzuki/CornerSimplicity.lean": "e9232360780e9ac525e233d4b00ed901f61eca5f91d595aa735bcc9f62476794",
+    "releases/suzuki-kirchberg-draft/Suzuki/MultiplicityEmbeddings.lean": "6310b45d6e22015b9c04f34d76e8470b90929cb30c50137e1d6bd7676bfed42e",
+    "releases/suzuki-kirchberg-draft/Suzuki/FiniteCPApproximation.lean": "9a53f93812de3fb81e68d050d2593d443dcade7f5bc676e652c35584f2a516f7",
+    "releases/suzuki-kirchberg-draft/Suzuki/CornerCPApproximation.lean": "c3f46d1386ef3f05d752d4ddd1e61743303ef92dabdda952987a23a0da688f72",
+    "releases/suzuki-kirchberg-draft/Suzuki/FiniteCornerAmalgam.lean": "d9d38bb1cefc70d1ab905de3ad1f3703da37fc6559f33ec25a59fd02e7ac7506",
+    "releases/suzuki-kirchberg-draft/Suzuki/MultiplicityComposition.lean": "e0ca3b94d4c522b88acff4182436409bcb9b4184c1969631b2dac54eb40b37a8"
+  },
+  "artifacts": {
+    "AssemblyChecks.lean": "21e0dbe3ec72a96be25fb8f5b4fb0c076035f5ada0e0ef456140f870b8b5708c",
+    "CPChecks.lean": "b2cf4596852e9bc675ff6b878f471da2e618f222b1051e4ed58f900039cb5b14",
+    "Checks.lean": "f7735210c1238fa7a4c5a59a0072acb422beac90c95b9562814190e9de4f23e3",
+    "CompositionChecks.lean": "340eff3a031b6e0f9bd626fd97f1d33b4f27d218feafc228f975d0b4e4625bed",
+    "assembly-checks-execution.json": "0279ab7d55801f5f95836d4f96f15c2f59a837eb566fdd133e90d13df7b7f9ca",
+    "assembly-checks.log": "b532318d74b0e98804fd27bc48260f43f734ce15a159f09f8c3c246b292e6570",
+    "audit-inventory.json": "4780f6bdf52cb3c45f2a61cf5bab4ab7eef9c89e3f75774949ef9877b63eb097",
+    "axiom-results.json": "5c3b94e8b4bcf5de33cdda54a5abed24f5e3aad07230e881d50ea70120125db7",
+    "checked-declarations.json": "81776a2466f18127886120c1ab88ea4cdfa882f560af93df4f065535d77c6500",
+    "checks-execution.json": "da3b58237d05701b61df63d6d6e2b87f39d8acf0673cad62042c1f1167396d1c",
+    "checks.log": "df1af2d8236193de5dadc817bdabe04407268cc4eadd927ff57ed1dc4c5666cc",
+    "composition-checked-declarations.json": "a57cc91f180b3a4fba698f7b82fa6faa6c991cc3a1c04e9274e2a49127a01868",
+    "composition-checks-execution.json": "2e1accc8d33f57983e448c45b306da050626e6c3270e9799ca7f80d811c16290",
+    "composition-checks.log": "f9ee4401fc1eb57eec56481ded73c67bda866a2553c07f29c28165c2de515748",
+    "cp-checked-declarations.json": "b0b222e289f93094f25a5062e5b5499b4b182826bdc9e93a4f0f56470ff78414",
+    "cp-checks-execution.json": "5bd11556d07c19a00bf2111f6d555e3e2ad2f8bfd15b409e05f0fae6ea4964dc",
+    "cp-checks.log": "7eb1de151caccc7eae5b86a47da32028f131aa436d29e8a7d44199248f23d135",
+    "report.txt": "280dbbf75831c29cffaaac9379be2d061b8731ab94df60641bc24a6e8e3790c8"
+  }
+}

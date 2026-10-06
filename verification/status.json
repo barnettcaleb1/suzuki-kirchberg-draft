@@ -5,14 +5,14 @@
   "main_theorem_proved": false,
   "main_theorem_verified": false,
   "formal_statement_correspondence": "open obligations; see SCOPE.md",
-  "submitted_modules": 14,
-  "compiled_declarations": 523,
+  "submitted_modules": 34,
+  "compiled_declarations": 1088,
   "declaration_kinds_including_generated": {
-    "theorem": 377,
-    "definition": 125,
-    "constructor": 7,
-    "inductive": 7,
-    "recursor": 7
+    "theorem": 792,
+    "definition": 263,
+    "constructor": 11,
+    "inductive": 11,
+    "recursor": 11
   },
   "declaration_count_is_mathematical_lemma_count": false,
   "axiom_allowlist": [
@@ -38,6 +38,7 @@
   "semantic_review": "semantic-review.json",
   "source_manifest": "source-manifest.json",
   "scope": "SCOPE.md",
-  "declarations_audited": 523,
-  "checked_at_utc": "2026-10-06T18:26:47.866815+00:00"
+  "declarations_audited": 1088,
+  "checked_at_utc": "2026-10-06T20:06:09.266135+00:00",
+  "component_log": "component-check.txt"
 }

@@ -1,0 +1,146 @@
+{
+  "task": "SZL3-0007",
+  "status": "completed",
+  "result": "accepted_partial_formalization_no_required_repair_identified",
+  "completed_at": "2026-10-06T20:11:10.167451+00:00",
+  "deadline": "2026-10-06T20:22:12.951226+00:00",
+  "scope": "Independent bounded semantic and exported-signature audit of five exact frozen Lean modules; not full verification or clean rebuild.",
+  "target_hashes": {
+    "releases/suzuki-kirchberg-draft/Suzuki/CornerPureInfiniteness.lean": "b8415cc577aa1b04c93654887250744a913415c898cb20643913bea79d0c0cfc",
+    "releases/suzuki-kirchberg-draft/Suzuki/LimitCPMaps.lean": "0de11d67fb7d9e28bc28a80dcfee63acae274b6104016259cf72759bd0100eae",
+    "releases/suzuki-kirchberg-draft/Suzuki/MatrixRetractions.lean": "fd8b25041641c8bfb3dd51476f26f18bff0c93345f2ff3eddb2890d9c7d028f7",
+    "releases/suzuki-kirchberg-draft/Suzuki/CPApproximationLimits.lean": "2d916af50c8b629e0d5718b495a6161e6cb48b0b86c51a181999d7084b8e32e0",
+    "releases/suzuki-kirchberg-draft/Suzuki/SuzukiFiniteDiagram.lean": "cfde7fb246f2ed0e0e5620d100693577d6f3b36ab5586036a9dcf8ad9633a866"
+  },
+  "report": "report.txt",
+  "report_sha256": "5841c33db16bf4ea5bb8c2a305f09b22ac0438762f5fa085f02cfa1875393128",
+  "inventory": "audit-inventory.json",
+  "inventory_sha256": "3db85434607d31303f03046a1fd320c8353d163ebc91ed86b9268245cf42df60",
+  "axiom_results": "axiom-results.json",
+  "axiom_results_sha256": "594c0bc74dcac80a5cf7ecc6ce81d80d994cf20f7e36d0640c4ed75956f3949d",
+  "checks": [
+    {
+      "probe": "Checks.lean",
+      "probe_sha256": "25629331b28ad0e5fe12bdbf73449ff31cf2510cc38629bd797349274afec8ef",
+      "execution_record": "checks-execution.json",
+      "execution_record_sha256": "82aa6c12c63774e77f0b8fd0c1cfd8fd39bb91ca60ed7e74d42e0e4f51aaf017",
+      "log": "checks.log",
+      "log_sha256": "4ee01373c8d427c05f0f1001d2690fab544e8f1f4883c6078ebcc355ad95acbb",
+      "exit_code": 0,
+      "axiom_closures": 11,
+      "semantic_examples": 5,
+      "elapsed_seconds": 15.665770582854748
+    },
+    {
+      "probe": "LimitCPChecks.lean",
+      "probe_sha256": "eba8c73bb32ed7f67e4fd34f91eda92b150eddd96cc5def131a4716e1bcf32cd",
+      "execution_record": "limit-cp-checks-execution.json",
+      "execution_record_sha256": "2f345a247212a91ad4eaa2bb6ef59a60c622dccda0ae328f13c734423f80aee8",
+      "log": "limit-cp-checks.log",
+      "log_sha256": "9e75cfaa9c2e8676a27d7dbc9e6c722213d04aee7bafb5a52f6a457c52891598",
+      "exit_code": 0,
+      "axiom_closures": 14,
+      "semantic_examples": 4,
+      "elapsed_seconds": 9.199267457937822
+    },
+    {
+      "probe": "RetractionChecks.lean",
+      "probe_sha256": "2b3922421e0a834e41bddf8efe8bdb25ad8d6294d2625357b5e6a36ee7a586a1",
+      "execution_record": "retraction-checks-execution.json",
+      "execution_record_sha256": "383ffa98d07a8954291e902b081e36751856d4af5017382cba507e42672d9739",
+      "log": "retraction-checks.log",
+      "log_sha256": "1dab13ad2c2535f1c0e4e176e7e910ca47ff38d169880ee8360b5691f53857ad",
+      "exit_code": 0,
+      "axiom_closures": 12,
+      "semantic_examples": 4,
+      "elapsed_seconds": 12.870878791902214
+    },
+    {
+      "probe": "CPApproximationChecks.lean",
+      "probe_sha256": "54a2ed942eeda7a1e0988ca202b38ab891db7644e7dbc84a8edc0d8c5f9b0675",
+      "execution_record": "cp-approximation-checks-execution.json",
+      "execution_record_sha256": "9876940194a3ddc13e4fbfffe6780ca9676be3c917368563e383717e41d6a9a4",
+      "log": "cp-approximation-checks.log",
+      "log_sha256": "09f289d9f4452c669859f7be1a49b67be23b15769218ede83e454dd8006fd020",
+      "exit_code": 0,
+      "axiom_closures": 17,
+      "semantic_examples": 1,
+      "elapsed_seconds": 10.166916584130377
+    },
+    {
+      "probe": "DiagramChecks.lean",
+      "probe_sha256": "70def6456ad86ba2eef982270aef604d6ed0e3cb4dec6b2f923b04652bbdc636",
+      "execution_record": "diagram-checks-execution.json",
+      "execution_record_sha256": "c3fa21bbe6aa17199ec6aba9f68f08aca43bd03db9c07cb44d13c016bb8fe94e",
+      "log": "diagram-checks.log",
+      "log_sha256": "4a04970898f37f61aa815ebcd5b38be97c75ab7b3f884c1686371c3407a57da4",
+      "exit_code": 0,
+      "axiom_closures": 44,
+      "semantic_examples": 5,
+      "elapsed_seconds": 13.72615325008519
+    }
+  ],
+  "distinct_axiom_closures": 98,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "unexpected_axioms": [],
+  "successful_semantic_examples": 19,
+  "required_repairs": [],
+  "observations": [
+    {
+      "id": "raw_corner_order_instances",
+      "severity": "nonblocking_api_caveat",
+      "description": "Raw corner LE/preorder can elaborate as subtype instances. Exported target infinite-projection/pure-infiniteness proofs explicitly pin spectral order; expanded semantic example passes."
+    },
+    {
+      "id": "algebraic_limit_topology",
+      "severity": "checked_semantic_hazard",
+      "description": "LimitCPMaps explicitly uses metric norm topology on algebraic quotient and proves density/uniform-inducing requirements for actual extension equality."
+    },
+    {
+      "id": "split_system_hypothesis",
+      "severity": "scope_boundary",
+      "description": "CPAP preservation requires genuine adjacent CPC left inverses; all coherence and convergence are derived. Such splittings for the manuscript system remain unconstructed."
+    },
+    {
+      "id": "channelwise_diagrams",
+      "severity": "scope_boundary",
+      "description": "Both finite squares share one common map and preserve actual T/S/R multiplicity certificates, but output is channelwise with T_c-dependent dimensions. Orthogonal aggregate and induced C*-K-theory identifications remain open."
+    }
+  ],
+  "failed_attempts_preserved": [
+    {
+      "record": "limit-cp-checks-attempt1-execution.json",
+      "reason": "Auditor omitted noncomputable section before local instances; corrected probe passed."
+    },
+    {
+      "record": "cp-approximation-checks-attempt1-execution.json",
+      "reason": "Import object file absent during build; identical probe passed after object became available."
+    },
+    {
+      "record": "diagram-checks-attempt1-execution.json",
+      "reason": "Auditor omitted open Matrix for matrix-vector notation; corrected probe passed."
+    }
+  ],
+  "static_placeholder_scan": {
+    "record": "placeholder-scan-execution.json",
+    "exit_code": 1,
+    "matches": []
+  },
+  "full_main_theorem_proved": false,
+  "full_main_theorem_status": "Target.MainClaim remains a definition with no proof in audited packet.",
+  "independent_lake_build": false,
+  "independent_clean_source_to_olean_rebuild": false,
+  "canonical_state_modified": false,
+  "proof_sources_modified": false,
+  "subdelegation": false,
+  "limitations": [
+    "No wholesale imported Mathlib kernel recheck.",
+    "Source hash matches and imported olean hashes are recorded; source-to-olean builds were coordinator actions.",
+    "CPAP/nuclearity and hereditary/Cuntz pure-infiniteness convention equivalences are not newly formalized.",
+    "No-issue-found does not constitute full mathematical verification."
+  ]
+}
