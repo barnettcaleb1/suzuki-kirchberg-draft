@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify all submitted components, not the manuscript's main theorem."""
+"""Verify exact sources and kernel dependencies, separately from input realization."""
 from pathlib import Path
 import hashlib
 import json
@@ -15,10 +15,15 @@ RESULT = re.compile(
 )
 
 
+def audit_requests(source):
+    """Both public identifiers and numeric-component private environment names."""
+    return re.findall(r"^(?:#print axioms |-- audit_private )(\S+)$", source, re.MULTILINE)
+
+
 def check_sources(root):
     manifest = json.loads((root / "verification/source-manifest.json").read_text())
     if manifest["main_theorem_verified"] is not False:
-        raise ValueError("The declared scope must remain partial.")
+        raise ValueError("Unconditional verification cannot be asserted by this component verifier.")
     actual = {str(p.relative_to(root)) for p in (root / "Suzuki").rglob("*.lean")}
     actual |= {str(p.relative_to(root)) for p in root.glob("*.lean")}
     expected = manifest["files"]
@@ -29,7 +34,7 @@ def check_sources(root):
             raise ValueError(f"Non-relative manifest path: {name}")
         if hashlib.sha256((root / name).read_bytes()).hexdigest() != digest:
             raise ValueError(f"Source hash differs: {name}")
-    requested = re.findall(r"^#print axioms (\S+)$", (root / "Audit.lean").read_text(), re.MULTILINE)
+    requested = audit_requests((root / "Audit.lean").read_text())
     if requested != manifest["audited_declarations"] or len(set(requested)) != len(requested):
         raise ValueError("Audit declaration list differs or contains duplicates.")
     if json.loads((root / "verification/declarations.json").read_text()) != requested:
@@ -79,7 +84,8 @@ def check_inventory(output, expected):
 def main():
     try:
         expected = check_sources(ROOT)
-        print("Scope: partial formalization; main theorem NOT verified in Lean.", flush=True)
+        print("Scope: conditional Lean verification; exact sources and kernel checks.", flush=True)
+        print("These checks do not realize the explicit analytic interfaces in actual KK theory.", flush=True)
         subprocess.run(["lake", "build"], cwd=ROOT, check=True)
         result = subprocess.run(
             ["lake", "env", "lean", "-DwarningAsError=true", "Audit.lean"],
@@ -90,8 +96,8 @@ def main():
             cwd=ROOT, check=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         check_inventory(inventory.stdout, expected)
         print(result.stdout, end="")
-        print(f"PASS: partial modules built; {len(checked)} declarations audited.")
-        print("This is not a Lean verification of the manuscript's main theorem.")
+        print(f"PASS: component modules built; {len(checked)} declarations audited.")
+        print("Kernel checks do not discharge explicit hypotheses or source correspondence.")
         return 0
     except subprocess.CalledProcessError as error:
         if error.stdout:

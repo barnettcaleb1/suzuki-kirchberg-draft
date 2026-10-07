@@ -1,0 +1,160 @@
+{
+  "task": "SZLC5-0008",
+  "source_compiles": [
+    {
+      "module": "OrthogonalNoiseFullness",
+      "source_sha256": "4b0e3ab57040fac32a75c15b7d301aaa26e676bf031b1802149c7f3fbb77da99",
+      "status": "passed",
+      "execution": "compile-OrthogonalNoiseFullness-execution.json",
+      "command": [
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean",
+        "-j2",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/state/packaging/SUZUKI-LEAN-CONDITIONAL-0005/SZLC5-0008-frozen/OrthogonalNoiseFullness.lean"
+      ]
+    },
+    {
+      "module": "CommonUnitProjection",
+      "source_sha256": "d632f5fe1aaddc75e89a849e469e0aeeea7b9b440ab6097606ec8ee661000d13",
+      "status": "passed",
+      "execution": "compile-CommonUnitProjection-execution.json",
+      "command": [
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean",
+        "-j2",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/state/packaging/SUZUKI-LEAN-CONDITIONAL-0005/SZLC5-0008-frozen/CommonUnitProjection.lean"
+      ]
+    },
+    {
+      "module": "CoefficientModelConditional",
+      "source_sha256": "0a37d31eeacc1d2078c615e9e6f62ab2d6787f3eef5deac2cc632190eca072b9",
+      "status": "passed",
+      "execution": "compile-CoefficientModelConditional-execution.json",
+      "command": [
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean",
+        "-j2",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/state/packaging/SUZUKI-LEAN-CONDITIONAL-0005/SZLC5-0008-frozen/CoefficientModelConditional.lean"
+      ]
+    },
+    {
+      "module": "GraphAmalgamInverse",
+      "source_sha256": "94281d28f5566ad6c27a5e16aa645360ae789ce4a16186abc9dff73139f9102c",
+      "status": "passed",
+      "execution": "compile-GraphAmalgamInverse-execution.json",
+      "command": [
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean",
+        "-j2",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/state/packaging/SUZUKI-LEAN-CONDITIONAL-0005/SZLC5-0008-frozen/GraphAmalgamInverse.lean"
+      ]
+    },
+    {
+      "module": "InitialGraphPresentation",
+      "source_sha256": "ea70b685f0f053afc49659ab9858d36ff8d7ffa3a7299de12e331674537c1765",
+      "status": "passed",
+      "execution": "compile-InitialGraphPresentation-execution.json",
+      "command": [
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean",
+        "-j2",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/state/packaging/SUZUKI-LEAN-CONDITIONAL-0005/SZLC5-0008-frozen/InitialGraphPresentation.lean"
+      ]
+    }
+  ],
+  "axiom_audit": {
+    "status": "passed",
+    "declaration_count": 410,
+    "whole_namespace_and_private": true,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "execution": "audit-final-stable-execution.json",
+    "command": [
+      "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean",
+      "-j2",
+      "-M4096",
+      "-DwarningAsError=true",
+      "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/research/branches/SUZUKI/lean-conditional5/SZLC5-0008/Audit.lean"
+    ],
+    "stable_target_oleans_during_run": true
+  },
+  "semantic_probes": [
+    {
+      "file": "CoreExamples.lean",
+      "sha256": "4f0a9aff617b8c9749aaae007c1bde5a1407e50bd0349d5b110799db6a4dd092",
+      "example_count": 16,
+      "status": "passed",
+      "execution": "core-examples-final-execution.json",
+      "command": [
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean",
+        "-j2",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/research/branches/SUZUKI/lean-conditional5/SZLC5-0008/CoreExamples.lean"
+      ]
+    },
+    {
+      "file": "CoefficientExamples.lean",
+      "sha256": "2419e4904b9695c5f81ed8542428a96b69c3be96cb5b7cc5c893ac780111c91c",
+      "example_count": 15,
+      "status": "passed",
+      "execution": "coefficient-examples-attempt1-execution.json",
+      "command": [
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean",
+        "-j2",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/research/branches/SUZUKI/lean-conditional5/SZLC5-0008/CoefficientExamples.lean"
+      ]
+    },
+    {
+      "file": "InitialExamples.lean",
+      "sha256": "edf25b3468a99ca33f01f2da993334937f8e5f2b12049f47ed76fb3888762f3c",
+      "example_count": 8,
+      "status": "passed",
+      "execution": "initial-examples-attempt1-execution.json",
+      "command": [
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean",
+        "-j2",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/research/branches/SUZUKI/lean-conditional5/SZLC5-0008/InitialExamples.lean"
+      ]
+    },
+    {
+      "file": "GraphExamples.lean",
+      "sha256": "5004007c37cd8fa2e5800b0e9ba1fe1d012b4f3ef4ae58dd144aa8e6b106a71a",
+      "example_count": 10,
+      "status": "passed",
+      "execution": "graph-examples-explicit-execution.json",
+      "command": [
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean",
+        "-j2",
+        "-M4096",
+        "-DwarningAsError=true",
+        "/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/research/branches/SUZUKI/lean-conditional5/SZLC5-0008/GraphExamples.lean"
+      ]
+    }
+  ],
+  "passing_example_count": 49,
+  "failed_attempts_preserved": [
+    "core-examples-attempt1",
+    "graph-examples-attempt1",
+    "graph-examples-attempt2",
+    "graph-examples-final",
+    "audit-final"
+  ],
+  "failed_attempt_scope": "The first four are reviewer probe syntax/instance/elaboration problems; audit-final is a missing dependency olean during coordinator build. A separate graph preflight failed before Lean began; see environment-events.json. None is a target source repair.",
+  "no_shadow_oleans_emitted": true,
+  "full_dependency_rebuild_or_trust_zero_check": false,
+  "source_mutations": false,
+  "mainclaim_verified": false
+}

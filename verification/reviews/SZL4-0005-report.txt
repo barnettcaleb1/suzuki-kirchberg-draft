@@ -1,0 +1,249 @@
+SZL4-0005 — independent exact-source audit
+Reviewer: /root/suzuki2_uct_audit
+Reservation: SUZUKI-LEAN-CONTINUE-0004/tasks/SZL4-0005.json
+Bounded deadline: 2026-10-06 21:09:03.856669 UTC
+
+Verdict
+=======
+No blocking mathematical or formal defect was found in the exact two-file
+packet. Both frozen sources independently compile with warnings as errors.
+All 161 declarations in their public/private module namespaces have only the
+allowed transitive foundational axioms. Twenty independently written semantic
+examples compile. These results support the limited permanence and concrete
+finite-diagram statements actually exported. They are not full verification of
+the manuscript, its C*-algebra/K-theory correspondence, or Target.MainClaim.
+
+One material interface limitation must remain explicit: Aggregate does not
+export multiplicity certificates for its final nonunital maps or equal-source
+summed maps. Its integer lifting data is not yet proved to describe induced
+K-theory maps. This is a missing later bridge, not a counterexample to the
+limited declarations reviewed here. The current source comments already leave
+graph/K-theory identification and the main theorem open.
+
+Exact packet and environment
+============================
+MatrixCPApproximation.lean
+  SHA256 8493253cb5f1bd036611ab36f2fae05f05eff85609bc9418ba056981a8ead5f9
+OrthogonalFiniteDiagrams.lean
+  SHA256 8834f832cb953be82312afb3aa7198c2f4f1be3bdd1949d3d3f581788abb745b
+Release directory: releases/suzuki-kirchberg-draft/Suzuki/
+Frozen directory:
+  state/packaging/SUZUKI-LEAN-CONTINUE-0004/SZL4-0005-frozen/
+Both release copies and both frozen copies were hashed and matched the packet.
+No proof source, frozen source, canonical state, or root import was edited.
+No subdelegation occurred.
+
+Lean 4.33.1, arm64-apple-darwin24.6.0, Release,
+  commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6.
+Pinned Mathlib commit 0df444a360eaa60ab8c11dca51a86af692955474.
+Manuscript all-kirchberg-v2.tex, sections 3 and 5–7:
+  SHA256 f61dc0872c2edd4be42c6e0160fc37fd128324fbe7244e7b76f62246f4492537.
+Root orientation, assigned sources, direct-import implementation support and
+relevant pinned Mathlib were the permitted reading scope. inventory.json
+records exact paths/hashes of the supporting files inspected.
+
+Actual checks and reproducibility
+================================
+All commands ran from the release directory using the pinned executable:
+/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean
+Each invocation used arguments -j2 -DwarningAsError=true followed by the exact
+absolute input filename. The complete argv, cwd, LEAN_PATH and exit status are
+in the corresponding *-execution.json. run_check.py is the retained runner.
+No lake build, clean rebuild, or blanket imported-Mathlib kernel recheck was run.
+
+Independent frozen-source compilation:
+  compile-matrix-frozen-execution.json: exit 0, about 7.69 seconds.
+  compile-diagrams-frozen-execution.json: exit 0, about 17.17 seconds.
+Inputs were the two absolute frozen paths above, not rewritten audit copies.
+
+Audit.lean imports both modules and Lean.Util.CollectAxioms. It enumerates all
+environment constants whose names begin with either module namespace or its
+private-module prefix, checks every transitive axiom closure against exactly
+{propext, Classical.choice, Quot.sound}, and prints the key exported signatures
+and full Aggregate structure. Result: 161 declarations, consisting of 46 in
+MatrixCPApproximation and 115 in OrthogonalFiniteDiagrams; zero disallowed
+axioms. The final inventory is in axiom-inventory.json and audit.log.
+
+CPExamples.lean: 11 examples, all passed. These check the exact Schwarz and
+norm-one hypotheses, complete contractivity on Fin n including n=0, positivity
+at a further arbitrary Fin k matrix level, CPAP for M_0(A), empty block products,
+two zero-size blocks, the literal CStarMatrix operator-norm definition,
+compression/inclusion retraction, compression contractivity, and its complete
+positivity. DiagramExamples.lean: nine examples, all passed. These check both
+factor support-unit identities, all three unit sums, factor orthogonality,
+both literal squares with one common map, common-map distance preservation,
+weighted dimensions, all-zero channel weights and an empty channel family.
+
+The imported release .olean hashes changed during this audit while source
+hashes stayed fixed. Initial and current hashes are retained in inventory.json.
+The complete axiom inventory and both semantic probe files were therefore run
+again against the current .oleans. Their execution records hash these .oleans
+before and after each invocation and confirm no change during each final run.
+The independent source compilations additionally check the exact frozen text.
+
+Final imported .olean hashes:
+  MatrixCPApproximation:
+    6fad50d2e7fa2c34120703db21231620672ce6b13f8881a4026c6ed1e45540a2
+  OrthogonalFiniteDiagrams:
+    342e2575f3c9e8fc1d1497adea0dd5f3aa0b57df8048d21a322b943d248846f9
+
+Failed auditor-only attempts are preserved rather than hidden. Two initial
+Audit.lean attempts had a String predicate inference issue and a reserved-word
+binder issue. Three initial DiagramExamples.lean attempts failed to simplify a
+zero-weight Sum.elim expression fully (including unused-simp-argument warnings).
+All were repaired solely in audit artifacts. They were not proof-source
+failures. A final-inventory consistency assertion also detected the concurrent
+.olean change described above. Final source checks, inventory and examples
+all pass. static-scan.json additionally records no sorry/admit/axiom/unsafe/
+native_decide tokens after stripping nested comments and strings; the axiom
+inventory is the stronger verification of absence of proof placeholders.
+
+MatrixCPApproximation: mathematical correspondence
+=================================================
+1. Norm and order. The carrier is Mathlib's CStarMatrix over an actual complex
+   CStarAlgebra. Its norm is definitionally the continuous-operator norm of
+   CStarMatrix.toCLM; this was independently checked by rfl. No entrywise norm
+   instance or substitute matrix norm is installed. norm_le_sum_entries proves
+   only an upper estimate for this genuine norm, using the operator bound and
+   finite Hilbert-C*-module vector bounds. The finite product carries the
+   genuine finite Pi norm. StarOrderedRing constrains the positive cone by
+   sums of star squares, rather than permitting an arbitrary convenient order.
+   The final bundled coefficient/product results use spectral order explicitly.
+
+2. Complete positivity is at every matrix level. amplify uses the actual
+   flattening star-algebra equivalence for nested matrices, applies the input
+   CP property to the flattened positive matrix, and reflects it back. It does
+   not replace complete positivity by positivity at level one. flatten is an
+   algebraic star equivalence over the coefficient algebra; its later norm
+   preservation follows from the genuine C*-algebra theorem for injective star
+   homomorphisms.
+
+3. Complete contractivity is proved. The explicit positive Gram matrix is
+   [[a* a, a*], [a, 1]] = X*X. Its CP image also proves adjoint preservation.
+   Under the exact subunital assumption phi(1) <= 1, adding the nonnegative
+   lower-right correction 1-phi(1) and compressing by [[1,0],[-phi(a),0]] gives
+   phi(a)*phi(a) <= phi(a*a). contractive_of_norm_one requires only
+   ||phi(1)|| <= 1, uses positivity to derive subunitality, and then uses the
+   C*-identity and the positive-linear-map bound on a*a. amplify_one identifies
+   the amplified unit image as the actual diagonal of phi(1), proving the
+   amplification contractive from the original contraction hypothesis.
+
+4. Quantifiers and universe scope. General amplification is provided for
+   finite index types in arbitrary universes. amplify_contractive's index k
+   is Type (universe zero), enough for every Fin n used in target CPAP. The
+   final finiteProduct_hasCPApproximation likewise has block index iota : Type,
+   while the coefficient algebra can lie in an arbitrary universe. No
+   nontriviality or nonemptiness assumption is silently added to the finite
+   product theorem. It assumes Target.HasCPApproximation of the coefficient.
+
+5. Approximation tolerances and degenerate cases. The positive-size matrix
+   proof approximates the finite set of all entries at epsilon/(n*n+1), uses
+   actual CPC amplifications, and flattens M_n(M_m(C)) to M_(n*m)(C) through
+   an isometric star equivalence. The output matrix size remains strictly
+   positive and the final error is strictly less than epsilon. For n=0 the
+   source is subsingleton and the separate existing CPAP theorem applies.
+
+6. Finite blocks. blockInclusion is the concrete block-diagonal unital star
+   homomorphism; blockCompression extracts the actual principal diagonal
+   blocks and is its exact left inverse. The inclusion is injective and thus
+   isometric. A single supported block equals compression q_i M q_i by a
+   genuine projection. This proves norm contraction. At each matrix level,
+   blockCompressionCP is positive because its injective amplified inclusion
+   is the sum of the diagonal-projection conjugations of the input. Positivity
+   reflection is proved for an injective star homomorphism. This yields an
+   actual CPC retraction and target CPAP for the finite product. Empty products
+   and all-zero block sizes are legitimate zero algebras, not contradictory
+   unitality assumptions.
+
+OrthogonalFiniteDiagrams: mathematical correspondence
+====================================================
+1. Actual coordinate embeddings. Family w is the finite product of Blocks
+   (w c), with independently varying source weights for each channel. stack
+   is concrete block diagonal inclusion. factorStack uses explicit finite
+   coordinate equivalences to swap channel/copy indices and align the result
+   with the standard target multiplicity homomorphism. factorStack_square
+   proves entrywise equality, rather than assuming conjugacy or a commuting
+   square. Injection is proved by recovering coordinates. It does not assert
+   that an arbitrary multiplicity matrix with a zero column gives a faithful
+   source multiplicity map; the factorStack source already has targetSize
+   dimensions.
+
+2. Nonunital channels and their supports. singleHom uses Pi.single, and each
+   channel is a genuine nonunital star homomorphism into a common target.
+   Its image of one is a projection. Different channels have orthogonal
+   support units, which sum to the target unit. For a positive channel block
+   size, an explicit supported diagonal entry equals one, so that block of
+   the support is nonzero. Empty channels and zero-size blocks remain allowed.
+
+3. Both squares and one common map. two_target_squares constructs the two
+   target factor embeddings while sharing the same fixed commonAggregate.
+   aggregate_realizations composes these with the actual earlier Realization
+   maps. It proves both squares as literal equalities. All three channel maps
+   are isometric by injection and the C*-norm theorem. Aggregate.left_unit and
+   right_unit identify factor support units with the respective standard
+   target inclusions of the very same common support unit. Factor projection,
+   orthogonality and unit-sum statements are derived from those identities.
+
+4. Integer lifting hypotheses are visible. integer_aggregate assumes actual
+   positive integer diagrams and a nonempty target vertex type. The stronger
+   simultaneous_aggregate assumes Nontrivial m (at least two target indices)
+   and finite source/target indices, positive B and B', arbitrary actual
+   integer-linear maps on their algebraic kernel/cokernel presentations, and
+   arbitrary channel source weights. It invokes the proved simultaneous
+   positive lifting with one common nonnegative determinant-one U. It does
+   not assume realizations as a new unexplained existence hypothesis in that
+   final result. Source index n may be empty; positivity can then be vacuous,
+   and source algebras can be zero. This is a permitted degenerate instance,
+   not a realization of nontrivial manuscript coefficient/K-theory data.
+
+5. Support and weighted dimensions. positive_common_blocks requires a
+   nonempty source index type, positive k in every channel, and every entry
+   of T positive. Positive k alone supplies a positive contribution to both
+   target halves, so no missing positivity hypothesis on l is needed for
+   this sufficient condition. weighted_common_dimensions is an exact natural
+   dimension identity for arbitrary weights q, including q=0. Scaling source
+   sizes by q scales their dimension contribution by q while leaving the
+   chosen channel multiplicity matrix T unchanged. With q=0 that channel has
+   zero source and zero support. The nonzero-support lemma cannot be applied
+   to it. The all-zero-weight and empty-channel cases compile independently.
+
+6. Equal-source sums. When all source sizes agree, sumCommon/sumLeft/sumRight
+   are actual unital star homomorphisms and both summed squares are proved.
+   Their isometry theorem explicitly requires Nonempty C. This matters: an
+   empty family has zero total target and cannot faithfully receive a general
+   nonzero common source. No missing nonemptiness was found in that theorem.
+
+Required boundaries and open interfaces
+======================================
+A. Aggregate (source lines 331–350) contains no HasMultiplicity field. Its
+   parameter T enters target dimensions and the conditional support premise.
+   aggregate_realizations uses the earlier multiplicity-controlled Realization
+   internally, but only exports Nonempty Aggregate. The multiplicity witnesses
+   are not retained for the resulting nonunital maps or their equal-source
+   sums. The earlier HasMultiplicity predicate itself is for unital maps, so
+   a supported-corner/nonunital extension or an equivalent concrete-coordinate
+   certificate and composition theorem are needed here. Then induced K-theory
+   functoriality must be proved separately. Do not treat simultaneous_aggregate
+   as already proving that its arbitrary integer kernel/cokernel maps are the
+   K-maps of the aggregate; the q=0 case makes that overinterpretation untenable.
+
+B. The weighted dimension formula alone does not identify the finite diagram's
+   universal full product with a matrix amplification of the original full
+   product, or identify the associated tensor/coefficient maps. In manuscript
+   section 5 the noise channel involves M_q(P); that bridge is still absent.
+
+C. Nonzero support in each simple finite matrix block is established under
+   the stated positive hypotheses. Ideal-theoretic fullness in the relevant
+   amalgam/tensor/limit algebra, and the manuscript's evaluation/fullness
+   arguments in later sections, are not formal consequences already supplied
+   by this packet. No simplicity, nuclearity, pure infiniteness, KK-contractible
+   coefficient model, graph-algebra identification, K-theory calculation, or
+   ideal/fullness classification has been silently bundled into these sources.
+
+D. Matrix/product CPAP is a permanence result conditional on coefficient CPAP.
+   The exact target definition uses finite sets, every epsilon>0, positive
+   matrix size, actual CP maps in both directions and norm contractions.
+   Equivalence with other nuclearity definitions is still not proved here.
+
+The packet is useful verified partial infrastructure within these limits.
+Finding no blocking issue in this bounded audit does not establish full verification.

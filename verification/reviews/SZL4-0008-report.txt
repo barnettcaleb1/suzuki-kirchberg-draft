@@ -1,0 +1,235 @@
+SZL4-0008 — independent exact-source audit
+Reviewer: /root/suzuki2_uct_audit
+Reservation: SUZUKI-LEAN-CONTINUE-0004/tasks/SZL4-0008.json
+Deadline: 2026-10-06 21:28:41.446492 UTC
+
+Verdict
+=======
+No blocking defect was found in the three exact target files. They construct
+an actual full unital complex C*-amalgam in the stated fixed universe, with
+the zero algebra allowed; prove its genuine existence-and-uniqueness property;
+prove separability from separability of the factors; and prove factor
+injectivity/isometry or nontriviality under the explicit compatible-witness
+hypotheses actually stated. No source repair is requested by this bounded audit.
+
+All three exact frozen files independently compile with warnings as errors.
+The entire public/private namespace inventory, 110 declarations, has only the
+allowed transitive foundational axioms. Twenty-seven semantic example
+declarations compile, including ordinary identity and scalar amalgams and a
+deliberately collapsed zero example. This is not verification of MainClaim or
+of a conditional end-to-end version of the manuscript's new argument.
+
+Exact versions and provenance
+=============================
+WeightedFreeSelfAdjoint.lean
+  SHA256 42e500585160983eb290e271ce71b377fc932b97103ed27ef554783c9d39831a
+UniversalAmalgam.lean
+  SHA256 ada2821e9dc64e7e5aba3572feff7085050f64bc1d953c92cd740c596645d2dd
+AmalgamConstructionProperties.lean
+  SHA256 66c495f48a71ff2d61e20acba69c03e2791da2606d3803316e61461c61966f7b
+
+Release sources: releases/suzuki-kirchberg-draft/Suzuki/
+Frozen sources: state/packaging/SUZUKI-LEAN-CONTINUE-0004/SZL4-0008-frozen/
+Each frozen hash and its corresponding release hash matched at the start and
+final checkpoint. Imported .olean hashes also remained unchanged. inventory.json
+records these exact bindings. supporting-inventory.json records the frozen
+direct-import versions and relevant implementation support inspected.
+
+Lean 4.33.1, arm64-apple-darwin24.6.0, Release,
+  commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6.
+Pinned Mathlib commit: 0df444a360eaa60ab8c11dca51a86af692955474.
+
+Only the root orientation, assigned packet, relevant frozen imports and pinned
+Mathlib implementation support were used. No manuscript or external literature
+review was added. The reviewer did not author the three target modules. The
+earlier GraphRelations dependency was authored by this reviewer in a separate
+reservation; here its relevant role is only the explicit zero-algebra type.
+This audit does not claim a fresh independent semantic review of every imported
+module. No proof source, frozen source, canonical state or root import was
+edited, and no subdelegation occurred.
+
+Actual commands and verification
+================================
+The retained run_check.py invokes this exact executable:
+/Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean
+with arguments -j2 -DwarningAsError=true and the absolute target filename.
+The cwd is /Users/calebbarnett/Documents/ChatGPT/Kalantar Problem/releases/suzuki-kirchberg-draft.
+Full argv, LEAN_PATH, timings, exit status and imported .olean hashes before and
+after each run are retained in the named *-execution.json files. All final runs
+returned exit 0 and retained identical before/after .olean hashes.
+
+Independent exact frozen-source compilation:
+  compile-weighted-frozen: about 3.68 seconds.
+  compile-universal-frozen: about 13.34 seconds.
+  compile-properties-frozen: about 5.54 seconds.
+No lake build, dependency rebuild, or blanket imported-Mathlib kernel recheck
+was run. These source checks compiled the immutable target text against the
+pinned imported artifacts.
+
+Audit.lean enumerates all constants under each target module's namespace and
+private-module prefix, including generated helpers. For each declaration it
+collects the transitive axiom closure and rejects anything outside
+{propext, Classical.choice, Quot.sound}. It also prints the exact key signatures,
+Representation fields, IsFullAmalgam fields, and universe parameters.
+  WeightedFreeSelfAdjoint: 11 declarations.
+  UniversalAmalgam: 92 declarations.
+  AmalgamConstructionProperties: 7 declarations.
+  Total: 110; zero disallowed axioms.
+Results are in audit.log and axiom-inventory.json.
+
+Examples.lean contains 24 passing example declarations, plus helper candidate
+proofs/equivalences. It checks weighted bounds without a global unit generator
+bound; an empty-index weighted bound; nonemptiness of representations; actual
+CStarAlgebra and CompleteSpace instances; the precise supremum norm and kernel;
+factor multiplication and the common-algebra equation; unique extension;
+the exact faithful-witness isometry hypotheses; separability; arbitrary-universe
+identity amalgams; scalar amalgams; and the all-zero identity amalgam.
+
+The identity probes prove the ordinary candidate A *_A A = A has the exact
+universal property and derive a factor-respecting isometric star-algebra
+equivalence from the constructed algebra to A. The scalar probes similarly
+prove C *_C A = A in universe zero, with the scalar and A factor restrictions
+identified exactly. These are ordinary semantic models, not assumed instances
+of the construction's desired conclusion.
+
+CollapseExamples.lean contains three additional passing examples and a proved
+helper 1=0. Take D=A0=C, A1=the genuine zero algebra, i0=id and i1 the scalar map
+to zero. The constructed algebra is subsingleton, its left map from C is not
+injective, and its actual supremum seminorm is identically zero. This validates
+the zero-algebra convention and demonstrates concretely that the conditional
+injectivity hypotheses cannot be discarded.
+
+Auditor-only failed attempts remain preserved. The first Examples attempt had
+an unused-variable warning and two proposition-as-def warnings. Two preliminary
+collapse probes encountered map_one typeclass/elaboration failures at concrete
+aliases; the final probe uses explicit bundled map fields and the same harmless
+transparency options as the source. No proof-source failure or mutation was
+involved. static-scan.json additionally records no sorry/admit/axiom/unsafe/
+native_decide tokens after comment/string removal. The compiled transitive
+axiom inventory is the stronger check.
+
+Weighted bounds
+===============
+The generator bound is an arbitrary function bound : iota -> R, independent
+of the representation index. No uniform global bound on all generators is
+assumed. For every finite real free polynomial, induction constructs a finite
+nonnegative bound: scalar constants use ||r|| and ||1||<=1; a generator uses
+max(0,bound i); sums add bounds; products multiply bounds using norm
+submultiplicativity. Thus even a family of individually unbounded generator
+sizes is harmless, since each polynomial involves only finitely many operations.
+
+The complex star algebra is the actual complexification C tensor_R FreeAlgebra
+R iota. Tensor induction proves the weighted bound for complex evaluations.
+Self-adjointness is required exactly where evaluation is bundled as a star
+homomorphism. The bound statements themselves allow an empty representation
+index; boundedFamily explicitly requires Nonempty J before forming the family
+used by the supremum construction. Negative proposed bounds on an empty index
+are vacuous, correctly handled by max(0,bound i); they do not enter the actual
+amalgam family, whose index has a genuine zero model and whose bounds are norms.
+
+Representation family, relations, and the actual norm
+====================================================
+Representation contains precisely a carrier in Type u, its actual CStarAlgebra
+structure, two unital complex star homomorphisms from the fixed factors, and
+equality of their composites with the fixed common-algebra maps. It contains
+no universal property, faithful representation, generator separation, desired
+amalgam, or claimed permanence property. Requiring compatibility in this model
+index is the defining relation to be imposed; it is not assuming existence of
+an amalgam satisfying the desired universal property.
+
+The nonempty index is proved by actual homomorphisms to
+GraphRelations.ZeroAlgebra.{u} = (ULift.{u} (Fin 0) -> C). This is a subsingleton
+unital C*-algebra with 0=1, not an inconsistent nontriviality instance. Every
+unital complex algebra map to it is well-defined, and both composites agree.
+
+Generators are all self-adjoint elements of the two factors, tagged by a sum.
+Their bound is the original factor's fixed C*-norm. Each representation image
+is bounded by that norm using Mathlib's automatic contractivity theorem for
+actual complex C*-algebra star homomorphisms. This estimate does not presume
+injectivity or an alternative norm on the factors.
+
+The imported envelope constructs sup_R ||evaluation_R(a)||, proves a genuine
+submultiplicative C*-seminorm, installs it on a separate Model type, takes its
+actual metric separation quotient, and takes the actual metric completion.
+The quotient norm is induced by the seminorm, and completion is isometric on
+that separated quotient. The C*-identity, star and complex algebra operations
+are proved to descend and extend. There is no locally substituted discrete,
+product, or quotient topology disconnected from the constructed norm.
+
+The specialized probe confirms exactly
+  ||inclusion(a)|| = supNorm(boundedFamily)(a),
+and
+  inclusion(a)=0 iff every compatible representation evaluates a to zero.
+The analogous equality criterion justifies equation. The source does not
+assume that representations separate the raw polynomial algebra. Additional
+polynomial relations, including all factor algebra relations, are deliberately
+removed through this common kernel; this is necessary for the construction.
+
+Factor maps and universal property
+=================================
+An arbitrary factor element is represented as generator(realPart a) plus
+i times generator(imaginaryPart a). The exact real/imaginary reconstruction
+shows every compatible representation evaluates this expression to its given
+factor image. Equation then proves zero, one, addition, multiplication,
+complex scalar and star preservation in the quotient/completion. Therefore
+left and right are actual unital complex star homomorphisms. Their commuting
+equation follows from the actual model compatibility equation for every R.
+
+For any given compatible pair into a C*-algebra B : Type u, the source bundles
+that exact pair as one member of Representation and extends its evaluation
+to the complete envelope using its proved supremum-norm contraction. No lift
+existence is an additional assumption. lift_left and lift_right prove its
+restrictions are the supplied maps.
+
+Every free self-adjoint generator is proved to belong to the appropriate
+factor image. FreeSelfAdjoint.hom_ext therefore gives equality on the polynomial
+algebra from equality on the two factor maps. Density and continuity give
+equality on the completion. These steps prove hom_ext and the actual exists-
+unique clause in isFullAmalgam. No extraneous direct summand can evade this
+uniqueness argument.
+
+Universe scope is explicit: D, A0, A1 and the output are in Type u;
+Representation is in Type (u+1); its targets are in Type u; and boundedFamily
+has universe parameters {u,u,u+1}. The separated polynomial completion remains
+in Type u. IsFullAmalgam.extension quantifies over all B : Type u, including
+closed subalgebras of the output. A universe-polymorphic theorem extending to
+arbitrarily larger target universes is not supplied. This is the documented
+fixed-universe universal property, not a hidden restriction to matrix targets
+or a selected class of separable representations.
+
+Separability, faithfulness, and remaining boundaries
+===================================================
+The generic separability theorem assumes an actual IsFullAmalgam proof and
+separability of both factors. It selects countable dense sets in the factors,
+takes their two images, and closes their generated complex star algebra.
+Continuity of the factor maps puts their whole ranges in this closed algebra.
+The proved universal property forces this closed subalgebra to equal the whole
+amalgam. The auxiliary separability result uses countably many finite words
+and a separable scalar field C, not a false assertion that C is countable.
+Closure is in the genuine norm topology. D need not be separately assumed
+separable. constructedSeparable applies this result to the just-constructed
+universal algebra and does not assume its desired separability.
+
+left_injective and left_isometry require a supplied compatible pair f0,f1 into
+an actual C*-algebra B and Function.Injective f0. The right-hand versions require
+Function.Injective f1. The proof composes a proposed equality with the actual
+lift and then uses that supplied faithful map. Thus the hypotheses refer to
+a concrete external compatible representation and are visibly conditional;
+they are not derivations from universality alone. Choosing B to be the output
+and assuming its own factor map faithful would not discharge this obligation.
+The present packet does not construct such faithful witnesses merely from
+injectivity of the input maps i0,i1.
+
+nontrivial requires a compatible pair into a supplied Nontrivial B. Its proof
+uses unitality of the lift to rule out 1=0 in the output. No unconditional
+nontriviality follows for arbitrary input maps; the explicit collapse example
+confirms the expected boundary.
+
+No nuclearity/CPAP, stable finiteness, simplicity, pure infiniteness, graph
+identification, K-theory or KK calculation, extension/classification input,
+or final conditional manuscript theorem is proved by this packet. The user's
+new conditional-verification objective is a coordinator task beyond this
+already-reserved exact-source audit. Existing mathematical sources were
+preserved, and no further infrastructure or research was added after that
+steering. MainClaim remains unproved. Finding no blocking issue in this bounded
+review does not amount to full verification of the larger manuscript argument.

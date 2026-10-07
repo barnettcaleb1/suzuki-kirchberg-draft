@@ -1,0 +1,206 @@
+PARTIAL RESULT — SZLC5-0003
+Independent frozen conditional KK/classification audit, followed by a bounded
+coefficient-model implementation and source dependency analysis.
+Deadline: 2026-10-06 22:14:01.381639 UTC. No subdelegation.
+
+Audit verdict
+=============
+No false theorem or blocking formal defect was found in the two exact frozen
+conditional modules. Their abstract categorical calculation and final transport
+lemma are valid under the visible hypotheses. They do not establish the exact
+Target.MainClaim or its conditional end-to-end version. Acceptance of these
+limited statements is not acceptance of unresolved new-contribution hypotheses
+as published inputs.
+
+Exact independent audit targets:
+ConditionalKK.lean
+  17cd69825718ba7bed7f45656f71aa5b82b4c6f82cf51a74af9b45253bf4f3ef
+ConditionalClassification.lean
+  160d47ec5aa2e0339d997ab86bf1f40b7b52e8e8cdd9d33c498dd66b908c0aec
+Release sources and frozen copies under
+state/packaging/SUZUKI-LEAN-CONDITIONAL-0005/SZLC5-0003-frozen matched.
+Neither audited source was edited.
+
+Supporting assigned exact modules:
+UnitizationRFD.lean
+  85d9b9f0cae77616179859f0487acd27b48b5d37f5e5ad6fb09ff72da6096bd1
+RFDAmplification.lean
+  80a354ccd8fa76f4b36e3b6faa8ecf30e32c2353ff34619d56b03d54208938aa
+Their role in the coefficient route was inspected; the independent new-module
+namespace audit below is for the two conditional targets, not a fresh audit of
+every earlier RFD declaration. Exact support, manuscript and published-source
+snapshot hashes are retained in inventory.json.
+
+Execution evidence
+==================
+The two immutable conditional source files independently compile with the
+pinned Lean 4.33.1 executable using -j2 -M4096 -DwarningAsError=true. The retained
+run_check.py records exact argv, cwd, LEAN_PATH, elapsed time, exit code, and
+the imported packet .olean hashes before/after execution in *-execution.json.
+No lake build or broad Mathlib rebuild was run.
+
+Audit.lean enumerates all declarations in the target public and private-module
+namespaces, including generated helpers, and rejects every transitive axiom
+outside {propext, Classical.choice, Quot.sound}. All 86 declarations pass.
+It also prints the exact MilnorInput, Splitting, ClassificationInput, MainClaim
+and key exported signatures. See audit.log and conditional-axiom-inventory.json.
+
+Examples.lean contains twelve passing independent examples. They check
+idempotence, 1-shift surjectivity, constancy of compatible stages, vanishing
+boundary, the exact beta used by iso, both inverse equations, inverse_stage,
+retained_class, actual finite-amalgam transport in both directions, and the
+precise local classification assembly. An adversarial example proves that
+identity bonding maps with identically zero stage maps cannot satisfy
+MilnorInput on an object whose identity is nonzero. Thus this interface is
+substantive input, not an automatically available witness for arbitrary stages.
+
+All final audit/example/source-compilation commands returned exit 0. The
+first namespace audit took about 140.67 seconds under host load; the two direct
+source compilations took about 2.40 and 7.67 seconds. No failed attempt was
+needed for these conditional-module probes. Imported packet .olean hashes
+remained unchanged at the checked checkpoint.
+
+Split-idempotent and Milnor calculation
+======================================
+The convention is left-to-right composition. epsilon:E->K and eta:K->E with
+eta >> epsilon = id_K give the reduced idempotent id_E-epsilon>>eta. Splitting
+has j:F->X, s:X->F and j>>s=id_F; its f=s>>j is an endomorphism of X. These
+directions agree with the manuscript's Kasparov convention.
+
+Precomposition f>>(-) is an actual additive homomorphism of each Hom group.
+IdempotentSystems proves 1-shift surjective by an explicit recursive correction
+on arbitrary additive groups, without countability or compactness of the Hom
+groups. Compatible sequences for this fixed idempotent are constant fixed
+sequences. The source does not replace an arbitrary varying inverse system by
+a fixed one without an explicit fixed-system input.
+
+MilnorInput supplies a product-boundary map from degree-one groups, its
+vanishing on coboundaries, exactness at Hom(L,Z), and surjectivity onto compatible
+degree-zero sequences. The source then PROVES that the boundary is zero,
+restriction is injective, and precomposition with beta=j>>stage(0) is bijective.
+Surjectivity with test F supplies alpha with beta>>alpha=id_F; injectivity with
+test L supplies alpha>>beta=id_L. No unproved Yoneda step or assumed invertible
+class is concealed in iso.
+
+The inverse-stage equation is exactly stage(n)>>alpha=s. retained_class then
+proves (u>>j>>stage(n))>>alpha=u for any source object and any class u into F.
+This is the desired algebraic retained-class identity. It does not construct
+the manuscript's nonzero common projection or prove that its actual K-class
+is u>>j>>stage(n). That projection/class correspondence remains a new-argument
+obligation.
+
+FirstCoordinate only requires a split first-coordinate inclusion/projection,
+which is enough for the calculation. Its splitting combines these maps with
+i:F->E and r:E->F satisfying i>>r=id_F. Given r>>i=id_E-epsilon>>eta,
+three_channel_sum correctly computes the symbolic positive, negative and zero
+sum as f. It does not identify the actual tensor/coefficient channel maps with
+those symbolic KK expressions. Those identifications cannot be licensed by
+the elementary additive-category theorem itself.
+
+Published Milnor input and transport boundary
+============================================
+The frozen Rosenberg–Schochet excerpt rs-web-1-14.json contains Theorem 1.12
+on countable additivity and Theorem 1.14(b)'s natural Milnor sequence for a
+sequential C*-algebra system. The bootstrap category and UCT are introduced
+later in that excerpt; no UCT premise appears in the cited Milnor statement.
+Original full journal-PDF access is explicitly incomplete in the input ledger.
+The excerpt alone is not a replacement for checking all ambient analytic
+scope and degree/suspension conventions.
+
+The frozen MilnorInput is already the sequence AFTER all stages have been
+identified with X and all bonding classes with f. It ranges over every test
+object Z in the supplied abstract category and identifies the degree-one
+group with Hom(X,S Z). To use it as a licensed published input, one must tie
+the category to the intended separable C*-algebra KK category, supply the
+actual eligible sequential system and canonical limit maps, identify the
+suspension degree, and transport the sequence through the actual coordinate
+isomorphisms. The natural restriction map must become precisely precomposition
+with the supplied stage(n), including the claimed bonding-class identity.
+
+The comments and ledger correctly disclose these obligations. No false
+unconditional claim was found. However a future end-to-end theorem may not
+simply expose an unexplained Splitting, fixed-system MilnorInput, channel-class
+identity or retained projection class as though each were itself a published
+theorem. The user allows explicit standard KK inputs, so rebuilding actual
+Kasparov theory is not required; the interface-to-source correspondence and
+the new construction/transport deductions are required. Any later coordinator
+transport module is outside this exact frozen review and is not certified here.
+
+Phillips and exact final target
+==============================
+The local Phillips v2 text, Corollary 4.2.2 on printed p.42, assumes A,B
+separable, nuclear, unital, purely infinite and simple, and an invertible even
+KK class carrying [1_A] to [1_B]. It concludes an isomorphism realizing that
+class. It has NO UCT premise. The following paragraph explicitly distinguishes
+the later corollaries that do require UCT.
+
+ClassificationInput uses the weaker sufficient consequence: existence of an
+actual unital complex star equivalence, omitting the assertion that its KK
+class equals the prescribed class. This weakening is legitimate for the final
+finite-amalgam transport; the source should be read as a sufficient form of
+the corollary rather than a transcription of its strongest conclusion.
+
+The abstract object, scalar and unit maps must be interpreted as actual KK
+objects, the scalar algebra and distinguished unit classes on the eligible
+Kirchberg algebras. The interface does not itself implement that interpretation.
+Target.IsKirchberg uses finite-set CPC approximation for nuclearity, closed
+two-sided ideal simplicity, and the positive-element hereditary-corner criterion
+for pure infiniteness. Their standard correspondence with Phillips's
+conventions must be included in the source correspondence check; it is not
+proved by this classification wrapper. No coefficient or target UCT premise
+was added.
+
+hasFiniteAmalgam_of_equiv transports the actual full-amalgam universal property
+by composing factor maps with the actual star equivalence and transporting
+extensions back by its inverse. The same finite constituents and the same
+injective input maps are retained. All fields of the exact Target predicate,
+including existence and uniqueness of actual C*-homomorphism extensions, are
+proved; no abstract isomorphism-type surrogate or reduced product is substituted.
+
+conclude is correctly only a local final assembly lemma. Its assumptions
+include an already constructed Kirchberg A, its actual finite-amalgam
+presentation, an isomorphism of KK objects to B and the unit equation. It does
+not quantify away or construct those witnesses. Thus it does not prove
+MainClaim = forall B, IsKirchberg B -> HasFiniteAmalgam B, nor complete the
+conditional manuscript theorem. The ledger's current incomplete status is
+accurate for these exact targets.
+
+Coefficient-model work completed separately
+===========================================
+coefficient-route.txt gives the source-accurate dependency closure from
+Dadarlat's construction. In particular the UCP pullback lift itself can supply
+the semisplit section, and K_*(B)=0 is used only later than the needed extension.
+The required cone KK equivalence is Cone(theta) ≅_KK S(SB), because theta is
+the ideal inclusion. Bott then gives the equivalence with B. No target or
+coefficient UCT is used. Nuclearity and actual cone/extension identifications
+remain explicit bridges; the coefficient-model conclusion is never assumed.
+
+Authored implementation (NOT independently reviewed in this task):
+Suzuki/CoefficientConeModel.lean
+  SHA256 392364b1048cc947981c8d21be9d3cce4336d3f408f52a9b608f52f5ec96ce29
+It defines an actual closed cone C*-algebra, derives separability, gives an
+explicit surjective ideal-coordinate projection, proves RFD by concrete point
+evaluations under injective theta and RFD H, and derives unitization RFD with
+separating tails. It does not assume or prove the full coefficient lemma.
+
+The module compiled with warnings as errors and emitted its .olean. ConeAudit
+checks all 43 own/generated declarations transitively against the allowed
+axioms and compiles seven semantic probes, including actual completeness and
+norm-contractivity of point evaluations. An initial compiler repair replaced
+an incorrect continuous-evaluation lemma name and opened the standard scoped
+C*-hom continuity instance; the failed log and first source attempt are kept.
+No global axiom, sorry, native_decide or source mutation of an audited target
+was used. Only this newly assigned source and task artifacts were written;
+canonical state, root imports and manifests were preserved.
+
+The correct status remains conditional verification in progress. The exact
+audited modules are valid partial steps; the new cone module is checked authored
+infrastructure awaiting independent review. Neither these checks nor the
+dependency analysis constitutes a proof of the full conditional MainClaim.
+
+Unreviewed concurrent work
+=========================
+ConditionalKKTransport.lean was reported by the coordinator during this task.
+It was outside this exact frozen packet and was not read, compiled or reviewed
+by this auditor. The frozen-source scope findings above do not adjudicate that
+new module or later changes to the conditional ledger.

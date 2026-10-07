@@ -1,0 +1,197 @@
+SZL4-0007 exact-source review
+Reservation deadline: 2026-10-06 21:23:58.207679 UTC.
+Outcome: the exact mathematical statements pass review and compilation. One
+decision-instance API limitation was found in the original path module and
+resolved by the separately frozen GraphNonzero supplement. The original source
+remains unchanged. MainClaim is not verified.
+
+Reviewed source versions
+GraphDensity.lean (118 lines):
+b1188c835006b3e899942b37ec88abd32b3fb997e7b0a6f3a0b060b4491fd07c
+GraphPathRepresentation.lean (443 lines):
+a138628ae3e2e1a5c7f9bc1925765ba28d0fc88bcc5d4a03ab4b4770a7f49f60
+GraphNonzero.lean (58 lines, coordinator's frozen supplement):
+8a0b23ea5e13b4aed658fa9ef1be842c6c9bc7753d14911a896ecbfd3b61e4ae
+All match the reservation and frozen packet. source-hashes.json records them.
+The direct GraphUniversal import remains at its previously reviewed hash
+e785020ccee5b9184e59d75de427d80b2b0c3f7c5a9b0c92bba51e798227f9c2.
+
+Review scope and independence
+Read root orientation, the assigned sources, their relevant direct frozen
+imports, and the relevant pinned Mathlib results. No web or external research,
+subdelegation, release-source edits, canonical-state edits, or manuscript edits
+were performed. Audit artifacts are confined to SZL4-0007's directory.
+
+The original GraphDensity and GraphPathRepresentation source review is
+independent of their implementation. The first three GraphNonzero proofs came
+from DecisionTransportProbe authored during this review, then were copied by
+the coordinator into the separate release module. Their provenance is therefore
+NOT an independent second-author mathematical review of those three proofs.
+Their exact released copies were recompiled and checked with concrete default-
+instance probes and axiom inventory. The supplement's added edge-norm and
+Nontrivial theorems were separately inspected against their stated hypotheses.
+
+Density and separability
+1. countable_monoid_closure concerns algebraic Submonoid.closure, not topological
+   closure. It places each element in the range of finite lists in the
+   countable generator subtype. The empty word supplies the unit; multiplication
+   concatenates finite words. This is a valid countability argument.
+2. closed_adjoin_separable does not claim that the complex linear span is a
+   countable set. It uses countability of words in s union star(s), the actual
+   Mathlib identity StarAlgebra.adjoin_eq_span, and IsSeparable.span. That pinned
+   theorem uses separability of the scalar ring Complex, continuous addition,
+   and continuous scalar multiplication. Passing to norm closure preserves
+   separability in the ambient Cstar topology.
+3. polynomial_inclusion_mem is proved algebraically, first extracting real
+   and imaginary parts of the included edge from any star-subalgebra containing
+   it, then inducting through the real free algebra and its complex tensor
+   extension. No generation theorem is supplied as a premise.
+4. generated_eq_top uses the genuine dense range of the polynomial inclusion
+   into the separated completion, together with the norm-closed generated
+   star-subalgebra. The resulting equality is for the actual GraphUniversal
+   family, not an abstract generation predicate with assumed consequences.
+5. separable uses finiteness of V and E to obtain countability of vertex/edge
+   ranges, the preceding closed-adjoin result, and generated_eq_top. The proof
+   does not use the path representation or assume it faithful. It asserts
+   separability of the graph Cstar algebra, not of the possibly nonseparable
+   path Hilbert space or its entire bounded-operator algebra.
+6. DensityProbe compiles an actual countable dense subset, the assertion that
+   every closed star-subalgebra containing all vertices/edges is top, and an
+   explicit closure equality in the completion's topology.
+
+The actual Hilbert space and operators
+7. Hilbert X is lp (fun _ : X => Complex) 2, with its pinned Mathlib Hilbert
+   norm and inner product. No finite matrix truncation or entrywise surrogate
+   norm occurs. Bounded operators have the actual ContinuousLinearMap operator
+   norm, star is the Hilbert adjoint, and CStarAlgebra is the standard complete
+   Hilbert-space operator instance. Relevant Mathlib norm_adjoint_comp_self
+   proves the Cstar identity for that norm.
+8. coordinate is the canonical norm-preserving lp.single map. Distinct
+   coordinates are orthogonal. inclusion f is the Hilbert-sum linear isometry
+   formed from those coordinates for an injection f. The imported construction
+   is a genuine summable Hilbert sum and proves norm preservation; it is not an
+   assumed coordinate-reindexing operator.
+9. inclusion_adjoint_apply derives coordinate restriction from the adjoint's
+   inner-product identity. The in-range and out-of-range coordinate formulas
+   follow from that result and the adjoint-isometry identity. rangeProjection
+   is inclusion composed with its actual adjoint, with self-adjointness and
+   idempotence proved. transport f g is inclusion g composed with the adjoint
+   of inclusion f; its initial/final projections are established by composition.
+10. operator_ext is justified by lp.ext_continuousLinearMap at exponent 2.
+    The pinned Mathlib proof uses convergence of the sum of the coordinate
+    vectors for p != infinity and continuity of the maps. Equality merely on
+    algebraic finite-support vectors is not silently promoted to all vectors.
+
+Paths, recursion, and all CK relations
+11. Path source target consists of p : Nat -> E satisfying
+       target(p n) = source(p(n+1)) for every n.
+    head=p 0 and start=source(head). Prefixing e is allowed exactly when the
+    old start equals target e. Tail/prefix inverse laws are proved on the
+    actual subtype, including the composability witness.
+12. The no-sinks hypothesis is exactly forall v, exists e, source e = v.
+    exists_start chooses one outgoing edge per vertex, iterates the function
+    v -> target(chosenEdge v), and uses those chosen edges to form an actual
+    infinite path. The proof explicitly verifies composability and the start
+    vertex. It needs neither a separately assumed path witness nor graph
+    finiteness; classical choice is in the recorded standard axiom baseline.
+13. Vertex v is the range projection of the injection of paths starting at v.
+    Edge e transports that target-starting coordinate space to the range of
+    prefixing e. Coordinate formulas establish that the adjoint removes the
+    first edge precisely when it is e, and is zero otherwise.
+14. Every CK clause was inspected:
+    - each vertex is a self-adjoint idempotent;
+    - distinct vertices are orthogonal since a path has only one start;
+    - the finite vertex sum is the identity on every coordinate, hence on lp;
+    - s_e* s_e is p_target(e), by the transport initial-projection identity;
+    - distinct edge range projections are orthogonal since a path has one head;
+      the actual initial-product orthogonality is then derived using the
+      previously proved partial-isometry equivalence;
+    - the outgoing finite range sum is p_v because a path starting at v has
+      exactly one first edge with source v.
+    family assembles these proved operator equations. No CK relation is assumed
+    of arbitrary previously supplied operators. The source/target convention
+    agrees with the manuscript and previously audited GraphRelations.
+15. The outgoing formula holds even at sink vertices in this infinite-path
+    representation, where the vertex is zero. This is compatible with the
+    more general Family definition, which requires CK only at emitting
+    vertices. General graphs with sinks are not claimed to have nonzero
+    vertices in this representation. NoSinks is retained for nonzeroness.
+16. vertex_ne_zero chooses a path starting at v and applies the alleged zero
+    operator to its lp.single coordinate of coefficient one; evaluation at
+    that coordinate gives the contradiction. Norm-one results then use actual
+    Cstar identities and nonzero projections. No faithfulness assumption is
+    used to obtain these concrete nonzero witnesses.
+
+Universe and decision-instance scope
+17. With V : Type u and E : Type v, Path, its lp Hilbert space, and its operator
+    algebra all live in Type v; the start/composability predicates may mention
+    Type u without enlarging the path carrier. SignatureProbe elaborates these
+    universe equalities and the actual operator CStarAlgebra instance.
+18. The path family is therefore a representation in GraphUniversal's target
+    universe v. The exact conclusion is GraphUniversal.vertex.{v,u,v} != 0;
+    the graph carrier itself is Type(max u v). The results do not assert
+    independence of the representation universe or nonzeroness in an
+    arbitrarily different fixed representation universe. For finite graph
+    indices in Type0, they apply to the Type0 universal graph algebra.
+19. Exact-source API finding: the original path module declares a local
+    classical Decidable instance before its namespace. Its last three
+    universal corollaries therefore use the induced fixed classical
+    DecidableEq V, rather than quantifying over a user's supplied instance.
+    Direct application to GraphUniversal.vertex with Unit's default instance
+    produced an actual compiler type mismatch. This does not invalidate the
+    mathematical theorem at its stated instance, but it prevents treating that
+    original theorem as directly generic over decision instances.
+20. The finding was reported to the coordinator before any repair proposal.
+    DecisionTransportProbe proves the safe adapter with [d : DecidableEq V]:
+    define d' a b := Classical.propDecidable(a=b), obtain d=d' by Subsingleton.elim,
+    and use Eq.mpr (congrArg P hd) for the explicit proposition P depending on
+    the decision instance. This transports the entire dependent graph object,
+    norm, and statement, while leaving the representation universe unchanged.
+    The release GraphNonzero contains these three proofs. NonzeroProbe then
+    successfully applies the resulting API using Unit's ordinary default
+    instance. The original fixed-instance statements remain byte-for-byte
+    unchanged and retain their exact scope.
+21. GraphNonzero.universal_edge_norm_one uses the actual Cstar square identity
+    and nonzero initial vertex's norm one. nontrivial additionally requires
+    Nonempty V, which is necessary: NonzeroProbe verifies that the empty graph
+    satisfies NoSinks vacuously yet has a subsingleton universal algebra.
+
+Substantive controls and limitations
+22. PathProbe checks norm preservation, Hilbert-adjoint star, exact coordinate
+    transport and annihilation, and the two-loop graph's actual Cuntz relations.
+    It proves an edge has a proper range by testing on the other head's path
+    coordinate, while its initial projection is identity and norm is one.
+23. NegativeControlProbe proves that for the one-vertex/one-loop graph the
+    concrete path edge is identity. A genuine Complex-valued family with edge
+    -1 proves the universal edge is not identity. Consequently the canonical
+    path lift is NOT injective for this graph. This confirms a material scope
+    boundary: all vertex projections being nonzero does not by itself make the
+    infinite-path representation faithful. Neither audited source claims it
+    does. The density proof is independent of such a claim.
+24. No graph simplicity, pure infiniteness, CPAP/nuclearity, graph/amalgam
+    identification, K-theory, classification, or end-to-end Suzuki MainClaim is
+    certified by this review. Those are separate obligations or explicit
+    published inputs in the coordinator's subsequently revised objective.
+
+Validation and artifacts
+Lean: 4.33.1, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6.
+Mathlib: 0df444a360eaa60ab8c11dca51a86af692955474.
+All three frozen release modules were independently recompiled with -j2 and
+-DwarningAsError=true, emitting oleans only into this audit directory. Logs and
+timings are retained in source-compilations.json and supplement-checks.json.
+All six probe files compile under the same flags: DensityProbe, PathProbe,
+SignatureProbe, DecisionTransportProbe, NonzeroProbe, NegativeControlProbe.
+Their 24 targeted printed axiom checks contain only propext, Classical.choice,
+Quot.sound. Initial audit-probe elaboration mistakes were corrected only in
+audit artifacts; final logs have no unresolved errors or sorryAx.
+
+AxiomInventory uses actual originating module identity via findModuleOf?,
+rather than only namespace prefixes. This is necessary to include the top-level
+instDecidable_suzuki declaration. It audits all 97 declarations: GraphDensity 8,
+GraphPathRepresentation 84, GraphNonzero 5, including both private density
+helpers and the global decision instance. Every collected transitive axiom is
+in the standard allowlist. See axiom-inventory.jsonl and axiom-summary.json.
+
+No unresolved compilation obligation remains. No further infrastructure or
+research was started after the coordinator communicated the user's revised
+objective; only the current review checkpoint was completed.

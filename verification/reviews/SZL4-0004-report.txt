@@ -1,0 +1,188 @@
+SZL4-0004 independent exact-source audit
+Reservation deadline: 2026-10-06 21:02:04 UTC.
+Status: completed before the deadline; final validation is recorded in completion.json.
+
+Packet and scope
+Read root orientation, the exact assigned source files and their relevant direct
+dependencies, pinned Mathlib, and manuscript Sections 2–3. Exact SHA256 values and
+line counts are recorded in source-hashes.json. No release source, aggregator,
+state, manuscript, or other worker file was edited. MatrixCPApproximation was
+neither inspected nor audited in this reservation. All audit files are confined
+to research/branches/SUZUKI/lean-pass4/SZL4-0004.
+
+Outcome: no mathematical or exact-source objection found in the
+audited envelope, free self-adjoint algebra, relation transfer, or concrete CK
+family statements or the constructed graph universal property. The scope
+restrictions below are material.
+
+Separation, norm, and completion
+1. CStarSeminorm uses the actual metric SeparationQuotient, not an arbitrary
+   ideal quotient predicate. Its star descends because the norm-isometric star
+   is continuous and hence preserves inseparability. Ring operations and norm
+   are the pinned Mathlib quotient operations and induced norm.
+2. The only Cstar assumption at this general input stage is the explicit Fact
+   forall a, norm(a)^2 <= norm(star(a)*a), together with actual seminormed-ring,
+   normed-star and complex-algebra structures. It is not a completion or
+   universal-property premise. Quotient CstarRing is proved by representatives.
+   Envelope is Completion (SeparationQuotient A), in the same carrier universe.
+3. CStarCompletion extends star with Completion.map of the actual isometry;
+   involutivity, anti-multiplication, addition, complex scalar compatibility,
+   and the Cstar inequality follow by closed-set/dense-range induction. The
+   resulting completion uses its genuine complete normed-ring structure.
+4. A given contractive star representation is descended using continuity and
+   separation of its Cstar target, then extended by the actual uniform
+   Completion.extension. The extension's algebraic operations are proved by
+   density. Uniqueness uses automatic continuity only for actual homomorphisms
+   whose domain and codomain are complete Cstar algebras. No unjustified
+   automatic-continuity claim for the incomplete input algebra is used.
+5. Independent EnvelopeProbe proves equality of quotient/inclusion images iff
+   the seminorm of their difference is zero; the full Cstar norm equality;
+   dense inclusion; and an explicit ExistsUnique extension statement.
+
+Supremum family
+6. BoundedFamily has actual star homomorphisms into actual Cstar targets, a
+   Nonempty index, and a pointwise BddAbove range of representation norms for
+   every algebra element. This is pointwise polynomial boundedness, not one
+   uniform bound for the entire algebra and not an assumed universal norm.
+7. Subadditivity, submultiplicativity, scalar bound and star isometry are proved
+   using these finite suprema. The Cstar lower inequality is proved using a
+   square-root bound on every representation norm, with explicit nonnegativity.
+   The independent probe recovers the full square equality for the supremum.
+8. Model is an algebraic type copy whose norm is exactly the constructed
+   RingSeminorm. Envelope carrier is Type u even when representation targets
+   are Type v and the family index is Type w; printed universe signatures and
+   an explicit Type u elaboration confirm this. Family membership is sufficient
+   for extension, but the audit also compiles extension for any norm-dominated
+   representation into an unrelated target universe z.
+9. The actual inclusion kernel is precisely the intersection of representation
+   kernels. Injectivity needs the explicit separation hypothesis; it is not
+   smuggled into the construction. UniversalCStarRelations proves exactly
+   these facts and no stronger nonzeroness assertion.
+10. ZeroProbe constructs a nonempty family consisting of the unital map into
+    Fin 0 -> Complex and proves the resulting envelope is subsingleton. Thus
+    the admitted zero-algebra case is real, and Nonempty Index does not imply
+    a nonzero envelope. The identity singleton family probe proves norm
+    preservation and inverse identities with the original complete Cstar A.
+
+Free self-adjoint algebra
+11. FreeSelfAdjoint.Algebra is literally Complex tensor[Real] FreeAlgebra Real iota.
+    Pinned Mathlib reverses free words and fixes real coefficients; tensor star
+    conjugates the complex factor. Its complex StarModule law is proved.
+12. Evaluation exists for any self-adjoint generator family in an actual Cstar
+    algebra, with no contractivity premise. Star preservation follows by free
+    algebra and tensor induction. Hom extensionality follows from the two
+    algebraic universal properties. The audit proves the corresponding exact
+    ExistsUnique property, conjugation of complex scalar multiples, and that
+    free generators are nonzero by evaluation into Complex.
+13. Contractive generators separately imply uniform bounds over the given
+    family of targets for each real polynomial, then each tensor polynomial.
+    The induction uses sums/products of nonnegative bounds, including the
+    norm-one upper bound valid even for zero targets. These are used to supply
+    BoundedFamily.bounded, rather than postulated. FreeProbe also proves the
+    completed generators are contractions and determine completed homomorphisms.
+
+Concrete graph relations
+14. MatrixEdge M is Sigma source w, Sigma target v, Fin(M v w). This agrees with
+    manuscript target-row/source-column convention: M(v,w) edges w -> v.
+    No zero column is proved equivalent to NoSinks. A Family has initial
+    s_e* s_e = p_target and outgoing range sum at source. CK is imposed only
+    at emitting vertices; it does not force a sink projection to vanish.
+15. Edge right support, range projection, norm bound, equivalence of orthogonal
+    ranges with off-diagonal initial products, and left source support are
+    proved from these relations in the genuine ambient Cstar algebra. Word
+    and finite polynomial norm bounds use the ambient norm, not an entrywise
+    substitute. Real/imaginary generator contractions and edge reconstruction
+    use actual Cstar real and imaginary parts.
+16. generated is the norm-closed star-subalgebra generated by vertices/edges.
+    Its extension/uniqueness statements are equality on existing homomorphisms,
+    with the full norm closure handled by continuity. generatedMap restricts
+    an already-given ambient homomorphism; it is not a supposed universal lift.
+17. The independent GraphProbe constructs graph 0 -> 1 in M_2(Complex), with
+    p_0=e_00, p_1=e_11, s=e_01. It proves p_1 is nonzero despite being a sink,
+    s* s=p_1, s s*=p_0, and the actual matrix operator norm of s is one. It also
+    checks the matrix orientation and failure of the no-zero-column condition.
+18. Inflated-frame statements are only for k=l=1. The stated supports, initial
+    products and same-block matrix-unit equations use actual CStarMatrix and
+    actual projection corners. They do not yet supply total range sum, cross-
+    block multiplication, full factor homomorphisms, or the graph/amalgam
+    isomorphism. No such result is inferred in this audit.
+
+Constructed graph universal property (final frozen supplement)
+19. GraphUniversal.Representation ranges over every Carrier : Type u together
+    with its actual CStarAlgebra structure and actual CK Family. This is a type
+    in universe max(u+1,v,w), not an opaque predicate asserting a universal
+    algebra. The zero graph family establishes nonemptiness. No nonzero model
+    is inserted as an assumption.
+20. The representation generators are the vertex projections and real and
+    imaginary parts of the edges. Their contraction estimates supply exactly
+    the FreeSelfAdjoint polynomial bound for the entire representation family.
+    PolynomialEdge is real-generator + I times imaginary-generator, and its
+    evaluation equals the original edge. Thus the sup seminorm includes all
+    CK representations in the chosen target universe, with no missing
+    representation-boundedness premise.
+21. Every graph relation is transferred through the exact intersection-kernel
+    result. Explicit .{u} annotations on the envelope, inclusion, and equation
+    theorem preserve the SAME representation family throughout these proofs.
+    Projection self-adjointness also follows directly from the free generator
+    star law. The completed family is assembled from these proved equations.
+22. lift is the previously constructed actual extension for the given concrete
+    family. Its vertex/edge evaluation laws are proved. polynomial_realPart and
+    polynomial_imaginaryPart recover the two free generators from the edge
+    inside the algebraic complex star algebra. Consequently agreement on
+    vertices and edges gives agreement on all free generators, then all
+    polynomials, then the completion by density. existsUnique_lift is a genuine
+    proved ExistsUnique theorem, with no universal property among its premises.
+23. Exact universe scope: V : Type v, E : Type w, graph carrier is Type(max v w).
+    The independent parameter u selects the representation family and thus the
+    sup norm; existsUnique_lift quantifies over B : Type u. It does not assert
+    independence of the chosen representation universe, nor a lift into every
+    target universe for one fixed construction. When u=max v w the carrier and
+    targets belong to one Cstar category; the audit compiles the canonical
+    self-family lift = identity. In particular the finite combinatorial
+    universe0 use case has the full ordinary universe0 unital CK property.
+24. UniversalGraphProbe compiles the exact supremum norm equation, dense
+    polynomial inclusion, exact zero kernel, edge bound, full ExistsUnique
+    statement with its explicit universe variables, and the same-universe
+    identity lift. The extended GraphProbe applies the M_2(Complex) witness to
+    prove the universal graph's sink vertex is nonzero and its edge has norm
+    one. These are concrete examples, not a proof that every vertex of every
+    graph survives. vertex_ne_zero_of_representation retains its explicit
+    nonzero concrete-family witness.
+
+Validation
+Pinned Lean: 4.33.1, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6.
+Pinned Mathlib: 0df444a360eaa60ab8c11dca51a86af692955474.
+Every source listed in source-hashes.json was independently recompiled with
+lean -j2 -DwarningAsError=true; output oleans and logs reside in this audit
+directory. EnvelopeProbe, FreeProbe, ZeroProbe, GraphProbe, and
+UniversalGraphProbe compiled under
+the same flags. Their final printed axiom sets contain only propext,
+Classical.choice, Quot.sound. Initial probe elaboration failures were fixed
+inside audit artifacts only; no source repair was needed. Final logs contain
+no remaining errors or synthetic sorry axioms.
+
+AxiomInventory independently enumerates all matching public and private module
+declarations, including generated helpers, and rejects every axiom outside
+that baseline. The final inventory contains 420 declarations, including six
+private graph helpers/equations. Counts: CStarCompletion 39, CStarSeminorm 43,
+UniversalCStar including relation transfer 105, FreeSelfAdjoint 26,
+GraphRelations 131 public plus six private, GraphUniversal 70. All pass.
+The five semantic probe files additionally print 28 successful targeted axiom
+checks. Final inventory and structured counts are in axiom-inventory.jsonl and
+axiom-summary.json. No unresolved compilation obligation remains in this audit.
+
+Practical API note: probe files use the same two local backward.isDefEq
+transparency options as the released files. Without them, some derived-ring
+instance diamonds obstruct tactic elaboration; this was not a mathematical
+defect or a source compilation failure.
+
+Material limitations
+This verifies the exact foundations stated, not the Suzuki MainClaim. A
+specified bounded family is not automatically the family of all desired graph
+representations; GraphUniversal separately discharges this for CK targets in
+the stated universe. General nonzero graph vertices, graph simplicity, graph pure
+infiniteness, graph CPAP/nuclearity, the finite-dimensional graph/amalgam
+identification, K-theory calculations and connecting-diagram identification
+remain separate proof obligations unless subsequently added in an explicitly
+reviewed frozen supplement. No completion or bounded-family statement is
+promoted to any of those conclusions here.

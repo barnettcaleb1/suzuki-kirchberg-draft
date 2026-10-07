@@ -1,0 +1,48 @@
+import Suzuki.FullTheoremConditional
+set_option pp.universes true
+set_option pp.proofs false
+set_option linter.checkUnivs false
+universe u v w t
+example {K : Type v} [CategoryTheory.Category.{w} K] [CategoryTheory.Preadditive K]
+    (P : Suzuki.PublishedInputs.{u,v,w,t} (K := K)) : Suzuki.Target.MainClaim.{u} :=
+  Suzuki.fullTheoremConditional P
+#check Suzuki.fullTheoremConditional
+#print axioms Suzuki.fullTheoremConditional
+#print Suzuki.PublishedInputs
+#print Suzuki.CoefficientModelFromExtension.KKInterpretation
+#print Suzuki.CoefficientModelFromExtension.NuclearityInput
+#print Suzuki.CoefficientModelFromExtension.LiftingInput
+#print Suzuki.CoefficientModelFromExtension.DadarlatInput
+#print Suzuki.CoefficientModelFromExtension.ConeBottInput
+#print Suzuki.CoefficientModelFromExtension.SplitUnitizationInput
+#print Suzuki.TensorCoefficientChannels.Spatial
+#print Suzuki.TensorCoefficientChannels.MaximalOn
+#print Suzuki.ConditionalMainConstruction.ExtensionInputs
+#print Suzuki.ConditionalMainConstruction.AnalyticInputs
+#print Suzuki.ConditionalMainConstruction.MilnorInputs
+#print Suzuki.GraphCoefficientLimit.GraphInput
+#print Suzuki.GraphCoefficientLimit.SupportInput
+#print Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput
+#print Suzuki.TensorEvaluationPaths.JointFaithfulnessInput
+#print Suzuki.ActualFiniteCoefficientLimits.FiniteNuclearInput
+#print Suzuki.ActualCoefficientKK.SpatialKKInput
+#print Suzuki.ActualCoefficientKK.ScalarTensorInput
+#print Suzuki.ActualCoefficientKK.MatrixInput
+#print Suzuki.ActualCoefficientKK.UniverseCone.Input
+#print Suzuki.ActualCoefficientKK.ReferenceInput
+#print Suzuki.GraphChannelKKCalculation.ExteriorInput
+#print Suzuki.GraphChannelKKCalculation.KTheory
+#print Suzuki.GraphChannelKKCalculation.FiniteK0Input
+#print Suzuki.GraphChannelKKCalculation.FreeUCTInput
+#print Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates
+#print Suzuki.PrescribedUnitCoordinate.ProjectionK0
+#print Suzuki.PrescribedUnitCoordinate.FiniteProjectionRanks
+#print Suzuki.PrescribedUnitCoordinate.ProjectionRepresentatives
+#print Suzuki.ActualUnitKK.ProjectionInterpretation
+#print Suzuki.ActualUnitKK.RepresentableInput
+#print Suzuki.ActualUnitKK.ProjectionExteriorInput
+#print Suzuki.ActualUnitKK.ProjectionConeInput
+#print Suzuki.ActualUnitKK.ReferenceGeneratorInput
+#print Suzuki.ConditionalKKTransport.AnalyticMilnorInput
+#print Suzuki.ActualKKCornerClassification.FullCornerKKInput
+#print Suzuki.ActualKKCornerClassification.ClassificationInput

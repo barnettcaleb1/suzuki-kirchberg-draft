@@ -1,4 +1,4 @@
-Build completed successfully (3534 jobs).
+Build completed successfully (3606 jobs).
 NOT VERIFIED: a checked proof of Suzuki.Target.MainClaim is required.
-/var/folders/4t/rfq0jbxx5v3_0vgm06bysxw40000gn/T/suzuki-full-mdsdih6f/FullVerification.lean:3:41: error(lean.unknownIdentifier): Unknown identifier `Suzuki.fullTheorem`
-/var/folders/4t/rfq0jbxx5v3_0vgm06bysxw40000gn/T/suzuki-full-mdsdih6f/FullVerification.lean:4:14: error(lean.unknownIdentifier): Unknown constant `Suzuki.fullTheorem`
+/var/folders/4t/rfq0jbxx5v3_0vgm06bysxw40000gn/T/suzuki-full-modxkvo1/FullVerification.lean:3:41: error(lean.unknownIdentifier): Unknown identifier `Suzuki.fullTheorem`
+/var/folders/4t/rfq0jbxx5v3_0vgm06bysxw40000gn/T/suzuki-full-modxkvo1/FullVerification.lean:4:14: error(lean.unknownIdentifier): Unknown constant `Suzuki.fullTheorem`

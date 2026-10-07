@@ -1,0 +1,5 @@
+Build completed successfully (3606 jobs).
+'Suzuki.fullTheoremConditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS: fullTheoremConditional proves exact MainClaim from PublishedInputs.
+Conditional Lean verification only: actual KK realization and published inputs remain external.
+Explicit-hypothesis and manuscript/source correspondence reviews are separate gates.

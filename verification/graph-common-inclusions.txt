@@ -1,0 +1,45 @@
+Conditional Lean verification — canonical common-inclusion continuation
+
+Manuscript: all-kirchberg-v2.tex, Lemma 2 (lem:graph), lines 109–152;
+unchanged SHA-256 f61dc0872c2edd4be42c6e0160fc37fd128324fbe7244e7b76f62246f4492537.
+New module: Suzuki/GraphCommonInclusions.lean.
+
+Actual construction and proved correspondence:
+- D is precisely Blocks(Sum.elim k l), with operator norms on complex matrices.
+- F0 coordinates are the P and Q slots of each vertex. firstCoordEquiv enumerates
+  one P copy and one Q copy; first is a genuine unital complex star homomorphism.
+- F1 coordinates are P slots and incoming-edge Q slots. coordEquiv enumerates
+  one P copy and the Q copy labelled by the source of each incoming edge.
+- first_P, first_Q, second_P and second_Q prove the exact common relations,
+  including the complete outgoing sum on Q matrix units.
+- Equality on actual common maps is equivalent to those CommonEntries equations;
+  matrix-unit induction and finite block reconstruction prove both directions.
+- Both inclusions are injective; the second uses only NoSinks(source).
+- The constructed graph factor maps commute on D. In the constructed full
+  universal amalgam, its proved commutation gives CommonEntries. Consequently
+  amalgamEquivCorner has only finite graph data, positive k/l and no-sinks inputs.
+  There is no remaining universal-property, common-entry, CK, generation,
+  inverse-map or full-projection assumption in this equivalence.
+- For A(v,w) edges w to v, first_counts/second_counts give exactly [I I]/[I A].
+  first_standard_coordinates/second_standard_coordinates provide actual row
+  reindexings matching the existing standard multiplicity maps for EVERY d in D.
+- matrixAmalgamEquivCorner instantiates the equivalence with the precise matrix
+  graph and no-zero-column hypothesis. The algebra is the constructed full norm
+  completion. amalgamEquivCorner_unit proves the actual image of 1 is q.
+- Fullness of q was already proved in GraphCornerIdentification and is preserved.
+
+Exact scope: scalar graph equivalence at Type 0. Common-map equations and hom
+extension comparisons are valid with the displayed target universe u. The copy
+maps permit zero dimensions in their general definitions, but graph equivalence
+requires every k(v), l(v)>0. Source-row adjacency is A transpose; target rows
+and minimal-projection conventions are unchanged.
+
+No published result is an input to this module. No target/coefficient UCT is
+introduced. The K-theory generator/unit interpretation still requires actual
+K-functor/Morita correspondence. The end-to-end use of these coordinate maps,
+coefficient construction, KK channel classes, actual limits and prescribed final
+unit are not proved here. fullTheoremConditional remains absent.
+
+This is coordinator verification, not independent or human review. All prior
+64 proof modules and the frozen 64-module checkpoint remain byte-identical.
+No additional worker launches, publication, manuscript edit or new batch.

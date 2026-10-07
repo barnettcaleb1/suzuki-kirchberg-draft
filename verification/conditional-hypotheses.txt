@@ -1,0 +1,2393 @@
+Suzuki.fullTheoremConditional.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (P : Suzuki.PublishedInputs.{u, v, w, t}) : Suzuki.Target.MainClaim.{u}
+'Suzuki.fullTheoremConditional' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]
+structure Suzuki.PublishedInputs.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] : Type (max (max (max (t + 1) (u + 1)) v) (w + 1))
+number of parameters: 3
+fields:
+  Suzuki.PublishedInputs.kk.{u, v, w, t} : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}
+  Suzuki.PublishedInputs.extension.{u, v, w,
+    t} : Suzuki.ConditionalMainConstruction.ExtensionInputs.{u, v, w} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+  Suzuki.PublishedInputs.spatial.{u, v, w, t} : Suzuki.TensorCoefficientChannels.Spatial.{u}
+  Suzuki.PublishedInputs.analytic.{u, v, w,
+    t} : Suzuki.ConditionalMainConstruction.AnalyticInputs.{u} (Suzuki.PublishedInputs.spatial.{u, v, w, t} self)
+  Suzuki.PublishedInputs.finiteNuclear.{u, v, w, t} : Suzuki.ActualFiniteCoefficientLimits.FiniteNuclearInput.{u}
+  Suzuki.PublishedInputs.tensorKK.{u, v, w,
+    t} : Suzuki.ActualCoefficientKK.SpatialKKInput.{u, v, w} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.spatial.{u, v, w, t} self)
+  Suzuki.PublishedInputs.scalarTensor.{u, v, w,
+    t} : Suzuki.ActualCoefficientKK.ScalarTensorInput.{u, v, w} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+      (Suzuki.ActualCoefficientKK.SpatialKKInput.exterior.{u, v, w} (Suzuki.PublishedInputs.tensorKK.{u, v, w, t} self))
+  Suzuki.PublishedInputs.matrix.{u, v, w,
+    t} : Suzuki.ActualCoefficientKK.MatrixInput.{u, v, w} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+  Suzuki.PublishedInputs.kGroups.{u, v, w,
+    t} : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+  Suzuki.PublishedInputs.finiteK0.{u, v, w, t} : Suzuki.GraphChannelKKCalculation.FiniteK0Input
+  Suzuki.PublishedInputs.graphUCT.{u, v, w,
+    t} : Suzuki.GraphChannelKKCalculation.FreeUCTInput.{u, v, w, t} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.kGroups.{u, v, w, t} self)
+  Suzuki.PublishedInputs.finiteCone.{u, v, w,
+    t} : Suzuki.ActualCoefficientKK.UniverseCone.Input.{u, v, w, t} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.kGroups.{u, v, w, t} self) (Suzuki.PublishedInputs.finiteK0.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.graphUCT.{u, v, w, t} self)
+  Suzuki.PublishedInputs.reference.{u, v, w,
+    t} : Suzuki.ActualCoefficientKK.ReferenceInput.{u, v, w, t} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.kGroups.{u, v, w, t} self) (Suzuki.PublishedInputs.graphUCT.{u, v, w, t} self)
+  Suzuki.PublishedInputs.finiteTensor.{u, v, w,
+    t} : Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} (Suzuki.PublishedInputs.spatial.{u, v, w, t} self)
+  Suzuki.PublishedInputs.projection.{u, v, w,
+    t} : Suzuki.PrescribedUnitCoordinate.ProjectionK0.{u, w} (Suzuki.PublishedInputs.spatial.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.finiteTensor.{u, v, w, t} self)
+  Suzuki.PublishedInputs.projectionInterpretation.{u, v, w,
+    t} : Suzuki.ActualUnitKK.ProjectionInterpretation.{u, v, w, w} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.spatial.{u, v, w, t} self) (Suzuki.PublishedInputs.finiteTensor.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.projection.{u, v, w, t} self)
+  Suzuki.PublishedInputs.representable.{u, v, w,
+    t} : Suzuki.ActualUnitKK.RepresentableInput.{u, v, w, t} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.kGroups.{u, v, w, t} self)
+  Suzuki.PublishedInputs.projectionExterior.{u, v, w,
+    t} : Suzuki.ActualUnitKK.ProjectionExteriorInput.{u, v, w, w} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.projectionInterpretation.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.tensorKK.{u, v, w, t} self) (Suzuki.PublishedInputs.scalarTensor.{u, v, w, t} self)
+  Suzuki.PublishedInputs.ranks.{u, v, w,
+    t} : Suzuki.PrescribedUnitCoordinate.FiniteProjectionRanks (Suzuki.PublishedInputs.finiteK0.{u, v, w, t} self)
+  Suzuki.PublishedInputs.coneProjection.{u, v, w,
+    t} : Suzuki.ActualUnitKK.ProjectionConeInput.{u, v, w, t} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.spatial.{u, v, w, t} self) (Suzuki.PublishedInputs.finiteTensor.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.projection.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.projectionInterpretation.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.kGroups.{u, v, w, t} self) (Suzuki.PublishedInputs.representable.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.finiteK0.{u, v, w, t} self) (Suzuki.PublishedInputs.graphUCT.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.finiteCone.{u, v, w, t} self) (Suzuki.PublishedInputs.ranks.{u, v, w, t} self)
+  Suzuki.PublishedInputs.referenceGenerator.{u, v, w,
+    t} : Suzuki.ActualUnitKK.ReferenceGeneratorInput.{u, v, w, t} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.kGroups.{u, v, w, t} self) (Suzuki.PublishedInputs.representable.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.graphUCT.{u, v, w, t} self) (Suzuki.PublishedInputs.reference.{u, v, w, t} self)
+  Suzuki.PublishedInputs.projectionRepresentatives.{u, v, w,
+    t} : Suzuki.PrescribedUnitCoordinate.ProjectionRepresentatives.{u, w}
+      (Suzuki.PublishedInputs.spatial.{u, v, w, t} self) (Suzuki.PublishedInputs.finiteTensor.{u, v, w, t} self)
+      (Suzuki.PublishedInputs.projection.{u, v, w, t} self)
+  Suzuki.PublishedInputs.milnor.{u, v, w,
+    t} : Suzuki.ConditionalMainConstruction.MilnorInputs.{u, v, w} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+  Suzuki.PublishedInputs.morita.{u, v, w,
+    t} : Suzuki.ActualKKCornerClassification.FullCornerKKInput.{u, v, w} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+  Suzuki.PublishedInputs.classification.{u, v, w,
+    t} : Suzuki.ActualKKCornerClassification.ClassificationInput.{u, v, w} (Suzuki.PublishedInputs.kk.{u, v, w, t} self)
+constructor:
+  Suzuki.PublishedInputs.mk.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] (kk : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w})
+    (extension : Suzuki.ConditionalMainConstruction.ExtensionInputs.{u, v, w} kk)
+    (spatial : Suzuki.TensorCoefficientChannels.Spatial.{u})
+    (analytic : Suzuki.ConditionalMainConstruction.AnalyticInputs.{u} spatial)
+    (finiteNuclear : Suzuki.ActualFiniteCoefficientLimits.FiniteNuclearInput.{u})
+    (tensorKK : Suzuki.ActualCoefficientKK.SpatialKKInput.{u, v, w} kk spatial)
+    (scalarTensor :
+      Suzuki.ActualCoefficientKK.ScalarTensorInput.{u, v, w} kk
+        (Suzuki.ActualCoefficientKK.SpatialKKInput.exterior.{u, v, w} tensorKK))
+    (matrix : Suzuki.ActualCoefficientKK.MatrixInput.{u, v, w} kk)
+    (kGroups : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} kk)
+    (finiteK0 : Suzuki.GraphChannelKKCalculation.FiniteK0Input)
+    (graphUCT : Suzuki.GraphChannelKKCalculation.FreeUCTInput.{u, v, w, t} kk kGroups)
+    (finiteCone : Suzuki.ActualCoefficientKK.UniverseCone.Input.{u, v, w, t} kk kGroups finiteK0 graphUCT)
+    (reference : Suzuki.ActualCoefficientKK.ReferenceInput.{u, v, w, t} kk kGroups graphUCT)
+    (finiteTensor : Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} spatial)
+    (projection : Suzuki.PrescribedUnitCoordinate.ProjectionK0.{u, w} spatial finiteTensor)
+    (projectionInterpretation :
+      Suzuki.ActualUnitKK.ProjectionInterpretation.{u, v, w, w} kk spatial finiteTensor projection)
+    (representable : Suzuki.ActualUnitKK.RepresentableInput.{u, v, w, t} kk kGroups)
+    (projectionExterior :
+      Suzuki.ActualUnitKK.ProjectionExteriorInput.{u, v, w, w} kk projectionInterpretation tensorKK scalarTensor)
+    (ranks : Suzuki.PrescribedUnitCoordinate.FiniteProjectionRanks finiteK0)
+    (coneProjection :
+      Suzuki.ActualUnitKK.ProjectionConeInput.{u, v, w, t} kk spatial finiteTensor projection projectionInterpretation
+        kGroups representable finiteK0 graphUCT finiteCone ranks)
+    (referenceGenerator :
+      Suzuki.ActualUnitKK.ReferenceGeneratorInput.{u, v, w, t} kk kGroups representable graphUCT reference)
+    (projectionRepresentatives :
+      Suzuki.PrescribedUnitCoordinate.ProjectionRepresentatives.{u, w} spatial finiteTensor projection)
+    (milnor : Suzuki.ConditionalMainConstruction.MilnorInputs.{u, v, w} kk)
+    (morita : Suzuki.ActualKKCornerClassification.FullCornerKKInput.{u, v, w} kk)
+    (classification : Suzuki.ActualKKCornerClassification.ClassificationInput.{u, v, w} kk) :
+    Suzuki.PublishedInputs.{u, v, w, t}
+structure Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w} {K : Type v}
+  [CategoryTheory.Category.{w, v} K] : Type (max (max (u + 1) v) w)
+number of parameters: 2
+fields:
+  Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v,
+    w} : Suzuki.CoefficientModelFromExtension.Algebra.{u} → K
+  Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v,
+    w} : {A B : Suzuki.CoefficientModelFromExtension.Algebra.{u}} →
+      NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B) →
+        Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} self A)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} self B)
+  Suzuki.CoefficientModelFromExtension.KKInterpretation.map_id.{u, v,
+    w} : ∀ (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+      Eq.{w + 1}
+        (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} self
+          (NonUnitalStarAlgHom.id.{0, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)))
+        (CategoryTheory.CategoryStruct.id.{w, v}
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} self A))
+  Suzuki.CoefficientModelFromExtension.KKInterpretation.map_comp.{u, v,
+    w} : ∀ {A B C : Suzuki.CoefficientModelFromExtension.Algebra.{u}}
+      (f :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B))
+      (g :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B)
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} C)),
+      Eq.{w + 1}
+        (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} self
+          (NonUnitalStarAlgHom.comp.{0, u, u, u} g f))
+        (CategoryTheory.CategoryStruct.comp.{w, v}
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} self f)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} self g))
+constructor:
+  Suzuki.CoefficientModelFromExtension.KKInterpretation.mk.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    (object : Suzuki.CoefficientModelFromExtension.Algebra.{u} → K)
+    (map :
+      {A B : Suzuki.CoefficientModelFromExtension.Algebra.{u}} →
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B) →
+          Quiver.Hom.{w, v} (object A) (object B))
+    (map_id :
+      ∀ (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+        Eq.{w + 1} (map (NonUnitalStarAlgHom.id.{0, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)))
+          (CategoryTheory.CategoryStruct.id.{w, v} (object A)))
+    (map_comp :
+      ∀ {A B C : Suzuki.CoefficientModelFromExtension.Algebra.{u}}
+        (f :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B))
+        (g :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} C)),
+        Eq.{w + 1} (map (NonUnitalStarAlgHom.comp.{0, u, u, u} g f))
+          (CategoryTheory.CategoryStruct.comp.{w, v} (map f) (map g))) :
+    Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}
+structure Suzuki.CoefficientModelFromExtension.NuclearityInput.{u} : Prop
+number of parameters: 0
+fields:
+  Suzuki.CoefficientModelFromExtension.NuclearityInput.matrix_sum.{u} : ∀
+      (I : Suzuki.CoefficientModelFromExtension.Algebra.{u})
+      (a : Suzuki.CoefficientModelFromExtension.MatrixSumCoordinates.{u} I),
+      Suzuki.CoefficientModelFromExtension.Nuclear.{u} I
+  Suzuki.CoefficientModelFromExtension.NuclearityInput.suspension.{u} : ∀
+      (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+      Suzuki.CoefficientModelFromExtension.Nuclear.{u} A →
+        Suzuki.CoefficientModelFromExtension.Nuclear.{u} (Suzuki.CoefficientModelFromExtension.suspension.{u} A)
+  Suzuki.CoefficientModelFromExtension.NuclearityInput.extension.{u} : ∀
+      (I H Q : Suzuki.CoefficientModelFromExtension.Algebra.{u})
+      (θ :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} I)
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} H))
+      (q :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} H)
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} Q)),
+      Suzuki.CoefficientModelFromExtension.ExactExtension.{u} θ q →
+        Suzuki.CoefficientModelFromExtension.Nuclear.{u} I →
+          Suzuki.CoefficientModelFromExtension.Nuclear.{u} Q → Suzuki.CoefficientModelFromExtension.Nuclear.{u} H
+  Suzuki.CoefficientModelFromExtension.NuclearityInput.unitization.{u} : ∀
+      (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+      Suzuki.CoefficientModelFromExtension.Nuclear.{u} A →
+        Suzuki.CoefficientModelFromExtension.Nuclear.{u} (Suzuki.CoefficientModelFromExtension.unitization.{u} A)
+constructor:
+  Suzuki.CoefficientModelFromExtension.NuclearityInput.mk.{u}
+    (matrix_sum :
+      ∀ (I : Suzuki.CoefficientModelFromExtension.Algebra.{u})
+        (a : Suzuki.CoefficientModelFromExtension.MatrixSumCoordinates.{u} I),
+        Suzuki.CoefficientModelFromExtension.Nuclear.{u} I)
+    (suspension :
+      ∀ (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+        Suzuki.CoefficientModelFromExtension.Nuclear.{u} A →
+          Suzuki.CoefficientModelFromExtension.Nuclear.{u} (Suzuki.CoefficientModelFromExtension.suspension.{u} A))
+    (extension :
+      ∀ (I H Q : Suzuki.CoefficientModelFromExtension.Algebra.{u})
+        (θ :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} I)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} H))
+        (q :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} H)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} Q)),
+        Suzuki.CoefficientModelFromExtension.ExactExtension.{u} θ q →
+          Suzuki.CoefficientModelFromExtension.Nuclear.{u} I →
+            Suzuki.CoefficientModelFromExtension.Nuclear.{u} Q → Suzuki.CoefficientModelFromExtension.Nuclear.{u} H)
+    (unitization :
+      ∀ (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+        Suzuki.CoefficientModelFromExtension.Nuclear.{u} A →
+          Suzuki.CoefficientModelFromExtension.Nuclear.{u} (Suzuki.CoefficientModelFromExtension.unitization.{u} A)) :
+    Suzuki.CoefficientModelFromExtension.NuclearityInput.{u}
+structure Suzuki.CoefficientModelFromExtension.LiftingInput.{u} : Prop
+number of parameters: 0
+fields:
+  Suzuki.CoefficientModelFromExtension.LiftingInput.lift.{u} : ∀
+      (H Q : Suzuki.CoefficientModelFromExtension.Algebra.{u})
+      (q :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} H)
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} Q)),
+      Function.Surjective.{u + 1, u + 1} ⇑q →
+        Suzuki.CoefficientModelFromExtension.Nuclear.{u} Q →
+          Nonempty.{u + 1} (Suzuki.CoefficientModelFromExtension.CPCSection.{u} q)
+constructor:
+  Suzuki.CoefficientModelFromExtension.LiftingInput.mk.{u}
+    (lift :
+      ∀ (H Q : Suzuki.CoefficientModelFromExtension.Algebra.{u})
+        (q :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} H)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} Q)),
+        Function.Surjective.{u + 1, u + 1} ⇑q →
+          Suzuki.CoefficientModelFromExtension.Nuclear.{u} Q →
+            Nonempty.{u + 1} (Suzuki.CoefficientModelFromExtension.CPCSection.{u} q)) :
+    Suzuki.CoefficientModelFromExtension.LiftingInput.{u}
+structure Suzuki.CoefficientModelFromExtension.DadarlatInput.{u} : Prop
+number of parameters: 0
+fields:
+  Suzuki.CoefficientModelFromExtension.DadarlatInput.original_extension.{u} : ∀
+      (B : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+      Suzuki.CoefficientModelFromExtension.Nuclear.{u} B →
+        Nonempty.{u + 2} (Suzuki.CoefficientModelFromExtension.OriginalExtension.{u} B)
+constructor:
+  Suzuki.CoefficientModelFromExtension.DadarlatInput.mk.{u}
+    (original_extension :
+      ∀ (B : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+        Suzuki.CoefficientModelFromExtension.Nuclear.{u} B →
+          Nonempty.{u + 2} (Suzuki.CoefficientModelFromExtension.OriginalExtension.{u} B)) :
+    Suzuki.CoefficientModelFromExtension.DadarlatInput.{u}
+structure Suzuki.CoefficientModelFromExtension.ConeBottInput.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}) : Type (max (u + 1) w)
+number of parameters: 3
+fields:
+  Suzuki.CoefficientModelFromExtension.ConeBottInput.cone_quotient_isIso.{u, v,
+    w} : ∀ (I H Q : Suzuki.CoefficientModelFromExtension.Algebra.{u})
+      (θ :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} I)
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} H))
+      (q :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} H)
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} Q))
+      (e : Suzuki.CoefficientModelFromExtension.ExactExtension.{u} θ q)
+      (a : Suzuki.CoefficientModelFromExtension.CPCSection.{u} q),
+      CategoryTheory.IsIso.{w, v}
+        (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+          (Suzuki.CoefficientModelConditional.quotientSuspensionMap.{u, u, u} θ q ⋯))
+  Suzuki.CoefficientModelFromExtension.ConeBottInput.bott.{u, v,
+    w} : (B : Suzuki.CoefficientModelFromExtension.Algebra.{u}) →
+      CategoryTheory.Iso.{w, v}
+        (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+          (Suzuki.CoefficientModelFromExtension.suspension.{u} (Suzuki.CoefficientModelFromExtension.suspension.{u} B)))
+        (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B)
+constructor:
+  Suzuki.CoefficientModelFromExtension.ConeBottInput.mk.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    (cone_quotient_isIso :
+      ∀ (I H Q : Suzuki.CoefficientModelFromExtension.Algebra.{u})
+        (θ :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} I)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} H))
+        (q :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} H)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} Q))
+        (e : Suzuki.CoefficientModelFromExtension.ExactExtension.{u} θ q)
+        (a : Suzuki.CoefficientModelFromExtension.CPCSection.{u} q),
+        CategoryTheory.IsIso.{w, v}
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+            (Suzuki.CoefficientModelConditional.quotientSuspensionMap.{u, u, u} θ q ⋯)))
+    (bott :
+      (B : Suzuki.CoefficientModelFromExtension.Algebra.{u}) →
+        CategoryTheory.Iso.{w, v}
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+            (Suzuki.CoefficientModelFromExtension.suspension.{u}
+              (Suzuki.CoefficientModelFromExtension.suspension.{u} B)))
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B)) :
+    Suzuki.CoefficientModelFromExtension.ConeBottInput.{u, v, w} J
+structure Suzuki.CoefficientModelFromExtension.SplitUnitizationInput.{u, v, w} {K : Type v}
+  [CategoryTheory.Category.{w, v} K] [CategoryTheory.Preadditive.{w, v} K]
+  (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}) : Prop
+number of parameters: 4
+fields:
+  Suzuki.CoefficientModelFromExtension.SplitUnitizationInput.split.{u, v,
+    w} : ∀ (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+      Suzuki.CoefficientModelFromExtension.Nuclear.{u} A →
+        ∃ r,
+          Eq.{w + 1}
+              (CategoryTheory.CategoryStruct.comp.{w, v}
+                (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+                  (Suzuki.CoefficientModelFromExtension.unitizationInclusion.{u} A))
+                r)
+              (CategoryTheory.CategoryStruct.id.{w, v}
+                (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)) ∧
+            Eq.{w + 1}
+              (CategoryTheory.CategoryStruct.comp.{w, v} r
+                (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+                  (Suzuki.CoefficientModelFromExtension.unitizationInclusion.{u} A)))
+              (HSub.hSub.{w, w, w}
+                (CategoryTheory.CategoryStruct.id.{w, v}
+                  (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+                    (Suzuki.CoefficientModelFromExtension.unitization.{u} A)))
+                (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+                  (Suzuki.CoefficientModelFromExtension.scalarRetraction.{u} A)))
+constructor:
+  Suzuki.CoefficientModelFromExtension.SplitUnitizationInput.mk.{u, v, w} {K : Type v}
+    [CategoryTheory.Category.{w, v} K] [CategoryTheory.Preadditive.{w, v} K]
+    {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    (split :
+      ∀ (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+        Suzuki.CoefficientModelFromExtension.Nuclear.{u} A →
+          ∃ r,
+            Eq.{w + 1}
+                (CategoryTheory.CategoryStruct.comp.{w, v}
+                  (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+                    (Suzuki.CoefficientModelFromExtension.unitizationInclusion.{u} A))
+                  r)
+                (CategoryTheory.CategoryStruct.id.{w, v}
+                  (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)) ∧
+              Eq.{w + 1}
+                (CategoryTheory.CategoryStruct.comp.{w, v} r
+                  (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+                    (Suzuki.CoefficientModelFromExtension.unitizationInclusion.{u} A)))
+                (HSub.hSub.{w, w, w}
+                  (CategoryTheory.CategoryStruct.id.{w, v}
+                    (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+                      (Suzuki.CoefficientModelFromExtension.unitization.{u} A)))
+                  (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+                    (Suzuki.CoefficientModelFromExtension.scalarRetraction.{u} A)))) :
+    Suzuki.CoefficientModelFromExtension.SplitUnitizationInput.{u, v, w} J
+structure Suzuki.TensorCoefficientChannels.Spatial.{u} : Type (u + 1)
+number of parameters: 0
+fields:
+  Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} : Suzuki.TensorCoefficientChannels.Algebra.{u} →
+      Suzuki.TensorCoefficientChannels.Algebra.{u} → Suzuki.TensorCoefficientChannels.Algebra.{u}
+  Suzuki.TensorCoefficientChannels.Spatial.left.{u} : (A B : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+        (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+          (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} self A B))
+  Suzuki.TensorCoefficientChannels.Spatial.right.{u} : (A B : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B)
+        (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+          (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} self A B))
+  Suzuki.TensorCoefficientChannels.Spatial.commute.{u} : ∀ (A B : Suzuki.TensorCoefficientChannels.Algebra.{u})
+      (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+      (b : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B),
+      Eq.{u + 1}
+        (HMul.hMul.{u, u, u} ((Suzuki.TensorCoefficientChannels.Spatial.left.{u} self A B) a)
+          ((Suzuki.TensorCoefficientChannels.Spatial.right.{u} self A B) b))
+        (HMul.hMul.{u, u, u} ((Suzuki.TensorCoefficientChannels.Spatial.right.{u} self A B) b)
+          ((Suzuki.TensorCoefficientChannels.Spatial.left.{u} self A B) a))
+  Suzuki.TensorCoefficientChannels.Spatial.norm_pure.{u} : ∀ (A B : Suzuki.TensorCoefficientChannels.Algebra.{u})
+      (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+      (b : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B),
+      Eq.{1}
+        (norm.{u}
+          (HMul.hMul.{u, u, u} ((Suzuki.TensorCoefficientChannels.Spatial.left.{u} self A B) a)
+            ((Suzuki.TensorCoefficientChannels.Spatial.right.{u} self A B) b)))
+        (HMul.hMul.{0, 0, 0} (norm.{u} a) (norm.{u} b))
+  Suzuki.TensorCoefficientChannels.Spatial.dense.{u} : ∀ (A B : Suzuki.TensorCoefficientChannels.Algebra.{u}),
+      Dense.{u}
+        ↑(Submodule.span.{0, u} ℂ
+            (Set.range.{u, u + 1} fun p =>
+              HMul.hMul.{u, u, u} ((Suzuki.TensorCoefficientChannels.Spatial.left.{u} self A B) p.1)
+                ((Suzuki.TensorCoefficientChannels.Spatial.right.{u} self A B) p.2)))
+  Suzuki.TensorCoefficientChannels.Spatial.map.{u} : {A B C D : Suzuki.TensorCoefficientChannels.Algebra.{u}} →
+      NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C) →
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B)
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} D) →
+          NonUnitalStarAlgHom.{0, u, u} ℂ
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} self A B))
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} self C D))
+  Suzuki.TensorCoefficientChannels.Spatial.map_pure.{u} : ∀ {A B C D : Suzuki.TensorCoefficientChannels.Algebra.{u}}
+      (f :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C))
+      (g :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B)
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} D))
+      (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+      (b : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B),
+      Eq.{u + 1}
+        ((Suzuki.TensorCoefficientChannels.Spatial.map.{u} self f g)
+          (HMul.hMul.{u, u, u} ((Suzuki.TensorCoefficientChannels.Spatial.left.{u} self A B) a)
+            ((Suzuki.TensorCoefficientChannels.Spatial.right.{u} self A B) b)))
+        (HMul.hMul.{u, u, u} ((Suzuki.TensorCoefficientChannels.Spatial.left.{u} self C D) (f a))
+          ((Suzuki.TensorCoefficientChannels.Spatial.right.{u} self C D) (g b)))
+  Suzuki.TensorCoefficientChannels.Spatial.map_injective.{u} : ∀
+      {A B C D : Suzuki.TensorCoefficientChannels.Algebra.{u}}
+      (f :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C))
+      (g :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B)
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} D)),
+      Function.Injective.{u + 1, u + 1} ⇑f →
+        Function.Injective.{u + 1, u + 1} ⇑g →
+          Function.Injective.{u + 1, u + 1} ⇑(Suzuki.TensorCoefficientChannels.Spatial.map.{u} self f g)
+  Suzuki.TensorCoefficientChannels.Spatial.matrixEquiv.{u} : (A : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      (q : ℕ) →
+        StarAlgEquiv.{0, u, u} ℂ
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+            (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} self A
+              (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} q)))
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+            (Suzuki.TensorCoefficientChannels.amplification.{u} A q))
+  Suzuki.TensorCoefficientChannels.Spatial.matrixEquiv_pure.{u} : ∀ (A : Suzuki.TensorCoefficientChannels.Algebra.{u})
+      (q : ℕ) (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+      (m : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} q))
+      (i j : ULift.{u, 0} (Fin q)),
+      Eq.{u + 1}
+        ((Suzuki.TensorCoefficientChannels.Spatial.matrixEquiv.{u} self A q)
+          (HMul.hMul.{u, u, u}
+            ((Suzuki.TensorCoefficientChannels.Spatial.left.{u} self A
+                (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} q))
+              a)
+            ((Suzuki.TensorCoefficientChannels.Spatial.right.{u} self A
+                (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} q))
+              m))
+          i j)
+        (HSMul.hSMul.{0, u, u} (m i j) a)
+constructor:
+  Suzuki.TensorCoefficientChannels.Spatial.mk.{u}
+    (tensor :
+      Suzuki.TensorCoefficientChannels.Algebra.{u} →
+        Suzuki.TensorCoefficientChannels.Algebra.{u} → Suzuki.TensorCoefficientChannels.Algebra.{u})
+    (left :
+      (A B : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+        StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} (tensor A B)))
+    (right :
+      (A B : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+        StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B)
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} (tensor A B)))
+    (commute :
+      ∀ (A B : Suzuki.TensorCoefficientChannels.Algebra.{u})
+        (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+        (b : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B),
+        Eq.{u + 1} (HMul.hMul.{u, u, u} ((left A B) a) ((right A B) b))
+          (HMul.hMul.{u, u, u} ((right A B) b) ((left A B) a)))
+    (norm_pure :
+      ∀ (A B : Suzuki.TensorCoefficientChannels.Algebra.{u})
+        (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+        (b : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B),
+        Eq.{1} (norm.{u} (HMul.hMul.{u, u, u} ((left A B) a) ((right A B) b)))
+          (HMul.hMul.{0, 0, 0} (norm.{u} a) (norm.{u} b)))
+    (dense :
+      ∀ (A B : Suzuki.TensorCoefficientChannels.Algebra.{u}),
+        Dense.{u}
+          ↑(Submodule.span.{0, u} ℂ
+              (Set.range.{u, u + 1} fun p => HMul.hMul.{u, u, u} ((left A B) p.1) ((right A B) p.2))))
+    (map :
+      {A B C D : Suzuki.TensorCoefficientChannels.Algebra.{u}} →
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C) →
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B)
+              (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} D) →
+            NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} (tensor A B))
+              (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} (tensor C D)))
+    (map_pure :
+      ∀ {A B C D : Suzuki.TensorCoefficientChannels.Algebra.{u}}
+        (f :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C))
+        (g :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B)
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} D))
+        (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+        (b : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B),
+        Eq.{u + 1} ((map f g) (HMul.hMul.{u, u, u} ((left A B) a) ((right A B) b)))
+          (HMul.hMul.{u, u, u} ((left C D) (f a)) ((right C D) (g b))))
+    (map_injective :
+      ∀ {A B C D : Suzuki.TensorCoefficientChannels.Algebra.{u}}
+        (f :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C))
+        (g :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B)
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} D)),
+        Function.Injective.{u + 1, u + 1} ⇑f →
+          Function.Injective.{u + 1, u + 1} ⇑g → Function.Injective.{u + 1, u + 1} ⇑(map f g))
+    (matrixEquiv :
+      (A : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+        (q : ℕ) →
+          StarAlgEquiv.{0, u, u} ℂ
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (tensor A (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} q)))
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.TensorCoefficientChannels.amplification.{u} A q)))
+    (matrixEquiv_pure :
+      ∀ (A : Suzuki.TensorCoefficientChannels.Algebra.{u}) (q : ℕ)
+        (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+        (m :
+          Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} q))
+        (i j : ULift.{u, 0} (Fin q)),
+        Eq.{u + 1}
+          ((matrixEquiv A q)
+            (HMul.hMul.{u, u, u} ((left A (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} q)) a)
+              ((right A (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} q)) m))
+            i j)
+          (HSMul.hSMul.{0, u, u} (m i j) a)) :
+    Suzuki.TensorCoefficientChannels.Spatial.{u}
+structure Suzuki.TensorCoefficientChannels.MaximalOn.{u} (T : Suzuki.TensorCoefficientChannels.Spatial.{u})
+  (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) : Type (u + 1)
+number of parameters: 2
+fields:
+  Suzuki.TensorCoefficientChannels.MaximalOn.lift.{u} : {A C : Suzuki.TensorCoefficientChannels.Algebra.{u}} →
+      (f :
+          StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C)) →
+        (g :
+            StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E)
+              (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C)) →
+          (∀ (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+              (e : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E),
+              Eq.{u + 1} (HMul.hMul.{u, u, u} (f a) (g e)) (HMul.hMul.{u, u, u} (g e) (f a))) →
+            StarAlgHom.{0, u, u} ℂ
+              (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E))
+              (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C)
+  Suzuki.TensorCoefficientChannels.MaximalOn.lift_pure.{u} : ∀ {A C : Suzuki.TensorCoefficientChannels.Algebra.{u}}
+      (f :
+        StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C))
+      (g :
+        StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E)
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C))
+      (h :
+        ∀ (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+          (e : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E),
+          Eq.{u + 1} (HMul.hMul.{u, u, u} (f a) (g e)) (HMul.hMul.{u, u, u} (g e) (f a)))
+      (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+      (e : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E),
+      Eq.{u + 1}
+        ((Suzuki.TensorCoefficientChannels.MaximalOn.lift.{u} self f g h)
+          (Suzuki.TensorCoefficientChannels.Spatial.pure.{u} T a e))
+        (HMul.hMul.{u, u, u} (f a) (g e))
+constructor:
+  Suzuki.TensorCoefficientChannels.MaximalOn.mk.{u} {T : Suzuki.TensorCoefficientChannels.Spatial.{u}}
+    {E : Suzuki.TensorCoefficientChannels.Algebra.{u}}
+    (lift :
+      {A C : Suzuki.TensorCoefficientChannels.Algebra.{u}} →
+        (f :
+            StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+              (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C)) →
+          (g :
+              StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E)
+                (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C)) →
+            (∀ (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+                (e : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E),
+                Eq.{u + 1} (HMul.hMul.{u, u, u} (f a) (g e)) (HMul.hMul.{u, u, u} (g e) (f a))) →
+              StarAlgHom.{0, u, u} ℂ
+                (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                  (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E))
+                (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C))
+    (lift_pure :
+      ∀ {A C : Suzuki.TensorCoefficientChannels.Algebra.{u}}
+        (f :
+          StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C))
+        (g :
+          StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E)
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C))
+        (h :
+          ∀ (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+            (e : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E),
+            Eq.{u + 1} (HMul.hMul.{u, u, u} (f a) (g e)) (HMul.hMul.{u, u, u} (g e) (f a)))
+        (a : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+        (e : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E),
+        Eq.{u + 1} ((lift f g h) (Suzuki.TensorCoefficientChannels.Spatial.pure.{u} T a e))
+          (HMul.hMul.{u, u, u} (f a) (g e))) :
+    Suzuki.TensorCoefficientChannels.MaximalOn.{u} T E
+structure Suzuki.ConditionalMainConstruction.ExtensionInputs.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}) :
+  Type (max (u + 1) w)
+number of parameters: 4
+fields:
+  Suzuki.ConditionalMainConstruction.ExtensionInputs.nuclearity.{u, v,
+    w} : Suzuki.CoefficientModelFromExtension.NuclearityInput.{u}
+  Suzuki.ConditionalMainConstruction.ExtensionInputs.lifting.{u, v,
+    w} : Suzuki.CoefficientModelFromExtension.LiftingInput.{u}
+  Suzuki.ConditionalMainConstruction.ExtensionInputs.dadarlat.{u, v,
+    w} : Suzuki.CoefficientModelFromExtension.DadarlatInput.{u}
+  Suzuki.ConditionalMainConstruction.ExtensionInputs.coneBott.{u, v,
+    w} : Suzuki.CoefficientModelFromExtension.ConeBottInput.{u, v, w} J
+  Suzuki.ConditionalMainConstruction.ExtensionInputs.unitizationSplit.{u, v,
+    w} : Suzuki.CoefficientModelFromExtension.SplitUnitizationInput.{u, v, w} J
+constructor:
+  Suzuki.ConditionalMainConstruction.ExtensionInputs.mk.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    (nuclearity : Suzuki.CoefficientModelFromExtension.NuclearityInput.{u})
+    (lifting : Suzuki.CoefficientModelFromExtension.LiftingInput.{u})
+    (dadarlat : Suzuki.CoefficientModelFromExtension.DadarlatInput.{u})
+    (coneBott : Suzuki.CoefficientModelFromExtension.ConeBottInput.{u, v, w} J)
+    (unitizationSplit : Suzuki.CoefficientModelFromExtension.SplitUnitizationInput.{u, v, w} J) :
+    Suzuki.ConditionalMainConstruction.ExtensionInputs.{u, v, w} J
+structure Suzuki.ConditionalMainConstruction.AnalyticInputs.{u} (T : Suzuki.TensorCoefficientChannels.Spatial.{u}) :
+  Type (u + 1)
+number of parameters: 1
+fields:
+  Suzuki.ConditionalMainConstruction.AnalyticInputs.graph.{u} : Suzuki.GraphCoefficientLimit.GraphInput.{u}
+  Suzuki.ConditionalMainConstruction.AnalyticInputs.support.{u} : Suzuki.GraphCoefficientLimit.SupportInput.{u} T
+  Suzuki.ConditionalMainConstruction.AnalyticInputs.comparison.{u} : Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput.{u}
+  Suzuki.ConditionalMainConstruction.AnalyticInputs.tensorFaithfulness.{u} : Suzuki.TensorEvaluationPaths.JointFaithfulnessInput.{u}
+      T
+  Suzuki.ConditionalMainConstruction.AnalyticInputs.maximalNuclear.{u} : (E :
+        Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      Suzuki.Target.HasCPApproximation.{u}
+          (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E)
+            inferInstance.{u + 1}) →
+        Suzuki.TensorCoefficientChannels.MaximalOn.{u} T E
+constructor:
+  Suzuki.ConditionalMainConstruction.AnalyticInputs.mk.{u} {T : Suzuki.TensorCoefficientChannels.Spatial.{u}}
+    (graph : Suzuki.GraphCoefficientLimit.GraphInput.{u}) (support : Suzuki.GraphCoefficientLimit.SupportInput.{u} T)
+    (comparison : Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput.{u})
+    (tensorFaithfulness : Suzuki.TensorEvaluationPaths.JointFaithfulnessInput.{u} T)
+    (maximalNuclear :
+      (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+        Suzuki.Target.HasCPApproximation.{u}
+            (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E)
+              inferInstance.{u + 1}) →
+          Suzuki.TensorCoefficientChannels.MaximalOn.{u} T E) :
+    Suzuki.ConditionalMainConstruction.AnalyticInputs.{u} T
+structure Suzuki.ConditionalMainConstruction.MilnorInputs.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}) :
+  Type (max (max (u + 1) v) w)
+number of parameters: 4
+fields:
+  Suzuki.ConditionalMainConstruction.MilnorInputs.suspension.{u, v, w} : K → K
+  Suzuki.ConditionalMainConstruction.MilnorInputs.sequence.{u, v,
+    w} : (S : Suzuki.InductiveAmalgam.System.{u}) →
+      (separable : ∀ (h : ℕ), TopologicalSpace.SeparableSpace.{u} (Suzuki.InductiveAmalgam.System.obj.{u} S h)) →
+        [inst : Fact (∀ (h : ℕ), Function.Injective.{u + 1, u + 1} ⇑(Suzuki.InductiveAmalgam.System.step.{u} S h))] →
+          (∀ (h : ℕ),
+              Suzuki.Target.HasCPApproximation.{u}
+                (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.InductiveAmalgam.System.obj.{u} S h)
+                  inferInstance.{u + 1})) →
+            Suzuki.ConditionalKKTransport.AnalyticMilnorInput.{v, w}
+              (Suzuki.ConditionalMainConstruction.MilnorInputs.suspension.{u, v, w} self)
+              (fun h =>
+                Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+                  (Suzuki.ConditionalMainConstruction.stageAlgebra.{u} S separable h))
+              (Suzuki.ConditionalMainConstruction.stageClass.{u, v, w} J S separable)
+              (Suzuki.ConditionalMainConstruction.inclusionClass.{u, v, w} J S separable)
+constructor:
+  Suzuki.ConditionalMainConstruction.MilnorInputs.mk.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    (suspension : K → K)
+    (sequence :
+      (S : Suzuki.InductiveAmalgam.System.{u}) →
+        (separable : ∀ (h : ℕ), TopologicalSpace.SeparableSpace.{u} (Suzuki.InductiveAmalgam.System.obj.{u} S h)) →
+          [inst : Fact (∀ (h : ℕ), Function.Injective.{u + 1, u + 1} ⇑(Suzuki.InductiveAmalgam.System.step.{u} S h))] →
+            (∀ (h : ℕ),
+                Suzuki.Target.HasCPApproximation.{u}
+                  (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.InductiveAmalgam.System.obj.{u} S h)
+                    inferInstance.{u + 1})) →
+              Suzuki.ConditionalKKTransport.AnalyticMilnorInput.{v, w} suspension
+                (fun h =>
+                  Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+                    (Suzuki.ConditionalMainConstruction.stageAlgebra.{u} S separable h))
+                (Suzuki.ConditionalMainConstruction.stageClass.{u, v, w} J S separable)
+                (Suzuki.ConditionalMainConstruction.inclusionClass.{u, v, w} J S separable)) :
+    Suzuki.ConditionalMainConstruction.MilnorInputs.{u, v, w} J
+structure Suzuki.GraphCoefficientLimit.GraphInput.{u} : Prop
+number of parameters: 0
+fields:
+  Suzuki.GraphCoefficientLimit.GraphInput.corners.{u} : ∀
+      (M : Matrix.{0, 0, 0} Suzuki.RecursiveGraphSequence.Vertex Suzuki.RecursiveGraphSequence.Vertex ℕ)
+      (k l : Suzuki.RecursiveGraphSequence.Vertex → ℕ),
+      (∀ (v w : Suzuki.RecursiveGraphSequence.Vertex), LT.lt.{0} 0 (M v w)) →
+        (∀ (v : Suzuki.RecursiveGraphSequence.Vertex), LE.le.{0} 2 (M v v)) →
+          (∀ (v : Suzuki.RecursiveGraphSequence.Vertex), LT.lt.{0} 0 (k v)) →
+            (∀ (v : Suzuki.RecursiveGraphSequence.Vertex), LT.lt.{0} 0 (l v)) →
+              Suzuki.Target.IsKirchberg.{u}
+                (Suzuki.Target.UnitalAlgebra.mk.{u}
+                  (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                    (Suzuki.ActualGraphCoefficientSystem.graphProduct.{u} M k l))
+                  inferInstance.{u + 1})
+constructor:
+  Suzuki.GraphCoefficientLimit.GraphInput.mk.{u}
+    (corners :
+      ∀ (M : Matrix.{0, 0, 0} Suzuki.RecursiveGraphSequence.Vertex Suzuki.RecursiveGraphSequence.Vertex ℕ)
+        (k l : Suzuki.RecursiveGraphSequence.Vertex → ℕ),
+        (∀ (v w : Suzuki.RecursiveGraphSequence.Vertex), LT.lt.{0} 0 (M v w)) →
+          (∀ (v : Suzuki.RecursiveGraphSequence.Vertex), LE.le.{0} 2 (M v v)) →
+            (∀ (v : Suzuki.RecursiveGraphSequence.Vertex), LT.lt.{0} 0 (k v)) →
+              (∀ (v : Suzuki.RecursiveGraphSequence.Vertex), LT.lt.{0} 0 (l v)) →
+                Suzuki.Target.IsKirchberg.{u}
+                  (Suzuki.Target.UnitalAlgebra.mk.{u}
+                    (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                      (Suzuki.ActualGraphCoefficientSystem.graphProduct.{u} M k l))
+                    inferInstance.{u + 1})) :
+    Suzuki.GraphCoefficientLimit.GraphInput.{u}
+structure Suzuki.GraphCoefficientLimit.SupportInput.{u} (T : Suzuki.TensorCoefficientChannels.Spatial.{u}) :
+  Type (u + 1)
+number of parameters: 1
+fields:
+  Suzuki.GraphCoefficientLimit.SupportInput.matrix_maximal.{u} : (q : ℕ) →
+      LT.lt.{0} 0 q →
+        Suzuki.TensorCoefficientChannels.MaximalOn.{u} T (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} q)
+  Suzuki.GraphCoefficientLimit.SupportInput.matrix_simple.{u} : ∀ (A : Suzuki.TensorCoefficientChannels.Algebra.{u})
+      (q : ℕ),
+      LT.lt.{0} 0 q →
+        Suzuki.Target.IsSimple.{u}
+            (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+              inferInstance.{u + 1}) →
+          Suzuki.Target.IsSimple.{u}
+            (Suzuki.Target.UnitalAlgebra.mk.{u}
+              (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                (Suzuki.TensorCoefficientChannels.amplification.{u} A q))
+              inferInstance.{u + 1})
+  Suzuki.GraphCoefficientLimit.SupportInput.tensor_separable.{u} : ∀
+      (A E : Suzuki.TensorCoefficientChannels.Algebra.{u}),
+      TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A) →
+        TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E) →
+          TopologicalSpace.SeparableSpace.{u}
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E))
+  Suzuki.GraphCoefficientLimit.SupportInput.tensor_nuclear.{u} : ∀ (A E : Suzuki.TensorCoefficientChannels.Algebra.{u}),
+      Suzuki.Target.HasCPApproximation.{u}
+          (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+            inferInstance.{u + 1}) →
+        Suzuki.Target.HasCPApproximation.{u}
+            (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E)
+              inferInstance.{u + 1}) →
+          Suzuki.Target.HasCPApproximation.{u}
+            (Suzuki.Target.UnitalAlgebra.mk.{u}
+              (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E))
+              inferInstance.{u + 1})
+  Suzuki.GraphCoefficientLimit.SupportInput.limit_nuclear.{u} : ∀ (S : Suzuki.InductiveAmalgam.System.{u})
+      [inst : Fact (∀ (n : ℕ), Function.Injective.{u + 1, u + 1} ⇑(Suzuki.InductiveAmalgam.System.step.{u} S n))],
+      (∀ (n : ℕ),
+          Suzuki.Target.HasCPApproximation.{u}
+            (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.InductiveAmalgam.System.obj.{u} S n) inferInstance.{u + 1})) →
+        Suzuki.Target.HasCPApproximation.{u}
+          (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.SequentialCStarLimit.Limit.{u} S) inferInstance.{u + 1})
+  Suzuki.GraphCoefficientLimit.SupportInput.quotients.{u} : ∀ (A : Suzuki.Target.UnitalAlgebra.{u}),
+      Suzuki.EvaluationLimitSimplicity.ClosedIdealKernelRealization.{u} (Suzuki.Target.UnitalAlgebra.Carrier.{u} A)
+constructor:
+  Suzuki.GraphCoefficientLimit.SupportInput.mk.{u} {T : Suzuki.TensorCoefficientChannels.Spatial.{u}}
+    (matrix_maximal :
+      (q : ℕ) →
+        LT.lt.{0} 0 q →
+          Suzuki.TensorCoefficientChannels.MaximalOn.{u} T (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} q))
+    (matrix_simple :
+      ∀ (A : Suzuki.TensorCoefficientChannels.Algebra.{u}) (q : ℕ),
+        LT.lt.{0} 0 q →
+          Suzuki.Target.IsSimple.{u}
+              (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+                inferInstance.{u + 1}) →
+            Suzuki.Target.IsSimple.{u}
+              (Suzuki.Target.UnitalAlgebra.mk.{u}
+                (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                  (Suzuki.TensorCoefficientChannels.amplification.{u} A q))
+                inferInstance.{u + 1}))
+    (tensor_separable :
+      ∀ (A E : Suzuki.TensorCoefficientChannels.Algebra.{u}),
+        TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A) →
+          TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E) →
+            TopologicalSpace.SeparableSpace.{u}
+              (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E)))
+    (tensor_nuclear :
+      ∀ (A E : Suzuki.TensorCoefficientChannels.Algebra.{u}),
+        Suzuki.Target.HasCPApproximation.{u}
+            (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+              inferInstance.{u + 1}) →
+          Suzuki.Target.HasCPApproximation.{u}
+              (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E)
+                inferInstance.{u + 1}) →
+            Suzuki.Target.HasCPApproximation.{u}
+              (Suzuki.Target.UnitalAlgebra.mk.{u}
+                (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                  (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E))
+                inferInstance.{u + 1}))
+    (limit_nuclear :
+      ∀ (S : Suzuki.InductiveAmalgam.System.{u})
+        [inst : Fact (∀ (n : ℕ), Function.Injective.{u + 1, u + 1} ⇑(Suzuki.InductiveAmalgam.System.step.{u} S n))],
+        (∀ (n : ℕ),
+            Suzuki.Target.HasCPApproximation.{u}
+              (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.InductiveAmalgam.System.obj.{u} S n) inferInstance.{u + 1})) →
+          Suzuki.Target.HasCPApproximation.{u}
+            (Suzuki.Target.UnitalAlgebra.mk.{u} (Suzuki.SequentialCStarLimit.Limit.{u} S) inferInstance.{u + 1}))
+    (quotients :
+      ∀ (A : Suzuki.Target.UnitalAlgebra.{u}),
+        Suzuki.EvaluationLimitSimplicity.ClosedIdealKernelRealization.{u} (Suzuki.Target.UnitalAlgebra.Carrier.{u} A)) :
+    Suzuki.GraphCoefficientLimit.SupportInput.{u} T
+structure Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput.{u} : Prop
+number of parameters: 0
+fields:
+  Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput.cut_nonzero.{u} : ∀ (A : Suzuki.Target.UnitalAlgebra.{u})
+      (a : Suzuki.Target.UnitalAlgebra.Carrier.{u} A) (ε : ℝ),
+      LE.le.{u} 0 a →
+        LT.lt.{0} 0 ε → LT.lt.{0} ε (norm.{u} a) → Ne.{u + 1} (Suzuki.EvaluationLimitPureInfiniteness.cut.{u} A a ε) 0
+  Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput.cut_map.{u} : ∀ (A B : Suzuki.Target.UnitalAlgebra.{u})
+      (φ :
+        StarAlgHom.{0, u, u} ℂ (Suzuki.Target.UnitalAlgebra.Carrier.{u} A) (Suzuki.Target.UnitalAlgebra.Carrier.{u} B))
+      (a : Suzuki.Target.UnitalAlgebra.Carrier.{u} A) (ε : ℝ),
+      LE.le.{u} 0 a →
+        Eq.{u + 1} (φ (Suzuki.EvaluationLimitPureInfiniteness.cut.{u} A a ε))
+          (Suzuki.EvaluationLimitPureInfiniteness.cut.{u} B (φ a) ε)
+  Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput.cut_compare.{u} : ∀ (A : Suzuki.Target.UnitalAlgebra.{u})
+      (a b : Suzuki.Target.UnitalAlgebra.Carrier.{u} A) (ε : ℝ),
+      LE.le.{u} 0 a →
+        LE.le.{u} 0 b →
+          LT.lt.{0} 0 ε →
+            LT.lt.{0} (norm.{u} (HSub.hSub.{u, u, u} a b)) ε →
+              Suzuki.EvaluationLimitPureInfiniteness.Subequivalent.{u} A
+                (Suzuki.EvaluationLimitPureInfiniteness.cut.{u} A a ε) b
+  Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput.trans.{u} : ∀ (A : Suzuki.Target.UnitalAlgebra.{u})
+      (a b c : Suzuki.Target.UnitalAlgebra.Carrier.{u} A),
+      LE.le.{u} 0 a →
+        LE.le.{u} 0 b →
+          LE.le.{u} 0 c →
+            Suzuki.EvaluationLimitPureInfiniteness.Subequivalent.{u} A a b →
+              Suzuki.EvaluationLimitPureInfiniteness.Subequivalent.{u} A b c →
+                Suzuki.EvaluationLimitPureInfiniteness.Subequivalent.{u} A a c
+  Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput.hereditary_compare.{u} : ∀
+      (A : Suzuki.Target.UnitalAlgebra.{u}) (a b : Suzuki.Target.UnitalAlgebra.Carrier.{u} A),
+      LE.le.{u} 0 a →
+        LE.le.{u} 0 b →
+          Membership.mem.{u, u} (Suzuki.Target.hereditarySet.{u} A b) a →
+            Suzuki.EvaluationLimitPureInfiniteness.Subequivalent.{u} A a b
+  Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput.projection_transfer.{u} : ∀
+      (A : Suzuki.Target.UnitalAlgebra.{u}) (p b : Suzuki.Target.UnitalAlgebra.Carrier.{u} A),
+      IsStarProjection.{u} p →
+        LE.le.{u} 0 b →
+          Suzuki.EvaluationLimitPureInfiniteness.Subequivalent.{u} A p b →
+            ∃ w,
+              Eq.{u + 1} (HMul.hMul.{u, u, u} (star.{u} w) w) p ∧
+                IsStarProjection.{u} (HMul.hMul.{u, u, u} w (star.{u} w)) ∧
+                  Membership.mem.{u, u} (Suzuki.Target.hereditarySet.{u} A b) (HMul.hMul.{u, u, u} w (star.{u} w))
+  Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput.infinite_equivalent.{u} : ∀
+      (A : Suzuki.Target.UnitalAlgebra.{u}) (p w : Suzuki.Target.UnitalAlgebra.Carrier.{u} A),
+      Suzuki.Target.IsInfiniteProjection.{u} A p →
+        Eq.{u + 1} (HMul.hMul.{u, u, u} (star.{u} w) w) p →
+          Suzuki.Target.IsInfiniteProjection.{u} A (HMul.hMul.{u, u, u} w (star.{u} w))
+constructor:
+  Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput.mk.{u}
+    (cut_nonzero :
+      ∀ (A : Suzuki.Target.UnitalAlgebra.{u}) (a : Suzuki.Target.UnitalAlgebra.Carrier.{u} A) (ε : ℝ),
+        LE.le.{u} 0 a →
+          LT.lt.{0} 0 ε →
+            LT.lt.{0} ε (norm.{u} a) → Ne.{u + 1} (Suzuki.EvaluationLimitPureInfiniteness.cut.{u} A a ε) 0)
+    (cut_map :
+      ∀ (A B : Suzuki.Target.UnitalAlgebra.{u})
+        (φ :
+          StarAlgHom.{0, u, u} ℂ (Suzuki.Target.UnitalAlgebra.Carrier.{u} A)
+            (Suzuki.Target.UnitalAlgebra.Carrier.{u} B))
+        (a : Suzuki.Target.UnitalAlgebra.Carrier.{u} A) (ε : ℝ),
+        LE.le.{u} 0 a →
+          Eq.{u + 1} (φ (Suzuki.EvaluationLimitPureInfiniteness.cut.{u} A a ε))
+            (Suzuki.EvaluationLimitPureInfiniteness.cut.{u} B (φ a) ε))
+    (cut_compare :
+      ∀ (A : Suzuki.Target.UnitalAlgebra.{u}) (a b : Suzuki.Target.UnitalAlgebra.Carrier.{u} A) (ε : ℝ),
+        LE.le.{u} 0 a →
+          LE.le.{u} 0 b →
+            LT.lt.{0} 0 ε →
+              LT.lt.{0} (norm.{u} (HSub.hSub.{u, u, u} a b)) ε →
+                Suzuki.EvaluationLimitPureInfiniteness.Subequivalent.{u} A
+                  (Suzuki.EvaluationLimitPureInfiniteness.cut.{u} A a ε) b)
+    (trans :
+      ∀ (A : Suzuki.Target.UnitalAlgebra.{u}) (a b c : Suzuki.Target.UnitalAlgebra.Carrier.{u} A),
+        LE.le.{u} 0 a →
+          LE.le.{u} 0 b →
+            LE.le.{u} 0 c →
+              Suzuki.EvaluationLimitPureInfiniteness.Subequivalent.{u} A a b →
+                Suzuki.EvaluationLimitPureInfiniteness.Subequivalent.{u} A b c →
+                  Suzuki.EvaluationLimitPureInfiniteness.Subequivalent.{u} A a c)
+    (hereditary_compare :
+      ∀ (A : Suzuki.Target.UnitalAlgebra.{u}) (a b : Suzuki.Target.UnitalAlgebra.Carrier.{u} A),
+        LE.le.{u} 0 a →
+          LE.le.{u} 0 b →
+            Membership.mem.{u, u} (Suzuki.Target.hereditarySet.{u} A b) a →
+              Suzuki.EvaluationLimitPureInfiniteness.Subequivalent.{u} A a b)
+    (projection_transfer :
+      ∀ (A : Suzuki.Target.UnitalAlgebra.{u}) (p b : Suzuki.Target.UnitalAlgebra.Carrier.{u} A),
+        IsStarProjection.{u} p →
+          LE.le.{u} 0 b →
+            Suzuki.EvaluationLimitPureInfiniteness.Subequivalent.{u} A p b →
+              ∃ w,
+                Eq.{u + 1} (HMul.hMul.{u, u, u} (star.{u} w) w) p ∧
+                  IsStarProjection.{u} (HMul.hMul.{u, u, u} w (star.{u} w)) ∧
+                    Membership.mem.{u, u} (Suzuki.Target.hereditarySet.{u} A b) (HMul.hMul.{u, u, u} w (star.{u} w)))
+    (infinite_equivalent :
+      ∀ (A : Suzuki.Target.UnitalAlgebra.{u}) (p w : Suzuki.Target.UnitalAlgebra.Carrier.{u} A),
+        Suzuki.Target.IsInfiniteProjection.{u} A p →
+          Eq.{u + 1} (HMul.hMul.{u, u, u} (star.{u} w) w) p →
+            Suzuki.Target.IsInfiniteProjection.{u} A (HMul.hMul.{u, u, u} w (star.{u} w))) :
+    Suzuki.EvaluationLimitPureInfiniteness.ComparisonInput.{u}
+structure Suzuki.TensorEvaluationPaths.JointFaithfulnessInput.{u} (T : Suzuki.TensorCoefficientChannels.Spatial.{u}) :
+  Prop
+number of parameters: 1
+fields:
+  Suzuki.TensorEvaluationPaths.JointFaithfulnessInput.separates.{u} : ∀
+      (A E : Suzuki.TensorCoefficientChannels.Algebra.{u}) (q : ℕ → ℕ)
+      (σ :
+        (j : ℕ) →
+          StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E)
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} (q j)))),
+      (∀ (e : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E), Ne.{u + 1} e 0 → ∃ j, Ne.{u + 1} ((σ j) e) 0) →
+        ∀
+          (x :
+            Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E)),
+          Ne.{u + 1} x 0 → ∃ j, Ne.{u + 1} ((Suzuki.TensorEvaluationPaths.evaluation.{u} T A E (q j) (σ j)) x) 0
+constructor:
+  Suzuki.TensorEvaluationPaths.JointFaithfulnessInput.mk.{u} {T : Suzuki.TensorCoefficientChannels.Spatial.{u}}
+    (separates :
+      ∀ (A E : Suzuki.TensorCoefficientChannels.Algebra.{u}) (q : ℕ → ℕ)
+        (σ :
+          (j : ℕ) →
+            StarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E)
+              (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} (q j)))),
+        (∀ (e : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E), Ne.{u + 1} e 0 → ∃ j, Ne.{u + 1} ((σ j) e) 0) →
+          ∀
+            (x :
+              Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E)),
+            Ne.{u + 1} x 0 → ∃ j, Ne.{u + 1} ((Suzuki.TensorEvaluationPaths.evaluation.{u} T A E (q j) (σ j)) x) 0) :
+    Suzuki.TensorEvaluationPaths.JointFaithfulnessInput.{u} T
+structure Suzuki.ActualFiniteCoefficientLimits.FiniteNuclearInput.{u} : Prop
+number of parameters: 0
+fields:
+  Suzuki.ActualFiniteCoefficientLimits.FiniteNuclearInput.blocks.{u} : ∀ {V : Type} [inst : Fintype.{0} V] (w : V → ℕ),
+      Suzuki.Target.HasCPApproximation.{u}
+        (Suzuki.Target.UnitalAlgebra.mk.{u}
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+            (Suzuki.TensorCoefficientChannels.UniverseLift.algebra.{u} (Suzuki.MultiplicityEmbeddings.Blocks.{0} w)))
+          inferInstance.{u + 1})
+constructor:
+  Suzuki.ActualFiniteCoefficientLimits.FiniteNuclearInput.mk.{u}
+    (blocks :
+      ∀ {V : Type} [inst : Fintype.{0} V] (w : V → ℕ),
+        Suzuki.Target.HasCPApproximation.{u}
+          (Suzuki.Target.UnitalAlgebra.mk.{u}
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.TensorCoefficientChannels.UniverseLift.algebra.{u} (Suzuki.MultiplicityEmbeddings.Blocks.{0} w)))
+            inferInstance.{u + 1})) :
+    Suzuki.ActualFiniteCoefficientLimits.FiniteNuclearInput.{u}
+structure Suzuki.ActualCoefficientKK.SpatialKKInput.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w})
+  (T : Suzuki.TensorCoefficientChannels.Spatial.{u}) : Type (max (u + 1) w)
+number of parameters: 5
+fields:
+  Suzuki.ActualCoefficientKK.SpatialKKInput.exterior.{u, v,
+    w} : Suzuki.GraphChannelKKCalculation.ExteriorInput.{u, v, w} J
+  Suzuki.ActualCoefficientKK.SpatialKKInput.separable.{u, v,
+    w} : ∀ (A B : Suzuki.TensorCoefficientChannels.Algebra.{u}),
+      TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A) →
+        TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B) →
+          TopologicalSpace.SeparableSpace.{u}
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A B))
+  Suzuki.ActualCoefficientKK.SpatialKKInput.equiv.{u, v,
+    w} : (A B : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)) →
+        (hB : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B)) →
+          StarAlgEquiv.{0, u, u} ℂ
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u}
+              (Suzuki.GraphChannelKKCalculation.ExteriorInput.tensor.{u, v, w}
+                (Suzuki.ActualCoefficientKK.SpatialKKInput.exterior.{u, v, w} self)
+                (Suzuki.ActualCoefficientKK.actual.{u} A hA) (Suzuki.ActualCoefficientKK.actual.{u} B hB)))
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u}
+              (Suzuki.ActualCoefficientKK.actual.{u} (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A B) ⋯))
+  Suzuki.ActualCoefficientKK.SpatialKKInput.naturality.{u, v,
+    w} : ∀ (A B C D : Suzuki.TensorCoefficientChannels.Algebra.{u})
+      (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A))
+      (hB : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B))
+      (hC : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C))
+      (hD : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} D))
+      (f :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B))
+      (g :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C)
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} D))
+      (x :
+        Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u}
+          (Suzuki.GraphChannelKKCalculation.ExteriorInput.tensor.{u, v, w}
+            (Suzuki.ActualCoefficientKK.SpatialKKInput.exterior.{u, v, w} self)
+            (Suzuki.ActualCoefficientKK.actual.{u} A hA) (Suzuki.ActualCoefficientKK.actual.{u} C hC))),
+      Eq.{u + 1}
+        ((Suzuki.ActualCoefficientKK.SpatialKKInput.equiv.{u, v, w} self B D hB hD)
+          ((Suzuki.GraphChannelKKCalculation.ExteriorInput.map.{u, v, w}
+              (Suzuki.ActualCoefficientKK.SpatialKKInput.exterior.{u, v, w} self) f g)
+            x))
+        ((Suzuki.TensorCoefficientChannels.Spatial.map.{u} T f g)
+          ((Suzuki.ActualCoefficientKK.SpatialKKInput.equiv.{u, v, w} self A C hA hC) x))
+constructor:
+  Suzuki.ActualCoefficientKK.SpatialKKInput.mk.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    {T : Suzuki.TensorCoefficientChannels.Spatial.{u}}
+    (exterior : Suzuki.GraphChannelKKCalculation.ExteriorInput.{u, v, w} J)
+    (separable :
+      ∀ (A B : Suzuki.TensorCoefficientChannels.Algebra.{u}),
+        TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A) →
+          TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B) →
+            TopologicalSpace.SeparableSpace.{u}
+              (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A B)))
+    (equiv :
+      (A B : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+        (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)) →
+          (hB : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B)) →
+            StarAlgEquiv.{0, u, u} ℂ
+              (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u}
+                (Suzuki.GraphChannelKKCalculation.ExteriorInput.tensor.{u, v, w} exterior
+                  (Suzuki.ActualCoefficientKK.actual.{u} A hA) (Suzuki.ActualCoefficientKK.actual.{u} B hB)))
+              (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u}
+                (Suzuki.ActualCoefficientKK.actual.{u} (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A B) ⋯)))
+    (naturality :
+      ∀ (A B C D : Suzuki.TensorCoefficientChannels.Algebra.{u})
+        (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A))
+        (hB : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B))
+        (hC : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C))
+        (hD : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} D))
+        (f :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} B))
+        (g :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} C)
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} D))
+        (x :
+          Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u}
+            (Suzuki.GraphChannelKKCalculation.ExteriorInput.tensor.{u, v, w} exterior
+              (Suzuki.ActualCoefficientKK.actual.{u} A hA) (Suzuki.ActualCoefficientKK.actual.{u} C hC))),
+        Eq.{u + 1} ((equiv B D hB hD) ((Suzuki.GraphChannelKKCalculation.ExteriorInput.map.{u, v, w} exterior f g) x))
+          ((Suzuki.TensorCoefficientChannels.Spatial.map.{u} T f g) ((equiv A C hA hC) x))) :
+    Suzuki.ActualCoefficientKK.SpatialKKInput.{u, v, w} J T
+structure Suzuki.ActualCoefficientKK.ScalarTensorInput.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w})
+  (X : Suzuki.GraphChannelKKCalculation.ExteriorInput.{u, v, w} J) : Type (max (u + 1) w)
+number of parameters: 5
+fields:
+  Suzuki.ActualCoefficientKK.ScalarTensorInput.unit.{u, v,
+    w} : (E : Suzuki.CoefficientModelFromExtension.Algebra.{u}) →
+      CategoryTheory.Iso.{w, v}
+        (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+          (Suzuki.GraphChannelKKCalculation.ExteriorInput.tensor.{u, v, w} X Suzuki.ActualCoefficientKK.scalar.{u} E))
+        (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J E)
+  Suzuki.ActualCoefficientKK.ScalarTensorInput.naturality.{u, v,
+    w} : ∀ {E F : Suzuki.CoefficientModelFromExtension.Algebra.{u}}
+      (f :
+        Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J E)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J F)),
+      Eq.{w + 1}
+        (CategoryTheory.CategoryStruct.comp.{w, v}
+          (((Suzuki.GraphChannelKKCalculation.ExteriorInput.product.{u, v, w} X)
+              (CategoryTheory.CategoryStruct.id.{w, v}
+                (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+                  Suzuki.ActualCoefficientKK.scalar.{u})))
+            f)
+          (CategoryTheory.Iso.hom.{w, v} (Suzuki.ActualCoefficientKK.ScalarTensorInput.unit.{u, v, w} self F)))
+        (CategoryTheory.CategoryStruct.comp.{w, v}
+          (CategoryTheory.Iso.hom.{w, v} (Suzuki.ActualCoefficientKK.ScalarTensorInput.unit.{u, v, w} self E)) f)
+constructor:
+  Suzuki.ActualCoefficientKK.ScalarTensorInput.mk.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    {X : Suzuki.GraphChannelKKCalculation.ExteriorInput.{u, v, w} J}
+    (unit :
+      (E : Suzuki.CoefficientModelFromExtension.Algebra.{u}) →
+        CategoryTheory.Iso.{w, v}
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+            (Suzuki.GraphChannelKKCalculation.ExteriorInput.tensor.{u, v, w} X Suzuki.ActualCoefficientKK.scalar.{u} E))
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J E))
+    (naturality :
+      ∀ {E F : Suzuki.CoefficientModelFromExtension.Algebra.{u}}
+        (f :
+          Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J E)
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J F)),
+        Eq.{w + 1}
+          (CategoryTheory.CategoryStruct.comp.{w, v}
+            (((Suzuki.GraphChannelKKCalculation.ExteriorInput.product.{u, v, w} X)
+                (CategoryTheory.CategoryStruct.id.{w, v}
+                  (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+                    Suzuki.ActualCoefficientKK.scalar.{u})))
+              f)
+            (CategoryTheory.Iso.hom.{w, v} (unit F)))
+          (CategoryTheory.CategoryStruct.comp.{w, v} (CategoryTheory.Iso.hom.{w, v} (unit E)) f)) :
+    Suzuki.ActualCoefficientKK.ScalarTensorInput.{u, v, w} J X
+structure Suzuki.ActualCoefficientKK.MatrixInput.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}) : Prop
+number of parameters: 3
+fields:
+  Suzuki.ActualCoefficientKK.MatrixInput.separable.{u, v,
+    w} : ∀ (A : Suzuki.TensorCoefficientChannels.Algebra.{u}) (q : ℕ),
+      TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A) →
+        TopologicalSpace.SeparableSpace.{u}
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+            (Suzuki.TensorCoefficientChannels.amplification.{u} A q))
+  Suzuki.ActualCoefficientKK.MatrixInput.scalar_separable.{u, v,
+    w} : ∀ (q : ℕ),
+      TopologicalSpace.SeparableSpace.{u}
+        (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} q))
+  Suzuki.ActualCoefficientKK.MatrixInput.corner_isIso.{u, v,
+    w} : ∀ (A : Suzuki.TensorCoefficientChannels.Algebra.{u})
+      (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)) (q : ℕ)
+      (r : ULift.{u, 0} (Fin q)),
+      CategoryTheory.IsIso.{w, v}
+        (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+          (Suzuki.ActualCoefficientKK.matrixCorner.{u} A q r))
+constructor:
+  Suzuki.ActualCoefficientKK.MatrixInput.mk.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    (separable :
+      ∀ (A : Suzuki.TensorCoefficientChannels.Algebra.{u}) (q : ℕ),
+        TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A) →
+          TopologicalSpace.SeparableSpace.{u}
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.TensorCoefficientChannels.amplification.{u} A q)))
+    (scalar_separable :
+      ∀ (q : ℕ),
+        TopologicalSpace.SeparableSpace.{u}
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} (Suzuki.TensorCoefficientChannels.matrixAlgebra.{u} q)))
+    (corner_isIso :
+      ∀ (A : Suzuki.TensorCoefficientChannels.Algebra.{u})
+        (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)) (q : ℕ)
+        (r : ULift.{u, 0} (Fin q)),
+        CategoryTheory.IsIso.{w, v}
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+            (Suzuki.ActualCoefficientKK.matrixCorner.{u} A q r))) :
+    Suzuki.ActualCoefficientKK.MatrixInput.{u, v, w} J
+structure Suzuki.ActualCoefficientKK.UniverseCone.Input.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w})
+  (G : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} J) (F : Suzuki.GraphChannelKKCalculation.FiniteK0Input)
+  (U : Suzuki.GraphChannelKKCalculation.FreeUCTInput.{u, v, w, t} J G) : Type (max t (u + 1))
+number of parameters: 7
+fields:
+  Suzuki.ActualCoefficientKK.UniverseCone.Input.coordinates.{u, v, w,
+    t} : {n : Type} →
+      [inst : Fintype.{0} n] →
+        [inst_1 : DecidableEq.{1} n] →
+          {B : Matrix.{0, 0, 0} n n ℤ} →
+            {k l : n → ℕ} →
+              (P : Suzuki.ActualCoefficientKK.UniverseCone.Presentation.{u} B k l) →
+                Suzuki.GraphChannelKKCalculation.GraphCoordinates.{u, v, w, t, 0} J G
+                  (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.actual.{u} P) B
+  Suzuki.ActualCoefficientKK.UniverseCone.Input.bootstrap.{u, v, w,
+    t} : ∀ {n : Type} [inst : Fintype.{0} n] [inst_1 : DecidableEq.{1} n] {B : Matrix.{0, 0, 0} n n ℤ} {k l : n → ℕ}
+      (P : Suzuki.ActualCoefficientKK.UniverseCone.Presentation.{u} B k l),
+      Suzuki.GraphChannelKKCalculation.FreeUCTInput.bootstrap.{u, v, w, t} U
+        (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.actual.{u} P)
+  Suzuki.ActualCoefficientKK.UniverseCone.Input.naturality.{u, v, w,
+    t} : ∀ {n m : Type} [inst : Fintype.{0} n] [inst_1 : Fintype.{0} m] [inst_2 : DecidableEq.{1} n]
+      [inst_3 : DecidableEq.{1} m] {B : Matrix.{0, 0, 0} n n ℤ} {B' : Matrix.{0, 0, 0} m m ℤ} {k l : n → ℕ}
+      {k' l' : m → ℕ} (P : Suzuki.ActualCoefficientKK.UniverseCone.Presentation.{u} B k l)
+      (Q : Suzuki.ActualCoefficientKK.UniverseCone.Presentation.{u} B' k' l')
+      (γ :
+        NonUnitalStarAlgHom.{0, u, u} ℂ
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u}
+            (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.actual.{u} P))
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u}
+            (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.actual.{u} Q)))
+      (d :
+        NonUnitalStarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} (Sum.elim.{0, 0, 1} k l))
+          (Suzuki.MultiplicityEmbeddings.Blocks.{0} (Sum.elim.{0, 0, 1} k' l')))
+      (f :
+        NonUnitalStarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} (HAdd.hAdd.{0, 0, 0} k l))
+          (Suzuki.MultiplicityEmbeddings.Blocks.{0} (HAdd.hAdd.{0, 0, 0} k' l')))
+      (g :
+        NonUnitalStarAlgHom.{0, 0, 0} ℂ
+          (Suzuki.MultiplicityEmbeddings.Blocks.{0}
+            (HAdd.hAdd.{0, 0, 0} k
+              (Matrix.mulVec.{0, 0, 0} (Suzuki.FiniteDiagram.natMatrix.{0, 0} (HAdd.hAdd.{0, 0, 0} 1 B)) l)))
+          (Suzuki.MultiplicityEmbeddings.Blocks.{0}
+            (HAdd.hAdd.{0, 0, 0} k'
+              (Matrix.mulVec.{0, 0, 0} (Suzuki.FiniteDiagram.natMatrix.{0, 0} (HAdd.hAdd.{0, 0, 0} 1 B')) l')))),
+      (∀ (a : Suzuki.MultiplicityEmbeddings.Blocks.{0} (Sum.elim.{0, 0, 1} k l)),
+          Eq.{1} (f ((Suzuki.MultiplicityEmbeddings.firstInclusion.{0} k l) a))
+            ((Suzuki.MultiplicityEmbeddings.firstInclusion.{0} k' l') (d a))) →
+        (∀ (a : Suzuki.MultiplicityEmbeddings.Blocks.{0} (Sum.elim.{0, 0, 1} k l)),
+            Eq.{1}
+              (g
+                ((Suzuki.MultiplicityEmbeddings.secondInclusion.{0}
+                    (Suzuki.FiniteDiagram.natMatrix.{0, 0} (HAdd.hAdd.{0, 0, 0} 1 B)) k l)
+                  a))
+              ((Suzuki.MultiplicityEmbeddings.secondInclusion.{0}
+                  (Suzuki.FiniteDiagram.natMatrix.{0, 0} (HAdd.hAdd.{0, 0, 0} 1 B')) k' l')
+                (d a))) →
+          (∀ (a : Suzuki.MultiplicityEmbeddings.Blocks.{0} (HAdd.hAdd.{0, 0, 0} k l)),
+              Eq.{u + 1} (γ ((Suzuki.ActualCoefficientKK.UniverseCone.Presentation.left.{u} P) (ULift.up.{u, 0} a)))
+                ((Suzuki.ActualCoefficientKK.UniverseCone.Presentation.left.{u} Q) (ULift.up.{u, 0} (f a)))) →
+            (∀
+                (a :
+                  Suzuki.MultiplicityEmbeddings.Blocks.{0}
+                    (HAdd.hAdd.{0, 0, 0} k
+                      (Matrix.mulVec.{0, 0, 0} (Suzuki.FiniteDiagram.natMatrix.{0, 0} (HAdd.hAdd.{0, 0, 0} 1 B)) l))),
+                Eq.{u + 1} (γ ((Suzuki.ActualCoefficientKK.UniverseCone.Presentation.right.{u} P) (ULift.up.{u, 0} a)))
+                  ((Suzuki.ActualCoefficientKK.UniverseCone.Presentation.right.{u} Q) (ULift.up.{u, 0} (g a)))) →
+              (∀ (x y : n → ℤ),
+                  Eq.{1}
+                    ((Suzuki.GraphChannelKKCalculation.GraphCoordinates.even.{u, v, w, t, 0}
+                        (Suzuki.ActualCoefficientKK.UniverseCone.Input.coordinates.{u, v, w, t} self Q))
+                      (((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} G false)
+                          (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J γ))
+                        ((AddEquiv.symm.{t, 0}
+                            (Suzuki.GraphChannelKKCalculation.GraphCoordinates.even.{u, v, w, t, 0}
+                              (Suzuki.ActualCoefficientKK.UniverseCone.Input.coordinates.{u, v, w, t} self P)))
+                          (Suzuki.GraphChannelKKCalculation.pairClass.{0} B x y))))
+                    (Suzuki.GraphChannelKKCalculation.pairClass.{0} B' ((F.action f) x) ((F.action g) y))) ∧
+                ∀
+                  (x :
+                    Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} G true
+                      (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.actual.{u} P)),
+                  Eq.{1}
+                    (Sum.elim.{0, 0, 1}
+                      (Neg.neg.{0}
+                        ↑((Suzuki.GraphChannelKKCalculation.GraphCoordinates.odd.{u, v, w, t, 0}
+                              (Suzuki.ActualCoefficientKK.UniverseCone.Input.coordinates.{u, v, w, t} self Q))
+                            (((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} G true)
+                                (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J γ))
+                              x)))
+                      ↑((Suzuki.GraphChannelKKCalculation.GraphCoordinates.odd.{u, v, w, t, 0}
+                            (Suzuki.ActualCoefficientKK.UniverseCone.Input.coordinates.{u, v, w, t} self Q))
+                          (((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} G true)
+                              (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J γ))
+                            x)))
+                    ((F.action d)
+                      (Sum.elim.{0, 0, 1}
+                        (Neg.neg.{0}
+                          ↑((Suzuki.GraphChannelKKCalculation.GraphCoordinates.odd.{u, v, w, t, 0}
+                                (Suzuki.ActualCoefficientKK.UniverseCone.Input.coordinates.{u, v, w, t} self P))
+                              x))
+                        ↑((Suzuki.GraphChannelKKCalculation.GraphCoordinates.odd.{u, v, w, t, 0}
+                              (Suzuki.ActualCoefficientKK.UniverseCone.Input.coordinates.{u, v, w, t} self P))
+                            x)))
+constructor:
+  Suzuki.ActualCoefficientKK.UniverseCone.Input.mk.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    {G : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} J} {F : Suzuki.GraphChannelKKCalculation.FiniteK0Input}
+    {U : Suzuki.GraphChannelKKCalculation.FreeUCTInput.{u, v, w, t} J G}
+    (coordinates :
+      {n : Type} →
+        [inst : Fintype.{0} n] →
+          [inst_1 : DecidableEq.{1} n] →
+            {B : Matrix.{0, 0, 0} n n ℤ} →
+              {k l : n → ℕ} →
+                (P : Suzuki.ActualCoefficientKK.UniverseCone.Presentation.{u} B k l) →
+                  Suzuki.GraphChannelKKCalculation.GraphCoordinates.{u, v, w, t, 0} J G
+                    (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.actual.{u} P) B)
+    (bootstrap :
+      ∀ {n : Type} [inst : Fintype.{0} n] [inst_1 : DecidableEq.{1} n] {B : Matrix.{0, 0, 0} n n ℤ} {k l : n → ℕ}
+        (P : Suzuki.ActualCoefficientKK.UniverseCone.Presentation.{u} B k l),
+        Suzuki.GraphChannelKKCalculation.FreeUCTInput.bootstrap.{u, v, w, t} U
+          (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.actual.{u} P))
+    (naturality :
+      ∀ {n m : Type} [inst : Fintype.{0} n] [inst_1 : Fintype.{0} m] [inst_2 : DecidableEq.{1} n]
+        [inst_3 : DecidableEq.{1} m] {B : Matrix.{0, 0, 0} n n ℤ} {B' : Matrix.{0, 0, 0} m m ℤ} {k l : n → ℕ}
+        {k' l' : m → ℕ} (P : Suzuki.ActualCoefficientKK.UniverseCone.Presentation.{u} B k l)
+        (Q : Suzuki.ActualCoefficientKK.UniverseCone.Presentation.{u} B' k' l')
+        (γ :
+          NonUnitalStarAlgHom.{0, u, u} ℂ
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u}
+              (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.actual.{u} P))
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u}
+              (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.actual.{u} Q)))
+        (d :
+          NonUnitalStarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} (Sum.elim.{0, 0, 1} k l))
+            (Suzuki.MultiplicityEmbeddings.Blocks.{0} (Sum.elim.{0, 0, 1} k' l')))
+        (f :
+          NonUnitalStarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} (HAdd.hAdd.{0, 0, 0} k l))
+            (Suzuki.MultiplicityEmbeddings.Blocks.{0} (HAdd.hAdd.{0, 0, 0} k' l')))
+        (g :
+          NonUnitalStarAlgHom.{0, 0, 0} ℂ
+            (Suzuki.MultiplicityEmbeddings.Blocks.{0}
+              (HAdd.hAdd.{0, 0, 0} k
+                (Matrix.mulVec.{0, 0, 0} (Suzuki.FiniteDiagram.natMatrix.{0, 0} (HAdd.hAdd.{0, 0, 0} 1 B)) l)))
+            (Suzuki.MultiplicityEmbeddings.Blocks.{0}
+              (HAdd.hAdd.{0, 0, 0} k'
+                (Matrix.mulVec.{0, 0, 0} (Suzuki.FiniteDiagram.natMatrix.{0, 0} (HAdd.hAdd.{0, 0, 0} 1 B')) l')))),
+        (∀ (a : Suzuki.MultiplicityEmbeddings.Blocks.{0} (Sum.elim.{0, 0, 1} k l)),
+            Eq.{1} (f ((Suzuki.MultiplicityEmbeddings.firstInclusion.{0} k l) a))
+              ((Suzuki.MultiplicityEmbeddings.firstInclusion.{0} k' l') (d a))) →
+          (∀ (a : Suzuki.MultiplicityEmbeddings.Blocks.{0} (Sum.elim.{0, 0, 1} k l)),
+              Eq.{1}
+                (g
+                  ((Suzuki.MultiplicityEmbeddings.secondInclusion.{0}
+                      (Suzuki.FiniteDiagram.natMatrix.{0, 0} (HAdd.hAdd.{0, 0, 0} 1 B)) k l)
+                    a))
+                ((Suzuki.MultiplicityEmbeddings.secondInclusion.{0}
+                    (Suzuki.FiniteDiagram.natMatrix.{0, 0} (HAdd.hAdd.{0, 0, 0} 1 B')) k' l')
+                  (d a))) →
+            (∀ (a : Suzuki.MultiplicityEmbeddings.Blocks.{0} (HAdd.hAdd.{0, 0, 0} k l)),
+                Eq.{u + 1} (γ ((Suzuki.ActualCoefficientKK.UniverseCone.Presentation.left.{u} P) (ULift.up.{u, 0} a)))
+                  ((Suzuki.ActualCoefficientKK.UniverseCone.Presentation.left.{u} Q) (ULift.up.{u, 0} (f a)))) →
+              (∀
+                  (a :
+                    Suzuki.MultiplicityEmbeddings.Blocks.{0}
+                      (HAdd.hAdd.{0, 0, 0} k
+                        (Matrix.mulVec.{0, 0, 0} (Suzuki.FiniteDiagram.natMatrix.{0, 0} (HAdd.hAdd.{0, 0, 0} 1 B)) l))),
+                  Eq.{u + 1}
+                    (γ ((Suzuki.ActualCoefficientKK.UniverseCone.Presentation.right.{u} P) (ULift.up.{u, 0} a)))
+                    ((Suzuki.ActualCoefficientKK.UniverseCone.Presentation.right.{u} Q) (ULift.up.{u, 0} (g a)))) →
+                (∀ (x y : n → ℤ),
+                    Eq.{1}
+                      ((Suzuki.GraphChannelKKCalculation.GraphCoordinates.even.{u, v, w, t, 0} (coordinates Q))
+                        (((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} G false)
+                            (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J γ))
+                          ((AddEquiv.symm.{t, 0}
+                              (Suzuki.GraphChannelKKCalculation.GraphCoordinates.even.{u, v, w, t, 0} (coordinates P)))
+                            (Suzuki.GraphChannelKKCalculation.pairClass.{0} B x y))))
+                      (Suzuki.GraphChannelKKCalculation.pairClass.{0} B' ((F.action f) x) ((F.action g) y))) ∧
+                  ∀
+                    (x :
+                      Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} G true
+                        (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.actual.{u} P)),
+                    Eq.{1}
+                      (Sum.elim.{0, 0, 1}
+                        (Neg.neg.{0}
+                          ↑((Suzuki.GraphChannelKKCalculation.GraphCoordinates.odd.{u, v, w, t, 0} (coordinates Q))
+                              (((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} G true)
+                                  (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J γ))
+                                x)))
+                        ↑((Suzuki.GraphChannelKKCalculation.GraphCoordinates.odd.{u, v, w, t, 0} (coordinates Q))
+                            (((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} G true)
+                                (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J γ))
+                              x)))
+                      ((F.action d)
+                        (Sum.elim.{0, 0, 1}
+                          (Neg.neg.{0}
+                            ↑((Suzuki.GraphChannelKKCalculation.GraphCoordinates.odd.{u, v, w, t, 0} (coordinates P))
+                                x))
+                          ↑((Suzuki.GraphChannelKKCalculation.GraphCoordinates.odd.{u, v, w, t, 0} (coordinates P))
+                              x)))) :
+    Suzuki.ActualCoefficientKK.UniverseCone.Input.{u, v, w, t} J G F U
+structure Suzuki.ActualCoefficientKK.ReferenceInput.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w})
+  (G : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} J)
+  (U : Suzuki.GraphChannelKKCalculation.FreeUCTInput.{u, v, w, t} J G) : Type t
+number of parameters: 6
+fields:
+  Suzuki.ActualCoefficientKK.ReferenceInput.bootstrap.{u, v, w,
+    t} : Suzuki.GraphChannelKKCalculation.FreeUCTInput.bootstrap.{u, v, w, t} U Suzuki.ActualCoefficientKK.reference.{u}
+  Suzuki.ActualCoefficientKK.ReferenceInput.even.{u, v, w,
+    t} : AddEquiv.{t, 0}
+      (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} G false Suzuki.ActualCoefficientKK.reference.{u}) ℤ
+  Suzuki.ActualCoefficientKK.ReferenceInput.odd.{u, v, w,
+    t} : AddEquiv.{t, 0}
+      (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} G true Suzuki.ActualCoefficientKK.reference.{u}) ℤ
+  Suzuki.ActualCoefficientKK.ReferenceInput.map_even.{u, v, w,
+    t} : Eq.{t + 1}
+      ((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} G false)
+        (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+          Suzuki.ActualCoefficientKK.referenceMap.{u}))
+      (AddMonoidHom.id.{t}
+        (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} G false Suzuki.ActualCoefficientKK.reference.{u}))
+  Suzuki.ActualCoefficientKK.ReferenceInput.map_odd.{u, v, w,
+    t} : Eq.{t + 1}
+      ((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} G true)
+        (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+          Suzuki.ActualCoefficientKK.referenceMap.{u}))
+      0
+constructor:
+  Suzuki.ActualCoefficientKK.ReferenceInput.mk.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    {G : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} J}
+    {U : Suzuki.GraphChannelKKCalculation.FreeUCTInput.{u, v, w, t} J G}
+    (bootstrap :
+      Suzuki.GraphChannelKKCalculation.FreeUCTInput.bootstrap.{u, v, w, t} U Suzuki.ActualCoefficientKK.reference.{u})
+    (even :
+      AddEquiv.{t, 0}
+        (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} G false Suzuki.ActualCoefficientKK.reference.{u})
+        ℤ)
+    (odd :
+      AddEquiv.{t, 0}
+        (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} G true Suzuki.ActualCoefficientKK.reference.{u}) ℤ)
+    (map_even :
+      Eq.{t + 1}
+        ((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} G false)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+            Suzuki.ActualCoefficientKK.referenceMap.{u}))
+        (AddMonoidHom.id.{t}
+          (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} G false
+            Suzuki.ActualCoefficientKK.reference.{u})))
+    (map_odd :
+      Eq.{t + 1}
+        ((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} G true)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+            Suzuki.ActualCoefficientKK.referenceMap.{u}))
+        0) :
+    Suzuki.ActualCoefficientKK.ReferenceInput.{u, v, w, t} J G U
+structure Suzuki.GraphChannelKKCalculation.ExteriorInput.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}) :
+  Type (max (u + 1) w)
+number of parameters: 4
+fields:
+  Suzuki.GraphChannelKKCalculation.ExteriorInput.tensor.{u, v,
+    w} : Suzuki.CoefficientModelFromExtension.Algebra.{u} →
+      Suzuki.CoefficientModelFromExtension.Algebra.{u} → Suzuki.CoefficientModelFromExtension.Algebra.{u}
+  Suzuki.GraphChannelKKCalculation.ExteriorInput.map.{u, v,
+    w} : {A B C D : Suzuki.CoefficientModelFromExtension.Algebra.{u}} →
+      NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B) →
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} C)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} D) →
+          NonUnitalStarAlgHom.{0, u, u} ℂ
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u}
+              (Suzuki.GraphChannelKKCalculation.ExteriorInput.tensor.{u, v, w} self A C))
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u}
+              (Suzuki.GraphChannelKKCalculation.ExteriorInput.tensor.{u, v, w} self B D))
+  Suzuki.GraphChannelKKCalculation.ExteriorInput.product.{u, v,
+    w} : {A B C D : Suzuki.CoefficientModelFromExtension.Algebra.{u}} →
+      AddMonoidHom.{w, w}
+        (Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B))
+        (AddMonoidHom.{w, w}
+          (Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J C)
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J D))
+          (Quiver.Hom.{w, v}
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+              (Suzuki.GraphChannelKKCalculation.ExteriorInput.tensor.{u, v, w} self A C))
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+              (Suzuki.GraphChannelKKCalculation.ExteriorInput.tensor.{u, v, w} self B D))))
+  Suzuki.GraphChannelKKCalculation.ExteriorInput.product_id.{u, v,
+    w} : ∀ (A C : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+      Eq.{w + 1}
+        (((Suzuki.GraphChannelKKCalculation.ExteriorInput.product.{u, v, w} self)
+            (CategoryTheory.CategoryStruct.id.{w, v}
+              (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)))
+          (CategoryTheory.CategoryStruct.id.{w, v}
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J C)))
+        (CategoryTheory.CategoryStruct.id.{w, v}
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+            (Suzuki.GraphChannelKKCalculation.ExteriorInput.tensor.{u, v, w} self A C)))
+  Suzuki.GraphChannelKKCalculation.ExteriorInput.product_comp.{u, v,
+    w} : ∀ {A B C D E F : Suzuki.CoefficientModelFromExtension.Algebra.{u}}
+      (f :
+        Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B))
+      (g :
+        Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J C))
+      (h :
+        Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J D)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J E))
+      (k :
+        Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J E)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J F)),
+      Eq.{w + 1}
+        (((Suzuki.GraphChannelKKCalculation.ExteriorInput.product.{u, v, w} self)
+            (CategoryTheory.CategoryStruct.comp.{w, v} f g))
+          (CategoryTheory.CategoryStruct.comp.{w, v} h k))
+        (CategoryTheory.CategoryStruct.comp.{w, v}
+          (((Suzuki.GraphChannelKKCalculation.ExteriorInput.product.{u, v, w} self) f) h)
+          (((Suzuki.GraphChannelKKCalculation.ExteriorInput.product.{u, v, w} self) g) k))
+  Suzuki.GraphChannelKKCalculation.ExteriorInput.map_class.{u, v,
+    w} : ∀ {A B C D : Suzuki.CoefficientModelFromExtension.Algebra.{u}}
+      (f :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B))
+      (g :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} C)
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} D)),
+      Eq.{w + 1}
+        (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+          (Suzuki.GraphChannelKKCalculation.ExteriorInput.map.{u, v, w} self f g))
+        (((Suzuki.GraphChannelKKCalculation.ExteriorInput.product.{u, v, w} self)
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J f))
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J g))
+  Suzuki.GraphChannelKKCalculation.ExteriorInput.orthogonal_sum.{u, v,
+    w} : ∀ {A B : Suzuki.CoefficientModelFromExtension.Algebra.{u}} {n : Type} [inst : Fintype.{0} n]
+      (f :
+        n →
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B))
+      (φ :
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)
+          (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B)),
+      (∀ (i j : n),
+          Ne.{1} i j →
+            ∀ (x y : Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A),
+              Eq.{u + 1} (HMul.hMul.{u, u, u} ((f i) x) ((f j) y)) 0) →
+        (∀ (x : Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A), Eq.{u + 1} (φ x) (∑ i, (f i) x)) →
+          Eq.{w + 1} (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J φ)
+            (∑ i, Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J (f i))
+constructor:
+  Suzuki.GraphChannelKKCalculation.ExteriorInput.mk.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    (tensor :
+      Suzuki.CoefficientModelFromExtension.Algebra.{u} →
+        Suzuki.CoefficientModelFromExtension.Algebra.{u} → Suzuki.CoefficientModelFromExtension.Algebra.{u})
+    (map :
+      {A B C D : Suzuki.CoefficientModelFromExtension.Algebra.{u}} →
+        NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B) →
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} C)
+              (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} D) →
+            NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} (tensor A C))
+              (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} (tensor B D)))
+    (product :
+      {A B C D : Suzuki.CoefficientModelFromExtension.Algebra.{u}} →
+        AddMonoidHom.{w, w}
+          (Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B))
+          (AddMonoidHom.{w, w}
+            (Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J C)
+              (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J D))
+            (Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J (tensor A C))
+              (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J (tensor B D)))))
+    (product_id :
+      ∀ (A C : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+        Eq.{w + 1}
+          ((product
+              (CategoryTheory.CategoryStruct.id.{w, v}
+                (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)))
+            (CategoryTheory.CategoryStruct.id.{w, v}
+              (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J C)))
+          (CategoryTheory.CategoryStruct.id.{w, v}
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J (tensor A C))))
+    (product_comp :
+      ∀ {A B C D E F : Suzuki.CoefficientModelFromExtension.Algebra.{u}}
+        (f :
+          Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B))
+        (g :
+          Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B)
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J C))
+        (h :
+          Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J D)
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J E))
+        (k :
+          Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J E)
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J F)),
+        Eq.{w + 1}
+          ((product (CategoryTheory.CategoryStruct.comp.{w, v} f g)) (CategoryTheory.CategoryStruct.comp.{w, v} h k))
+          (CategoryTheory.CategoryStruct.comp.{w, v} ((product f) h) ((product g) k)))
+    (map_class :
+      ∀ {A B C D : Suzuki.CoefficientModelFromExtension.Algebra.{u}}
+        (f :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B))
+        (g :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} C)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} D)),
+        Eq.{w + 1} (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J (map f g))
+          ((product (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J f))
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J g)))
+    (orthogonal_sum :
+      ∀ {A B : Suzuki.CoefficientModelFromExtension.Algebra.{u}} {n : Type} [inst : Fintype.{0} n]
+        (f :
+          n →
+            NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)
+              (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B))
+        (φ :
+          NonUnitalStarAlgHom.{0, u, u} ℂ (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A)
+            (Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} B)),
+        (∀ (i j : n),
+            Ne.{1} i j →
+              ∀ (x y : Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A),
+                Eq.{u + 1} (HMul.hMul.{u, u, u} ((f i) x) ((f j) y)) 0) →
+          (∀ (x : Suzuki.CoefficientModelFromExtension.Algebra.Carrier.{u} A), Eq.{u + 1} (φ x) (∑ i, (f i) x)) →
+            Eq.{w + 1} (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J φ)
+              (∑ i, Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J (f i))) :
+    Suzuki.GraphChannelKKCalculation.ExteriorInput.{u, v, w} J
+structure Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}) :
+  Type (max (max (t + 1) (u + 1)) w)
+number of parameters: 4
+fields:
+  Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w,
+    t} : Bool → Suzuki.CoefficientModelFromExtension.Algebra.{u} → Type t
+  Suzuki.GraphChannelKKCalculation.KTheory.abelian.{u, v, w,
+    t} : (d : Bool) →
+      (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}) →
+        AddCommGroup.{t} (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} self d A)
+  Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w,
+    t} : (d : Bool) →
+      {A B : Suzuki.CoefficientModelFromExtension.Algebra.{u}} →
+        AddMonoidHom.{w, t}
+          (Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B))
+          (AddMonoidHom.{t, t} (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} self d A)
+            (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} self d B))
+  Suzuki.GraphChannelKKCalculation.KTheory.action_id.{u, v, w,
+    t} : ∀ (d : Bool) (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+      Eq.{t + 1}
+        ((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} self d)
+          (CategoryTheory.CategoryStruct.id.{w, v}
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)))
+        (AddMonoidHom.id.{t} (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} self d A))
+  Suzuki.GraphChannelKKCalculation.KTheory.action_comp.{u, v, w,
+    t} : ∀ (d : Bool) {A B C : Suzuki.CoefficientModelFromExtension.Algebra.{u}}
+      (f :
+        Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B))
+      (g :
+        Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J C)),
+      Eq.{t + 1}
+        ((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} self d)
+          (CategoryTheory.CategoryStruct.comp.{w, v} f g))
+        (AddMonoidHom.comp.{t, t, t} ((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} self d) g)
+          ((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, t} self d) f))
+constructor:
+  Suzuki.GraphChannelKKCalculation.KTheory.mk.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    (group : Bool → Suzuki.CoefficientModelFromExtension.Algebra.{u} → Type t)
+    (abelian : (d : Bool) → (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}) → AddCommGroup.{t} (group d A))
+    (action :
+      (d : Bool) →
+        {A B : Suzuki.CoefficientModelFromExtension.Algebra.{u}} →
+          AddMonoidHom.{w, t}
+            (Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)
+              (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B))
+            (AddMonoidHom.{t, t} (group d A) (group d B)))
+    (action_id :
+      ∀ (d : Bool) (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+        Eq.{t + 1}
+          ((action d)
+            (CategoryTheory.CategoryStruct.id.{w, v}
+              (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)))
+          (AddMonoidHom.id.{t} (group d A)))
+    (action_comp :
+      ∀ (d : Bool) {A B C : Suzuki.CoefficientModelFromExtension.Algebra.{u}}
+        (f :
+          Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B))
+        (g :
+          Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B)
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J C)),
+        Eq.{t + 1} ((action d) (CategoryTheory.CategoryStruct.comp.{w, v} f g))
+          (AddMonoidHom.comp.{t, t, t} ((action d) g) ((action d) f))) :
+    Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} J
+structure Suzuki.GraphChannelKKCalculation.FiniteK0Input : Type 1
+number of parameters: 0
+fields:
+  Suzuki.GraphChannelKKCalculation.FiniteK0Input.action : {n m : Type} →
+      [Fintype.{0} n] →
+        [Fintype.{0} m] →
+          [DecidableEq.{1} n] →
+            [DecidableEq.{1} m] →
+              {k : n → ℕ} →
+                {l : m → ℕ} →
+                  NonUnitalStarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} k)
+                      (Suzuki.MultiplicityEmbeddings.Blocks.{0} l) →
+                    LinearMap.{0, 0, 0, 0} (RingHom.id.{0} ℤ) (n → ℤ) (m → ℤ)
+  Suzuki.GraphChannelKKCalculation.FiniteK0Input.comp : ∀ {n m r : Type} [inst : Fintype.{0} n] [inst_1 : Fintype.{0} m]
+      [inst_2 : Fintype.{0} r] [inst_3 : DecidableEq.{1} n] [inst_4 : DecidableEq.{1} m] [inst_5 : DecidableEq.{1} r]
+      {k : n → ℕ} {l : m → ℕ} {d : r → ℕ},
+      (∀ (i : n), LT.lt.{0} 0 (k i)) →
+        (∀ (i : m), LT.lt.{0} 0 (l i)) →
+          (∀ (i : r), LT.lt.{0} 0 (d i)) →
+            ∀
+              (f :
+                NonUnitalStarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} k)
+                  (Suzuki.MultiplicityEmbeddings.Blocks.{0} l))
+              (g :
+                NonUnitalStarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} l)
+                  (Suzuki.MultiplicityEmbeddings.Blocks.{0} d)),
+              Eq.{1} (self.action (NonUnitalStarAlgHom.comp.{0, 0, 0, 0} g f)) (self.action g ∘ₗ self.action f)
+  Suzuki.GraphChannelKKCalculation.FiniteK0Input.multiplicity : ∀ {n m : Type} [inst : Fintype.{0} n]
+      [inst_1 : Fintype.{0} m] [inst_2 : DecidableEq.{1} n] [inst_3 : DecidableEq.{1} m] {k : n → ℕ} {l : m → ℕ},
+      (∀ (i : n), LT.lt.{0} 0 (k i)) →
+        (∀ (i : m), LT.lt.{0} 0 (l i)) →
+          ∀ (M : Matrix.{0, 0, 0} m n ℕ)
+            (f :
+              StarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} k)
+                (Suzuki.MultiplicityEmbeddings.Blocks.{0} l)),
+            Suzuki.FiniteDiagram.HasMultiplicity.{0, 0} k M l f →
+              Eq.{1} (self.action (StarAlgHom.toNonUnitalStarAlgHom.{0, 0, 0} f))
+                (Matrix.mulVecLin.{0, 0, 0} (Matrix.map.{0, 0, 0, 0} M Int.ofNat))
+  Suzuki.GraphChannelKKCalculation.FiniteK0Input.rowCorner : ∀ {C n : Type} [inst : Fintype.{0} C]
+      [inst_1 : Fintype.{0} n] [inst_2 : DecidableEq.{1} C] [inst_3 : DecidableEq.{1} n] (w : C → n → ℕ) (d : n → ℕ)
+      (c : C),
+      (∀ (i : n), LT.lt.{0} 0 (w c i)) →
+        (∀ (i : n), LT.lt.{0} 0 (d i)) →
+          ∀ (E : (i : n) → Equiv.{1, 1} ((a : C) × Fin (w a i)) (Fin (d i)))
+            (f :
+              NonUnitalStarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} (w c))
+                (Suzuki.MultiplicityEmbeddings.Blocks.{0} d)),
+            (∀ (a : Suzuki.MultiplicityEmbeddings.Blocks.{0} (w c)) (i : n),
+                Eq.{1} (f a i)
+                  ((CStarMatrix.reindexₐ.{0, 0, 0, 0} ℂ ℂ (E i))
+                    ((Suzuki.MultiplicityEmbeddings.copyHom.{0, 0} (fun a => w a i) id.{1})
+                      (Pi.single.{0, 0} c (a i))))) →
+              Eq.{1} (self.action f) LinearMap.id.{0, 0}
+constructor:
+  Suzuki.GraphChannelKKCalculation.FiniteK0Input.mk
+    (action :
+      {n m : Type} →
+        [Fintype.{0} n] →
+          [Fintype.{0} m] →
+            [DecidableEq.{1} n] →
+              [DecidableEq.{1} m] →
+                {k : n → ℕ} →
+                  {l : m → ℕ} →
+                    NonUnitalStarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} k)
+                        (Suzuki.MultiplicityEmbeddings.Blocks.{0} l) →
+                      LinearMap.{0, 0, 0, 0} (RingHom.id.{0} ℤ) (n → ℤ) (m → ℤ))
+    (comp :
+      ∀ {n m r : Type} [inst : Fintype.{0} n] [inst_1 : Fintype.{0} m] [inst_2 : Fintype.{0} r]
+        [inst_3 : DecidableEq.{1} n] [inst_4 : DecidableEq.{1} m] [inst_5 : DecidableEq.{1} r] {k : n → ℕ} {l : m → ℕ}
+        {d : r → ℕ},
+        (∀ (i : n), LT.lt.{0} 0 (k i)) →
+          (∀ (i : m), LT.lt.{0} 0 (l i)) →
+            (∀ (i : r), LT.lt.{0} 0 (d i)) →
+              ∀
+                (f :
+                  NonUnitalStarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} k)
+                    (Suzuki.MultiplicityEmbeddings.Blocks.{0} l))
+                (g :
+                  NonUnitalStarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} l)
+                    (Suzuki.MultiplicityEmbeddings.Blocks.{0} d)),
+                Eq.{1} (action (NonUnitalStarAlgHom.comp.{0, 0, 0, 0} g f)) (action g ∘ₗ action f))
+    (multiplicity :
+      ∀ {n m : Type} [inst : Fintype.{0} n] [inst_1 : Fintype.{0} m] [inst_2 : DecidableEq.{1} n]
+        [inst_3 : DecidableEq.{1} m] {k : n → ℕ} {l : m → ℕ},
+        (∀ (i : n), LT.lt.{0} 0 (k i)) →
+          (∀ (i : m), LT.lt.{0} 0 (l i)) →
+            ∀ (M : Matrix.{0, 0, 0} m n ℕ)
+              (f :
+                StarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} k)
+                  (Suzuki.MultiplicityEmbeddings.Blocks.{0} l)),
+              Suzuki.FiniteDiagram.HasMultiplicity.{0, 0} k M l f →
+                Eq.{1} (action (StarAlgHom.toNonUnitalStarAlgHom.{0, 0, 0} f))
+                  (Matrix.mulVecLin.{0, 0, 0} (Matrix.map.{0, 0, 0, 0} M Int.ofNat)))
+    (rowCorner :
+      ∀ {C n : Type} [inst : Fintype.{0} C] [inst_1 : Fintype.{0} n] [inst_2 : DecidableEq.{1} C]
+        [inst_3 : DecidableEq.{1} n] (w : C → n → ℕ) (d : n → ℕ) (c : C),
+        (∀ (i : n), LT.lt.{0} 0 (w c i)) →
+          (∀ (i : n), LT.lt.{0} 0 (d i)) →
+            ∀ (E : (i : n) → Equiv.{1, 1} ((a : C) × Fin (w a i)) (Fin (d i)))
+              (f :
+                NonUnitalStarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} (w c))
+                  (Suzuki.MultiplicityEmbeddings.Blocks.{0} d)),
+              (∀ (a : Suzuki.MultiplicityEmbeddings.Blocks.{0} (w c)) (i : n),
+                  Eq.{1} (f a i)
+                    ((CStarMatrix.reindexₐ.{0, 0, 0, 0} ℂ ℂ (E i))
+                      ((Suzuki.MultiplicityEmbeddings.copyHom.{0, 0} (fun a => w a i) id.{1})
+                        (Pi.single.{0, 0} c (a i))))) →
+                Eq.{1} (action f) LinearMap.id.{0, 0}) :
+    Suzuki.GraphChannelKKCalculation.FiniteK0Input
+structure Suzuki.GraphChannelKKCalculation.FreeUCTInput.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w})
+  (G : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} J) : Type (u + 1)
+number of parameters: 5
+fields:
+  Suzuki.GraphChannelKKCalculation.FreeUCTInput.bootstrap.{u, v, w,
+    t} : Suzuki.CoefficientModelFromExtension.Algebra.{u} → Prop
+  Suzuki.GraphChannelKKCalculation.FreeUCTInput.bijective.{u, v, w,
+    t} : ∀ (A B : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+      Suzuki.GraphChannelKKCalculation.FreeUCTInput.bootstrap.{u, v, w, t} self A →
+        ∀ (a : AddEquiv.{t, 0} (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} G false A) ℤ)
+          (a : AddEquiv.{t, 0} (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} G true A) ℤ),
+          Function.Bijective.{w + 1, t + 1} (Suzuki.GraphChannelKKCalculation.evaluation.{u, v, w, t} J G)
+constructor:
+  Suzuki.GraphChannelKKCalculation.FreeUCTInput.mk.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    {G : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} J}
+    (bootstrap : Suzuki.CoefficientModelFromExtension.Algebra.{u} → Prop)
+    (bijective :
+      ∀ (A B : Suzuki.CoefficientModelFromExtension.Algebra.{u}),
+        bootstrap A →
+          ∀ (a : AddEquiv.{t, 0} (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} G false A) ℤ)
+            (a : AddEquiv.{t, 0} (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, t} G true A) ℤ),
+            Function.Bijective.{w + 1, t + 1} (Suzuki.GraphChannelKKCalculation.evaluation.{u, v, w, t} J G)) :
+    Suzuki.GraphChannelKKCalculation.FreeUCTInput.{u, v, w, t} J G
+structure Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u}
+  (T : Suzuki.TensorCoefficientChannels.Spatial.{u}) : Type (u + 1)
+number of parameters: 1
+fields:
+  Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.matrix.{u} : (E :
+        Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      (n : ℕ) →
+        StarAlgEquiv.{0, u, u} ℂ
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+            (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T
+              (Suzuki.PrescribedUnitCoordinate.scalarMatrices.{u} n) E))
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+            (Suzuki.PrescribedUnitCoordinate.coefficientMatrices.{u} E n))
+  Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.matrix_pure.{u} : ∀
+      (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) (n : ℕ) (a : CStarMatrix.{0, 0, 0} (Fin n) (Fin n) ℂ)
+      (e : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E) (r s : Fin n),
+      Eq.{u + 1}
+        ((Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.matrix.{u} self E n)
+          (Suzuki.TensorCoefficientChannels.Spatial.pure.{u} T (ULift.up.{u, 0} a) e) r s)
+        (HSMul.hSMul.{0, u, u} (a r s) e)
+  Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.blocks.{u} : (E :
+        Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      {I : Type} →
+        [inst : Fintype.{0} I] →
+          [inst_1 : DecidableEq.{1} I] →
+            (w : I → ℕ) →
+              StarAlgEquiv.{0, u, u} ℂ
+                (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                  (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T
+                    (Suzuki.PrescribedUnitCoordinate.scalarBlocks.{u} w) E))
+                (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                  (Suzuki.PrescribedUnitCoordinate.coefficientBlocks.{u} E w))
+  Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.blocks_pure.{u} : ∀
+      (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) {I : Type} [inst : Fintype.{0} I] [inst_1 : DecidableEq.{1} I]
+      (w : I → ℕ) (a : Suzuki.MultiplicityEmbeddings.Blocks.{0} w)
+      (e : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E) (i : I) (r s : Fin (w i)),
+      Eq.{u + 1}
+        ((Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.blocks.{u} self E w)
+          (Suzuki.TensorCoefficientChannels.Spatial.pure.{u} T (ULift.up.{u, 0} a) e) i r s)
+        (HSMul.hSMul.{0, u, u} (a i r s) e)
+constructor:
+  Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.mk.{u} {T : Suzuki.TensorCoefficientChannels.Spatial.{u}}
+    (matrix :
+      (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+        (n : ℕ) →
+          StarAlgEquiv.{0, u, u} ℂ
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T
+                (Suzuki.PrescribedUnitCoordinate.scalarMatrices.{u} n) E))
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.PrescribedUnitCoordinate.coefficientMatrices.{u} E n)))
+    (matrix_pure :
+      ∀ (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) (n : ℕ) (a : CStarMatrix.{0, 0, 0} (Fin n) (Fin n) ℂ)
+        (e : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E) (r s : Fin n),
+        Eq.{u + 1} ((matrix E n) (Suzuki.TensorCoefficientChannels.Spatial.pure.{u} T (ULift.up.{u, 0} a) e) r s)
+          (HSMul.hSMul.{0, u, u} (a r s) e))
+    (blocks :
+      (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+        {I : Type} →
+          [inst : Fintype.{0} I] →
+            [inst_1 : DecidableEq.{1} I] →
+              (w : I → ℕ) →
+                StarAlgEquiv.{0, u, u} ℂ
+                  (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                    (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T
+                      (Suzuki.PrescribedUnitCoordinate.scalarBlocks.{u} w) E))
+                  (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+                    (Suzuki.PrescribedUnitCoordinate.coefficientBlocks.{u} E w)))
+    (blocks_pure :
+      ∀ (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) {I : Type} [inst : Fintype.{0} I]
+        [inst_1 : DecidableEq.{1} I] (w : I → ℕ) (a : Suzuki.MultiplicityEmbeddings.Blocks.{0} w)
+        (e : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E) (i : I) (r s : Fin (w i)),
+        Eq.{u + 1} ((blocks E w) (Suzuki.TensorCoefficientChannels.Spatial.pure.{u} T (ULift.up.{u, 0} a) e) i r s)
+          (HSMul.hSMul.{0, u, u} (a i r s) e)) :
+    Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} T
+structure Suzuki.PrescribedUnitCoordinate.ProjectionK0.{u, t} (T : Suzuki.TensorCoefficientChannels.Spatial.{u})
+  (F : Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} T) : Type (max (t + 1) (u + 1))
+number of parameters: 2
+fields:
+  Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} : Suzuki.TensorCoefficientChannels.Algebra.{u} → Type t
+  Suzuki.PrescribedUnitCoordinate.ProjectionK0.abelian.{u,
+    t} : (A : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      AddCommGroup.{t} (Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} self A)
+  Suzuki.PrescribedUnitCoordinate.ProjectionK0.cl.{u,
+    t} : (A : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A →
+        Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} self A
+  Suzuki.PrescribedUnitCoordinate.ProjectionK0.matrixClass.{u,
+    t} : (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      (n : ℕ) →
+        Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+            (Suzuki.PrescribedUnitCoordinate.coefficientMatrices.{u} E n) →
+          Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} self E
+  Suzuki.PrescribedUnitCoordinate.ProjectionK0.unitClass.{u,
+    t} : (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} self E
+  Suzuki.PrescribedUnitCoordinate.ProjectionK0.exterior.{u,
+    t} : (A E : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      AddMonoidHom.{t, t} (Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} self A)
+        (AddMonoidHom.{t, t} (Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} self E)
+          (Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} self
+            (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E)))
+  Suzuki.PrescribedUnitCoordinate.ProjectionK0.orthogonal_add.{u,
+    t} : ∀ (A : Suzuki.TensorCoefficientChannels.Algebra.{u})
+      (p q : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A),
+      IsStarProjection.{u} p →
+        IsStarProjection.{u} q →
+          Eq.{u + 1} (HMul.hMul.{u, u, u} p q) 0 →
+            Eq.{t + 1} (Suzuki.PrescribedUnitCoordinate.ProjectionK0.cl.{u, t} self A (HAdd.hAdd.{u, u, u} p q))
+              (HAdd.hAdd.{t, t, t} (Suzuki.PrescribedUnitCoordinate.ProjectionK0.cl.{u, t} self A p)
+                (Suzuki.PrescribedUnitCoordinate.ProjectionK0.cl.{u, t} self A q))
+  Suzuki.PrescribedUnitCoordinate.ProjectionK0.stabilize.{u,
+    t} : ∀ (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) (n : ℕ)
+      (p :
+        Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+          (Suzuki.PrescribedUnitCoordinate.coefficientMatrices.{u} E n)),
+      IsStarProjection.{u} p →
+        Eq.{t + 1}
+          (Suzuki.PrescribedUnitCoordinate.ProjectionK0.matrixClass.{u, t} self E (HAdd.hAdd.{0, 0, 0} n 1)
+            (Suzuki.CommonUnitProjection.stabilizedFin.{u} p))
+          (HAdd.hAdd.{t, t, t} (Suzuki.PrescribedUnitCoordinate.ProjectionK0.matrixClass.{u, t} self E n p)
+            (Suzuki.PrescribedUnitCoordinate.ProjectionK0.unitClass.{u, t} self E))
+  Suzuki.PrescribedUnitCoordinate.ProjectionK0.block_morita.{u,
+    t} : ∀ (A E : Suzuki.TensorCoefficientChannels.Algebra.{u}) (n : ℕ)
+      (ψ :
+        NonUnitalStarAlgHom.{0, u, u} ℂ
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+            (Suzuki.PrescribedUnitCoordinate.scalarMatrices.{u} (HAdd.hAdd.{0, 0, 0} n 1)))
+          (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A))
+      (p :
+        Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+          (Suzuki.PrescribedUnitCoordinate.coefficientMatrices.{u} E (HAdd.hAdd.{0, 0, 0} n 1))),
+      IsStarProjection.{u} p →
+        Eq.{t + 1}
+          (Suzuki.PrescribedUnitCoordinate.ProjectionK0.cl.{u, t} self
+            (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E)
+            ((Suzuki.PrescribedUnitCoordinate.blockTensor.{u} T F ψ) p))
+          (((Suzuki.PrescribedUnitCoordinate.ProjectionK0.exterior.{u, t} self A E)
+              (Suzuki.PrescribedUnitCoordinate.ProjectionK0.cl.{u, t} self A
+                (ψ (ULift.up.{u, 0} (CStarMatrix.ofMatrix.{0, 0, 0} (Matrix.single.{0, 0, 0} 0 0 1))))))
+            (Suzuki.PrescribedUnitCoordinate.ProjectionK0.matrixClass.{u, t} self E (HAdd.hAdd.{0, 0, 0} n 1) p))
+constructor:
+  Suzuki.PrescribedUnitCoordinate.ProjectionK0.mk.{u, t} {T : Suzuki.TensorCoefficientChannels.Spatial.{u}}
+    {F : Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} T}
+    (group : Suzuki.TensorCoefficientChannels.Algebra.{u} → Type t)
+    (abelian : (A : Suzuki.TensorCoefficientChannels.Algebra.{u}) → AddCommGroup.{t} (group A))
+    (cl :
+      (A : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+        Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A → group A)
+    (matrixClass :
+      (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+        (n : ℕ) →
+          Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.PrescribedUnitCoordinate.coefficientMatrices.{u} E n) →
+            group E)
+    (unitClass : (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) → group E)
+    (exterior :
+      (A E : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+        AddMonoidHom.{t, t} (group A)
+          (AddMonoidHom.{t, t} (group E) (group (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E))))
+    (orthogonal_add :
+      ∀ (A : Suzuki.TensorCoefficientChannels.Algebra.{u})
+        (p q : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A),
+        IsStarProjection.{u} p →
+          IsStarProjection.{u} q →
+            Eq.{u + 1} (HMul.hMul.{u, u, u} p q) 0 →
+              Eq.{t + 1} (cl A (HAdd.hAdd.{u, u, u} p q)) (HAdd.hAdd.{t, t, t} (cl A p) (cl A q)))
+    (stabilize :
+      ∀ (E : Suzuki.TensorCoefficientChannels.Algebra.{u}) (n : ℕ)
+        (p :
+          Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+            (Suzuki.PrescribedUnitCoordinate.coefficientMatrices.{u} E n)),
+        IsStarProjection.{u} p →
+          Eq.{t + 1} (matrixClass E (HAdd.hAdd.{0, 0, 0} n 1) (Suzuki.CommonUnitProjection.stabilizedFin.{u} p))
+            (HAdd.hAdd.{t, t, t} (matrixClass E n p) (unitClass E)))
+    (block_morita :
+      ∀ (A E : Suzuki.TensorCoefficientChannels.Algebra.{u}) (n : ℕ)
+        (ψ :
+          NonUnitalStarAlgHom.{0, u, u} ℂ
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+              (Suzuki.PrescribedUnitCoordinate.scalarMatrices.{u} (HAdd.hAdd.{0, 0, 0} n 1)))
+            (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A))
+        (p :
+          Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u}
+            (Suzuki.PrescribedUnitCoordinate.coefficientMatrices.{u} E (HAdd.hAdd.{0, 0, 0} n 1))),
+        IsStarProjection.{u} p →
+          Eq.{t + 1}
+            (cl (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E)
+              ((Suzuki.PrescribedUnitCoordinate.blockTensor.{u} T F ψ) p))
+            (((exterior A E)
+                (cl A (ψ (ULift.up.{u, 0} (CStarMatrix.ofMatrix.{0, 0, 0} (Matrix.single.{0, 0, 0} 0 0 1))))))
+              (matrixClass E (HAdd.hAdd.{0, 0, 0} n 1) p))) :
+    Suzuki.PrescribedUnitCoordinate.ProjectionK0.{u, t} T F
+structure Suzuki.PrescribedUnitCoordinate.FiniteProjectionRanks (N : Suzuki.GraphChannelKKCalculation.FiniteK0Input) :
+  Type 1
+number of parameters: 1
+fields:
+  Suzuki.PrescribedUnitCoordinate.FiniteProjectionRanks.rank : {I : Type} →
+      [Fintype.{0} I] → [DecidableEq.{1} I] → {d : I → ℕ} → Suzuki.MultiplicityEmbeddings.Blocks.{0} d → I → ℤ
+  Suzuki.PrescribedUnitCoordinate.FiniteProjectionRanks.minimal : ∀ {I : Type} [inst : Fintype.{0} I]
+      [inst_1 : DecidableEq.{1} I] (d : I → ℕ) (i : I) (r : Fin (d i)),
+      Eq.{1} (self.rank (Pi.single.{0, 0} i (CStarMatrix.ofMatrix.{0, 0, 0} (Matrix.single.{0, 0, 0} r r 1))))
+        (Pi.single.{0, 0} i 1)
+  Suzuki.PrescribedUnitCoordinate.FiniteProjectionRanks.naturality : ∀ {I L : Type} [inst : Fintype.{0} I]
+      [inst_1 : Fintype.{0} L] [inst_2 : DecidableEq.{1} I] [inst_3 : DecidableEq.{1} L] {d : I → ℕ} {e : L → ℕ},
+      (∀ (i : I), LT.lt.{0} 0 (d i)) →
+        (∀ (i : L), LT.lt.{0} 0 (e i)) →
+          ∀
+            (f :
+              StarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} d)
+                (Suzuki.MultiplicityEmbeddings.Blocks.{0} e))
+            (x : Suzuki.MultiplicityEmbeddings.Blocks.{0} d),
+            IsStarProjection.{0} x →
+              Eq.{1} (self.rank (f x)) ((N.action (StarAlgHom.toNonUnitalStarAlgHom.{0, 0, 0} f)) (self.rank x))
+constructor:
+  Suzuki.PrescribedUnitCoordinate.FiniteProjectionRanks.mk {N : Suzuki.GraphChannelKKCalculation.FiniteK0Input}
+    (rank :
+      {I : Type} →
+        [Fintype.{0} I] → [DecidableEq.{1} I] → {d : I → ℕ} → Suzuki.MultiplicityEmbeddings.Blocks.{0} d → I → ℤ)
+    (minimal :
+      ∀ {I : Type} [inst : Fintype.{0} I] [inst_1 : DecidableEq.{1} I] (d : I → ℕ) (i : I) (r : Fin (d i)),
+        Eq.{1} (rank (Pi.single.{0, 0} i (CStarMatrix.ofMatrix.{0, 0, 0} (Matrix.single.{0, 0, 0} r r 1))))
+          (Pi.single.{0, 0} i 1))
+    (naturality :
+      ∀ {I L : Type} [inst : Fintype.{0} I] [inst_1 : Fintype.{0} L] [inst_2 : DecidableEq.{1} I]
+        [inst_3 : DecidableEq.{1} L] {d : I → ℕ} {e : L → ℕ},
+        (∀ (i : I), LT.lt.{0} 0 (d i)) →
+          (∀ (i : L), LT.lt.{0} 0 (e i)) →
+            ∀
+              (f :
+                StarAlgHom.{0, 0, 0} ℂ (Suzuki.MultiplicityEmbeddings.Blocks.{0} d)
+                  (Suzuki.MultiplicityEmbeddings.Blocks.{0} e))
+              (x : Suzuki.MultiplicityEmbeddings.Blocks.{0} d),
+              IsStarProjection.{0} x →
+                Eq.{1} (rank (f x)) ((N.action (StarAlgHom.toNonUnitalStarAlgHom.{0, 0, 0} f)) (rank x))) :
+    Suzuki.PrescribedUnitCoordinate.FiniteProjectionRanks N
+structure Suzuki.PrescribedUnitCoordinate.ProjectionRepresentatives.{u, u_1}
+  (T : Suzuki.TensorCoefficientChannels.Spatial.{u}) (F : Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} T)
+  (P : Suzuki.PrescribedUnitCoordinate.ProjectionK0.{u, u_1} T F) : Prop
+number of parameters: 3
+fields:
+  Suzuki.PrescribedUnitCoordinate.ProjectionRepresentatives.represent.{u,
+    u_1} : ∀ (E : Suzuki.TensorCoefficientChannels.Algebra.{u})
+      (x : Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, u_1} P E),
+      ∃ n p q,
+        IsStarProjection.{u} p ∧
+          IsStarProjection.{u} q ∧
+            Eq.{u_1 + 1}
+              (HSub.hSub.{u_1, u_1, u_1} (Suzuki.PrescribedUnitCoordinate.ProjectionK0.matrixClass.{u, u_1} P E n p)
+                (Suzuki.PrescribedUnitCoordinate.ProjectionK0.matrixClass.{u, u_1} P E n q))
+              x
+constructor:
+  Suzuki.PrescribedUnitCoordinate.ProjectionRepresentatives.mk.{u, u_1}
+    {T : Suzuki.TensorCoefficientChannels.Spatial.{u}}
+    {F : Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} T}
+    {P : Suzuki.PrescribedUnitCoordinate.ProjectionK0.{u, u_1} T F}
+    (represent :
+      ∀ (E : Suzuki.TensorCoefficientChannels.Algebra.{u})
+        (x : Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, u_1} P E),
+        ∃ n p q,
+          IsStarProjection.{u} p ∧
+            IsStarProjection.{u} q ∧
+              Eq.{u_1 + 1}
+                (HSub.hSub.{u_1, u_1, u_1} (Suzuki.PrescribedUnitCoordinate.ProjectionK0.matrixClass.{u, u_1} P E n p)
+                  (Suzuki.PrescribedUnitCoordinate.ProjectionK0.matrixClass.{u, u_1} P E n q))
+                x) :
+    Suzuki.PrescribedUnitCoordinate.ProjectionRepresentatives.{u, u_1} T F P
+structure Suzuki.ActualUnitKK.ProjectionInterpretation.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w})
+  (T : Suzuki.TensorCoefficientChannels.Spatial.{u}) (F : Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} T)
+  (P : Suzuki.PrescribedUnitCoordinate.ProjectionK0.{u, t} T F) : Type (max (max t (u + 1)) w)
+number of parameters: 7
+fields:
+  Suzuki.ActualUnitKK.ProjectionInterpretation.identify.{u, v, w,
+    t} : (A : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+      (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)) →
+        AddEquiv.{t, w} (Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} P A)
+          (Suzuki.ActualUnitKK.K0.{u, v, w} J (Suzuki.ActualUnitKK.actual.{u} A hA))
+  Suzuki.ActualUnitKK.ProjectionInterpretation.projection.{u, v, w,
+    t} : ∀ (A : Suzuki.TensorCoefficientChannels.Algebra.{u})
+      (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A))
+      (p : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A) (hp : IsStarProjection.{u} p),
+      Eq.{w + 1}
+        ((Suzuki.ActualUnitKK.ProjectionInterpretation.identify.{u, v, w, t} self A hA)
+          (Suzuki.PrescribedUnitCoordinate.ProjectionK0.cl.{u, t} P A p))
+        (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+          (Suzuki.ActualUnitKK.projectionMap.{u} (Suzuki.ActualUnitKK.actual.{u} A hA) p hp))
+constructor:
+  Suzuki.ActualUnitKK.ProjectionInterpretation.mk.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    {T : Suzuki.TensorCoefficientChannels.Spatial.{u}}
+    {F : Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} T}
+    {P : Suzuki.PrescribedUnitCoordinate.ProjectionK0.{u, t} T F}
+    (identify :
+      (A : Suzuki.TensorCoefficientChannels.Algebra.{u}) →
+        (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A)) →
+          AddEquiv.{t, w} (Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} P A)
+            (Suzuki.ActualUnitKK.K0.{u, v, w} J (Suzuki.ActualUnitKK.actual.{u} A hA)))
+    (projection :
+      ∀ (A : Suzuki.TensorCoefficientChannels.Algebra.{u})
+        (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A))
+        (p : Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A) (hp : IsStarProjection.{u} p),
+        Eq.{w + 1} ((identify A hA) (Suzuki.PrescribedUnitCoordinate.ProjectionK0.cl.{u, t} P A p))
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+            (Suzuki.ActualUnitKK.projectionMap.{u} (Suzuki.ActualUnitKK.actual.{u} A hA) p hp))) :
+    Suzuki.ActualUnitKK.ProjectionInterpretation.{u, v, w, t} J T F P
+structure Suzuki.ActualUnitKK.RepresentableInput.{u, v, w, u_1} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w})
+  (G : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, u_1} J) : Type (max (max (u + 1) u_1) w)
+number of parameters: 5
+fields:
+  Suzuki.ActualUnitKK.RepresentableInput.even.{u, v, w,
+    u_1} : (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}) →
+      AddEquiv.{u_1, w} (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, u_1} G false A)
+        (Suzuki.ActualUnitKK.K0.{u, v, w} J A)
+  Suzuki.ActualUnitKK.RepresentableInput.naturality.{u, v, w,
+    u_1} : ∀ {A B : Suzuki.CoefficientModelFromExtension.Algebra.{u}}
+      (f :
+        Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B))
+      (x : Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, u_1} G false A),
+      Eq.{w + 1}
+        ((Suzuki.ActualUnitKK.RepresentableInput.even.{u, v, w, u_1} self B)
+          (((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, u_1} G false) f) x))
+        (CategoryTheory.CategoryStruct.comp.{w, v}
+          ((Suzuki.ActualUnitKK.RepresentableInput.even.{u, v, w, u_1} self A) x) f)
+constructor:
+  Suzuki.ActualUnitKK.RepresentableInput.mk.{u, v, w, u_1} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    {G : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, u_1} J}
+    (even :
+      (A : Suzuki.CoefficientModelFromExtension.Algebra.{u}) →
+        AddEquiv.{u_1, w} (Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, u_1} G false A)
+          (Suzuki.ActualUnitKK.K0.{u, v, w} J A))
+    (naturality :
+      ∀ {A B : Suzuki.CoefficientModelFromExtension.Algebra.{u}}
+        (f :
+          Quiver.Hom.{w, v} (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J A)
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J B))
+        (x : Suzuki.GraphChannelKKCalculation.KTheory.group.{u, v, w, u_1} G false A),
+        Eq.{w + 1} ((even B) (((Suzuki.GraphChannelKKCalculation.KTheory.action.{u, v, w, u_1} G false) f) x))
+          (CategoryTheory.CategoryStruct.comp.{w, v} ((even A) x) f)) :
+    Suzuki.ActualUnitKK.RepresentableInput.{u, v, w, u_1} J G
+structure Suzuki.ActualUnitKK.ProjectionExteriorInput.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w})
+  {T : Suzuki.TensorCoefficientChannels.Spatial.{u}}
+  {Ftc : Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} T}
+  {P : Suzuki.PrescribedUnitCoordinate.ProjectionK0.{u, t} T Ftc}
+  (I : Suzuki.ActualUnitKK.ProjectionInterpretation.{u, v, w, t} J T Ftc P)
+  (H : Suzuki.ActualCoefficientKK.SpatialKKInput.{u, v, w} J T)
+  (U :
+    Suzuki.ActualCoefficientKK.ScalarTensorInput.{u, v, w} J
+      (Suzuki.ActualCoefficientKK.SpatialKKInput.exterior.{u, v, w} H)) :
+  Prop
+number of parameters: 10
+fields:
+  Suzuki.ActualUnitKK.ProjectionExteriorInput.naturality.{u, v, w,
+    t} : ∀ (A E : Suzuki.TensorCoefficientChannels.Algebra.{u})
+      (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A))
+      (hE : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E))
+      (x : Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} P A)
+      (y : Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} P E),
+      Eq.{w + 1}
+        ((Suzuki.ActualUnitKK.ProjectionInterpretation.identify.{u, v, w, t} I
+            (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E) ⋯)
+          (((Suzuki.PrescribedUnitCoordinate.ProjectionK0.exterior.{u, t} P A E) x) y))
+        (CategoryTheory.CategoryStruct.comp.{w, v}
+          (((Suzuki.ActualUnitKK.exteriorK0.{u, v, w} J (Suzuki.ActualCoefficientKK.SpatialKKInput.exterior.{u, v, w} H)
+                U (Suzuki.ActualUnitKK.actual.{u} A hA) (Suzuki.ActualUnitKK.actual.{u} E hE))
+              ((Suzuki.ActualUnitKK.ProjectionInterpretation.identify.{u, v, w, t} I A hA) x))
+            ((Suzuki.ActualUnitKK.ProjectionInterpretation.identify.{u, v, w, t} I E hE) y))
+          (CategoryTheory.Iso.hom.{w, v} (Suzuki.ActualCoefficientKK.SpatialKKInput.binding.{u, v, w} J H A E hA hE)))
+constructor:
+  Suzuki.ActualUnitKK.ProjectionExteriorInput.mk.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    {T : Suzuki.TensorCoefficientChannels.Spatial.{u}}
+    {Ftc : Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} T}
+    {P : Suzuki.PrescribedUnitCoordinate.ProjectionK0.{u, t} T Ftc}
+    {I : Suzuki.ActualUnitKK.ProjectionInterpretation.{u, v, w, t} J T Ftc P}
+    {H : Suzuki.ActualCoefficientKK.SpatialKKInput.{u, v, w} J T}
+    {U :
+      Suzuki.ActualCoefficientKK.ScalarTensorInput.{u, v, w} J
+        (Suzuki.ActualCoefficientKK.SpatialKKInput.exterior.{u, v, w} H)}
+    (naturality :
+      ∀ (A E : Suzuki.TensorCoefficientChannels.Algebra.{u})
+        (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} A))
+        (hE : TopologicalSpace.SeparableSpace.{u} (Suzuki.TensorCoefficientChannels.Algebra.Carrier.{u} E))
+        (x : Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} P A)
+        (y : Suzuki.PrescribedUnitCoordinate.ProjectionK0.group.{u, t} P E),
+        Eq.{w + 1}
+          ((Suzuki.ActualUnitKK.ProjectionInterpretation.identify.{u, v, w, t} I
+              (Suzuki.TensorCoefficientChannels.Spatial.tensor.{u} T A E) ⋯)
+            (((Suzuki.PrescribedUnitCoordinate.ProjectionK0.exterior.{u, t} P A E) x) y))
+          (CategoryTheory.CategoryStruct.comp.{w, v}
+            (((Suzuki.ActualUnitKK.exteriorK0.{u, v, w} J
+                  (Suzuki.ActualCoefficientKK.SpatialKKInput.exterior.{u, v, w} H) U
+                  (Suzuki.ActualUnitKK.actual.{u} A hA) (Suzuki.ActualUnitKK.actual.{u} E hE))
+                ((Suzuki.ActualUnitKK.ProjectionInterpretation.identify.{u, v, w, t} I A hA) x))
+              ((Suzuki.ActualUnitKK.ProjectionInterpretation.identify.{u, v, w, t} I E hE) y))
+            (CategoryTheory.Iso.hom.{w, v}
+              (Suzuki.ActualCoefficientKK.SpatialKKInput.binding.{u, v, w} J H A E hA hE)))) :
+    Suzuki.ActualUnitKK.ProjectionExteriorInput.{u, v, w, t} J I H U
+structure Suzuki.ActualUnitKK.ProjectionConeInput.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w})
+  (T : Suzuki.TensorCoefficientChannels.Spatial.{u})
+  (Ftc : Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} T)
+  (P : Suzuki.PrescribedUnitCoordinate.ProjectionK0.{u, w} T Ftc)
+  (I : Suzuki.ActualUnitKK.ProjectionInterpretation.{u, v, w, w} J T Ftc P)
+  (G : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} J)
+  (Rep : Suzuki.ActualUnitKK.RepresentableInput.{u, v, w, t} J G) (N : Suzuki.GraphChannelKKCalculation.FiniteK0Input)
+  (UCT : Suzuki.GraphChannelKKCalculation.FreeUCTInput.{u, v, w, t} J G)
+  (V : Suzuki.ActualCoefficientKK.UniverseCone.Input.{u, v, w, t} J G N UCT)
+  (Rk : Suzuki.PrescribedUnitCoordinate.FiniteProjectionRanks N) : Prop
+number of parameters: 14
+fields:
+  Suzuki.ActualUnitKK.ProjectionConeInput.left_projection.{u, v, w,
+    t} : ∀ {L : Type} [inst : Fintype.{0} L] [inst_1 : DecidableEq.{1} L] {B : Matrix.{0, 0, 0} L L ℤ} {k l : L → ℕ}
+      (Q : Suzuki.ActualCoefficientKK.UniverseCone.Presentation.{u} B k l)
+      (x : Suzuki.MultiplicityEmbeddings.Blocks.{0} (HAdd.hAdd.{0, 0, 0} k l)),
+      IsStarProjection.{0} x →
+        Eq.{1}
+          ((Suzuki.GraphChannelKKCalculation.GraphCoordinates.even.{u, v, w, t, 0}
+              (Suzuki.ActualCoefficientKK.UniverseCone.Input.coordinates.{u, v, w, t} V Q))
+            ((AddEquiv.symm.{t, w}
+                (Suzuki.ActualUnitKK.RepresentableInput.even.{u, v, w, t} Rep
+                  (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.actual.{u} Q)))
+              ((Suzuki.ActualUnitKK.ProjectionInterpretation.identify.{u, v, w, w} I
+                  (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.algebra.{u} Q) ⋯)
+                (Suzuki.PrescribedUnitCoordinate.ProjectionK0.cl.{u, w} P
+                  (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.algebra.{u} Q)
+                  ((Suzuki.ActualCoefficientKK.UniverseCone.Presentation.left.{u} Q) (ULift.up.{u, 0} x))))))
+          ((Suzuki.PositiveLifting.quotient.{0} B) (Rk.rank x))
+constructor:
+  Suzuki.ActualUnitKK.ProjectionConeInput.mk.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    {T : Suzuki.TensorCoefficientChannels.Spatial.{u}}
+    {Ftc : Suzuki.PrescribedUnitCoordinate.FiniteTensorCoordinates.{u} T}
+    {P : Suzuki.PrescribedUnitCoordinate.ProjectionK0.{u, w} T Ftc}
+    {I : Suzuki.ActualUnitKK.ProjectionInterpretation.{u, v, w, w} J T Ftc P}
+    {G : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} J}
+    {Rep : Suzuki.ActualUnitKK.RepresentableInput.{u, v, w, t} J G} {N : Suzuki.GraphChannelKKCalculation.FiniteK0Input}
+    {UCT : Suzuki.GraphChannelKKCalculation.FreeUCTInput.{u, v, w, t} J G}
+    {V : Suzuki.ActualCoefficientKK.UniverseCone.Input.{u, v, w, t} J G N UCT}
+    {Rk : Suzuki.PrescribedUnitCoordinate.FiniteProjectionRanks N}
+    (left_projection :
+      ∀ {L : Type} [inst : Fintype.{0} L] [inst_1 : DecidableEq.{1} L] {B : Matrix.{0, 0, 0} L L ℤ} {k l : L → ℕ}
+        (Q : Suzuki.ActualCoefficientKK.UniverseCone.Presentation.{u} B k l)
+        (x : Suzuki.MultiplicityEmbeddings.Blocks.{0} (HAdd.hAdd.{0, 0, 0} k l)),
+        IsStarProjection.{0} x →
+          Eq.{1}
+            ((Suzuki.GraphChannelKKCalculation.GraphCoordinates.even.{u, v, w, t, 0}
+                (Suzuki.ActualCoefficientKK.UniverseCone.Input.coordinates.{u, v, w, t} V Q))
+              ((AddEquiv.symm.{t, w}
+                  (Suzuki.ActualUnitKK.RepresentableInput.even.{u, v, w, t} Rep
+                    (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.actual.{u} Q)))
+                ((Suzuki.ActualUnitKK.ProjectionInterpretation.identify.{u, v, w, w} I
+                    (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.algebra.{u} Q) ⋯)
+                  (Suzuki.PrescribedUnitCoordinate.ProjectionK0.cl.{u, w} P
+                    (Suzuki.ActualCoefficientKK.UniverseCone.Presentation.algebra.{u} Q)
+                    ((Suzuki.ActualCoefficientKK.UniverseCone.Presentation.left.{u} Q) (ULift.up.{u, 0} x))))))
+            ((Suzuki.PositiveLifting.quotient.{0} B) (Rk.rank x))) :
+    Suzuki.ActualUnitKK.ProjectionConeInput.{u, v, w, t} J T Ftc P I G Rep N UCT V Rk
+structure Suzuki.ActualUnitKK.ReferenceGeneratorInput.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+  [CategoryTheory.Preadditive.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w})
+  (G : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} J)
+  (Rep : Suzuki.ActualUnitKK.RepresentableInput.{u, v, w, t} J G)
+  (UCT : Suzuki.GraphChannelKKCalculation.FreeUCTInput.{u, v, w, t} J G)
+  (R : Suzuki.ActualCoefficientKK.ReferenceInput.{u, v, w, t} J G UCT) : Prop
+number of parameters: 8
+fields:
+  Suzuki.ActualUnitKK.ReferenceGeneratorInput.generator.{u, v, w,
+    t} : Eq.{1}
+      ((Suzuki.ActualCoefficientKK.ReferenceInput.even.{u, v, w, t} R)
+        ((AddEquiv.symm.{t, w}
+            (Suzuki.ActualUnitKK.RepresentableInput.even.{u, v, w, t} Rep Suzuki.ActualCoefficientKK.reference.{u}))
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+            Suzuki.ActualCoefficientKK.referenceInclusion.{u})))
+      1
+constructor:
+  Suzuki.ActualUnitKK.ReferenceGeneratorInput.mk.{u, v, w, t} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    [CategoryTheory.Preadditive.{w, v} K] {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    {G : Suzuki.GraphChannelKKCalculation.KTheory.{u, v, w, t} J}
+    {Rep : Suzuki.ActualUnitKK.RepresentableInput.{u, v, w, t} J G}
+    {UCT : Suzuki.GraphChannelKKCalculation.FreeUCTInput.{u, v, w, t} J G}
+    {R : Suzuki.ActualCoefficientKK.ReferenceInput.{u, v, w, t} J G UCT}
+    (generator :
+      Eq.{1}
+        ((Suzuki.ActualCoefficientKK.ReferenceInput.even.{u, v, w, t} R)
+          ((AddEquiv.symm.{t, w}
+              (Suzuki.ActualUnitKK.RepresentableInput.even.{u, v, w, t} Rep Suzuki.ActualCoefficientKK.reference.{u}))
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+              Suzuki.ActualCoefficientKK.referenceInclusion.{u})))
+        1) :
+    Suzuki.ActualUnitKK.ReferenceGeneratorInput.{u, v, w, t} J G Rep UCT R
+structure Suzuki.ConditionalKKTransport.AnalyticMilnorInput.{u, v} {C : Type u} [CategoryTheory.Category.{v, u} C]
+  [CategoryTheory.Preadditive.{v, u} C] (S : C → C) (Q : ℕ → C)
+  (bond : (n : ℕ) → Quiver.Hom.{v, u} (Q n) (Q (HAdd.hAdd.{0, 0, 0} n 1))) {L : C}
+  (stage : (n : ℕ) → Quiver.Hom.{v, u} (Q n) L) : Type (max u v)
+number of parameters: 8
+fields:
+  Suzuki.ConditionalKKTransport.AnalyticMilnorInput.boundary.{u,
+    v} : (Z : C) → AddMonoidHom.{v, v} ((n : ℕ) → Quiver.Hom.{v, u} (Q n) (S Z)) (Quiver.Hom.{v, u} L Z)
+  Suzuki.ConditionalKKTransport.AnalyticMilnorInput.boundary_coboundary.{u,
+    v} : ∀ (Z : C) (a : (n : ℕ) → Quiver.Hom.{v, u} (Q n) (S Z)),
+      Eq.{v + 1}
+        ((Suzuki.ConditionalKKTransport.AnalyticMilnorInput.boundary.{u, v} self Z) fun n =>
+          HSub.hSub.{v, v, v} (a n) (CategoryTheory.CategoryStruct.comp.{v, u} (bond n) (a (HAdd.hAdd.{0, 0, 0} n 1))))
+        0
+  Suzuki.ConditionalKKTransport.AnalyticMilnorInput.kernel.{u,
+    v} : ∀ (Z : C) (a : Quiver.Hom.{v, u} L Z),
+      (∀ (n : ℕ), Eq.{v + 1} (CategoryTheory.CategoryStruct.comp.{v, u} (stage n) a) 0) →
+        ∃ b, Eq.{v + 1} ((Suzuki.ConditionalKKTransport.AnalyticMilnorInput.boundary.{u, v} self Z) b) a
+  Suzuki.ConditionalKKTransport.AnalyticMilnorInput.onto.{u,
+    v} : ∀ (Z : C) (x : (n : ℕ) → Quiver.Hom.{v, u} (Q n) Z),
+      (∀ (n : ℕ), Eq.{v + 1} (CategoryTheory.CategoryStruct.comp.{v, u} (bond n) (x (HAdd.hAdd.{0, 0, 0} n 1))) (x n)) →
+        ∃ a, ∀ (n : ℕ), Eq.{v + 1} (CategoryTheory.CategoryStruct.comp.{v, u} (stage n) a) (x n)
+constructor:
+  Suzuki.ConditionalKKTransport.AnalyticMilnorInput.mk.{u, v} {C : Type u} [CategoryTheory.Category.{v, u} C]
+    [CategoryTheory.Preadditive.{v, u} C] {S : C → C} {Q : ℕ → C}
+    {bond : (n : ℕ) → Quiver.Hom.{v, u} (Q n) (Q (HAdd.hAdd.{0, 0, 0} n 1))} {L : C}
+    {stage : (n : ℕ) → Quiver.Hom.{v, u} (Q n) L}
+    (boundary : (Z : C) → AddMonoidHom.{v, v} ((n : ℕ) → Quiver.Hom.{v, u} (Q n) (S Z)) (Quiver.Hom.{v, u} L Z))
+    (boundary_coboundary :
+      ∀ (Z : C) (a : (n : ℕ) → Quiver.Hom.{v, u} (Q n) (S Z)),
+        Eq.{v + 1}
+          ((boundary Z) fun n =>
+            HSub.hSub.{v, v, v} (a n)
+              (CategoryTheory.CategoryStruct.comp.{v, u} (bond n) (a (HAdd.hAdd.{0, 0, 0} n 1))))
+          0)
+    (kernel :
+      ∀ (Z : C) (a : Quiver.Hom.{v, u} L Z),
+        (∀ (n : ℕ), Eq.{v + 1} (CategoryTheory.CategoryStruct.comp.{v, u} (stage n) a) 0) →
+          ∃ b, Eq.{v + 1} ((boundary Z) b) a)
+    (onto :
+      ∀ (Z : C) (x : (n : ℕ) → Quiver.Hom.{v, u} (Q n) Z),
+        (∀ (n : ℕ),
+            Eq.{v + 1} (CategoryTheory.CategoryStruct.comp.{v, u} (bond n) (x (HAdd.hAdd.{0, 0, 0} n 1))) (x n)) →
+          ∃ a, ∀ (n : ℕ), Eq.{v + 1} (CategoryTheory.CategoryStruct.comp.{v, u} (stage n) a) (x n)) :
+    Suzuki.ConditionalKKTransport.AnalyticMilnorInput.{u, v} S Q bond stage
+structure Suzuki.ActualKKCornerClassification.FullCornerKKInput.{u, v, w} {K : Type v}
+  [CategoryTheory.Category.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}) : Prop
+number of parameters: 3
+fields:
+  Suzuki.ActualKKCornerClassification.FullCornerKKInput.inclusion.{u, v,
+    w} : ∀ (A : Suzuki.Target.UnitalAlgebra.{u})
+      (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.Target.UnitalAlgebra.Carrier.{u} A)),
+      Suzuki.Target.HasCPApproximation.{u} A →
+        ∀ (p : Suzuki.Target.UnitalAlgebra.Carrier.{u} A) (hp : IsStarProjection.{u} p),
+          Suzuki.CommonCorner.FullProjection.{u} p →
+            CategoryTheory.IsIso.{w, v}
+              (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+                (Suzuki.CommonCorner.inclusion.{u} hp))
+constructor:
+  Suzuki.ActualKKCornerClassification.FullCornerKKInput.mk.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    (inclusion :
+      ∀ (A : Suzuki.Target.UnitalAlgebra.{u})
+        (hA : TopologicalSpace.SeparableSpace.{u} (Suzuki.Target.UnitalAlgebra.Carrier.{u} A)),
+        Suzuki.Target.HasCPApproximation.{u} A →
+          ∀ (p : Suzuki.Target.UnitalAlgebra.Carrier.{u} A) (hp : IsStarProjection.{u} p),
+            Suzuki.CommonCorner.FullProjection.{u} p →
+              CategoryTheory.IsIso.{w, v}
+                (Suzuki.CoefficientModelFromExtension.KKInterpretation.map.{u, v, w} J
+                  (Suzuki.CommonCorner.inclusion.{u} hp))) :
+    Suzuki.ActualKKCornerClassification.FullCornerKKInput.{u, v, w} J
+structure Suzuki.ActualKKCornerClassification.ClassificationInput.{u, v, w} {K : Type v}
+  [CategoryTheory.Category.{w, v} K] (J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}) : Prop
+number of parameters: 3
+fields:
+  Suzuki.ActualKKCornerClassification.ClassificationInput.classify.{u, v,
+    w} : ∀ (A B : Suzuki.Target.UnitalAlgebra.{u}) (hA : Suzuki.Target.IsKirchberg.{u} A)
+      (hB : Suzuki.Target.IsKirchberg.{u} B)
+      (ξ :
+        CategoryTheory.Iso.{w, v}
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+            (Suzuki.CoefficientModelFromExtension.ofUnital.{u} A ⋯))
+          (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+            (Suzuki.CoefficientModelFromExtension.ofUnital.{u} B ⋯))),
+      Eq.{w + 1}
+          (CategoryTheory.CategoryStruct.comp.{w, v} (Suzuki.ActualKKCornerClassification.unitClass.{u, v, w} J A ⋯)
+            (CategoryTheory.Iso.hom.{w, v} ξ))
+          (Suzuki.ActualKKCornerClassification.unitClass.{u, v, w} J B ⋯) →
+        Nonempty.{u + 1}
+          (StarAlgEquiv.{0, u, u} ℂ (Suzuki.Target.UnitalAlgebra.Carrier.{u} A)
+            (Suzuki.Target.UnitalAlgebra.Carrier.{u} B))
+constructor:
+  Suzuki.ActualKKCornerClassification.ClassificationInput.mk.{u, v, w} {K : Type v} [CategoryTheory.Category.{w, v} K]
+    {J : Suzuki.CoefficientModelFromExtension.KKInterpretation.{u, v, w}}
+    (classify :
+      ∀ (A B : Suzuki.Target.UnitalAlgebra.{u}) (hA : Suzuki.Target.IsKirchberg.{u} A)
+        (hB : Suzuki.Target.IsKirchberg.{u} B)
+        (ξ :
+          CategoryTheory.Iso.{w, v}
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+              (Suzuki.CoefficientModelFromExtension.ofUnital.{u} A ⋯))
+            (Suzuki.CoefficientModelFromExtension.KKInterpretation.object.{u, v, w} J
+              (Suzuki.CoefficientModelFromExtension.ofUnital.{u} B ⋯))),
+        Eq.{w + 1}
+            (CategoryTheory.CategoryStruct.comp.{w, v} (Suzuki.ActualKKCornerClassification.unitClass.{u, v, w} J A ⋯)
+              (CategoryTheory.Iso.hom.{w, v} ξ))
+            (Suzuki.ActualKKCornerClassification.unitClass.{u, v, w} J B ⋯) →
+          Nonempty.{u + 1}
+            (StarAlgEquiv.{0, u, u} ℂ (Suzuki.Target.UnitalAlgebra.Carrier.{u} A)
+              (Suzuki.Target.UnitalAlgebra.Carrier.{u} B))) :
+    Suzuki.ActualKKCornerClassification.ClassificationInput.{u, v, w} J

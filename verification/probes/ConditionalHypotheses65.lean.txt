@@ -1,0 +1,93 @@
+import Suzuki
+
+set_option pp.universes true
+set_option pp.explicit false
+
+-- Signature audit is separate from the exhaustive transitive kernel audit.
+#check Suzuki.Target.MainClaim
+#check Suzuki.ConditionalKK.MilnorInput.mk
+#check Suzuki.ConditionalKK.FirstCoordinate.splitting
+#check Suzuki.ConditionalKK.FirstCoordinate.three_channel_sum
+#check Suzuki.ConditionalKK.Splitting.iso
+#check Suzuki.ConditionalKKTransport.AnalyticMilnorInput.mk
+#check Suzuki.ConditionalKKTransport.toFixedMilnor
+#check Suzuki.ConditionalKKTransport.limitIso
+#check Suzuki.ConditionalKKTransport.prescribed_class
+#check Suzuki.ConditionalClassification.ClassificationInput
+#check Suzuki.ConditionalClassification.conclude
+#check Suzuki.ConditionalAssembly.finalIso
+#check Suzuki.ConditionalAssembly.finalIso_unit
+#check Suzuki.ConditionalAssembly.classifyConstructedCorner
+#check Suzuki.CoefficientConeModel.rfd
+#check Suzuki.CoefficientConeModel.exists_separating_tails
+#check Suzuki.CoefficientModelConditional.semisplit
+#check Suzuki.CoefficientModelConditional.quotientSuspensionMap
+#check Suzuki.CoefficientModelConditional.quotientSuspensionMap_surjective_of_cpc
+#check Suzuki.EvaluationLimitSimplicity.Channels.NoiseWitness.mk
+#check Suzuki.EvaluationLimitSimplicity.Channels.NoiseWitness.ofEvaluatedPath
+#check Suzuki.EvaluationLimitSimplicity.Channels.limit_isSimple
+#check Suzuki.OrthogonalNoiseFullness.simultaneous_aggregate_full
+#check Suzuki.OrthogonalNoiseFullness.finite_noise_ideal_eq_top
+#check Suzuki.CommonUnitProjection.commonProjection_projection
+#check Suzuki.CommonUnitProjection.commonProjection_nonzero
+#check Suzuki.CommonUnitProjection.commonProjection_frame
+#check Suzuki.CommonUnitProjection.stabilized_difference
+#check Suzuki.GraphAmalgamInverse.AllCommon.mk
+#check Suzuki.GraphAmalgamInverse.backward
+#check Suzuki.GraphAmalgamInverse.backward_first
+#check Suzuki.GraphAmalgamInverse.backward_mixed
+#check Suzuki.InitialGraphPresentation.cokernelEquiv
+#check Suzuki.InitialGraphPresentation.kernelEquiv
+#check Suzuki.InitialGraphPresentation.transportedCokernel
+#check Suzuki.InitialGraphPresentation.transportedCokernel_quotient
+#check Suzuki.InitialGraphPresentation.balanced_class_zero
+
+#print Suzuki.EvaluationLimitSimplicity.ClosedIdealKernelRealization
+#print Suzuki.ConditionalClassification.ClassificationInput
+#print Suzuki.Target.MainClaim
+
+
+-- Coordinator continuation: newly closed graph steps and exact residual hypotheses.
+#check Suzuki.GraphCanonicalUnits.representation_ofHom
+#check Suzuki.GraphCornerIdentification.backward_firstFactor
+#check Suzuki.GraphCornerIdentification.backward_secondFactor
+#check Suzuki.GraphCornerIdentification.corner_eq_top_of_generators
+#check Suzuki.GraphCornerIdentification.existsUnique_factor_extension
+#check Suzuki.GraphCornerIdentification.weightedProjection_ideal_eq_top
+#check Suzuki.GraphCornerIdentification.weightedProjection_full
+#check Suzuki.GraphCornerIdentification.forward_backward
+#check Suzuki.GraphCornerIdentification.backward_forward
+#check Suzuki.GraphCornerIdentification.amalgamEquivCorner
+#check Suzuki.GraphFiniteAmalgam.graph_commonEntries
+#check Suzuki.GraphFiniteAmalgam.existsUnique_extension
+#check Suzuki.GraphFiniteAmalgam.identify
+#print Suzuki.GraphFiniteAmalgam.CommonEntries
+
+
+-- Canonical common inclusions: no residual CommonEntries premise.
+#check Suzuki.GraphCommonInclusions.first_P
+#check Suzuki.GraphCommonInclusions.first_Q
+#check Suzuki.GraphCommonInclusions.second_P
+#check Suzuki.GraphCommonInclusions.second_Q
+#check Suzuki.GraphCommonInclusions.commonEntries_of_commutes
+#check Suzuki.GraphCommonInclusions.commutes_of_commonEntries
+#check Suzuki.GraphCommonInclusions.first_injective
+#check Suzuki.GraphCommonInclusions.second_injective
+#check Suzuki.GraphCommonInclusions.graph_commutes
+#check Suzuki.GraphCommonInclusions.amalgamEquivCorner
+#check Suzuki.GraphCommonInclusions.first_counts
+#check Suzuki.GraphCommonInclusions.second_counts
+#check Suzuki.GraphCommonInclusions.first_standard_coordinates
+#check Suzuki.GraphCommonInclusions.second_standard_coordinates
+#check Suzuki.GraphCommonInclusions.matrixAmalgamEquivCorner
+#check Suzuki.GraphCommonInclusions.amalgamEquivCorner_unit
+
+-- A successful run of this diagnostic records absence, not theorem verification.
+open Lean Elab Command in
+run_cmd do
+  let env ← getEnv
+  let name := `Suzuki.fullTheoremConditional
+  unless env.contains name do
+    liftIO <| IO.println "NOT VERIFIED: Suzuki.fullTheoremConditional is absent."
+  if env.contains name then
+    throwError "New fullTheoremConditional: exact MainClaim type, explicit-input and correspondence audits are required."

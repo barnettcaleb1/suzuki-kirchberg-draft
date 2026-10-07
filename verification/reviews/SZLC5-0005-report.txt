@@ -1,0 +1,238 @@
+SZLC5-0005 — Independent exact-source audit
+Weighted graph factor maps, evaluation paths/completed limit, final unit assembly
+Deadline: 2026-10-06 22:39:46.360448 UTC. No subdelegation.
+
+VERDICT
+
+No blocking formal defect or false local mathematical statement was found in
+the three frozen sources. Each independently compiles with warnings as errors.
+All 211 own/generated/private-prefix declarations found by the independent
+environment inventory have allowed transitive axioms only. Twenty independent
+semantic/adversarial probes compile. No audited source repair was needed.
+
+This is acceptance of these exact local statements under their explicit
+hypotheses, not verification of the conditional end-to-end manuscript theorem.
+The graph/amalgam inverse construction, concrete noise witnesses, and actual
+common projection remain new-contribution obligations. The closed-ideal
+quotient/kernel-realization foundation is explicitly pending and is not among
+the currently licensed inputs. No absence-of-findings claim certifies the full
+argument or its external-interface correspondence.
+
+EXACT TARGETS
+
+Suzuki/WeightedGraphAmalgam.lean
+  ef0c0b6af597d645485cc55ae374d559cf5b69503b1456d3917f1e2939cf0dc5
+Suzuki/EvaluationLimitSimplicity.lean
+  99404a36d52a434d49c15eb5ac080ffde3a611a437c6f871550368ccacb641cb
+Suzuki/ConditionalAssembly.lean
+  3a8c22e10f5918075c0f4674d32c967aff73bca14e4ca5df834287ad44044d5c
+
+Release files match the coordinator's immutable copies under
+state/packaging/SUZUKI-LEAN-CONDITIONAL-0005/SZLC5-0005-frozen.
+Source and compiled-import hashes, supporting source versions, actual argv,
+cwd, LEAN_PATH, exit codes and elapsed times are recorded in inventory.json,
+versions.json, checks.json and the individual *-execution.json files.
+
+1. WEIGHTED GRAPH FACTOR MAPS
+
+The input is an actual GraphRelations.Family in an arbitrary complex unital
+C*-algebra A : Type u. Vertices and edges are finite types in universe zero,
+with decidable equality. The input vertex projections sum to 1; an edge w->v
+satisfies s* s = p_v. Distinct initial cross-products vanish, and the outgoing
+range sum is imposed at emitting vertices only. No nonzero-vertex hypothesis
+or universal graph algebra is hidden in Family. Zero models are permitted.
+
+The output matrices are CStarMatrix, with Mathlib's genuine operator norm on
+the finite standard C*-module, not plain Matrix's elementwise norm. The finite
+product factors have the maximum of their block C*-norms. The concrete corner
+inherits the ambient norm and has unit q. Its inclusion into the ambient
+matrix algebra is nonunital when q != 1. Local spectral-order instances do not
+replace or alter the norm/topology. CommonCorner's closed-subalgebra and corner
+instances and Mathlib's CStarMatrix definition were checked as support.
+
+Coord = (Sigma v, Fin(k_v)) + (Sigma v, Fin(l_v)). The second-factor index is
+(Sigma v, Fin(k_v)) + (Sigma e, Fin(l_source(e))). Its vertex block is indexed
+by target(e), while its physical row is the source's Q slot. This exactly
+matches the manuscript's M(v,w) = number of edges w->v convention.
+
+The weighted operator's initial projection and orthogonality are proved from
+the CK relations, including distinct-edge products whose physical rows agree.
+Its contraction bound uses the C*-identity and the norm bound for an actual
+projection. The resulting units satisfy multiplication and star relations.
+matrixUnitHom extends them by finite matrix-basis induction, without assuming
+a representation or universal property for the desired factor map.
+
+factorHom (line 578) is a genuine UNITAL complex star homomorphism from the
+incoming matrix-block product into the q corner. Its unit proof uses the CK
+range sum and explicitly requires NoSinks source; its construction also uses
+hk : forall v, 0 < k_v to choose the distinguished P coordinate.
+firstFactorHom (line 690) is also a genuine unital complex star homomorphism,
+but needs neither NoSinks nor positive k/l. The actual factor norm estimates
+(lines 743/750) use automatic C*-hom contractivity.
+
+The exact cardinalities are proved (lines 711-739): first block k_v+l_v;
+second block k_v+sum_e [target(e)=v] l_source(e); for a matrix graph,
+k_v+sum_w M(v,w)l_w. A non-symmetric test with M=[[0,5],[2,1]], k=[3,4],
+l=[2,7] gives second dimensions 38 and 15, detecting transpose errors.
+
+common_P, common_Q and common_Q_units are actual entry-level common-block
+identities. recoveredEdge_eq and mixed_recovery require l_v>0 and prove the
+displayed manuscript identities in this already concrete graph corner.
+They do not construct CK generators in an abstract amalgam.
+
+Precise boundary:
+- No canonical D-to-factor maps, coordinate enumeration agreement with the
+  multiplicity maps, or equality of their full composite homomorphisms is
+  supplied by this module. Entry-level identities are necessary ingredients.
+- No forward amalgam map, backward CK family in the abstract amalgam, graph-UP
+  map, inflated inverse map, generator-density argument, or isomorphism occurs.
+- No fullness of q, graph simplicity/nuclearity, or K-class calculation occurs.
+- Factor injectivity is not claimed and would be false for arbitrary Family.
+  The independent zero-model probe explicitly disproves injectivity of the
+  first factor map in an allowed case. A separate scalar sink model confirms
+  that sink vertices survive and first-factor unitality does not need NoSinks.
+- The manuscript's strict positivity of k and l is stronger than some local
+  statements here. Generality for l=0 does not establish the graph/amalgam
+  isomorphism when recovery requires a Q coordinate.
+
+2. EVALUATION PATHS AND THE ACTUAL COMPLETED LIMIT
+
+Channels stores actual C*-algebras and finitely many nonunital star maps with
+orthogonal support units summing to 1. system constructs the total unital
+step by summing these maps. The module does not take an opaque total step or
+desired path as an input. One faithful channel is a sufficient condition for
+step injectivity; it is not asserted necessary. A choice of a channel at every
+level entails that the corresponding finite index types are nonempty.
+
+path is actual iterated composition. path_compression (line 101) is proved by
+induction, using a multiplication identity that composes support compressions.
+final_compression allows a separately selected last noise branch. The support
+is a proved self-adjoint idempotent. Membership in a supplied constant
+StarSubalgebra follows from explicit one-step preservation hypotheses.
+There is no separate exported pairwise-orthogonality theorem for all distinct
+iterated paths; the proved compression identities suffice for the ideal route
+used here. Positive summand/Cuntz-comparison arguments are not proved here.
+
+evaluated_path_ne_zero (line 144) derives persistence from actual commuting
+evaluation maps and injective evaluated maps at every step. Detection itself
+is not automatic: the test with coordinate channels on C x C exhibits a final
+orthogonal channel that annihilates the chosen path.
+
+final_mem_ideal uses actual stage/transition compatibility and left ideal
+multiplication in the norm-completed SequentialCStarLimit.Limit. extract_constant
+(line 177) obtains nonzero d in K from injectivity of the noise map. It does not
+claim the image of d is nonzero without further hypotheses; this distinction
+is correct. The constant map is UNITAL. Pulling a closed ideal back to the
+simple constant algebra then forces that ideal to be all of the target. No
+injectivity of the constant map is needed for that argument.
+
+isometry_of_stage_injective (line 220) is a genuine norm/completion argument.
+It checks equality of norms on the dense algebraic direct limit and extends
+over the completion using a closed equality set and continuity. Each algebraic
+element is represented by a stage; norm_stage is the original stage norm.
+The direct limit is completed in its stage norm. The unrelated raw set-quotient
+topology is not substituted for the norm topology. Automatic C*-hom continuity
+and the C*-isometry theorem for injective star maps supply the analytic steps.
+
+Consequently exists_stage_kernel proves a noninjective unital star homomorphism
+out of the completed limit kills a nonzero element already at a stage. The
+independent probe builds the constant C x C system, extends first-coordinate
+projection to its actual completed limit, and exhibits the nonzero stage
+kernel element (0,1). This is a theorem about homomorphism kernels, not an
+assumption that arbitrary dense unions meet arbitrary nonzero subspaces.
+
+NoiseWitness (line 253) contains a finite path length/index, actual evaluation,
+an injective noise map, a simple nonzero unital constant algebra, a unital
+constant map, the literal factorization, and nonzero evaluation. Its Eval
+algebra is not required finite-dimensional; this is a general theorem which
+can later be instantiated by matrix evaluations. It does NOT store final
+ideal fullness or limit simplicity as a field. ofEvaluatedPath derives final
+detection from the specified initial detection/commutation/injectivity data.
+An independent probe proves NoiseWitness for the zero input is impossible.
+
+hom_injective_of_noise_witnesses (line 309) proves injectivity for every unital
+map to every nontrivial C*-algebra, in an arbitrary target universe, from
+detect : forall m a, a != 0 -> Nonempty (NoiseWitness choose m a).
+The fixed global path choice is meaningful: the manuscript can use its
+positive identity channel at each stage. The scheduled later occurrence of
+each detecting representation and the actual graph/coefficient factorization
+are still to be constructed. Supplying detect without that proof would assume
+a new-contribution conclusion, not apply a licensed published theorem.
+
+ClosedIdealKernelRealization (line 334) explicitly states that every proper
+closed TwoSidedIdeal is the kernel of a unital map to a nontrivial C*-algebra
+in the same carrier universe. This is mathematically the standard quotient
+foundation, but it is neither proved here nor currently licensed. It is a
+local hypothesis, not a global axiom. isSimple_of_hom_injective and
+Channels.limit_isSimple are valid conditional deductions from it. Nontriviality
+of the limit is proved from nontrivial stage zero and stage injectivity.
+
+The result covers a homomorphism-kernel route to the product-limit simplicity
+paragraph of manuscript Section 7. It does not yet instantiate even that
+product's noise data. Nonsimple finite constant products require a different
+blockwise fullness argument for the three constituent limits. No pure
+infiniteness, nuclearity, or all-four-limits simplicity conclusion is proved.
+
+3. FINAL UNIT AND CLASSIFICATION ASSEMBLY
+
+ConditionalAssembly imports the new ConditionalKKTransport as direct support;
+its source transport algebra was read in this task. AnalyticMilnorInput is a
+varying-stage product-boundary/exactness/surjectivity interface. The transport
+uses actual coordinate isomorphisms and the bonding-class equation to prove
+the fixed-coordinate input. inverse_stage has the original varying-stage
+coordinates. These direct dependencies are transitively covered by the three
+target declarations' axiom checks, but this report is not a separate exhaustive
+namespace audit of ConditionalKKTransport.
+
+finalIso (line 38) is definitionally the correct composite:
+  object A --corner--> L --(limitIso)^-1--> F --coefficient--> object B.
+finalIso_unit (line 49) does not assume preservation of the final unit. It
+derives it from exactly:
+  unit A ; corner = projection ; stage n,
+  projection ; coordinate n = prescribed ; R.j,
+  prescribed ; coefficient = unit B.
+The proved inverse-stage restriction reduces the middle composite using
+R.j ; R.s = identity. Composition direction and the inverse orientation agree
+with the manuscript. The independent test proves, using the first two
+equations, that final unit preservation is equivalent to the third equation.
+
+These are still local construction/interpretation hypotheses. projection is
+an arbitrary categorical morphism in this statement, not an implemented
+projection in the actual common algebra; its coordinate equation must come
+from that actual projection. corner and coefficient must be the specified
+full-corner and coefficient KK equivalences. object/scalar/unit need their
+actual KK/K0 interpretation. No final unit equation is hidden, but the initial
+class equations are not automatically available merely by naming them.
+
+classifyConstructedCorner (line 62) correctly invokes the earlier classification
+and transports the finite-amalgam presentation along the resulting actual star
+isomorphism. It takes IsKirchberg A, IsKirchberg B and HasFiniteAmalgam A as
+explicit local hypotheses. A's Kirchberg property and its presentation are
+new construction obligations; accepting them as licensed inputs would not
+verify the manuscript's new argument. This is a local assembly lemma and is
+not fullTheoremConditional or Target.MainClaim. No target/coefficient UCT
+appears in these modules.
+
+VALIDATION AND LIMITATIONS
+
+- Pinned Lean 4.33.1; Mathlib 0df444a360eaa60ab8c11dca51a86af692955474.
+- Each exact frozen source compiled with -j2 -M4096 -DwarningAsError=true;
+  independent compilation emitted no replacement release .olean.
+- Audit.lean dynamically enumerates whole target namespaces and private-module
+  prefixes, including generated helpers: WeightedGraphAmalgam 133,
+  EvaluationLimitSimplicity 75, ConditionalAssembly 3; total 211.
+  Every transitive axiom set is contained in
+  {propext, Classical.choice, Quot.sound}.
+- Examples.lean: 20 passing independent probes. The first two probe attempts
+  had ordinary elaboration/reducibility, dependent rewrite, and linter errors.
+  Failed logs and source attempts are preserved. These were audit-code errors,
+  not target-source repairs. The final probe compilation is clean.
+- No full Mathlib rebuild, lake build, external research, new global axiom,
+  source/canonical-state edit, subdelegation, or publication occurred.
+- First-author reports were context, not substituted for independent checks.
+  Published-input correspondence here is assessed against the supplied ledger
+  and manuscript; this task did not freshly audit every cited external paper.
+- Kernel checks establish the encoded implications, not the truth/eligibility
+  of interface parameters. The external KK interpretation, concrete graph and
+  coefficient system, noise schedule, ideal quotient foundation, common
+  projection, and end-to-end conditional main theorem remain to be discharged.

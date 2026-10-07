@@ -1,13 +1,15 @@
 import Suzuki
 import Lean.Util.CollectAxioms
 
-/- Audit every exported declaration in the project namespace, including generated
-structure fields and instances. This audits dependencies, not claim coverage. -/
+/- Audit every compiled declaration originating in a Suzuki module, including
+private helpers, generated fields and declarations placed in other namespaces.
+This audits dependencies, not explicit hypotheses or source correspondence. -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let entries := (env.constants.toList.filter fun (name, _) =>
-    (`Suzuki).isPrefixOf name).toArray.qsort (fun a b => Name.quickLt a.1 b.1)
+    (env.getModuleIdxFor? name).any (fun idx =>
+      (`Suzuki).isPrefixOf env.header.moduleNames[idx]!)).toArray.qsort (fun a b => Name.quickLt a.1 b.1)
   for (name, info) in entries do
     let axioms ← collectAxioms name
     for ax in axioms do

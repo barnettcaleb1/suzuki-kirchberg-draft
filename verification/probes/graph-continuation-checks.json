@@ -1,0 +1,10 @@
+{
+  "coordinator_check": true,
+  "independent_review": false,
+  "source": "GraphContinuationProbes.lean.txt",
+  "source_sha256": "8ad354351983c6e9fb786fc384be59d095a89e219ef4fa56a0bd3ee93aeea3ec",
+  "command": "Pinned lean -j2 -M4096 -DwarningAsError=true research/branches/SUZUKI/lean-conditional5/coordinator/GraphContinuationProbes.lean with recorded LEAN_PATH",
+  "exit_code": 0,
+  "probe": "Actual noninjective one-loop backward representation; extension/fullness/common-entry checks",
+  "main_theorem_verified": false
+}

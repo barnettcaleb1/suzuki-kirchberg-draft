@@ -1,0 +1,75 @@
+{
+  "task_id": "SZL4-0007",
+  "status": "complete",
+  "completed_at": "2026-10-06T21:09:15.738293+00:00",
+  "deadline": "2026-10-06T21:23:58.207679+00:00",
+  "result": "Exact mathematical statements accepted within stated scope; original decision-instance API limitation resolved by separately frozen supplement.",
+  "source_hashes": [
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/GraphDensity.lean",
+      "sha256": "b1188c835006b3e899942b37ec88abd32b3fb997e7b0a6f3a0b060b4491fd07c",
+      "lines": 118,
+      "reservation_match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/GraphPathRepresentation.lean",
+      "sha256": "a138628ae3e2e1a5c7f9bc1925765ba28d0fc88bcc5d4a03ab4b4770a7f49f60",
+      "lines": 443,
+      "reservation_match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/GraphNonzero.lean",
+      "sha256": "8a0b23ea5e13b4aed658fa9ef1be842c6c9bc7753d14911a896ecbfd3b61e4ae",
+      "lines": 58,
+      "reservation_match": true
+    }
+  ],
+  "compiler_flags": [
+    "-j2",
+    "-DwarningAsError=true"
+  ],
+  "all_source_compilations_passed": true,
+  "semantic_and_signature_probes": [
+    "DensityProbe",
+    "PathProbe",
+    "SignatureProbe",
+    "DecisionTransportProbe",
+    "NonzeroProbe",
+    "NegativeControlProbe"
+  ],
+  "all_probe_compilations_passed": true,
+  "targeted_axiom_checks": 24,
+  "module_complete_axiom_inventory": {
+    "declarations": 97,
+    "module_counts": {
+      "Suzuki.GraphPathRepresentation": 84,
+      "Suzuki.GraphNonzero": 5,
+      "Suzuki.GraphDensity": 8
+    },
+    "private_declarations": 2,
+    "global_non_namespace_declarations": [
+      "instDecidable_suzuki"
+    ],
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "findings": [
+    {
+      "id": "decision-instance-api",
+      "severity": "nonblocking API limitation in original source",
+      "status": "resolved through GraphNonzero supplement, original preserved",
+      "description": "Original path universal corollaries fix a classical DecidableEq V; generic instance transport was proved and tested."
+    }
+  ],
+  "independence_disclosure": "GraphNonzero first three transport proofs originated in this auditor's DecisionTransportProbe. Their release compilation/probes are not represented as an independent second-author review of those proofs. Original two modules and root-added supplement consequences were independently inspected.",
+  "negative_control": "One-loop path lift proved noninjective; no general faithfulness claim follows from nonzero vertex witnesses.",
+  "universe_scope": "For V:Typeu,E:Typev, path operator representation lives in Typev; universal nonzero conclusions use representation universe v. No arbitrary-universe independence theorem.",
+  "unresolved_compilation_obligations": [],
+  "release_source_edits_by_auditor": [],
+  "main_theorem_verified": false,
+  "further_research_started_after_objective_change": false,
+  "report_sha256": "3ac10d43b7612328f2665b78358f7db9325cc50368910d2696e19e24f782a7d3"
+}

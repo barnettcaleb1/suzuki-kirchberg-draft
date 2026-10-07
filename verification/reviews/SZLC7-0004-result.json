@@ -1,0 +1,921 @@
+{
+  "task_id": "SZLC7-0004",
+  "recorded_at_utc": "2026-10-07T06:27:21.771068+00:00",
+  "status": "PASS_CONDITIONAL_EXACT_FINAL_DECLARATION_WITH_EXTERNAL_INTERPRETATION_OBLIGATIONS",
+  "pass": true,
+  "scope": "Exact 15 frozen component modules, manuscript/ledger/contract, final-system coefficient, final unit, corner-classification, initial-projection and FullTheoremConditional-v1 supplemental versions",
+  "blockers": [],
+  "final_theorem_reviewed": true,
+  "fullTheoremConditional_verified": true,
+  "unconditional_solution_claimed": false,
+  "actual_Kasparov_implementation_claimed": false,
+  "target_UCT_assumption_found": false,
+  "coefficient_UCT_assumption_found": false,
+  "source_paths_and_exact_sha256": {
+    "research/branches/SUZUKI/pass2/all-kirchberg-v2.tex": "f61dc0872c2edd4be42c6e0160fc37fd128324fbe7244e7b76f62246f4492537",
+    "releases/suzuki-kirchberg-draft/verification/external-inputs.json": "8107fed186c4cb23f6b6f7e98ee524506e212d081a9e243f9a3996b513c4f609",
+    "research/branches/SUZUKI/lean-conditional6/coordinator/final-contract-v2.txt": "3dd1aec955cabdb765405348fc11dbeb4f15ebe9d1ae0031bdea0a1904f7ad3d",
+    "releases/suzuki-kirchberg-draft/Suzuki/CoefficientModelFromExtension.lean": "0ae2b4393d52421282dbf92fedf2b6e3a89cfc51b53ef0e0b3ec36f9f1ae60ca",
+    "releases/suzuki-kirchberg-draft/Suzuki/TensorCoefficientChannels.lean": "f8b60ad399a88b03b52f0c242bece9e702f535995e20335a6eb9b2f8e3bfd2f4",
+    "releases/suzuki-kirchberg-draft/Suzuki/RecursiveGraphSequence.lean": "2b3eb45d4d9280baf0b3d4e7dcdb7801eb2c5aea4115ae7f6deab4a5b6b591d3",
+    "releases/suzuki-kirchberg-draft/Suzuki/GraphChannelKKCalculation.lean": "f44af9af1f7acf09c3a5a522f9a05c14a912f23b9fe986a4047b6ef08c8bc213",
+    "releases/suzuki-kirchberg-draft/Suzuki/ActualGraphCoefficientSystem.lean": "911659295220240784b983f692f792ae0be8915464e1eafc47387a90a4897f93",
+    "releases/suzuki-kirchberg-draft/Suzuki/EvaluationLimitPureInfiniteness.lean": "f178b06d217790e031194d51b37a70b69b87c452aa7eb1b7227e0e3eebab79d7",
+    "releases/suzuki-kirchberg-draft/Suzuki/TensorEvaluationPaths.lean": "458eb51b179bcd866876f97fb6228b8ac3dfc79742df4fe700331b5072ddb7e6",
+    "releases/suzuki-kirchberg-draft/Suzuki/RecursiveNoiseFullness.lean": "2ae90d8d81df3b3471f901360978466d11b4d1b1a948762ede688628f36307e7",
+    "releases/suzuki-kirchberg-draft/Suzuki/FiniteTensorLimit.lean": "6006fdf227c1c2302991502910ac619002d64f1aca33923c3db500fc34928335",
+    "releases/suzuki-kirchberg-draft/Suzuki/CoefficientSchedule.lean": "d831587a1e9889b64f36d63385bf878f21776d20cfbbaeaa1bc1aef9229ed258",
+    "releases/suzuki-kirchberg-draft/Suzuki/GraphCoefficientLimit.lean": "532ffb97846cb348a08e7577dc5993209059585ace6a98fe8485032cecf5f734",
+    "releases/suzuki-kirchberg-draft/Suzuki/ActualFiniteCoefficientLimits.lean": "0f30ccb877e6b99827e75d31b6b8a6f0b51ffe40541d554ac5da7053ea398af1",
+    "releases/suzuki-kirchberg-draft/Suzuki/ActualAmalgamCorner.lean": "e31bb0faaa1269f1d68b941237dc2822c74ffb9fbbf7bf4fbaafe007ce3cca66",
+    "releases/suzuki-kirchberg-draft/Suzuki/PrescribedUnitCoordinate.lean": "0fbbaee0b554d33e9f5f425debe76d08fc58091845fa811761e90b5d06562142",
+    "releases/suzuki-kirchberg-draft/Suzuki/ConditionalMainConstruction.lean": "d9c810bbb34e331e73cd184325ab3d9bb6ae46df5ff4bdef786c6c496cb50a18"
+  },
+  "supplemental_paths_and_exact_sha256": {
+    "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualCoefficientKK-v2.lean": "f2dfb402045b4d28bd29c356772383c30068bbbb8bebc60410db1cae7a9adc8a",
+    "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualUnitKK-v1.lean": "9d6a94837c2f81acb383ad6fc18e13f22bffd07ee08a183cf9ae43bc23a8940a",
+    "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualKKCornerClassification-v1.lean": "416d411b2cbe6fbeacd8bca13add118bc7ace3f9493f907bf36e112f41dc5ea1",
+    "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualCoefficientKK-final.lean": "1c489bda55e30c2798bbd284665d47112e0f4c50318d7198b93bcf0ba998f097",
+    "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualUnitKK-final.lean": "adad5c20b3e2c021fa47e8b1c4955c4338e6bead3a435e73d8b0427d055ae726",
+    "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualCoefficientKK-final-system.lean": "2060929f50cad6c7ed3ce288180c39894d90238b90a65b1844c75b867c69687d",
+    "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualInitialProjection-v1.lean": "a741bb544a3e780feeeb63aebca0ce09a5395a9b0c952b8b5c2a0d97a9b5153a",
+    "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/FullTheoremConditional-v1.lean": "6286b90c8ad796e29be34ba93a6b81fe9209de63891ca07581a225f85bec29cd",
+    "releases/suzuki-kirchberg-draft/verification/external-inputs.json": "4de11bde57bfff42c067d70f4ac7d6d5c871a61eeb8294a6a26c5370d4784d82",
+    "releases/suzuki-kirchberg-draft/verification/conditional-hypotheses.json": "0f52fc3d331be91a34e870894439140d8b939f2207ea956ffb1d76d77a2dd3a4",
+    "releases/suzuki-kirchberg-draft/verification/conditional-hypotheses.txt": "183cf0a521a045b688a94b71cab56476d439fb208be271f67575aaae3e184af6",
+    "releases/suzuki-kirchberg-draft/verification/CONDITIONAL.md": "230a3b39a7f4b78d4a28676c8e08af860684143df743b08ec05341aaaaa92d9f",
+    "releases/suzuki-kirchberg-draft/verification/SCOPE.md": "4fa80c24c278370efbcdfa1c914ea8ccdde9df2eb38d4fd939596c43c5d653fa",
+    "research/branches/SUZUKI/pass2/SZ2-0003/sources/kpr-1998-author.pdf": "66eec2d24c204dde4ad178a8a1ac14e378d09cb9846302b65c142d5527996fa1",
+    "research/branches/SUZUKI/pass2/SZ2-0003/sources/ara-goodearl-1102.4296v2.pdf": "dc512c4e8430e48b1add8c675baa376be011eebbfe63dbc8c9ddcdcc5cc0f1b5",
+    "research/branches/SUZUKI/SZ-0003/sources/S2-1510.02418v3.pdf": "82a4955a9f6d34a0f3be8925ba89179447ed7f8b3e524e66934423653c731e26",
+    "research/branches/SUZUKI/pass2/SZ2-0001/sources/dadarlat-uct-2002-01.pdf": "aa79df40ba83a420be686438513d919be6cda24aeec06fd6d5a2fad148ce82fa",
+    "research/branches/SUZUKI/sources/phillips-v2.pdf": "486e738f0a9fdf482c1e1e54d89172104c21c8cd56f3684a10e74bf2427d160e",
+    "research/branches/SUZUKI/SZ-0005/sources/rs-web-1-14.json": "34684f2a6b1d8f94f052fe0d80c9036675d13aafdbd34a52b25ef59a1606cad2",
+    "research/branches/SUZUKI/SZ-0005/sources/rs-web-1-17.json": "5cdc383a9fe50ed039a224008e3a837edf3e23c98ca0452445350f3bfb83441b",
+    "research/branches/SUZUKI/SZ-0005/sources/rs-web-7-1.json": "909a34361d64fe1461334a0038a08a02eca47c12c0bac14899cb2365ab99b831",
+    "research/branches/SUZUKI/lean-conditional5/coordinator/drinen-tomforde-0103036v1-web.json": "33c9876c11eec22d082a344e5d90a554534dd1b818a109d911e356db117a1133",
+    "research/branches/SUZUKI/lean-conditional5/coordinator/rs-1987-properties-web.json": "e34b128ce0abfae6fd6394f8b663a8f65cf390436b2e7ed6bbd5454de3a5b32a",
+    "research/branches/SUZUKI/lean-conditional6/SZLC6-0002/source-excerpts.json": "6b405d6f91dd2e97f4676f2273ee2cbee31c10e1afc55df35d2c23c4b1972e4b",
+    "research/branches/SUZUKI/lean-conditional6/SZLC6-0002/meyer-version-excerpts.json": "859a1cf93c937451ddfafd361a122a86b6887122d98be9609c4a7e5bfe3e7cf9",
+    "research/branches/SUZUKI/lean-conditional6/SZLC6-0002/choi-effros-excerpts.json": "b1987b6e941e5555a12e76c183d9511b6b599acb473085da43b268146d1f76ea",
+    "research/branches/SUZUKI/lean-conditional6/SZLC6-0007/blackadar-book6.pdf": "a20e676e9d400ebcd0cd07c13fbdbe1fac759a30c739fab23d6161ecfb1a23fb",
+    "research/branches/SUZUKI/lean-conditional6/coordinator/sources/ara-perera-toms-2009.pdf": "6b69224bd21e8ed4657380695d468d27d488d93987ee0d78328336afc3f1c3dd",
+    "research/branches/SUZUKI/lean-conditional6/coordinator/sources/blackadar-tensor-faithfulness.json": "afce6a778684fffc2d723fee474da118161017b68b6c357e2e591e8895e2dabf",
+    "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/citation-repair-v1/releases/suzuki-kirchberg-draft/Suzuki/ActualCoefficientKK.lean": "557a82fa2fae5910fc4ce6643ea76760cf3c92b49f7fddc8540a07fb42afe344",
+    "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/citation-repair-v1/releases/suzuki-kirchberg-draft/Suzuki/ActualKKCornerClassification.lean": "583d0b676dd81a762481ba26c4fd632aa84924a452869edbb42498c4007fd6ef"
+  },
+  "original_hash_checks": [
+    {
+      "path": "research/branches/SUZUKI/pass2/all-kirchberg-v2.tex",
+      "packet": "f61dc0872c2edd4be42c6e0160fc37fd128324fbe7244e7b76f62246f4492537",
+      "frozen": "f61dc0872c2edd4be42c6e0160fc37fd128324fbe7244e7b76f62246f4492537",
+      "current": "f61dc0872c2edd4be42c6e0160fc37fd128324fbe7244e7b76f62246f4492537",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/verification/external-inputs.json",
+      "packet": "8107fed186c4cb23f6b6f7e98ee524506e212d081a9e243f9a3996b513c4f609",
+      "frozen": "8107fed186c4cb23f6b6f7e98ee524506e212d081a9e243f9a3996b513c4f609",
+      "current": "8107fed186c4cb23f6b6f7e98ee524506e212d081a9e243f9a3996b513c4f609",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/coordinator/final-contract-v2.txt",
+      "packet": "3dd1aec955cabdb765405348fc11dbeb4f15ebe9d1ae0031bdea0a1904f7ad3d",
+      "frozen": "3dd1aec955cabdb765405348fc11dbeb4f15ebe9d1ae0031bdea0a1904f7ad3d",
+      "current": "3dd1aec955cabdb765405348fc11dbeb4f15ebe9d1ae0031bdea0a1904f7ad3d",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/CoefficientModelFromExtension.lean",
+      "packet": "0ae2b4393d52421282dbf92fedf2b6e3a89cfc51b53ef0e0b3ec36f9f1ae60ca",
+      "frozen": "0ae2b4393d52421282dbf92fedf2b6e3a89cfc51b53ef0e0b3ec36f9f1ae60ca",
+      "current": "0ae2b4393d52421282dbf92fedf2b6e3a89cfc51b53ef0e0b3ec36f9f1ae60ca",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/TensorCoefficientChannels.lean",
+      "packet": "f8b60ad399a88b03b52f0c242bece9e702f535995e20335a6eb9b2f8e3bfd2f4",
+      "frozen": "f8b60ad399a88b03b52f0c242bece9e702f535995e20335a6eb9b2f8e3bfd2f4",
+      "current": "f8b60ad399a88b03b52f0c242bece9e702f535995e20335a6eb9b2f8e3bfd2f4",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/RecursiveGraphSequence.lean",
+      "packet": "2b3eb45d4d9280baf0b3d4e7dcdb7801eb2c5aea4115ae7f6deab4a5b6b591d3",
+      "frozen": "2b3eb45d4d9280baf0b3d4e7dcdb7801eb2c5aea4115ae7f6deab4a5b6b591d3",
+      "current": "2b3eb45d4d9280baf0b3d4e7dcdb7801eb2c5aea4115ae7f6deab4a5b6b591d3",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/GraphChannelKKCalculation.lean",
+      "packet": "f44af9af1f7acf09c3a5a522f9a05c14a912f23b9fe986a4047b6ef08c8bc213",
+      "frozen": "f44af9af1f7acf09c3a5a522f9a05c14a912f23b9fe986a4047b6ef08c8bc213",
+      "current": "f44af9af1f7acf09c3a5a522f9a05c14a912f23b9fe986a4047b6ef08c8bc213",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/ActualGraphCoefficientSystem.lean",
+      "packet": "911659295220240784b983f692f792ae0be8915464e1eafc47387a90a4897f93",
+      "frozen": "911659295220240784b983f692f792ae0be8915464e1eafc47387a90a4897f93",
+      "current": "911659295220240784b983f692f792ae0be8915464e1eafc47387a90a4897f93",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/EvaluationLimitPureInfiniteness.lean",
+      "packet": "f178b06d217790e031194d51b37a70b69b87c452aa7eb1b7227e0e3eebab79d7",
+      "frozen": "f178b06d217790e031194d51b37a70b69b87c452aa7eb1b7227e0e3eebab79d7",
+      "current": "f178b06d217790e031194d51b37a70b69b87c452aa7eb1b7227e0e3eebab79d7",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/TensorEvaluationPaths.lean",
+      "packet": "458eb51b179bcd866876f97fb6228b8ac3dfc79742df4fe700331b5072ddb7e6",
+      "frozen": "458eb51b179bcd866876f97fb6228b8ac3dfc79742df4fe700331b5072ddb7e6",
+      "current": "458eb51b179bcd866876f97fb6228b8ac3dfc79742df4fe700331b5072ddb7e6",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/RecursiveNoiseFullness.lean",
+      "packet": "2ae90d8d81df3b3471f901360978466d11b4d1b1a948762ede688628f36307e7",
+      "frozen": "2ae90d8d81df3b3471f901360978466d11b4d1b1a948762ede688628f36307e7",
+      "current": "2ae90d8d81df3b3471f901360978466d11b4d1b1a948762ede688628f36307e7",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/FiniteTensorLimit.lean",
+      "packet": "6006fdf227c1c2302991502910ac619002d64f1aca33923c3db500fc34928335",
+      "frozen": "6006fdf227c1c2302991502910ac619002d64f1aca33923c3db500fc34928335",
+      "current": "6006fdf227c1c2302991502910ac619002d64f1aca33923c3db500fc34928335",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/CoefficientSchedule.lean",
+      "packet": "d831587a1e9889b64f36d63385bf878f21776d20cfbbaeaa1bc1aef9229ed258",
+      "frozen": "d831587a1e9889b64f36d63385bf878f21776d20cfbbaeaa1bc1aef9229ed258",
+      "current": "d831587a1e9889b64f36d63385bf878f21776d20cfbbaeaa1bc1aef9229ed258",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/GraphCoefficientLimit.lean",
+      "packet": "532ffb97846cb348a08e7577dc5993209059585ace6a98fe8485032cecf5f734",
+      "frozen": "532ffb97846cb348a08e7577dc5993209059585ace6a98fe8485032cecf5f734",
+      "current": "532ffb97846cb348a08e7577dc5993209059585ace6a98fe8485032cecf5f734",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/ActualFiniteCoefficientLimits.lean",
+      "packet": "0f30ccb877e6b99827e75d31b6b8a6f0b51ffe40541d554ac5da7053ea398af1",
+      "frozen": "0f30ccb877e6b99827e75d31b6b8a6f0b51ffe40541d554ac5da7053ea398af1",
+      "current": "0f30ccb877e6b99827e75d31b6b8a6f0b51ffe40541d554ac5da7053ea398af1",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/ActualAmalgamCorner.lean",
+      "packet": "e31bb0faaa1269f1d68b941237dc2822c74ffb9fbbf7bf4fbaafe007ce3cca66",
+      "frozen": "e31bb0faaa1269f1d68b941237dc2822c74ffb9fbbf7bf4fbaafe007ce3cca66",
+      "current": "e31bb0faaa1269f1d68b941237dc2822c74ffb9fbbf7bf4fbaafe007ce3cca66",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/PrescribedUnitCoordinate.lean",
+      "packet": "0fbbaee0b554d33e9f5f425debe76d08fc58091845fa811761e90b5d06562142",
+      "frozen": "0fbbaee0b554d33e9f5f425debe76d08fc58091845fa811761e90b5d06562142",
+      "current": "0fbbaee0b554d33e9f5f425debe76d08fc58091845fa811761e90b5d06562142",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/Suzuki/ConditionalMainConstruction.lean",
+      "packet": "d9c810bbb34e331e73cd184325ab3d9bb6ae46df5ff4bdef786c6c496cb50a18",
+      "frozen": "d9c810bbb34e331e73cd184325ab3d9bb6ae46df5ff4bdef786c6c496cb50a18",
+      "current": "d9c810bbb34e331e73cd184325ab3d9bb6ae46df5ff4bdef786c6c496cb50a18",
+      "match": true
+    }
+  ],
+  "source_snapshot_checks": [
+    {
+      "id": "KPR",
+      "path": "research/branches/SUZUKI/pass2/SZ2-0003/sources/kpr-1998-author.pdf",
+      "expected": "66eec2d24c204dde4ad178a8a1ac14e378d09cb9846302b65c142d5527996fa1",
+      "actual": "66eec2d24c204dde4ad178a8a1ac14e378d09cb9846302b65c142d5527996fa1",
+      "match": true,
+      "access": "original PDF snapshot available; text extraction inspected"
+    },
+    {
+      "id": "AG",
+      "path": "research/branches/SUZUKI/pass2/SZ2-0003/sources/ara-goodearl-1102.4296v2.pdf",
+      "expected": "dc512c4e8430e48b1add8c675baa376be011eebbfe63dbc8c9ddcdcc5cc0f1b5",
+      "actual": "dc512c4e8430e48b1add8c675baa376be011eebbfe63dbc8c9ddcdcc5cc0f1b5",
+      "match": true,
+      "access": "original PDF snapshot available; text extraction inspected"
+    },
+    {
+      "id": "FG",
+      "path": "research/branches/SUZUKI/SZ-0003/sources/S2-1510.02418v3.pdf",
+      "expected": "82a4955a9f6d34a0f3be8925ba89179447ed7f8b3e524e66934423653c731e26",
+      "actual": "82a4955a9f6d34a0f3be8925ba89179447ed7f8b3e524e66934423653c731e26",
+      "match": true,
+      "access": "original PDF snapshot available; text extraction inspected"
+    },
+    {
+      "id": "Dadarlat",
+      "path": "research/branches/SUZUKI/pass2/SZ2-0001/sources/dadarlat-uct-2002-01.pdf",
+      "expected": "aa79df40ba83a420be686438513d919be6cda24aeec06fd6d5a2fad148ce82fa",
+      "actual": "aa79df40ba83a420be686438513d919be6cda24aeec06fd6d5a2fad148ce82fa",
+      "match": true,
+      "access": "original PDF snapshot available; text extraction inspected"
+    },
+    {
+      "id": "Phillips",
+      "path": "research/branches/SUZUKI/sources/phillips-v2.pdf",
+      "expected": "486e738f0a9fdf482c1e1e54d89172104c21c8cd56f3684a10e74bf2427d160e",
+      "actual": "486e738f0a9fdf482c1e1e54d89172104c21c8cd56f3684a10e74bf2427d160e",
+      "match": true,
+      "access": "original PDF snapshot available; text extraction inspected"
+    },
+    {
+      "id": "RS_Milnor_excerpt",
+      "path": "research/branches/SUZUKI/SZ-0005/sources/rs-web-1-14.json",
+      "expected": "34684f2a6b1d8f94f052fe0d80c9036675d13aafdbd34a52b25ef59a1606cad2",
+      "actual": "34684f2a6b1d8f94f052fe0d80c9036675d13aafdbd34a52b25ef59a1606cad2",
+      "match": true,
+      "access": "frozen extracted web text; original full journal PDF not inspected"
+    },
+    {
+      "id": "RS_UCT_excerpt",
+      "path": "research/branches/SUZUKI/SZ-0005/sources/rs-web-1-17.json",
+      "expected": "5cdc383a9fe50ed039a224008e3a837edf3e23c98ca0452445350f3bfb83441b",
+      "actual": "5cdc383a9fe50ed039a224008e3a837edf3e23c98ca0452445350f3bfb83441b",
+      "match": true,
+      "access": "frozen extracted web text; original full journal PDF not inspected"
+    },
+    {
+      "id": "RS_7_1_excerpt",
+      "path": "research/branches/SUZUKI/SZ-0005/sources/rs-web-7-1.json",
+      "expected": "909a34361d64fe1461334a0038a08a02eca47c12c0bac14899cb2365ab99b831",
+      "actual": "909a34361d64fe1461334a0038a08a02eca47c12c0bac14899cb2365ab99b831",
+      "match": true,
+      "access": "frozen extracted web text; original full journal PDF not inspected"
+    },
+    {
+      "id": "DT_graph_K",
+      "path": "research/branches/SUZUKI/lean-conditional5/coordinator/drinen-tomforde-0103036v1-web.json",
+      "expected": "33c9876c11eec22d082a344e5d90a554534dd1b818a109d911e356db117a1133",
+      "actual": "33c9876c11eec22d082a344e5d90a554534dd1b818a109d911e356db117a1133",
+      "match": true,
+      "access": "arXiv-generated HTML for math/0103036v1 inspected; frozen extracted web response; original PDF not inspected"
+    },
+    {
+      "id": "RS_properties_excerpt",
+      "path": "research/branches/SUZUKI/lean-conditional5/coordinator/rs-1987-properties-web.json",
+      "expected": "e34b128ce0abfae6fd6394f8b663a8f65cf390436b2e7ed6bbd5454de3a5b32a",
+      "actual": "e34b128ce0abfae6fd6394f8b663a8f65cf390436b2e7ed6bbd5454de3a5b32a",
+      "match": true,
+      "access": "Fresh web extraction of author-uploaded journal PDF, relevant introductory pages inspected; complete local original-PDF inspection not claimed"
+    }
+  ],
+  "compile_results": [
+    {
+      "module": "CoefficientModelFromExtension",
+      "exit_code": 0,
+      "seconds": 9.319,
+      "sha256": "0ae2b4393d52421282dbf92fedf2b6e3a89cfc51b53ef0e0b3ec36f9f1ae60ca",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-CoefficientModelFromExtension.log"
+    },
+    {
+      "module": "GraphChannelKKCalculation",
+      "exit_code": 0,
+      "seconds": 34.359,
+      "sha256": "f44af9af1f7acf09c3a5a522f9a05c14a912f23b9fe986a4047b6ef08c8bc213",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-GraphChannelKKCalculation.log"
+    },
+    {
+      "module": "ActualGraphCoefficientSystem",
+      "exit_code": 0,
+      "seconds": 93.931,
+      "sha256": "911659295220240784b983f692f792ae0be8915464e1eafc47387a90a4897f93",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-ActualGraphCoefficientSystem.log"
+    },
+    {
+      "module": "EvaluationLimitPureInfiniteness",
+      "exit_code": 0,
+      "seconds": 23.24,
+      "sha256": "f178b06d217790e031194d51b37a70b69b87c452aa7eb1b7227e0e3eebab79d7",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-EvaluationLimitPureInfiniteness.log"
+    },
+    {
+      "module": "ActualFiniteCoefficientLimits",
+      "exit_code": 0,
+      "seconds": 14.088,
+      "sha256": "0f30ccb877e6b99827e75d31b6b8a6f0b51ffe40541d554ac5da7053ea398af1",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-ActualFiniteCoefficientLimits.log"
+    },
+    {
+      "module": "ActualAmalgamCorner",
+      "exit_code": 0,
+      "seconds": 7.833,
+      "sha256": "e31bb0faaa1269f1d68b941237dc2822c74ffb9fbbf7bf4fbaafe007ce3cca66",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-ActualAmalgamCorner.log"
+    },
+    {
+      "module": "PrescribedUnitCoordinate",
+      "exit_code": 0,
+      "seconds": 30.531,
+      "sha256": "0fbbaee0b554d33e9f5f425debe76d08fc58091845fa811761e90b5d06562142",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-PrescribedUnitCoordinate.log"
+    },
+    {
+      "module": "ConditionalMainConstruction",
+      "exit_code": 0,
+      "seconds": 4.42,
+      "sha256": "d9c810bbb34e331e73cd184325ab3d9bb6ae46df5ff4bdef786c6c496cb50a18",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-ConditionalMainConstruction.log"
+    },
+    {
+      "module": "TensorCoefficientChannels",
+      "exit_code": 0,
+      "seconds": 14.463,
+      "sha256": "f8b60ad399a88b03b52f0c242bece9e702f535995e20335a6eb9b2f8e3bfd2f4",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-TensorCoefficientChannels.log"
+    },
+    {
+      "module": "RecursiveGraphSequence",
+      "exit_code": 0,
+      "seconds": 47.699,
+      "sha256": "2b3eb45d4d9280baf0b3d4e7dcdb7801eb2c5aea4115ae7f6deab4a5b6b591d3",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-RecursiveGraphSequence.log"
+    },
+    {
+      "module": "TensorEvaluationPaths",
+      "exit_code": 0,
+      "seconds": 8.962,
+      "sha256": "458eb51b179bcd866876f97fb6228b8ac3dfc79742df4fe700331b5072ddb7e6",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-TensorEvaluationPaths.log"
+    },
+    {
+      "module": "RecursiveNoiseFullness",
+      "exit_code": 0,
+      "seconds": 4.522,
+      "sha256": "2ae90d8d81df3b3471f901360978466d11b4d1b1a948762ede688628f36307e7",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-RecursiveNoiseFullness.log"
+    },
+    {
+      "module": "FiniteTensorLimit",
+      "exit_code": 0,
+      "seconds": 7.074,
+      "sha256": "6006fdf227c1c2302991502910ac619002d64f1aca33923c3db500fc34928335",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-FiniteTensorLimit.log"
+    },
+    {
+      "module": "CoefficientSchedule",
+      "exit_code": 0,
+      "seconds": 3.433,
+      "sha256": "d831587a1e9889b64f36d63385bf878f21776d20cfbbaeaa1bc1aef9229ed258",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-CoefficientSchedule.log"
+    },
+    {
+      "module": "GraphCoefficientLimit",
+      "exit_code": 0,
+      "seconds": 3.397,
+      "sha256": "532ffb97846cb348a08e7577dc5993209059585ace6a98fe8485032cecf5f734",
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-GraphCoefficientLimit.log"
+    }
+  ],
+  "supplemental_compile_results": [
+    {
+      "source": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualCoefficientKK-final.lean",
+      "sha256": "1c489bda55e30c2798bbd284665d47112e0f4c50318d7198b93bcf0ba998f097",
+      "exit_code": 0,
+      "seconds": 36.393,
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-ActualCoefficientKK-final-isolated.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependency_scope": "isolated extra modules compiled sequentially; other direct imports symlink to pinned release build"
+    },
+    {
+      "source": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualUnitKK-final.lean",
+      "sha256": "adad5c20b3e2c021fa47e8b1c4955c4338e6bead3a435e73d8b0427d055ae726",
+      "exit_code": 0,
+      "seconds": 12.67,
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-ActualUnitKK-final-isolated.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependency_scope": "isolated extra modules compiled sequentially; other direct imports symlink to pinned release build"
+    },
+    {
+      "source": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualKKCornerClassification-v1.lean",
+      "sha256": "416d411b2cbe6fbeacd8bca13add118bc7ace3f9493f907bf36e112f41dc5ea1",
+      "exit_code": 0,
+      "seconds": 9.853,
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-ActualKKCornerClassification-v1-isolated.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependency_scope": "isolated extra modules compiled sequentially; other direct imports symlink to pinned release build"
+    }
+  ],
+  "component_kernel_audit": {
+    "exit_code": 0,
+    "seconds": 19.323,
+    "constant_count": 1685,
+    "only_allowed_axioms": true,
+    "source_sha256": "f6a5000e6061b9924653bd1da36f6a3bf26e14799d3d66cfdb75804c20ca6e01",
+    "log_sha256": "744e7b727bdb930078ed68d4e2c0c555d930a0ede33c2e46cdfa1f75882e9c0e",
+    "scope": "15 packet namespaces, private and autogenerated constants; imports from pinned current build whose 15 source hashes match packet/frozen at initial check"
+  },
+  "supplemental_kernel_audit": {
+    "exit_code": 0,
+    "seconds": 23.281,
+    "constant_count": 2063,
+    "only_allowed_axioms": true,
+    "source_sha256": "addbe2752aee37ea1f00cc9efea3d6b07fb4640271ce0cab661df963841ade5d",
+    "log_sha256": "51a0f991cd00759d00aad93bc45953b9360f7503b58f6718e0372c5df2ba2b40",
+    "scope": "15 frozen components and 3 supplemental final modules; recursive kernel dependencies; no FullTheoremConditional module"
+  },
+  "semantic_findings": [
+    "Original Dadarlat extension only is an input; concrete cone nuclearity/RFD and exact quotient-path KK/Bott equivalence are subsequently derived. No K-groups-vanish premise is imported.",
+    "Generic GraphInput corner corollary has positive rank-two adjacency, diagonal >=2, positive weights; actual weighted fullness and graph/amalgam identification are project derivations.",
+    "Generic all-universe actual finite-cone interface applies directly to SAME graphStage u and literal UniverseLift finite blocks; no Type-0 graph KK transport is silently used.",
+    "Nonunital finite-cone naturality follows from pointwise cone/suspension squares for arbitrary compatible actual diagrams; intertwining expectations is not required.",
+    "Actual scalar +/minus/noise classes and spatial coefficient bond are derived, with actual amplification squares and generic rank-one matrix Morita.",
+    "Actual evaluation witnesses, limit simplicity/pure infiniteness, finite constituent properties, limit amalgam and common corner properties are derived; none is an external field giving the new conclusion.",
+    "Actual unit calculation binds the same recursive stage-zero kappa used by bond theorem; generic first-factor projection/rank and scalar reference normalizations supply standard inputs only.",
+    "Full-corner Morita and classification inputs are universal and do not supply the construction projection/equivalence/unit equation.",
+    "PublishedInputs audited field by field: no C0-C10 one-off conclusion survives; exact MainClaim u obtained, no target/coefficient UCT.",
+    "Analytic Milnor is applied to actual constructed separable nuclear injective stages and actual limit maps; all-Z remains designated admissible KK category.",
+    "Final prescribed-class proof uses literal initial-projection image, same recursive kappa, Milnor inverse-stage and actual scalar map composition; full final unit equation derived."
+  ],
+  "remaining_external_obligations": [
+    "Instantiate actual KK category/object/star-map/K0/exterior/suspension data and source interfaces, rather than treating citations as instances.",
+    "Identify GraphUniversal u norm-supremum model with conventional full graph Cstar algebra.",
+    "Match exact CPC matrix approximation, closed-ideal simplicity and hereditary infinite-projection Target predicates to source conventions.",
+    "Match fixed finite-cone signs, actual scalar/Bott generators, minimal-rank projection coordinates and UniverseLift semantics."
+  ],
+  "remaining_final_assembly_checks": [],
+  "source_access_limits": [
+    "Rosenberg-Schochet through frozen excerpt/web extracts only; complete original journal PDF not inspected.",
+    "Drinen-Tomforde through frozen arXiv HTML extraction; original PDF not inspected.",
+    "Blackadar Operator Algebras and Choi-Effros supporting formulations through batch6 source excerpts/reports; no original Choi-Effros PDF inspection claimed. Assigned original Blackadar K-Theory book6 PDF was extracted and relevant representability/stabilization/exterior passages inspected.",
+    "Meyer v2 primary arXiv PDF opened and relevant Definition55/Theorem56 inspected; no local immutable full PDF created.",
+    "Strung draft unversioned; no exact edition invented."
+  ],
+  "preserved_audit_harness_failures": [
+    "KernelAudit-v1.lean used keyword prefix as variable; corrected audit-only script succeeded.",
+    "First extra isolation library lacked imported package modules; audit-harness import resolution failure preserved; dependency links and exact sequential extra compiles succeeded.",
+    "First final theorem invocation preceded completion of independent initial-projection compilation; missing-import error preserved; sequential retry successful."
+  ],
+  "report": "REPORT.md",
+  "report_sha256": "5f8949aca93cf666a69045fe2b30be23b7eb5a43bef56c29c3b713847c7954d8",
+  "verification_mode": "conditional Lean theorem; actual established-theory interface realization remains external",
+  "final_theorem_source_sha256": "6286b90c8ad796e29be34ba93a6b81fe9209de63891ca07581a225f85bec29cd",
+  "supplemental_hash_checks": [
+    {
+      "path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualCoefficientKK-v2.lean",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualCoefficientKK-v2.lean",
+      "expected": "f2dfb402045b4d28bd29c356772383c30068bbbb8bebc60410db1cae7a9adc8a",
+      "actual": "f2dfb402045b4d28bd29c356772383c30068bbbb8bebc60410db1cae7a9adc8a",
+      "match": true
+    },
+    {
+      "path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualUnitKK-v1.lean",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualUnitKK-v1.lean",
+      "expected": "9d6a94837c2f81acb383ad6fc18e13f22bffd07ee08a183cf9ae43bc23a8940a",
+      "actual": "9d6a94837c2f81acb383ad6fc18e13f22bffd07ee08a183cf9ae43bc23a8940a",
+      "match": true
+    },
+    {
+      "path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualKKCornerClassification-v1.lean",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualKKCornerClassification-v1.lean",
+      "expected": "416d411b2cbe6fbeacd8bca13add118bc7ace3f9493f907bf36e112f41dc5ea1",
+      "actual": "416d411b2cbe6fbeacd8bca13add118bc7ace3f9493f907bf36e112f41dc5ea1",
+      "match": true
+    },
+    {
+      "path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualCoefficientKK-final.lean",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualCoefficientKK-final.lean",
+      "expected": "1c489bda55e30c2798bbd284665d47112e0f4c50318d7198b93bcf0ba998f097",
+      "actual": "1c489bda55e30c2798bbd284665d47112e0f4c50318d7198b93bcf0ba998f097",
+      "match": true
+    },
+    {
+      "path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualUnitKK-final.lean",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualUnitKK-final.lean",
+      "expected": "adad5c20b3e2c021fa47e8b1c4955c4338e6bead3a435e73d8b0427d055ae726",
+      "actual": "adad5c20b3e2c021fa47e8b1c4955c4338e6bead3a435e73d8b0427d055ae726",
+      "match": true
+    },
+    {
+      "path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualCoefficientKK-final-system.lean",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualCoefficientKK-final-system.lean",
+      "expected": "2060929f50cad6c7ed3ce288180c39894d90238b90a65b1844c75b867c69687d",
+      "actual": "2060929f50cad6c7ed3ce288180c39894d90238b90a65b1844c75b867c69687d",
+      "match": true
+    },
+    {
+      "path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualInitialProjection-v1.lean",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualInitialProjection-v1.lean",
+      "expected": "a741bb544a3e780feeeb63aebca0ce09a5395a9b0c952b8b5c2a0d97a9b5153a",
+      "actual": "a741bb544a3e780feeeb63aebca0ce09a5395a9b0c952b8b5c2a0d97a9b5153a",
+      "match": true
+    },
+    {
+      "path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/FullTheoremConditional-v1.lean",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/FullTheoremConditional-v1.lean",
+      "expected": "6286b90c8ad796e29be34ba93a6b81fe9209de63891ca07581a225f85bec29cd",
+      "actual": "6286b90c8ad796e29be34ba93a6b81fe9209de63891ca07581a225f85bec29cd",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/verification/external-inputs.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/releases/suzuki-kirchberg-draft/verification/external-inputs.json",
+      "expected": "4de11bde57bfff42c067d70f4ac7d6d5c871a61eeb8294a6a26c5370d4784d82",
+      "actual": "4de11bde57bfff42c067d70f4ac7d6d5c871a61eeb8294a6a26c5370d4784d82",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/verification/conditional-hypotheses.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/releases/suzuki-kirchberg-draft/verification/conditional-hypotheses.json",
+      "expected": "0f52fc3d331be91a34e870894439140d8b939f2207ea956ffb1d76d77a2dd3a4",
+      "actual": "0f52fc3d331be91a34e870894439140d8b939f2207ea956ffb1d76d77a2dd3a4",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/verification/conditional-hypotheses.txt",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/releases/suzuki-kirchberg-draft/verification/conditional-hypotheses.txt",
+      "expected": "183cf0a521a045b688a94b71cab56476d439fb208be271f67575aaae3e184af6",
+      "actual": "183cf0a521a045b688a94b71cab56476d439fb208be271f67575aaae3e184af6",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/verification/CONDITIONAL.md",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/releases/suzuki-kirchberg-draft/verification/CONDITIONAL.md",
+      "expected": "230a3b39a7f4b78d4a28676c8e08af860684143df743b08ec05341aaaaa92d9f",
+      "actual": "230a3b39a7f4b78d4a28676c8e08af860684143df743b08ec05341aaaaa92d9f",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/verification/SCOPE.md",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/releases/suzuki-kirchberg-draft/verification/SCOPE.md",
+      "expected": "4fa80c24c278370efbcdfa1c914ea8ccdde9df2eb38d4fd939596c43c5d653fa",
+      "actual": "4fa80c24c278370efbcdfa1c914ea8ccdde9df2eb38d4fd939596c43c5d653fa",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/pass2/SZ2-0003/sources/kpr-1998-author.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/pass2/SZ2-0003/sources/kpr-1998-author.pdf",
+      "expected": "66eec2d24c204dde4ad178a8a1ac14e378d09cb9846302b65c142d5527996fa1",
+      "actual": "66eec2d24c204dde4ad178a8a1ac14e378d09cb9846302b65c142d5527996fa1",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/pass2/SZ2-0003/sources/ara-goodearl-1102.4296v2.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/pass2/SZ2-0003/sources/ara-goodearl-1102.4296v2.pdf",
+      "expected": "dc512c4e8430e48b1add8c675baa376be011eebbfe63dbc8c9ddcdcc5cc0f1b5",
+      "actual": "dc512c4e8430e48b1add8c675baa376be011eebbfe63dbc8c9ddcdcc5cc0f1b5",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/SZ-0003/sources/S2-1510.02418v3.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/SZ-0003/sources/S2-1510.02418v3.pdf",
+      "expected": "82a4955a9f6d34a0f3be8925ba89179447ed7f8b3e524e66934423653c731e26",
+      "actual": "82a4955a9f6d34a0f3be8925ba89179447ed7f8b3e524e66934423653c731e26",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/pass2/SZ2-0001/sources/dadarlat-uct-2002-01.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/pass2/SZ2-0001/sources/dadarlat-uct-2002-01.pdf",
+      "expected": "aa79df40ba83a420be686438513d919be6cda24aeec06fd6d5a2fad148ce82fa",
+      "actual": "aa79df40ba83a420be686438513d919be6cda24aeec06fd6d5a2fad148ce82fa",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/sources/phillips-v2.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/sources/phillips-v2.pdf",
+      "expected": "486e738f0a9fdf482c1e1e54d89172104c21c8cd56f3684a10e74bf2427d160e",
+      "actual": "486e738f0a9fdf482c1e1e54d89172104c21c8cd56f3684a10e74bf2427d160e",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/SZ-0005/sources/rs-web-1-14.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/SZ-0005/sources/rs-web-1-14.json",
+      "expected": "34684f2a6b1d8f94f052fe0d80c9036675d13aafdbd34a52b25ef59a1606cad2",
+      "actual": "34684f2a6b1d8f94f052fe0d80c9036675d13aafdbd34a52b25ef59a1606cad2",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/SZ-0005/sources/rs-web-1-17.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/SZ-0005/sources/rs-web-1-17.json",
+      "expected": "5cdc383a9fe50ed039a224008e3a837edf3e23c98ca0452445350f3bfb83441b",
+      "actual": "5cdc383a9fe50ed039a224008e3a837edf3e23c98ca0452445350f3bfb83441b",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/SZ-0005/sources/rs-web-7-1.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/SZ-0005/sources/rs-web-7-1.json",
+      "expected": "909a34361d64fe1461334a0038a08a02eca47c12c0bac14899cb2365ab99b831",
+      "actual": "909a34361d64fe1461334a0038a08a02eca47c12c0bac14899cb2365ab99b831",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional5/coordinator/drinen-tomforde-0103036v1-web.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional5/coordinator/drinen-tomforde-0103036v1-web.json",
+      "expected": "33c9876c11eec22d082a344e5d90a554534dd1b818a109d911e356db117a1133",
+      "actual": "33c9876c11eec22d082a344e5d90a554534dd1b818a109d911e356db117a1133",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional5/coordinator/rs-1987-properties-web.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional5/coordinator/rs-1987-properties-web.json",
+      "expected": "e34b128ce0abfae6fd6394f8b663a8f65cf390436b2e7ed6bbd5454de3a5b32a",
+      "actual": "e34b128ce0abfae6fd6394f8b663a8f65cf390436b2e7ed6bbd5454de3a5b32a",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/SZLC6-0002/source-excerpts.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional6/SZLC6-0002/source-excerpts.json",
+      "expected": "6b405d6f91dd2e97f4676f2273ee2cbee31c10e1afc55df35d2c23c4b1972e4b",
+      "actual": "6b405d6f91dd2e97f4676f2273ee2cbee31c10e1afc55df35d2c23c4b1972e4b",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/SZLC6-0002/meyer-version-excerpts.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional6/SZLC6-0002/meyer-version-excerpts.json",
+      "expected": "859a1cf93c937451ddfafd361a122a86b6887122d98be9609c4a7e5bfe3e7cf9",
+      "actual": "859a1cf93c937451ddfafd361a122a86b6887122d98be9609c4a7e5bfe3e7cf9",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/SZLC6-0002/choi-effros-excerpts.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional6/SZLC6-0002/choi-effros-excerpts.json",
+      "expected": "b1987b6e941e5555a12e76c183d9511b6b599acb473085da43b268146d1f76ea",
+      "actual": "b1987b6e941e5555a12e76c183d9511b6b599acb473085da43b268146d1f76ea",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/SZLC6-0007/blackadar-book6.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional6/SZLC6-0007/blackadar-book6.pdf",
+      "expected": "a20e676e9d400ebcd0cd07c13fbdbe1fac759a30c739fab23d6161ecfb1a23fb",
+      "actual": "a20e676e9d400ebcd0cd07c13fbdbe1fac759a30c739fab23d6161ecfb1a23fb",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/coordinator/sources/ara-perera-toms-2009.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional6/coordinator/sources/ara-perera-toms-2009.pdf",
+      "expected": "6b69224bd21e8ed4657380695d468d27d488d93987ee0d78328336afc3f1c3dd",
+      "actual": "6b69224bd21e8ed4657380695d468d27d488d93987ee0d78328336afc3f1c3dd",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/coordinator/sources/blackadar-tensor-faithfulness.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional6/coordinator/sources/blackadar-tensor-faithfulness.json",
+      "expected": "afce6a778684fffc2d723fee474da118161017b68b6c357e2e591e8895e2dabf",
+      "actual": "afce6a778684fffc2d723fee474da118161017b68b6c357e2e591e8895e2dabf",
+      "match": true
+    }
+  ],
+  "supplemental_system_compile_results": [
+    {
+      "source": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualCoefficientKK-final-system.lean",
+      "sha256": "2060929f50cad6c7ed3ce288180c39894d90238b90a65b1844c75b867c69687d",
+      "exit_code": 0,
+      "seconds": 35.286,
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-ActualCoefficientKK-final-system-system-isolated.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependency_scope": "isolated exact final-system coefficient, final unit/corner and initial-projection rebuilt sequentially; pinned release direct imports"
+    },
+    {
+      "source": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualUnitKK-final.lean",
+      "sha256": "adad5c20b3e2c021fa47e8b1c4955c4338e6bead3a435e73d8b0427d055ae726",
+      "exit_code": 0,
+      "seconds": 18.081,
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-ActualUnitKK-final-system-isolated.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependency_scope": "isolated exact final-system coefficient, final unit/corner and initial-projection rebuilt sequentially; pinned release direct imports"
+    },
+    {
+      "source": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualKKCornerClassification-v1.lean",
+      "sha256": "416d411b2cbe6fbeacd8bca13add118bc7ace3f9493f907bf36e112f41dc5ea1",
+      "exit_code": 0,
+      "seconds": 3.405,
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-ActualKKCornerClassification-v1-system-isolated.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependency_scope": "isolated exact final-system coefficient, final unit/corner and initial-projection rebuilt sequentially; pinned release direct imports"
+    },
+    {
+      "source": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/ActualInitialProjection-v1.lean",
+      "sha256": "a741bb544a3e780feeeb63aebca0ce09a5395a9b0c952b8b5c2a0d97a9b5153a",
+      "exit_code": 0,
+      "seconds": 84.533,
+      "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-ActualInitialProjection-v1-system-isolated.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependency_scope": "isolated exact final-system coefficient, final unit/corner and initial-projection rebuilt sequentially; pinned release direct imports"
+    }
+  ],
+  "final_compile_result": {
+    "source": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/shared-inputs/FullTheoremConditional-v1.lean",
+    "sha256": "6286b90c8ad796e29be34ba93a6b81fe9209de63891ca07581a225f85bec29cd",
+    "exit_code": 0,
+    "seconds": 42.082,
+    "log": "research/branches/SUZUKI/lean-conditional7/SZLC7-0004/compile-FullTheoremConditional-v1-final-isolated.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "dependency_scope": "isolated exact coefficient-system/unit/corner/initial-projection emitted modules; pinned release imports"
+  },
+  "final_kernel_audit": {
+    "exit_code": 0,
+    "seconds": 21.515,
+    "constant_count": 2117,
+    "only_allowed_axioms": true,
+    "source_sha256": "6496667d427889a63dd109eb943e384622592c52678dff07431902380dfa7f72",
+    "log_sha256": "8bedb744950d53577aa2773a360efe3e459695a6cd1f1e207a23d3e956cfc0b8",
+    "scope": "15 original frozen components, final-system coefficient, final unit, corner classification, initial projection, PublishedInputs and fullTheoremConditional; recursive kernel dependencies"
+  },
+  "theorem_type_audit": {
+    "exit_code": 0,
+    "seconds": 10.81,
+    "source_sha256": "966933abc3e6f358dc41df7d8fb7b63a47ec77c8bb88e9c81738e62e9aef2e8f",
+    "log_sha256": "f13b7e1e67428caaac4cf51d6fc8d54ce4501ccc5fb39d6dfe6474b072f64560",
+    "output": "@Suzuki.fullTheoremConditional : \u2200 {K : Type u_2} [inst : CategoryTheory.Category.{u_3, u_2} K]\n  [inst_1 : CategoryTheory.Preadditive K] (P : Suzuki.PublishedInputs), Suzuki.Target.MainClaim\n'Suzuki.fullTheoremConditional' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+  },
+  "separability_adapter_finding": "Classification/unit interpretation is indexed by explicit separability proofs. ofUnital B hB.1 gives the actual admissible target directly, avoiding the prior dummy-object adapter design without strengthening MainClaim.",
+  "source_ledger_final_reviewed": true,
+  "full_85_source_final_audit_claimed": false,
+  "fullTheoremConditional_verified_conditional": true,
+  "fullTheoremConditional_kernel_verified": true,
+  "actual_published_input_instances_constructed": false,
+  "final_source_ledger_version": "immutable final-ledger-v2",
+  "final_source_ledger_sha256": "4de11bde57bfff42c067d70f4ac7d6d5c871a61eeb8294a6a26c5370d4784d82",
+  "final_source_ledger_hash_checks": [
+    {
+      "path": "releases/suzuki-kirchberg-draft/verification/external-inputs.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/releases/suzuki-kirchberg-draft/verification/external-inputs.json",
+      "expected": "4de11bde57bfff42c067d70f4ac7d6d5c871a61eeb8294a6a26c5370d4784d82",
+      "actual": "4de11bde57bfff42c067d70f4ac7d6d5c871a61eeb8294a6a26c5370d4784d82",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/verification/conditional-hypotheses.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/releases/suzuki-kirchberg-draft/verification/conditional-hypotheses.json",
+      "expected": "0f52fc3d331be91a34e870894439140d8b939f2207ea956ffb1d76d77a2dd3a4",
+      "actual": "0f52fc3d331be91a34e870894439140d8b939f2207ea956ffb1d76d77a2dd3a4",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/verification/conditional-hypotheses.txt",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/releases/suzuki-kirchberg-draft/verification/conditional-hypotheses.txt",
+      "expected": "183cf0a521a045b688a94b71cab56476d439fb208be271f67575aaae3e184af6",
+      "actual": "183cf0a521a045b688a94b71cab56476d439fb208be271f67575aaae3e184af6",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/verification/CONDITIONAL.md",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/releases/suzuki-kirchberg-draft/verification/CONDITIONAL.md",
+      "expected": "230a3b39a7f4b78d4a28676c8e08af860684143df743b08ec05341aaaaa92d9f",
+      "actual": "230a3b39a7f4b78d4a28676c8e08af860684143df743b08ec05341aaaaa92d9f",
+      "match": true
+    },
+    {
+      "path": "releases/suzuki-kirchberg-draft/verification/SCOPE.md",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/releases/suzuki-kirchberg-draft/verification/SCOPE.md",
+      "expected": "4fa80c24c278370efbcdfa1c914ea8ccdde9df2eb38d4fd939596c43c5d653fa",
+      "actual": "4fa80c24c278370efbcdfa1c914ea8ccdde9df2eb38d4fd939596c43c5d653fa",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/pass2/SZ2-0003/sources/kpr-1998-author.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/pass2/SZ2-0003/sources/kpr-1998-author.pdf",
+      "expected": "66eec2d24c204dde4ad178a8a1ac14e378d09cb9846302b65c142d5527996fa1",
+      "actual": "66eec2d24c204dde4ad178a8a1ac14e378d09cb9846302b65c142d5527996fa1",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/pass2/SZ2-0003/sources/ara-goodearl-1102.4296v2.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/pass2/SZ2-0003/sources/ara-goodearl-1102.4296v2.pdf",
+      "expected": "dc512c4e8430e48b1add8c675baa376be011eebbfe63dbc8c9ddcdcc5cc0f1b5",
+      "actual": "dc512c4e8430e48b1add8c675baa376be011eebbfe63dbc8c9ddcdcc5cc0f1b5",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/SZ-0003/sources/S2-1510.02418v3.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/SZ-0003/sources/S2-1510.02418v3.pdf",
+      "expected": "82a4955a9f6d34a0f3be8925ba89179447ed7f8b3e524e66934423653c731e26",
+      "actual": "82a4955a9f6d34a0f3be8925ba89179447ed7f8b3e524e66934423653c731e26",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/pass2/SZ2-0001/sources/dadarlat-uct-2002-01.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/pass2/SZ2-0001/sources/dadarlat-uct-2002-01.pdf",
+      "expected": "aa79df40ba83a420be686438513d919be6cda24aeec06fd6d5a2fad148ce82fa",
+      "actual": "aa79df40ba83a420be686438513d919be6cda24aeec06fd6d5a2fad148ce82fa",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/sources/phillips-v2.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/sources/phillips-v2.pdf",
+      "expected": "486e738f0a9fdf482c1e1e54d89172104c21c8cd56f3684a10e74bf2427d160e",
+      "actual": "486e738f0a9fdf482c1e1e54d89172104c21c8cd56f3684a10e74bf2427d160e",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/SZ-0005/sources/rs-web-1-14.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/SZ-0005/sources/rs-web-1-14.json",
+      "expected": "34684f2a6b1d8f94f052fe0d80c9036675d13aafdbd34a52b25ef59a1606cad2",
+      "actual": "34684f2a6b1d8f94f052fe0d80c9036675d13aafdbd34a52b25ef59a1606cad2",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/SZ-0005/sources/rs-web-1-17.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/SZ-0005/sources/rs-web-1-17.json",
+      "expected": "5cdc383a9fe50ed039a224008e3a837edf3e23c98ca0452445350f3bfb83441b",
+      "actual": "5cdc383a9fe50ed039a224008e3a837edf3e23c98ca0452445350f3bfb83441b",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/SZ-0005/sources/rs-web-7-1.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/SZ-0005/sources/rs-web-7-1.json",
+      "expected": "909a34361d64fe1461334a0038a08a02eca47c12c0bac14899cb2365ab99b831",
+      "actual": "909a34361d64fe1461334a0038a08a02eca47c12c0bac14899cb2365ab99b831",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional5/coordinator/drinen-tomforde-0103036v1-web.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional5/coordinator/drinen-tomforde-0103036v1-web.json",
+      "expected": "33c9876c11eec22d082a344e5d90a554534dd1b818a109d911e356db117a1133",
+      "actual": "33c9876c11eec22d082a344e5d90a554534dd1b818a109d911e356db117a1133",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional5/coordinator/rs-1987-properties-web.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional5/coordinator/rs-1987-properties-web.json",
+      "expected": "e34b128ce0abfae6fd6394f8b663a8f65cf390436b2e7ed6bbd5454de3a5b32a",
+      "actual": "e34b128ce0abfae6fd6394f8b663a8f65cf390436b2e7ed6bbd5454de3a5b32a",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/SZLC6-0002/source-excerpts.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional6/SZLC6-0002/source-excerpts.json",
+      "expected": "6b405d6f91dd2e97f4676f2273ee2cbee31c10e1afc55df35d2c23c4b1972e4b",
+      "actual": "6b405d6f91dd2e97f4676f2273ee2cbee31c10e1afc55df35d2c23c4b1972e4b",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/SZLC6-0002/meyer-version-excerpts.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional6/SZLC6-0002/meyer-version-excerpts.json",
+      "expected": "859a1cf93c937451ddfafd361a122a86b6887122d98be9609c4a7e5bfe3e7cf9",
+      "actual": "859a1cf93c937451ddfafd361a122a86b6887122d98be9609c4a7e5bfe3e7cf9",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/SZLC6-0002/choi-effros-excerpts.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional6/SZLC6-0002/choi-effros-excerpts.json",
+      "expected": "b1987b6e941e5555a12e76c183d9511b6b599acb473085da43b268146d1f76ea",
+      "actual": "b1987b6e941e5555a12e76c183d9511b6b599acb473085da43b268146d1f76ea",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/SZLC6-0007/blackadar-book6.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional6/SZLC6-0007/blackadar-book6.pdf",
+      "expected": "a20e676e9d400ebcd0cd07c13fbdbe1fac759a30c739fab23d6161ecfb1a23fb",
+      "actual": "a20e676e9d400ebcd0cd07c13fbdbe1fac759a30c739fab23d6161ecfb1a23fb",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/coordinator/sources/ara-perera-toms-2009.pdf",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional6/coordinator/sources/ara-perera-toms-2009.pdf",
+      "expected": "6b69224bd21e8ed4657380695d468d27d488d93987ee0d78328336afc3f1c3dd",
+      "actual": "6b69224bd21e8ed4657380695d468d27d488d93987ee0d78328336afc3f1c3dd",
+      "match": true
+    },
+    {
+      "path": "research/branches/SUZUKI/lean-conditional6/coordinator/sources/blackadar-tensor-faithfulness.json",
+      "frozen_path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/final-ledger-v2/research/branches/SUZUKI/lean-conditional6/coordinator/sources/blackadar-tensor-faithfulness.json",
+      "expected": "afce6a778684fffc2d723fee474da118161017b68b6c357e2e591e8895e2dabf",
+      "actual": "afce6a778684fffc2d723fee474da118161017b68b6c357e2e591e8895e2dabf",
+      "match": true
+    }
+  ],
+  "final_source_ledger_fields": 25,
+  "final_source_ledger_nested_interfaces": 37,
+  "final_source_ledger_primary_bindings": 16,
+  "final_source_ledger_findings": [
+    "All final fields covered, preserving generic external synthesis vs actual Lean interface realization.",
+    "No actual Kasparov cycle/interface instance, complete RS journal-PDF inspection, human verification, novelty, or unconditional formalization claimed.",
+    "v2 corrected APT perturbation/cutoff/projection locators, generic finiteNuclear zero-size scope and final theorem use-site names; no proof source change.",
+    "Source/predicate/map/UniverseLift/all-Z correspondence obligations and stable-finiteness route difference remain explicit."
+  ],
+  "ledger_transition_not_a_proof_failure": "Two live v1 ledger files changed while v2 was being prepared. Transition checks retained; final audit uses immutable final-ledger-v2 and all final packet hashes match.",
+  "citation_repair_review": [
+    {
+      "path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/citation-repair-v1/releases/suzuki-kirchberg-draft/Suzuki/ActualCoefficientKK.lean",
+      "sha256": "557a82fa2fae5910fc4ce6643ea76760cf3c92b49f7fddc8540a07fb42afe344",
+      "actual_sha256": "557a82fa2fae5910fc4ce6643ea76760cf3c92b49f7fddc8540a07fb42afe344",
+      "match": true,
+      "diff_scope": "documentation comment only; no statements, proofs, imports or interfaces changed",
+      "independently_recompiled_by_this_worker": false
+    },
+    {
+      "path": "state/packaging/SUZUKI-LEAN-CONDITIONAL-0007/citation-repair-v1/releases/suzuki-kirchberg-draft/Suzuki/ActualKKCornerClassification.lean",
+      "sha256": "583d0b676dd81a762481ba26c4fd632aa84924a452869edbb42498c4007fd6ef",
+      "actual_sha256": "583d0b676dd81a762481ba26c4fd632aa84924a452869edbb42498c4007fd6ef",
+      "match": true,
+      "diff_scope": "documentation comment only; no statements, proofs, imports or interfaces changed",
+      "independently_recompiled_by_this_worker": false
+    }
+  ],
+  "citation_repair_finding": "Exact diff reviewed and hashes checked; semantic proof unchanged. Existing independent compile/kernel evidence remains bound to original reviewed source hashes; fresh final auditor handles corrected-comment compilation."
+}

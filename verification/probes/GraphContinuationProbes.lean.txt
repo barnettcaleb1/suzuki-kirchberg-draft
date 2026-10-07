@@ -1,0 +1,136 @@
+import Suzuki.GraphFiniteAmalgam
+
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+set_option maxHeartbeats 1000000
+noncomputable section
+open scoped CStarAlgebra ComplexOrder
+open Suzuki Suzuki.GraphRelations Suzuki.WeightedGraphAmalgam Suzuki.GraphAmalgamInverse
+
+namespace CoordinatorGraphProbes
+
+abbrev weight : Unit → ℕ := fun _ => 1
+theorem positive : ∀ v, 0 < weight v := by intro v; exact Nat.zero_lt_one
+abbrev endpoint : Unit → Unit := id
+local instance : PartialOrder (GraphUniversal.Algebra.{0} endpoint endpoint) :=
+  CStarAlgebra.spectralOrder _
+local instance : StarOrderedRing (GraphUniversal.Algebra.{0} endpoint endpoint) :=
+  CStarAlgebra.spectralOrderedRing _
+
+abbrev Coordinates := Coord weight weight
+abbrev Ambient := CStarMatrix Coordinates Coordinates ℂ
+
+def firstUnits : MatrixUnits (coordVertex weight weight) Ambient where
+  unit i j := single weight weight i j (1 : ℂ)
+  star_eq i j _ := by
+    simpa only [star_one] using single_star weight weight i j (1 : ℂ)
+  mul_eq i j r s _ _ := by
+    by_cases h : j = r
+    · subst r; rw [if_pos rfl, single_mul_same, one_mul]
+    · rw [if_neg h]; exact single_mul_ne weight weight i j r s 1 1 h
+  sum_diag := by
+    change (∑ i : Coordinates, Matrix.single i i (1 : ℂ)) = 1
+    exact Matrix.sum_single_one
+
+abbrev secondUnits : MatrixUnits
+    (indexVertex (source := endpoint) (target := endpoint) weight weight) Ambient := firstUnits
+
+theorem common : GraphAmalgamInverse.Common weight weight positive positive firstUnits secondUnits where
+  P_diag _ := rfl
+  Q_diag w := by
+    cases w
+    simp [Q, FQ, endpoint]
+
+theorem allCommon : GraphAmalgamInverse.AllCommon weight weight positive positive firstUnits secondUnits where
+  toCommon := common
+  P_all _ _ _ := rfl
+  Q_all w b c := by
+    cases w
+    change firstUnits.unit (Sum.inr ⟨(), b⟩) (Sum.inr ⟨(), c⟩) = _
+    have he (e : {e : Unit // endpoint e = ()}) : e = ⟨(), rfl⟩ := Subsingleton.elim _ _
+    rw [Finset.sum_eq_single ⟨(), rfl⟩]
+    · rfl
+    · intro e _ h; exact False.elim (h (he e))
+    · simp
+
+
+open GraphCornerIdentification
+
+theorem noSinks : NoSinks endpoint := fun v => ⟨v, rfl⟩
+
+example : ∃! φ : graphCorner.{0} (source := endpoint) (target := endpoint) weight weight →⋆ₐ[ℂ] Ambient,
+    φ.comp (firstFactorHom (GraphUniversal.family endpoint endpoint) weight weight) = firstUnits.representation ∧
+    φ.comp (factorHom (GraphUniversal.family endpoint endpoint) weight weight positive noSinks) = secondUnits.representation :=
+  existsUnique_factor_extension weight weight positive positive firstUnits secondUnits allCommon noSinks
+
+example : CommonCorner.FullProjection (projection (GraphUniversal.family.{0} endpoint endpoint) weight weight) :=
+  weightedProjection_full weight weight positive
+
+example : GraphFiniteAmalgam.CommonEntries weight weight
+    (firstFactorHom (GraphUniversal.family.{0} endpoint endpoint) weight weight)
+    (factorHom (GraphUniversal.family.{0} endpoint endpoint) weight weight positive noSinks) :=
+  GraphFiniteAmalgam.graph_commonEntries weight weight positive noSinks
+
+/-- A second genuine one-loop representation distinguishes the graph edge from its vertex. -/
+def minusFamily : Family endpoint endpoint ℂ where
+  vertex _ := 1
+  edge _ := -1
+  vertex_projection _ := ⟨by simp, by simp⟩
+  vertex_orthogonal v w hvw := (hvw (Subsingleton.elim _ _)).elim
+  vertex_sum := by simp
+  initial _ := by simp
+  edge_orthogonal e f hef := (hef (Subsingleton.elim _ _)).elim
+  outgoing v _ := by cases v; simp [endpoint]
+
+theorem edge_sub_vertex_ne_zero :
+    GraphUniversal.edge.{0} endpoint endpoint () - GraphUniversal.vertex.{0} endpoint endpoint () ≠ 0 := by
+  intro h
+  have he := congrArg (GraphUniversal.lift endpoint endpoint minusFamily) h
+  simp only [map_sub, GraphUniversal.lift_edge, GraphUniversal.lift_vertex, map_zero] at he
+  change (-1 : ℂ) - 1 = 0 at he
+  norm_num at he
+
+def kernelElement : graphCorner.{0} (source := endpoint) (target := endpoint) weight weight :=
+  firstImage (source := endpoint) (target := endpoint) weight weight
+    (P weight weight positive ()) (Q weight weight positive ()) rfl *
+  mixedImage (source := endpoint) (target := endpoint) weight weight () 0 0 -
+  firstImage (source := endpoint) (target := endpoint) weight weight
+    (P weight weight positive ()) (P weight weight positive ()) rfl
+
+theorem kernelElement_image : backward weight weight positive positive firstUnits secondUnits common kernelElement = 0 := by
+  unfold kernelElement
+  rw [map_sub, map_mul,
+    backward_first (source := endpoint) (target := endpoint) weight weight positive positive firstUnits secondUnits common,
+    backward_first (source := endpoint) (target := endpoint) weight weight positive positive firstUnits secondUnits common,
+    backward_mixed (source := endpoint) (target := endpoint) weight weight positive positive firstUnits secondUnits common allCommon]
+  change single weight weight (P weight weight positive ()) (Q weight weight positive ()) (1 : ℂ) *
+    single weight weight (Q weight weight positive ()) (P weight weight positive ()) 1 -
+    single weight weight (P weight weight positive ()) (P weight weight positive ()) 1 = 0
+  rw [single_mul_same, one_mul, sub_self]
+
+theorem kernelElement_ne_zero : kernelElement ≠ 0 := by
+  intro h
+  have he := congrArg (fun x : graphCorner.{0} (source := endpoint) (target := endpoint) weight weight =>
+    x.val (P weight weight positive ()) (P weight weight positive ())) h
+  change (single weight weight (P weight weight positive ()) (Q weight weight positive ())
+    (GraphUniversal.vertex.{0} endpoint endpoint ()) *
+    single weight weight (Q weight weight positive ()) (P weight weight positive ())
+      (GraphUniversal.edge.{0} endpoint endpoint ()) -
+    single weight weight (P weight weight positive ()) (P weight weight positive ())
+      (GraphUniversal.vertex.{0} endpoint endpoint ()))
+    (P weight weight positive ()) (P weight weight positive ()) = 0 at he
+  rw [single_mul_same] at he
+  have hs : GraphUniversal.vertex.{0} endpoint endpoint () * GraphUniversal.edge.{0} endpoint endpoint () =
+      GraphUniversal.edge.{0} endpoint endpoint () := (GraphUniversal.family endpoint endpoint).edge_left_support ()
+  rw [hs] at he
+  have hz : GraphUniversal.edge.{0} endpoint endpoint () - GraphUniversal.vertex.{0} endpoint endpoint () = 0 := by
+    simpa only [single, CStarMatrix.sub_apply, CStarMatrix.ofMatrix_apply, Matrix.single_apply, and_self, ite_true] using he
+  exact edge_sub_vertex_ne_zero hz
+
+/-- Compatibility alone gives a homomorphism, not faithfulness; full amalgam
+universality in identify is a material hypothesis. -/
+example : ¬ Function.Injective (backward weight weight positive positive firstUnits secondUnits common) := by
+  intro h
+  exact kernelElement_ne_zero (h (kernelElement_image.trans (map_zero _).symm))
+
+end CoordinatorGraphProbes

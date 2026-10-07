@@ -1,0 +1,395 @@
+{
+  "recorded_at_utc": "2026-10-07T06:31:10.957936+00:00",
+  "verification_mode": "conditional Lean verification",
+  "status": "CONDITIONAL_PROOF_CHECKED_WITH_EXTERNAL_DEPENDENCIES",
+  "manuscript_sha256": "f61dc0872c2edd4be42c6e0160fc37fd128324fbe7244e7b76f62246f4492537",
+  "inputs_are_explicit_parameters_not_global_axioms": true,
+  "abstract_KK_correspondence": "EXTERNAL: realize the precise interfaces in actual separable Kasparov KK; no cycle implementation or Lean interface instance claimed",
+  "target_UCT_assumption": false,
+  "coefficient_UCT_assumption": false,
+  "graph_stage_UCT_input": true,
+  "fullTheoremConditional_exists": true,
+  "fullTheoremConditional_sha256": "6286b90c8ad796e29be34ba93a6b81fe9209de63891ca07581a225f85bec29cd",
+  "sources": [
+    {
+      "id": "KPR",
+      "local_immutable_snapshot": "research/branches/SUZUKI/pass2/SZ2-0003/sources/kpr-1998-author.pdf",
+      "sha256": "66eec2d24c204dde4ad178a8a1ac14e378d09cb9846302b65c142d5527996fa1",
+      "access": "original PDF snapshot available; text extraction inspected"
+    },
+    {
+      "id": "AG",
+      "local_immutable_snapshot": "research/branches/SUZUKI/pass2/SZ2-0003/sources/ara-goodearl-1102.4296v2.pdf",
+      "sha256": "dc512c4e8430e48b1add8c675baa376be011eebbfe63dbc8c9ddcdcc5cc0f1b5",
+      "access": "original PDF snapshot available; text extraction inspected"
+    },
+    {
+      "id": "FG",
+      "local_immutable_snapshot": "research/branches/SUZUKI/SZ-0003/sources/S2-1510.02418v3.pdf",
+      "sha256": "82a4955a9f6d34a0f3be8925ba89179447ed7f8b3e524e66934423653c731e26",
+      "access": "original PDF snapshot available; text extraction inspected"
+    },
+    {
+      "id": "Dadarlat",
+      "local_immutable_snapshot": "research/branches/SUZUKI/pass2/SZ2-0001/sources/dadarlat-uct-2002-01.pdf",
+      "sha256": "aa79df40ba83a420be686438513d919be6cda24aeec06fd6d5a2fad148ce82fa",
+      "access": "original PDF snapshot available; text extraction inspected"
+    },
+    {
+      "id": "Phillips",
+      "local_immutable_snapshot": "research/branches/SUZUKI/sources/phillips-v2.pdf",
+      "sha256": "486e738f0a9fdf482c1e1e54d89172104c21c8cd56f3684a10e74bf2427d160e",
+      "access": "original PDF snapshot available; text extraction inspected"
+    },
+    {
+      "id": "RS_Milnor_excerpt",
+      "local_immutable_snapshot": "research/branches/SUZUKI/SZ-0005/sources/rs-web-1-14.json",
+      "sha256": "34684f2a6b1d8f94f052fe0d80c9036675d13aafdbd34a52b25ef59a1606cad2",
+      "access": "frozen extracted web text; original full journal PDF not inspected"
+    },
+    {
+      "id": "RS_UCT_excerpt",
+      "local_immutable_snapshot": "research/branches/SUZUKI/SZ-0005/sources/rs-web-1-17.json",
+      "sha256": "5cdc383a9fe50ed039a224008e3a837edf3e23c98ca0452445350f3bfb83441b",
+      "access": "frozen extracted web text; original full journal PDF not inspected"
+    },
+    {
+      "id": "RS_7_1_excerpt",
+      "local_immutable_snapshot": "research/branches/SUZUKI/SZ-0005/sources/rs-web-7-1.json",
+      "sha256": "909a34361d64fe1461334a0038a08a02eca47c12c0bac14899cb2365ab99b831",
+      "access": "frozen extracted web text; original full journal PDF not inspected"
+    },
+    {
+      "id": "DT_graph_K",
+      "local_immutable_snapshot": "research/branches/SUZUKI/lean-conditional5/coordinator/drinen-tomforde-0103036v1-web.json",
+      "sha256": "33c9876c11eec22d082a344e5d90a554534dd1b818a109d911e356db117a1133",
+      "access": "arXiv-generated HTML for math/0103036v1 inspected; frozen extracted web response; original PDF not inspected",
+      "version": "6 March 2001, arXiv:math/0103036v1",
+      "locator": "Theorem 3.1 and Section 1 source-row convention",
+      "statement": "For countable graph, restrict the transposed vertex matrix minus identity to regular vertices; K0 is its cokernel, K1 its kernel. Finite no-sink specialization with manuscript source-row adjacency A^t gives matrix A-I=B.",
+      "remaining": "This source alone does not certify the manuscript channel naturality or precise chosen vertex/minimal-projection and K1 sign identifications."
+    },
+    {
+      "id": "RS_properties_excerpt",
+      "local_immutable_snapshot": "research/branches/SUZUKI/lean-conditional5/coordinator/rs-1987-properties-web.json",
+      "sha256": "e34b128ce0abfae6fd6394f8b663a8f65cf390436b2e7ed6bbd5454de3a5b32a",
+      "access": "Fresh web extraction of author-uploaded journal PDF, relevant introductory pages inspected; complete local original-PDF inspection not claimed",
+      "version": "Duke Mathematical Journal 55(2), June 1987, 431–474",
+      "locator": "Standing assumptions p.434; Definition 1.10 p.435; Theorem 1.11(1)–(5) p.436; Theorems 1.12 and 1.14 pp.436–437",
+      "statement": "Separable nuclear first variable and second variable with countable approximate unit. Exactness, Bott periodicity, product-intersection pairing, rank-one stabilization maps; additive contravariant KK gives the Milnor sequence.",
+      "remaining": "Full explicit interface laws, split-unitization maps, and actual-system eligibility must be matched; this source extraction is not a Lean instance."
+    },
+    {
+      "id": "Blackadar_operator",
+      "local_immutable_snapshot": "research/branches/SUZUKI/lean-conditional6/SZLC6-0002/source-excerpts.json",
+      "sha256": "6b405d6f91dd2e97f4676f2273ee2cbee31c10e1afc55df35d2c23c4b1972e4b",
+      "version": "Operator Algebras, author revision 8 February 2017",
+      "locator": "II.8.2, II.9, IV.3.1, IV.3.2",
+      "access": "frozen extracted passages; complete original PDF not locally acquired"
+    },
+    {
+      "id": "Meyer",
+      "local_immutable_snapshot": "research/branches/SUZUKI/lean-conditional6/SZLC6-0002/meyer-version-excerpts.json",
+      "sha256": "859a1cf93c937451ddfafd361a122a86b6887122d98be9609c4a7e5bfe3e7cf9",
+      "version": "arXiv:math/0702145v2, 26 February 2007",
+      "locator": "Sections 4.1–4.3, Definition 55/Theorem 56",
+      "access": "frozen primary extracted passages; primary arXiv PDF also opened by SZLC7-0004"
+    },
+    {
+      "id": "Choi_Effros",
+      "local_immutable_snapshot": "research/branches/SUZUKI/lean-conditional6/SZLC6-0002/choi-effros-excerpts.json",
+      "sha256": "b1987b6e941e5555a12e76c183d9511b6b599acb473085da43b268146d1f76ea",
+      "version": "Annals of Mathematics 104(3), 1976, 585–609",
+      "locator": "Theorem 3.10 and nonunital contraction passage",
+      "access": "published-paper extracted text and primary landing page; complete original PDF not inspected"
+    },
+    {
+      "id": "Blackadar_K",
+      "local_immutable_snapshot": "research/branches/SUZUKI/lean-conditional6/SZLC6-0007/blackadar-book6.pdf",
+      "sha256": "a20e676e9d400ebcd0cd07c13fbdbe1fac759a30c739fab23d6161ecfb1a23fb",
+      "version": "K-Theory for Operator Algebras, second edition, author-hosted book6.pdf; no PDF revision date asserted",
+      "locator": "5.1–5.5, 17.5.4–17.5.6, 17.8.2(c), 18.9.1",
+      "access": "immutable author-hosted PDF; relevant passages inspected"
+    },
+    {
+      "id": "APT",
+      "local_immutable_snapshot": "research/branches/SUZUKI/lean-conditional6/coordinator/sources/ara-perera-toms-2009.pdf",
+      "sha256": "6b69224bd21e8ed4657380695d468d27d488d93987ee0d78328336afc3f1c3dd",
+      "version": "Ara–Perera–Toms, K-Theory for Operator Algebras. Classification of C*-Algebras, 2009 manuscript snapshot",
+      "locator": "Theorem 2.13; Lemma 2.16; Proposition 2.17; Lemmas 2.18 and 2.19 (perturbation, norm-closed comparison, cutoff, projection subequivalence and hereditary extraction)",
+      "access": "immutable PDF and text; Lemma 2.19 printed proof has noted epsilon typo, statement supported by standard partial-isometry argument"
+    },
+    {
+      "id": "Blackadar_tensor",
+      "local_immutable_snapshot": "research/branches/SUZUKI/lean-conditional6/coordinator/sources/blackadar-tensor-faithfulness.json",
+      "sha256": "afce6a778684fffc2d723fee474da118161017b68b6c357e2e591e8895e2dabf",
+      "version": "Operator Algebras, author revision 8 February 2017",
+      "locator": "II.9 minimal tensor faithful representations",
+      "access": "frozen extracted primary source passages"
+    }
+  ],
+  "published_input_fields": [
+    {
+      "fields": [
+        "kk"
+      ],
+      "lean_interfaces": [
+        "CoefficientModelFromExtension.KKInterpretation"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "Actual separable possibly nonunital complex C*-algebras in carrier universe u are assigned objects of a preadditive category K with object universe v and Hom universe w. Actual nonunital star maps give KK classes, preserving identity/composition. K is intended to consist of designated separable actual KK objects, so all-Z quantifiers include no nonadmissible objects.",
+      "source_versions_and_locations": "Meyer math/0702145v2 §§4.1–4.3; Rosenberg–Schochet Duke 55(2) (1987), Theorem 1.11, within recorded scope.",
+      "used_by": [
+        "ActualCoefficientKK.mapIso",
+        "ConditionalMainConstruction",
+        "FullTheoremConditional"
+      ],
+      "external_correspondence_obligation": "Identify these universal laws with the designated actual objects, maps, norms and conventions; no actual KK instance is implemented."
+    },
+    {
+      "fields": [
+        "extension"
+      ],
+      "lean_interfaces": [
+        "ConditionalMainConstruction.ExtensionInputs",
+        "CoefficientModelFromExtension.NuclearityInput",
+        "CoefficientModelFromExtension.LiftingInput",
+        "CoefficientModelFromExtension.DadarlatInput",
+        "CoefficientModelFromExtension.ConeBottInput",
+        "CoefficientModelFromExtension.SplitUnitizationInput"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "Nuclearity permanence for actual c0 matrix sums, suspension, exact extensions and external unitization. Surjective star map with separable nuclear quotient admits CPC right inverse. For every separable nuclear B, original exact RFD extension of S(B) by c0 finite matrices. For every separable semisplit exact extension I→H→Q, the literal pointwise map Cone(theta)→S(Q) is KK invertible; double suspension is Bott equivalent. For every nuclear separable F, actual unitization inclusion has split retraction and reduced idempotent 1-[eta∘epsilon].",
+      "source_versions_and_locations": "Dadarlat January 2002 author PDF, Lemma 2.4 pp.2–3 and construction (11) p.8; no later K*(A)=0 assumption. Blackadar operator revision 8 February 2017 IV.3.1 and IV.3.2.4–5. Choi–Effros 1976 Theorem 3.10. Meyer v2 §4.2 Definition 55/Theorem 56 and preceding Bott statement; RS Theorem 1.11.",
+      "used_by": [
+        "CoefficientModelFromExtension.coefficient_model",
+        "ConditionalMainConstruction.coefficientIso",
+        "ActualCoefficientKK.ScalarTensorInput.splitting"
+      ],
+      "external_correspondence_obligation": "The generic pointwise cone comparison is a standard external synthesis: its kernel is C0([0,1),I), contractible via theta inverse; CPC section of q yields section g↦(s∘g,0) on the suspension. Semisplit exactness and contractible-kernel vanishing give the class of this actual quotient map invertible, before Bott. Meyer triangle statement alone is not asserted to print this exact formula. No coefficient-model conclusion is an input."
+    },
+    {
+      "fields": [
+        "spatial",
+        "finiteTensor"
+      ],
+      "lean_interfaces": [
+        "TensorCoefficientChannels.Spatial",
+        "PrescribedUnitCoordinate.FiniteTensorCoordinates"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "Actual unital spatial/minimal tensor algebra with bounded bilinear pure map, dense pure span, actual functorial star maps, matrix tensor isomorphisms, commuting factor embeddings. Literal finite block and coefficient matrix tensor coordinates match every pure matrix entry. MaximalOn specifies the full universal extension for any pair of commuting factor maps.",
+      "source_versions_and_locations": "Blackadar operator revision 8 February 2017 II.9 (minimal/maximal tensors); Blackadar K-Theory second edition §§17.8,18.9; Meyer v2 §4.1.",
+      "used_by": [
+        "TensorCoefficientChannels.tensor_isFullAmalgam",
+        "ActualGraphCoefficientSystem",
+        "ActualInitialProjection"
+      ],
+      "external_correspondence_obligation": "Identify these universal laws with the designated actual objects, maps, norms and conventions; no actual KK instance is implemented."
+    },
+    {
+      "fields": [
+        "analytic"
+      ],
+      "lean_interfaces": [
+        "ConditionalMainConstruction.AnalyticInputs",
+        "GraphCoefficientLimit.GraphInput",
+        "GraphCoefficientLimit.SupportInput",
+        "EvaluationLimitPureInfiniteness.ComparisonInput",
+        "TensorEvaluationPaths.JointFaithfulnessInput"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "For every finite rank-two strictly positive adjacency with diagonal ≥2 and positive corner weights: ordinary scalar graph corner is Kirchberg. Generic positive-size matrix simplicity, finite-matrix maximality, tensor and injective-limit separability/nuclearity, proper closed-ideal quotient realization, standard positive cuts and unstabilized Cuntz/hereditary projection transfer, tensor preservation of a jointly faithful matrix representation family. Every nuclear coefficient satisfies minimal=maximal. These laws name no constructed sequence, bond, projection, or limit.",
+      "source_versions_and_locations": "KPR February 1998 author PDF Corollary 3.11; Ara–Goodearl 1102.4296v2 Remark 3.10; Blackadar operator revision 8 February 2017 II.8.2,II.9,IV.3.1 and Cuntz comparison passages; APT 2009 Theorem 2.13, Lemma 2.16, Proposition 2.17, Lemmas 2.18/2.19.",
+      "used_by": [
+        "GraphCoefficientLimit.limit_kirchberg",
+        "ActualFiniteCoefficientLimits.limit_properties",
+        "ActualAmalgamCorner.corner_hasFiniteAmalgam"
+      ],
+      "external_correspondence_obligation": "Identify norm-supremum GraphUniversal.{u} and actual weighted graph corner with conventional ordinary graph algebra. A(v,w) counts w→v; usual source-row adjacency is A^t. Target nuclearity is finite-set CPC matrix approximation; simple excludes zero; pure infiniteness uses actual hereditary norm closures. Generic closed quotient and Cuntz predicates must match standard definitions. Actual graph/amalgam isomorphism and limit conclusions are proved internally."
+    },
+    {
+      "fields": [
+        "finiteNuclear"
+      ],
+      "lean_interfaces": [
+        "ActualFiniteCoefficientLimits.FiniteNuclearInput"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "Every finite product of complex full matrix algebras, including zero-size blocks, has the exact CPC finite-matrix approximation predicate; no positive block-size hypothesis is required by this generic input.",
+      "source_versions_and_locations": "Blackadar operator revision 8 February 2017 IV.3.1; ordinary finite-dimensional nuclearity (explicit matching to Target CPAP).",
+      "used_by": [
+        "ActualFiniteCoefficientLimits.scalar_nuclear",
+        "ActualAmalgamCorner.finiteConstituent"
+      ],
+      "external_correspondence_obligation": "Identify these universal laws with the designated actual objects, maps, norms and conventions; no actual KK instance is implemented."
+    },
+    {
+      "fields": [
+        "tensorKK",
+        "scalarTensor"
+      ],
+      "lean_interfaces": [
+        "ActualCoefficientKK.SpatialKKInput",
+        "ActualCoefficientKK.ScalarTensorInput",
+        "GraphChannelKKCalculation.ExteriorInput"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "Universal exterior products on separable nonunital KK objects: identity, composition, bilinearity and classes of orthogonal actual maps. Actual tensor algebra equivalences bind this SAME Spatial tensor to the exterior tensor, natural for all actual factor maps. Actual ULift scalar unit constraints are natural for every KK morphism. No local scalar classes, transport, or bond equation is supplied.",
+      "source_versions_and_locations": "Meyer v2 §4.1 minimal-tensor monoidal constraints and §4.2 split exactness; Blackadar K-Theory second edition §§17.8,18.9.",
+      "used_by": [
+        "ActualCoefficientKK.SpatialKKInput.phi_class",
+        "ActualCoefficientKK.ActualBond.bond_class",
+        "ActualUnitKK.referenceTransport"
+      ],
+      "external_correspondence_obligation": "Identify these universal laws with the designated actual objects, maps, norms and conventions; no actual KK instance is implemented."
+    },
+    {
+      "fields": [
+        "matrix",
+        "morita"
+      ],
+      "lean_interfaces": [
+        "ActualCoefficientKK.MatrixInput",
+        "ActualKKCornerClassification.FullCornerKKInput"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "Every specified rank-one corner a↦a e_rr of a positive-size finite matrix algebra over a separable algebra is KK invertible; finite matrix separability. Actual inclusion of every norm-closed full projection corner of a separable nuclear unital algebra is KK invertible. No construction projection, noise map, limit or equivalence is given.",
+      "source_versions_and_locations": "Blackadar K-Theory second edition 17.8.2(c),17.8.5–6; Meyer v2 §§4.1–4.2; RS Theorem 1.11 stabilization/Morita within nuclear scope.",
+      "used_by": [
+        "ActualCoefficientKK.UniverseCone.Input.noise_zero",
+        "ActualKKCornerClassification.classifyCorner"
+      ],
+      "external_correspondence_obligation": "Identify these universal laws with the designated actual objects, maps, norms and conventions; no actual KK instance is implemented."
+    },
+    {
+      "fields": [
+        "kGroups",
+        "finiteK0",
+        "ranks"
+      ],
+      "lean_interfaces": [
+        "GraphChannelKKCalculation.KTheory",
+        "GraphChannelKKCalculation.FiniteK0Input",
+        "PrescribedUnitCoordinate.FiniteProjectionRanks"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "Ordinary graded K-theory functor on actual KK classes. Finite complex matrix products have K0 equal to integer rank vectors; all actual finite multiplicity maps act by their multiplicity matrices. Ordinary projection ranks are additive, stable and natural for every finite map.",
+      "source_versions_and_locations": "Blackadar K-Theory second edition §§5.1–5.5 and 17.5; Meyer v2 §4.3.",
+      "used_by": [
+        "ActualCoefficientKK.UniverseCone.Input.scalar_class",
+        "ActualUnitKK.commonMinimal_coordinate"
+      ],
+      "external_correspondence_obligation": "Identify these universal laws with the designated actual objects, maps, norms and conventions; no actual KK instance is implemented."
+    },
+    {
+      "fields": [
+        "graphUCT",
+        "finiteCone",
+        "coneProjection"
+      ],
+      "lean_interfaces": [
+        "GraphChannelKKCalculation.FreeUCTInput",
+        "ActualCoefficientKK.UniverseCone.Input",
+        "ActualUnitKK.ProjectionConeInput"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "UCT Hom classification for bootstrap/free scalar sources only. Every positive finite actual full [I I]/[I A] presentation is bootstrap and has K0 coker(B), K1 ker(B), with universally natural comparison under all compatible actual nonunital finite diagrams. Pair classes use left minus right and K1 boundary (-y,y). Every first-factor projection maps under SAME comparison to the cokernel class of its ordinary rank vector. No individual new channel action or prescribed projection sign is assumed.",
+      "source_versions_and_locations": "Fima–Germain 1510.02418v3, 27 December 2016, Theorem 4.1 p.20; RS 1987 Theorem 1.17 and Proposition 7.1; Drinen–Tomforde math/0103036v1 Theorem 3.1 for ordinary graph group convention; ordinary finite-cone exactness and K0 normalization.",
+      "used_by": [
+        "ActualCoefficientKK.UniverseCone.Input.kappa",
+        "ActualCoefficientKK.ActualBond.bond_class",
+        "ActualUnitKK.stageZero_projection_prescribed"
+      ],
+      "external_correspondence_obligation": "FG requires separable unital injective inclusions and unital conditional expectations, satisfied by finite factors; no GNS faithfulness in v3. Compatible nonunital diagram maps give literal pointwise cone naturality independently of expectation intertwining. Actual comparison and suspension signs must match the designated K-theory. Free UCT is never applied to coefficient, tensor stage or target."
+    },
+    {
+      "fields": [
+        "reference",
+        "referenceGenerator"
+      ],
+      "lean_interfaces": [
+        "ActualCoefficientKK.ReferenceInput",
+        "ActualUnitKK.ReferenceGeneratorInput"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "Actual C⊕SC is bootstrap with even/odd groups Z and actual first-summand endomorphism acting identity on even and zero on odd. Its actual scalar inclusion is the chosen even generator.",
+      "source_versions_and_locations": "Blackadar K-Theory second edition §§5.1–5.5,17.5; Meyer v2 §§4.2–4.3; RS scalar/suspension/bootstrap closure.",
+      "used_by": [
+        "ActualCoefficientKK.ReferenceInput.projection_class",
+        "ActualUnitKK.referenceK0",
+        "ActualUnitKK.stageZero_scalar"
+      ],
+      "external_correspondence_obligation": "Identify these universal laws with the designated actual objects, maps, norms and conventions; no actual KK instance is implemented."
+    },
+    {
+      "fields": [
+        "projection",
+        "projectionInterpretation",
+        "representable",
+        "projectionExterior",
+        "projectionRepresentatives"
+      ],
+      "lean_interfaces": [
+        "PrescribedUnitCoordinate.ProjectionK0",
+        "ActualUnitKK.ProjectionInterpretation",
+        "ActualUnitKK.RepresentableInput",
+        "ActualUnitKK.ProjectionExteriorInput",
+        "PrescribedUnitCoordinate.ProjectionRepresentatives"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "For every actual unital algebra ordinary K0 projection laws, same-size Grothendieck representatives, orthogonal addition, stabilization, finite block/matrix Morita and exterior naturality. For every separable actual A: K0(A) ≃ KK(C,A), natural for all KK classes; literal projection z↦z p gives its K0 class. Ordinary K0 exterior product agrees with the SAME normalized Kasparov exterior product. No prescribed target class or signed graph/common projection is a field.",
+      "source_versions_and_locations": "Blackadar K-Theory second edition §§5.1–5.5,17.5.4–17.5.6,17.8,18.9; Meyer v2 §§4.1/4.3.",
+      "used_by": [
+        "ActualUnitKK.prescribedRepresentatives",
+        "ActualUnitKK.referenceTransport",
+        "ActualUnitKK.stageZero_projection_prescribed"
+      ],
+      "external_correspondence_obligation": "Identify these universal laws with the designated actual objects, maps, norms and conventions; no actual KK instance is implemented."
+    },
+    {
+      "fields": [
+        "milnor"
+      ],
+      "lean_interfaces": [
+        "ConditionalMainConstruction.MilnorInputs",
+        "ConditionalKKTransport.AnalyticMilnorInput"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "For every actual injective sequential system with separable nuclear stages and actual completed limit/canonical maps, analytic Milnor product-boundary sequence for every designated admissible KK test object Z: coboundary descent, kernel exactness and surjectivity onto compatible families. Suspension denotes actual degree-one shift. Stage and limit objects/maps are fixed by actual constructions; no limit equivalence or idempotent conclusion is supplied.",
+      "source_versions_and_locations": "RS Duke 55(2) (1987), Theorems 1.12 and 1.14(b), pp.436–437; frozen extracted excerpts only, complete original journal PDF not inspected.",
+      "used_by": [
+        "ConditionalMainConstruction.graphMilnor",
+        "ConditionalKKTransport.limitIso",
+        "Suzuki.fullTheoremConditional"
+      ],
+      "external_correspondence_obligation": "The product-boundary presentation and all-Z/category quantifier must be instantiated in actual KK. Constructed stages are separable and nuclear and bonds injective, proved in Lean. Hom groups need no countability premise for the internal idempotent argument."
+    },
+    {
+      "fields": [
+        "classification"
+      ],
+      "lean_interfaces": [
+        "ActualKKCornerClassification.ClassificationInput"
+      ],
+      "exact_statement": "conditional-hypotheses.txt prints complete compiled types; source definitions are hash-bound in source-manifest.json",
+      "statement_and_hypotheses": "Any two actual unital separable nuclear nonzero simple purely infinite algebras, with invertible even KK class carrying literal scalar unit class to literal scalar unit class, are unital complex star isomorphic. Exact Target hypotheses are supplied for both algebras by the proof.",
+      "source_versions_and_locations": "Phillips funct-an/9506010v2, 18 December 1997, Corollary 4.2.2 p.42.",
+      "used_by": [
+        "ActualKKCornerClassification.classifyCorner",
+        "Suzuki.fullTheoremConditional"
+      ],
+      "external_correspondence_obligation": "No UCT hypothesis on either algebra. No prescribed equivalence, corner presentation or unit equation is supplied by the interface."
+    }
+  ],
+  "precise_statement_and_use_ledger": "conditional-hypotheses.txt and PublishedInputs source",
+  "unproved_new_argument_steps": [],
+  "remaining_external_dependencies": [
+    "Actual KK/K-theory/tensor/suspension interpretation and the universal published-interface realizations",
+    "Exact source-to-interface syntheses described field by field, with preserved source access limitations",
+    "Independent human verification and novelty assessment are not performed"
+  ],
+  "construction_premises_final_audit": "Exact final theorem and input/manuscript correspondence passed independent conditional review; current exact artifact bindings and additional review evidence are in status.json and verification/reviews. No new-contribution conclusion survives as a final input.",
+  "manuscript_route_difference": "Stable finiteness is derived by faithful finite-matrix evaluations and injective matrix-limit argument rather than existence of compatible traces; same exact finite-constituent conclusion.",
+  "snapshot_path_base": "All research/ and state/ snapshot paths are relative to the original research workspace, not the standalone release directory. They document immutable source provenance and are not required for Lean compilation."
+}

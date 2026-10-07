@@ -1,0 +1,22 @@
+{
+  "checked_at_utc": "2026-10-07 06:33:52 UTC",
+  "scope": "Coordinator supplementary primary-source checks; does not enlarge or realize PublishedInputs.",
+  "checks": [
+    {
+      "source": "Blackadar, Operator Algebras",
+      "url": "https://bruceblackadar.com/Mathematics/Cycr.pdf",
+      "locator": "PDF page index 0, title page; extracted lines 0–7",
+      "verified": "The primary author-hosted PDF identifies February 8, 2017 on its title page.",
+      "access": "Primary PDF opened and title-page extraction read; not a claim of complete PDF inspection."
+    },
+    {
+      "source": "Meyer arXiv:math/0702145v2",
+      "url": "https://arxiv.org/pdf/math/0702145v2",
+      "locator": "Section 4.1, printed p.20 (PDF page index19), extracted lines1644–1651",
+      "verified": "Minimal/maximal tensor extensions form bifunctors on KK; associativity, commutativity and unit constraints induce symmetric monoidal structures.",
+      "access": "Versioned primary PDF opened; relevant Section4.1 passage read, supplementing the frozen4.2–4.3 excerpts; not a claim of complete PDF inspection."
+    }
+  ],
+  "new_external_source_works": 0,
+  "reason": "Both works were already consulted in earlier reserved packets; these accesses verify source locations."
+}

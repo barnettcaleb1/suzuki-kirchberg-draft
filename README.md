@@ -1,60 +1,59 @@
 # Kirchberg algebras as full amalgams of stably finite algebras
 
-**Draft — unverified. The main theorem is not verified in Lean.**
+**Research draft — conditional Lean verification. Independent human verification is pending.**
 
-This repository contains Caleb Barnett’s AI-assisted research draft and a partial Lean 4 formalization. The manuscript proposes that every unital Kirchberg algebra is a full unital amalgamated free product of separable nuclear simple unital stably finite C*-algebras over a common algebra with the same properties. No UCT hypothesis is assumed on the target. The proposed proof has not received independent human mathematical verification.
+Caleb Barnett
 
-Read [the manuscript source](paper.tex) and the [formalization scope](verification/SCOPE.md).
+The manuscript proposes that every unital Kirchberg algebra is a full unital amalgamated free product of separable nuclear simple unital stably finite C*-algebras over a common algebra with the same properties. There is no UCT hypothesis on the target or coefficient algebra.
 
-## What Lean checks
+[`Suzuki.fullTheoremConditional`](Suzuki/FullTheoremConditional.lean) now proves the exact [`Suzuki.Target.MainClaim`](Suzuki/Target.lean) from explicit [`PublishedInputs`](Suzuki/FullTheoremConditional.lean). This is **conditional Lean verification**, not an unconditional formalization of operator-algebra theory. The interfaces are intended to describe actual Kasparov KK, ordinary K-theory, and the listed published analytic results. Their realization is an external obligation; no actual KK implementation or Lean instances of those published interfaces are claimed. A clean kernel audit does not prove the interfaces.
 
-The checked components include:
+The exact proof and its explicit hypotheses have passed an independent conditional manuscript/source review. The exact review targets and package checks are recorded in [status](verification/status.json). These reviews do not instantiate the external analytic interfaces.
 
-- [Matrix diagrams](Suzuki/MatrixDiagrams.lean): both commuting-square identities, the action on kernel representatives, and preservation of the chain equation and kernel map under a chain-homotopy adjustment. These are identities for arbitrary finite integer matrices of compatible sizes, not finite numerical tests.
-- [Idempotent systems](Suzuki/IdempotentSystems.lean): compatible sequences are constant fixed-point sequences; the recursive correction stays in the fixed-point subgroup; and `1 - shift` is surjective for every idempotent additive endomorphism of any abelian group, without a countability hypothesis on that group.
-- [Simultaneous positive lifting](Suzuki/PositiveLifting.lean): arbitrary homomorphisms on actual integer-matrix kernels and cokernels lift to strictly positive compatible diagrams. For any finite family of maps and target size at least two, one common nonnegative determinant-one change of target presentation works for all channels. The proof checks the exact induced maps.
-- [Multiplicity embeddings](Suzuki/MultiplicityEmbeddings.lean) and [their compositions](Suzuki/MultiplicityComposition.lean): actual embeddings between finite products of complex matrix algebras, with explicit dimensions and isometry proofs. Equal multiplicity products give explicit permutation unitaries and literal commuting squares of star homomorphisms.
-- [Actual Suzuki finite diagrams](Suzuki/SuzukiFiniteDiagram.lean): the positive-lifting outputs yield both literal squares with one shared common map, certified multiplicities, seven isometries, and positive block dimensions. A finite family uses one common unimodular presentation change; assembling its channels into the total target dimensions remains open.
-- [Full C*-amalgam interface](Suzuki/CStarAmalgam.lean): the full universal property for actual unital complex C*-algebras, norm-dense generation by the factors, and uniqueness up to an isometric star-algebra equivalence. These conclusions assume the universal property; this module does not construct an amalgam.
-- [Stable finiteness](Suzuki/StableFiniteness.lean), [tracial functionals](Suzuki/TracialFunctional.lean), and [simple traces](Suzuki/SimpleTraces.lean): a normalized positive trace on a simple C*-algebra is faithful and rules out proper isometries in every finite matrix algebra. Existence of the traces required in the manuscript remains unproved.
-- [Orthogonal channels](Suzuki/OrthogonalChannels.lean): a finite sum of star-homomorphisms with orthogonal units summing to one is a unital star-homomorphism, injective when one channel is injective.
-- [Common full corners](Suzuki/CommonCorner.lean) and [full projections](Suzuki/FullProjectionFrame.lean): ideal-theoretic fullness gives a finite frame via C*-module Cauchy–Schwarz and functional calculus. The concrete corner triple then satisfies the full universal property, including existence and uniqueness of extensions. [Simplicity](Suzuki/SimpleFullness.lean) makes every nonzero projection full. The prescribed K₀-class projection is still not constructed.
-- [Concrete inductive limits](Suzuki/SequentialCStarLimit.lean): constructs the norm-completed limit of an injective sequence, with isometric embeddings, density, separability, and the full universal property. Compatible full amalgams pass to these constructed limits, and injective natural families give injective limit maps.
-- [Residual representations](Suzuki/ResidualRepresentations.lean): a separable unital RFD algebra has a sequence of actual finite matrix representations with every tail separating. RFD also implies ring-theoretic stable finiteness.
-- [Unitization](Suzuki/UnitizationRFD.lean) and [matrix amplification](Suzuki/RFDAmplification.lean): RFD passes to external unitization, full finite matrix algebras, and finite products. The maps are actual finite matrix representations.
-- [Matrix limits](Suzuki/MatrixLimits.lean): injective limits of RFD stages are stably finite at every matrix size, proved by simultaneous stage approximation and the Neumann series without assuming a limit trace.
-- [Finite completely positive approximation](Suzuki/FiniteCPApproximation.lean): every finite product of complex matrix algebras admits explicit contractive, completely positive block inclusion and compression maps. [Compatible contractions](Suzuki/LimitCPMaps.lean) extend to completely positive contractions on the constructed limits; this extension alone does not establish approximation or nuclearity of those limits.
-- [Approximation for split limits](Suzuki/CPApproximationLimits.lean): stage CP approximation passes to the constructed limit when the actual connecting maps have completely positive contractive left inverses. The proof constructs coherent retractions and proves their convergence. [Matrix retractions](Suzuki/MatrixRetractions.lean) supply concrete left inverses for diagonal amplification; splittings for the complete manuscript systems remain to be constructed.
-- [Corner inheritance](Suzuki/CornerCPApproximation.lean): nonzero projection corners retain all four finite-constituent properties. [Pure infiniteness](Suzuki/CornerPureInfiniteness.lean) and the exact target Kirchberg predicate also pass to nonzero corners, with actual hereditary closures and restricted witnesses. [Finite corner amalgams](Suzuki/FiniteCornerAmalgam.lean) assemble these results with the full universal property.
+Read the [manuscript](paper.tex), [precise scope](verification/SCOPE.md), [conditional argument guide](verification/CONDITIONAL.md), [field-by-field source ledger](verification/external-inputs.json), and [complete compiled hypotheses](verification/conditional-hypotheses.txt).
 
-The [target module](Suzuki/Target.lean) gives an explicit open proposition `Suzuki.Target.MainClaim` using actual C*-algebras. **A definition of this proposition is not a proof.** Its correspondence with standard nuclearity and pure-infiniteness conventions also needs formal justification.
+## External dependencies
 
-The verifier inventories every compiled declaration under the `Suzuki` namespace, including definitions and generated declarations, and audits its transitive axiom dependencies. It rejects dependencies other than `propext`, `Classical.choice`, and `Quot.sound`, along with any project axiom declaration. Source hashes and the exact declaration list are recorded in [the manifest](verification/source-manifest.json).
+The theorem takes the published theory as explicit inputs. The remaining obligations include realizing those interfaces in actual operator-algebra theory and checking their exact correspondence with the cited results:
 
-**A passing Lean check here does not verify the manuscript’s complete C*-algebra construction, its KK-theory argument, or its main theorem.** The remaining obligations are listed in [SCOPE.md](verification/SCOPE.md). No main theorem has been replaced by an assumed axiom or packaged as a conditional theorem and labeled verified.
+- Standard graph C*-algebra simplicity, pure infiniteness, nuclearity and K-theory; finite-cone comparison and its map naturality.
+- Kasparov KK products, split exactness, mapping cones, Bott and Morita equivalence, and ordinary K-theory with its projection and tensor-product normalizations.
+- UCT for the scalar bootstrap graph stages, and the analytic Milnor sequence for the actual injective sequential system. **No UCT is assumed for the target or coefficient algebra.**
+- Dadarlat's original published extension construction used to derive the nuclear RFD coefficient model, together with standard nuclearity permanence and Choi–Effros lifting.
+- Unit-preserving Kirchberg classification, applied with its separability, nuclearity, simplicity, pure infiniteness, invertible KK-class and prescribed-unit hypotheses.
+- Standard spatial tensor, Cuntz comparison and inductive-limit facts listed in the interfaces.
+
+The [source ledger](verification/external-inputs.json) records the exact statements, hypotheses, source versions, proof uses, correspondence obligations and source-access limitations. A source-binding or kernel check alone does not discharge these inputs. Independent human mathematical review and novelty assessment remain pending.
+
+## What the conditional proof derives
+
+The final proof supplies the new argument's construction data internally:
+
+- Simultaneous positive integer lifting, actual finite multiplicity embeddings and orthogonal commuting diagrams.
+- The full graph/amalgam identification, including the actual common maps and both inverse maps.
+- The nuclear RFD coefficient cone derived from the original published extension, its actual quotient/Bott KK equivalence, and a tail-separating matrix representation schedule.
+- The actual spatial coefficient channels and their +, − and zero scalar classes under the same finite-cone coordinates; the actual bond class is the reduced split idempotent. UCT is confined to scalar bootstrap sources.
+- The actual completed product limit's Kirchberg properties and the three finite constituents' simplicity, nuclearity, separability and stable finiteness. Stable finiteness is proved using faithful finite matrix evaluations and an injective matrix-limit argument.
+- A nonzero stabilized common projection, its literal image in the product limit, and its prescribed class under the same κ used for every bond.
+- The Milnor equivalence with its exact inverse-stage restrictions, the full corner's actual unit inclusion, and the final unit-preserving classification step.
+
+No field of `PublishedInputs` supplies a desired bond class, a constructed limit's properties, a finite-amalgam presentation of the target, or the prescribed unit equation.
 
 ## Reproduce
 
-Install [elan](https://github.com/leanprover/elan), Python 3, and Git. In this repository run:
+Lean 4.33.1 and mathlib commit `0df444a360eaa60ab8c11dca51a86af692955474` are pinned. With those dependencies installed:
 
 ```sh
-lake exe cache get
+lake build
 python3 scripts/verify.py
+python3 scripts/verify_conditional.py
 python3 -m unittest discover -s scripts -p 'test_*.py'
 ```
 
-The toolchain is Lean 4.33.1. Mathlib is pinned to commit `0df444a360eaa60ab8c11dca51a86af692955474`; transitive dependencies are pinned by `lake-manifest.json`. GitHub Actions runs these component checks in a workflow named **Lean partial formalization checks**.
+The component verifier checks exact source hashes and every declaration originating in a project module, including private/generated declarations in other namespaces. Only `propext`, `Classical.choice`, and `Quot.sound` are allowed. The conditional verifier additionally requires the exact final theorem type and audits its kernel dependencies. The separate hypothesis and correspondence reports must also pass; these commands do not instantiate the external interfaces.
 
-The separate full-proof command is:
+`python3 scripts/verify_full.py` is intentionally a separate unconditional gate. It requires `Suzuki.fullTheorem : Target.MainClaim` without `PublishedInputs` and remains **NOT VERIFIED**. No such unconditional result is claimed.
 
-```sh
-python3 scripts/verify_full.py
-```
+The included verification logs and reports record the local conditional-proof checkpoint. GitHub Actions is a separate reproducibility check; its status must be read from the actual workflow run. The 65 previously checked proof modules are preserved byte for byte. Older comments calling the target an open proposition are retained in those immutable source files; the new conditional proof is in its own module.
 
-**This command currently fails.** It requires a declaration `Suzuki.fullTheorem` of the exact type `Suzuki.Target.MainClaim`, with no extra axioms. That declaration does not exist. Passing the component checks cannot make this command pass, and a future success would still require review of the formal statement’s correspondence to the manuscript.
-
-To build the manuscript locally with an existing LaTeX installation, compile `paper.tex`. This repository does not distribute third-party papers or local dependency caches.
-
-## Status and provenance
-
-Public draft 1, 6 October 2026. The mathematical manuscript and Lean supplement were developed with substantial AI assistance. Automated compilation and review do not substitute for human checking of the claimed result or of the correspondence between prose and formal statements. No novelty or priority assessment is asserted. Corrections are welcome.
+License: Apache-2.0. Copyright 2026 Caleb Barnett.

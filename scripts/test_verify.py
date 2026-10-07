@@ -4,6 +4,16 @@ import verify
 
 
 class AuditTests(unittest.TestCase):
+    def test_inventories_private_environment_names(self):
+        source = "#print axioms Suzuki.publicLemma\n-- audit_private _private.Suzuki.Test.0.helper\n"
+        self.assertEqual(verify.audit_requests(source),
+                         ["Suzuki.publicLemma", "_private.Suzuki.Test.0.helper"])
+
+    def test_rejects_admission_in_private_helper(self):
+        name = "_private.Suzuki.Test.0.helper"
+        with self.assertRaises(ValueError):
+            verify.check_axioms(f"'{name}' depends on axioms: [sorryAx]\n", [name])
+
     def test_accepts_standard_axioms_and_axiom_free_proofs(self):
         output = "'a' depends on axioms: [propext, Classical.choice, Quot.sound]\n'b' does not depend on any axioms\n"
         self.assertEqual(set(verify.check_axioms(output, ['a', 'b'])), {'a', 'b'})

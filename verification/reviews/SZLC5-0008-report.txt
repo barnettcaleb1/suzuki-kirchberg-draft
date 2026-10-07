@@ -1,0 +1,86 @@
+SZLC5-0008 — independent exact-source audit
+Reviewer: /root/suzuki2_uct_audit
+Bounded reservation deadline: 2026-10-06 22:57:32.273574 UTC
+
+RESULT
+No blocking defect was found in the five frozen local statements. All five exact frozen sources independently compiled with warnings as errors. The combined audit inspected 410 compiled declarations, including generated and private helpers, and found only propext, Classical.choice and Quot.sound in their transitive axiom sets. This is a bounded source/semantic audit, not full verification of the manuscript or conditional MainClaim. The remaining construction and identification obligations below are material.
+
+EXACT TARGETS (SHA256)
+OrthogonalNoiseFullness.lean
+  4b0e3ab57040fac32a75c15b7d301aaa26e676bf031b1802149c7f3fbb77da99
+CommonUnitProjection.lean
+  d632f5fe1aaddc75e89a849e469e0aeeea7b9b440ab6097606ec8ee661000d13
+CoefficientModelConditional.lean
+  0a37d31eeacc1d2078c615e9e6f62ab2d6787f3eef5deac2cc632190eca072b9
+GraphAmalgamInverse.lean
+  94281d28f5566ad6c27a5e16aa645360ae789ce4a16186abc9dff73139f9102c
+InitialGraphPresentation.lean
+  ea70b685f0f053afc49659ab9858d36ff8d7ffa3a7299de12e331674537c1765
+Frozen copies: state/packaging/SUZUKI-LEAN-CONDITIONAL-0005/SZLC5-0008-frozen.
+Release copies: releases/suzuki-kirchberg-draft/Suzuki.
+Both copies of every target match the reserved hash. No target, release build output, canonical state, or manuscript was edited by this reviewer.
+
+METHOD AND INDEPENDENCE
+Read the required root orientation, assigned five modules, relevant direct imports/pinned Mathlib, corresponding manuscript passages (graph corner lemma; coefficient-model lemma; finite noise and unit projection), and conditional input ledger. No new literature search or infrastructure implementation was undertaken. CoefficientConeModel, a direct dependency, was previously authored by this reviewer; this review is independent of the authors of the five targets, but must not be presented as an independent review of that earlier dependency.
+
+Compiler: formal/lean/.toolchain/lean-4.33.1-darwin_aarch64/bin/lean, Lean 4.33.1, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, arm64 Release.
+Pinned Mathlib: 0df444a360eaa60ab8c11dca51a86af692955474.
+For each source and probe the actual command was:
+  <absolute lean> -j2 -M4096 -DwarningAsError=true <absolute file>
+working directory releases/suzuki-kirchberg-draft, with the LEAN_PATH in environment.json. Exact argv, environment, duration, exit and target olean hashes are retained in each *-execution.json. The frozen source recompiles did not use -o: they re-elaborated/rechecked each exact source against cached dependencies without emitting shadow or replacement release oleans. The final inventory imports the coordinator's stable release oleans, whose matching sources were checked. It does not independently rebuild all transitive Mathlib imports or run lean --trust=0 on the whole dependency closure.
+
+Coordinator Lake rebuilds changed all five target olean hashes while preserving source hashes. An intermediate combined inventory failed because CoefficientConeModel.olean was transiently missing; a graph-run preflight failed on missing CommonUnitProjection.olean before Lean started. Neither is counted as a source failure or a passing check. After the coordinator reported stability at 22:42:12 UTC, audit-final-stable passed and recorded unchanged before/after olean hashes. versions.json preserves initial and final identities, and environment-events.json records the transient failures.
+
+The dynamic inventory covers all declarations under each target namespace and its _private.Suzuki.<module> prefix. Counts: OrthogonalNoiseFullness 14; CommonUnitProjection 24; CoefficientModelConditional 133; GraphAmalgamInverse 205; InitialGraphPresentation 34. Three declarations have private-name prefixes. Each declaration's transitive axiom set is recorded in axiom-inventory.json; no sorryAx, additional global axiom, native_decide dependency or unsafe theorem escape was found. The source token scan complements, but does not replace, these compiled checks. Exact key theorem types and structures are printed in audit-final-stable.log.
+
+ORTHOGONAL NOISE FULLNESS
+The new channel_entry/channel_block_injective proofs (lines 27–57) recover an actual matrix entry after concrete channel placement, not only a support projection or norm estimate. The factor-channel version does the same through the reordered factor coordinates. Together with genuine HasMultiplicity witnesses (copies, coordinate equivalences and unitary conjugation), positive multiplicity preserves nonzeroness of every nonzero element in every target block. The supporting finite-product argument detects an arbitrary nonzero source entry, not merely the source unit, and proves algebraic ideal fullness of the resulting matrix product element.
+
+positive_aggregate_realizations (163) and simultaneous_aggregate_full (254) retain all-element/all-target-block nonzeroness simultaneously for the three constituents while retaining literal squares and the common positive lifting. The source dimensions may vary by channel; zero dimensions and empty index cases are governed by explicit nonzero-element premises. A zero source block cannot supply a nonzero witness. No matrix norm has been replaced by an entrywise or max-entry norm. Concrete coefficient blocks carry CStarMatrix's operator norm and finite products their genuine C*-product norm.
+
+finite_noise_ideal_eq_top (293) is an actual ideal result in the completed injective limit. It takes a concrete path/final channel, evaluation, actual positive-multiplicity homomorphism, actual unital constant inclusion, literal factorization, a detected element and its ideal membership. It then derives I = top for any TwoSidedIdeal; it does not assume closedness, simplicity or fullness as its conclusion. This matches the finite matrix part of the manuscript's noise argument. It does not construct the coefficient evaluation schedule, the required concrete path factorization for all assembled systems, the stage-positive-cut step, or the graph-product noise case. The exact stack/factor-stack identifications still have to be connected to the intended four systems. These are construction obligations, not licensed external results supplied by this theorem.
+
+COMMON UNIT PROJECTION
+stabilized is the actual block projection p direct-sum 1 in CStarMatrix indexed by Fin n plus Fin 1. A C*-matrix reindexing produces Fin (n+1). Nontrivial E, explicitly required for nonzero conclusions, makes the appended unit entry nonzero even when p = 0 or n = 0. The common algebra has two k-blocks of size n+1 and two l-blocks of size 1. Thus every block dimension is positive and k0+l0 = k1+l1.
+
+commonProjection places the stabilized p and stabilized q, both as positive projections, in the two k-blocks, with zero in both l-blocks. The minus sign for the second K-class is not represented by a negative operator. The projection need not be the unit and need not be full in the initial common product. commonProjection_frame (123) requires an actual simple target D and an injective stage map, then derives nonzero image and a finite full-projection frame. The supporting SimpleFullness/FullProjectionFrame route uses the actual norm-closed ideal, Neumann inversion and C*-functional calculus; the frame is not assumed in this theorem.
+
+stabilized_difference (136) is additive-group cancellation under an explicit direct-sum class law. It is not a definition or computation of K0. The module does not choose p and q representing a prescribed reduced K0 class, establish their equal scalar ranks, prove the graph generator signs, or instantiate the class law. The InitialGraphPresentation supplement verifies the relevant integer signs, but a graph-K-theory identification is still required to use those signs for operators. The actual common projection and the frame implication are therefore substantial local steps, not the complete prescribed-unit argument.
+
+COEFFICIENT MODEL CONDITIONAL
+Suspension H is an actual closed nonunital star subalgebra of continuous H-valued functions on the compact interval, vanishing at both endpoints, with the inherited sup norm and separability. The inclusion f |-> (f,0) identifies it isometrically with the closed kernel of Cone(theta) -> I. shortExact (144) proves injectivity, exact range/kernel and surjectivity for any theta; injectivity of theta is not smuggled in.
+
+The ramp section x |-> ((1-t) theta(x),x) is complex-linear and isometric, because its product norm is max(path norm, norm x) and theta is contractive. It is generally not multiplicative. The sqrtRamp factorization proves its matrix star-square identity, and actual positive C*-matrices are star squares by their C*-square roots. This establishes complete positivity at every finite matrix level, including empty index types, with CStarMatrix's operator norm. semisplit (278) proves a CPC right inverse rather than assuming it. The explicit StarOrderedRing hypotheses and canonical spectral order on the cone are used for the genuine C*-positive cone; the scalar norm estimates are not substituted for complete positivity.
+
+quotientSuspensionMap (298) is a concrete star hom Cone(theta) -> Suspension Q for an actual quotient hom q : H -> Q satisfying q theta = 0. Its surjectivity theorem explicitly needs a bounded complex-linear right inverse sigma of q; the CPC variant constructs that bounded linear right inverse from an actual contractive CP section. It does not claim that an arbitrary surjective C*-hom has a bounded linear section.
+
+For the manuscript, the original Dadarlat ideal embedding and semisplit extension, exact range(theta) = ker(q), the compact-path/C0 suspension correspondence, nuclearity of this constructed cone, and the standard mapping-cone KK/Bott identifications remain separate obligations. The module proves neither nuclearity nor a KK-equivalence. No UCT for the coefficient or target is assumed or concluded here. Its semisplit cone sequence should not be confused with the original Dadarlat extension needed for the KK triangle.
+
+GRAPH AMALGAM INVERSE
+MatrixUnits is a concrete family of ambient C*-algebra elements satisfying within-block multiplication/star laws and total diagonal sum 1. Off-block entries are unused. representation (97) constructs a genuine unital star hom from the actual finite product of scalar matrix algebras and proves its single-entry formula and contractivity. No factor hom or graph universal existence is assumed as an output.
+
+Common (184) gives the actual P-diagonal agreement and Q-diagonal outgoing sum. With strictly positive k,l and finite vertex/edge sets, edge = S_PQ T_QP has star(edge)*edge = p_target and outgoing range sum p_source, and distinct edges are orthogonal. The supported elements form a genuine family in pCp with inherited C*-norm, and graphLift uses the previously constructed fixed-universe GraphUniversal algebra. Ambient C is in universe u; vertices/edges are Type 0 and the graph algebra uses the matching u. No claim of a universe-independent universal object is made.
+
+Scope caveat: Common imposes Q_diag at every vertex, including sinks. For a sink its right side is zero, so the associated vertex vanishes. This is stronger than the generic graph-family relation restricted to nonsinks. It is consistent with the intended manuscript graphs, which have positive outgoing adjacency, but this module should not be advertised as preserving nonzero vertices for arbitrary graphs with sinks. There is also no automatic faithfulness of graphLift for arbitrary S,T.
+
+AllCommon (413) supplies the full common P/Q matrix-entry equations needed for mixed_recovery. hom_ext_units (476) derives agreement on the second factor's matrix units from agreement on the first units and recovered edges; it does not conclude equality of arbitrary ambient homomorphisms without a generation premise. The finite frame (536) is explicitly constructed from first-factor matrix units and has sum x_i*x_i* = 1. It is not supplied as a fullness assumption.
+
+amplifiedGraphLift is the actual entrywise star hom followed by finite reindexing; its weighted projection equals the frame Gram projection. Restriction and the actual frame equivalence yield backward (613), a unital contractive hom from the weighted graph corner to the ambient algebra. backward_single, backward_first and backward_mixed prove the claimed concrete entry and generator identities. Canonical spectral-order instances are required when clients form CStarMatrix over GraphUniversal.Algebra; this is the same C*-order, not a substitute norm/topology.
+
+Remaining graph lemma obligations are canonical common-map packaging, the forward amalgam universal map, the two composite identities on a proved generating family, full graph/amalgam isomorphism, and the K-class correspondence. These are not inferred from the names backward or hom_ext_units. The proof establishes part of the manuscript's explicit inverse construction, not its complete graph-corner lemma.
+
+INITIAL GRAPH PRESENTATION
+B is the actual all-ones 2 by 2 integer matrix. Cokernel B is the quotient of Z^2 by its actual linear range and is linearly equivalent to Z by [x] |-> x0-x1. Kernel B is equivalent to Z with inverse z |-> (z,-z). Thus e0 has class +1 and e1 class -1, the kernel generator is (1,-1), and any balanced vector (a,a) has class zero.
+
+For any unit integer matrix U, transportedCokernel evaluates the class of U*x as x0-x1, and transportedKernel uses the actual kernel equivalence for U*B. These statements do not silently identify the new target basis with the old basis. No positivity of U is required for these algebraic equivalences. Conversely, no graph K0/K1 identification, K-theory functoriality or graph unit class is produced merely by these integer calculations.
+
+ADVERSARIAL CHECKS
+CoreExamples.lean: 16 passing examples. Concrete M2(C) off-diagonal entry preservation, positive multiplicity fullness, a counterexample to inferring all-element/all-block detection from channel units, zero-dimensional source/empty target cases, zero coefficient algebra and the explicit Nontrivial boundary, n=0/p=q=0 common projection nonzeroness, its failure to be the unit, positive balanced dimensions, norm bound, frame signature and abstract class cancellation.
+CoefficientExamples.lean: 15 passing examples. Zero theta still gives the concrete exact sequence and isometric section; identity theta's ramp fails multiplicativity at the midpoint; positivity at 2 by 2 and 0 by 0 levels; actual decomposition/uniqueness/kernel isometry; split extension C -> C x C -> C with explicit bounded linear right inverse, actual lifted suspension paths, surjectivity and contractivity.
+InitialExamples.lean: 8 passing examples. Nontrivial cokernel values, distinct signed generators, inverse kernel coordinates, balanced negative vectors, and transport through the nonidentity unimodular matrix [[1,2],[0,1]].
+GraphExamples.lean: 10 passing examples (graph-examples-explicit). A concrete one-vertex one-loop graph in M2(C), standard matrix units for both factors, recovered edge equal to the nonzero vertex, actual Common/AllCommon equations and finite frame; actual backward map preserves the unit, recovers first/mixed matrix units, and is contractive. Earlier syntax/instance/unfolding attempts are preserved and are not counted as passing tests. The final probe repair supplies explicit source/target and map arguments to avoid metavariable unfolding at backward_first; no target source was changed. Total: 49 passing examples in four files.
+
+All probe repairs are confined to the reviewer output directory. Source compilation, allowed-axiom inventory and examples establish different kinds of evidence; neither example count nor passing kernel checks alone establishes manuscript equivalence.
+
+FINAL BOUNDARY
+The five targets contain useful exact local mathematics and do not assume their own principal local conclusions. They do not instantiate the manuscript's full coefficient model, graph identification, coefficient diagrams/noise schedule, prescribed K0 projection or final conditional assembly. In particular this audit does not license ClosedIdealKernelRealization or other pending external inputs, does not add a target/coefficient UCT premise, and does not verify fullTheoremConditional or Target.MainClaim. No issue found in this bounded packet means no blocking local issue found, not complete formal verification.

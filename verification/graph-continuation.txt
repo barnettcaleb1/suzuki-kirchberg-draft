@@ -1,0 +1,56 @@
+COORDINATOR CONTINUATION — conditional Lean verification, incomplete
+
+Batch SUZUKI-LEAN-CONDITIONAL-0005; no new worker launch. Original batch deadline
+2026-10-06 23:44:01 UTC. The earlier 61-module frozen checkpoint is preserved.
+
+New exact sources: GraphCanonicalUnits.lean, GraphCornerIdentification.lean,
+GraphFiniteAmalgam.lean. All 64 modules build; the exact final hashes are in the
+source manifest. Every prior 61 proof module remains byte-identical.
+
+New mathematical progress, corresponding to manuscript Lemma 2 (lem:graph),
+source lines 109–152, SHA256 f61dc0872c2edd4be42c6e0160fc37fd128324fbe7244e7b76f62246f4492537:
+1. Canonical scalar matrix units and their transport reconstruct an arbitrary
+   actual finite-factor homomorphism exactly.
+2. The backward graph-corner map extends both entire finite factors.
+3. For a closed star subalgebra Z of the weighted corner, membership of every
+   compressed matrix entry defines a closed star subalgebra of the graph
+   algebra. Inserting the sum of vertex projections proves multiplicative
+   closure. Vertex/edge generation and matrix reconstruction prove Z = top.
+   The norm is the actual CStarMatrix operator norm throughout.
+4. Equality on finite factors therefore implies equality on the completed
+   corner. This gives unique extension and both inverse composites for actual
+   full-amalgam data with the displayed common relations.
+5. Every vertex occurs because k(v)>0. Explicit matrix sandwiches of the
+   weighted projection produce all diagonal vertex entries, then the unit.
+   Thus the projection is algebraically full, without assuming simplicity.
+6. CommonEntries uses only P matrix-entry equality and the complete outgoing
+   Q sum. Diagonal equations and matrix units are derived. The actual graph
+   factor maps satisfy these entry equations.
+
+Residual hypotheses: identify still needs the actual full-amalgam property,
+CommonEntries for its two factor maps, and forward common-map compatibility.
+The full amalgam exists in the prior checked library; the manuscript's precise
+common inclusions must still be instantiated and proved to supply those finite
+formulas. These internal premises are not approved published inputs and have
+not been treated as discharged. The scalar amalgam equivalence is at Type 0;
+its preceding extension and fullness results allow the indicated universe.
+The graph K-class, minimal projection and unit correspondence remains open.
+
+Checks: pinned Lean 4.33.1 / Mathlib revision from the source manifest, warnings
+as errors; complete library build; exhaustive kernel inventory; 50 selected
+full-signature checks and an explicit absence diagnostic for the conditional
+main theorem. The actual commands and exit results are in status.json and the
+coordinator state checkpoint. These are coordinator checks, not independent
+review, a clean rebuild of every cached dependency, or human verification.
+
+Boundary probe: a one-vertex/one-loop representation with both finite factors
+in M2(C) satisfies the common equations and has a unique extension. Its graph
+edge evaluates to its vertex. A second actual scalar graph representation
+(edge=-1, vertex=1) proves that edge minus vertex is nonzero. An explicit
+weighted-corner element is therefore nonzero and sent to zero by the first
+backward map. This checked counterexample confirms that compatibility alone
+does not imply faithfulness; full-amalgam universality is a material premise.
+
+No new published input, no target/coefficient UCT, no manuscript edit, no
+publication and no remote push. No fullTheoremConditional exists. The draft
+remains unverified and the end-to-end conditional objective remains incomplete.

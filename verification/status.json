@@ -1,18 +1,18 @@
 {
-  "date": "2026-10-06",
-  "overall_status": "PARTIAL",
+  "date": "2026-10-07",
+  "overall_status": "CONDITIONAL_LEAN_VERIFICATION_COMPLETE",
   "main_claim_statement_defined": true,
   "main_theorem_proved": false,
   "main_theorem_verified": false,
-  "formal_statement_correspondence": "open obligations; see SCOPE.md",
-  "submitted_modules": 34,
-  "compiled_declarations": 1088,
+  "formal_statement_correspondence": "Exact Target.MainClaim typechecked; standard predicate/source interpretation obligations remainexplicit",
+  "submitted_modules": 85,
+  "compiled_declarations": 4979,
   "declaration_kinds_including_generated": {
-    "theorem": 792,
-    "definition": 263,
-    "constructor": 11,
-    "inductive": 11,
-    "recursor": 11
+    "definition": 1598,
+    "theorem": 3110,
+    "recursor": 89,
+    "inductive": 89,
+    "constructor": 93
   },
   "declaration_count_is_mathematical_lemma_count": false,
   "axiom_allowlist": [
@@ -22,23 +22,114 @@
   ],
   "lean_version": "4.33.1",
   "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
-  "local_component_verifier": "passed",
+  "local_component_verifier": "PASS: exactsource/package/declarationaudit, 4979declarations",
   "full_verifier": {
-    "command": "python3 scripts/verify_full.py",
     "exit_code": 1,
-    "result": "NOT VERIFIED",
-    "reason": "Suzuki.fullTheorem is absent",
+    "expected": true,
+    "reason": "Suzuki.fullTheorem absent; conditionalPublishedInputs notdischarged",
     "log": "full-check.txt"
   },
   "verification_tool_regression_tests": {
-    "passed": 10,
-    "failed": 0
+    "passed": 12,
+    "failed": 0,
+    "command": "python3 -m unittest discover -s scripts -p 'test_*.py'"
   },
   "independent_human_verification": false,
   "semantic_review": "semantic-review.json",
   "source_manifest": "source-manifest.json",
   "scope": "SCOPE.md",
-  "declarations_audited": 1088,
-  "checked_at_utc": "2026-10-06T20:06:09.266135+00:00",
-  "component_log": "component-check.txt"
+  "declarations_audited": 4979,
+  "checked_at_utc": "2026-10-07T06:39:29.235845+00:00",
+  "component_log": "component-check.txt",
+  "verification_mode": "conditional Lean verification",
+  "private_helpers_audited": 83,
+  "conditional_main_theorem_proved": true,
+  "conditional_main_theorem_verified": true,
+  "fullTheoremConditional_exists": true,
+  "explicit_hypothesis_audit": "conditional-hypotheses.json",
+  "conditional_source_correspondence": "PASSED: exact new-argument/manuscript and standard interface correspondence; actualKK realizations and recorded exact-map syntheses remainexternal",
+  "conditional_modules_independent_review": "SZLC7-0004 and SZLC7-0005 conditionalpasses at recorded exacthashes; fifthreview rebounds correctedcitationcomments",
+  "baseline_50_proof_modules_preserved": true,
+  "manuscript_changed": false,
+  "conditional_signature_and_absence_diagnostic": {
+    "exit_code": 0,
+    "exact_type": "Target.MainClaim from PublishedInputs",
+    "conditional_result": "PASS",
+    "unconditional_result": "NOT VERIFIED; absent"
+  },
+  "last_public_commit": "a2f5b4674d54ca0726434ee412cc4d5167dc6443",
+  "current_checkpoint_published": false,
+  "component_log_sha256": "4094885bf4a7b4577483f947d7cde96ba18cabadfadd1544963f39f801d552fd",
+  "batch_checkpoint": "SUZUKI-LEAN-CONDITIONAL-0007",
+  "batch_status": "complete",
+  "post_review_source_binding": "passed after final documentation update; every Lean source unchanged from full verifier run",
+  "manuscript_sha256": "f61dc0872c2edd4be42c6e0160fc37fd128324fbe7244e7b76f62246f4492537",
+  "baseline_61_proof_modules_preserved": true,
+  "coordinator_graph_probe": {
+    "exit_code": 0,
+    "counterexample": "Noninjective compatible one-loop representation; full-amalgam universality is material",
+    "source": "probes/GraphContinuationProbes.lean.txt",
+    "independent_review": false
+  },
+  "signature_count": 66,
+  "baseline_64_proof_modules_preserved": true,
+  "fullTheoremConditional_sha256": "6286b90c8ad796e29be34ba93a6b81fe9209de63891ca07581a225f85bec29cd",
+  "baseline_65_proof_modules_preserved": true,
+  "unproved_new_argument_steps": [],
+  "kernel_audit_discharges_explicit_inputs": false,
+  "actual_KK_interface_instances_constructed": false,
+  "unconditional_main_theorem_proved": false,
+  "conditional_verifier": {
+    "exit_code": 0,
+    "command": "python3 scripts/verify_conditional.py",
+    "log": "conditional-main-check.txt"
+  },
+  "completion_checks": {
+    "default_package_build": {
+      "exit_code": 0,
+      "log": "local-build.txt",
+      "note": "All85defaultimportedmodules; earlier65cachedcheckeddependenciespreserved"
+    },
+    "component_verifier": {
+      "exit_code": 0,
+      "command": "python3 scripts/verify.py",
+      "log": "local-checks.txt"
+    },
+    "exact_conditional_verifier": {
+      "exit_code": 0,
+      "command": "python3 scripts/verify_conditional.py",
+      "log": "conditional-main-check.txt"
+    },
+    "regression_tests": {
+      "passed": 12,
+      "failed": 0,
+      "command": "python3 -m unittest discover -s scripts -p 'test_*.py'"
+    },
+    "unconditional_gate": {
+      "exit_code": 1,
+      "expected": true,
+      "reason": "Suzuki.fullTheorem absent; conditionalPublishedInputs notdischarged",
+      "log": "full-check.txt"
+    }
+  },
+  "remaining_external_dependencies": [
+    "Actual KK/K-theory/tensor/suspension interpretation and the universal published-interface realizations",
+    "Exact source-to-interface syntheses described field by field, with preserved source access limitations",
+    "Independent human verification and novelty assessment are not performed"
+  ],
+  "final_source_ledger_sha256": "2b1b7b6143ab97c49d0bcb5354301b8e62fa1e77f7cfaa603355600cdafa12a8",
+  "final_compiled_hypotheses_sha256": "183cf0a521a045b688a94b71cab56476d439fb208be271f67575aaae3e184af6",
+  "final_review_bindings": {
+    "SZLC7-0004": {
+      "report_sha256": "5f8949aca93cf666a69045fe2b30be23b7eb5a43bef56c29c3b713847c7954d8",
+      "result_sha256": "e80a1cbf2d4eb56a07c4a55be5497d8334ba840bd2eae6d55195e5442db212d9"
+    },
+    "SZLC7-0005": {
+      "report_sha256": "810c4a417e107d6682a74fb0ad819eddb600f54f40631a90296a781120aa3ba2",
+      "result_sha256": "e071e1660ad366c9fe16e47fbcf93a9316e3d9e21f151e22e3355902586f0978"
+    }
+  },
+  "publication": false,
+  "remote_push": false,
+  "conditional_main_log_sha256": "e63689418646e0cf29b45f263aa98af19207ced1221a8cee774ec55121399c5c"
 }

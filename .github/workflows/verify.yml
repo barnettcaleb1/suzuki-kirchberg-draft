@@ -1,4 +1,4 @@
-name: Lean partial formalization checks
+name: Conditional Lean verification
 
 on:
   push:
@@ -24,5 +24,7 @@ jobs:
           use-github-cache: false
       - name: Check verifier failure handling
         run: python3 -m unittest discover -s scripts -p 'test_*.py'
-      - name: Verify partial formalization and audit axioms
+      - name: Verify source inventory and audit axioms
         run: python3 scripts/verify.py
+      - name: Verify exact conditional MainClaim
+        run: python3 scripts/verify_conditional.py

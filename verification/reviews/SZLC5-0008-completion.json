@@ -1,0 +1,44 @@
+{
+  "task": "SZLC5-0008",
+  "status": "completed",
+  "completed_at": "2026-10-06T22:47:26.464402+00:00",
+  "deadline": "2026-10-06T22:57:32.273574+00:00",
+  "target_hashes": {
+    "OrthogonalNoiseFullness.lean": "4b0e3ab57040fac32a75c15b7d301aaa26e676bf031b1802149c7f3fbb77da99",
+    "CommonUnitProjection.lean": "d632f5fe1aaddc75e89a849e469e0aeeea7b9b440ab6097606ec8ee661000d13",
+    "CoefficientModelConditional.lean": "0a37d31eeacc1d2078c615e9e6f62ab2d6787f3eef5deac2cc632190eca072b9",
+    "GraphAmalgamInverse.lean": "94281d28f5566ad6c27a5e16aa645360ae789ce4a16186abc9dff73139f9102c",
+    "InitialGraphPresentation.lean": "ea70b685f0f053afc49659ab9858d36ff8d7ffa3a7299de12e331674537c1765"
+  },
+  "source_compile_count": 5,
+  "source_compiles_passed": 5,
+  "axiom_declarations_audited": 410,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "passing_semantic_examples": 49,
+  "blocking_local_defects_found": [],
+  "verdict": "No blocking defect found in exact local targets; bounded audit, not full manuscript or conditional-main verification.",
+  "critical_scope_boundaries": [
+    "Graph Common equations also force sink vertices to vanish; intended positive-adjacency graphs have no sinks.",
+    "No full graph/amalgam isomorphism or graph K-theory identification.",
+    "Coefficient semisplit cone construction proves no nuclearity or KK/Bott equivalence, and quotient-map surjectivity explicitly requires a bounded linear/CPC splitting.",
+    "Noise path/evaluation/factorization inputs remain to be instantiated for intended systems.",
+    "Common projection is actual and nonzero under Nontrivial E; K0 projection selection, equal scalar ranks and class identification remain separate.",
+    "ClosedIdealKernelRealization remains pending/unlicensed; no target/coefficient UCT introduced."
+  ],
+  "full_theorem_conditional_verified": false,
+  "mainclaim_verified": false,
+  "source_edits": false,
+  "canonical_state_edits": false,
+  "subdelegated": false,
+  "independence_caveat": "Reviewer authored imported CoefficientConeModel in a prior task; this is not an independent re-audit of that dependency.",
+  "report": "report.txt",
+  "report_sha256": "4bdbfe8aad9e5d897bf8b17af78abf4891931939420c630850237ca615eafea9",
+  "checks": "checks.json",
+  "checks_sha256": "991b7f33ff4d07a730c272366a5af5bc51f7b386b3cd2bde04693df6869a9bcc",
+  "artifact_manifest": "artifact-hashes.json",
+  "artifact_manifest_sha256": "908af06360a932bfb5a989304ec95ed87d97167fab6a6ca1b0fa2afa850682f5"
+}

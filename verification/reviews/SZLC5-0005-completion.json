@@ -1,0 +1,39 @@
+{
+  "task": "SZLC5-0005",
+  "status": "completed_bounded_independent_audit",
+  "completed_at": "2026-10-06T22:19:30.933794+00:00",
+  "deadline": "2026-10-06T22:39:46.360448+00:00",
+  "subdelegated": false,
+  "canonical_state_edited": false,
+  "proof_sources_edited": false,
+  "verdict": "No blocking formal defect found in the exact local statements; unresolved construction/interface hypotheses prevent full conditional-main verification.",
+  "exact_targets": {
+    "releases/suzuki-kirchberg-draft/Suzuki/EvaluationLimitSimplicity.lean": "99404a36d52a434d49c15eb5ac080ffde3a611a437c6f871550368ccacb641cb",
+    "releases/suzuki-kirchberg-draft/Suzuki/WeightedGraphAmalgam.lean": "ef0c0b6af597d645485cc55ae374d559cf5b69503b1456d3917f1e2939cf0dc5",
+    "releases/suzuki-kirchberg-draft/Suzuki/ConditionalAssembly.lean": "3a8c22e10f5918075c0f4674d32c967aff73bca14e4ca5df834287ad44044d5c"
+  },
+  "independent_compilations": 3,
+  "independent_audited_declarations": 211,
+  "independent_semantic_probes": 20,
+  "report": {
+    "path": "report.txt",
+    "sha256": "d706b4f87f89874861f7d1c151a73c7ce5e5c785a959f4dcc703fb0cea0c91c7"
+  },
+  "checks": {
+    "path": "checks.json",
+    "sha256": "7016b3e99d668b0f23db5c1ceadfc7b7373ca3e161600181b5bc42fd9e52b495"
+  },
+  "artifact_manifest": {
+    "path": "artifact-hashes.json",
+    "sha256": "085ef721e335f05a84a9cba76b5b06c0d1e977bdcae57f66e50df99e5471c518"
+  },
+  "required_target_repairs": [],
+  "not_verified": [
+    "Full weighted graph/amalgam isomorphism and fullness/K-class correspondence.",
+    "Concrete manuscript coefficient/evaluation/noise data and finite-constituent blockwise fullness.",
+    "ClosedIdealKernelRealization foundation, currently unlicensed.",
+    "Actual common projection, its coordinate class, and complete conditional MainClaim."
+  ],
+  "fullTheoremConditional_verified": false,
+  "MainClaim_verified": false
+}
